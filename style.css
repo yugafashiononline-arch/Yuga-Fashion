@@ -27,6 +27,67 @@ body {
 
 
 /* =========================================================
+   YUGA MOVING ANNOUNCEMENT BAR
+========================================================= */
+
+.yuga-announcement {
+    width: 100%;
+    height: 38px;
+
+    background: #000;
+    color: #fff;
+
+    overflow: hidden;
+    white-space: nowrap;
+
+    display: flex;
+    align-items: center;
+
+    border-bottom: 1px solid #222;
+
+    position: relative;
+    z-index: 200;
+}
+
+.announcement-track {
+    display: flex;
+    align-items: center;
+
+    width: max-content;
+
+    animation: yugaAnnouncement 20s linear infinite;
+
+    will-change: transform;
+}
+
+.announcement-track span {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 0 35px;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 2.5px;
+
+    flex-shrink: 0;
+}
+
+@keyframes yugaAnnouncement {
+
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+
+}
+
+
+/* =========================================================
    HEADER
 ========================================================= */
 
@@ -111,7 +172,7 @@ header img {
 ========================================================= */
 
 .hero-premium {
-    min-height: calc(100vh - 80px);
+    min-height: calc(100vh - 118px);
 
     background:
         radial-gradient(
@@ -548,6 +609,33 @@ header img {
 }
 
 .collection-panel:hover .collection-explore {
+    background: white;
+
+    color: #111;
+}
+
+
+/* =========================================================
+   MOBILE COLLECTION TOUCH
+========================================================= */
+
+.collection-panel.touch-active img.collection-image {
+    transform: scale(1.07);
+
+    filter: brightness(0.52);
+}
+
+.collection-panel.touch-active::after {
+    opacity: 0.85;
+}
+
+.collection-panel.touch-active .collection-overlay {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+.collection-panel.touch-active .collection-explore {
     background: white;
 
     color: #111;
@@ -1858,10 +1946,27 @@ body.modal-open {
 
 @media (max-width: 800px) {
 
+    .yuga-announcement {
+        height: 34px;
+    }
+
+    .announcement-track {
+        animation-duration: 16s;
+    }
+
+    .announcement-track span {
+        padding: 0 25px;
+
+        font-size: 8px;
+
+        letter-spacing: 2px;
+    }
+
+
     /* PREMIUM HERO */
 
     .hero-premium {
-        min-height: calc(100vh - 65px);
+        min-height: calc(100vh - 99px);
 
         padding: 60px 20px 80px;
     }
@@ -2001,7 +2106,7 @@ body.modal-open {
     }
 
 
-    /* OLD PRODUCT GRID */
+    /* PRODUCT GRID */
 
     .products {
         grid-template-columns: repeat(2, 1fr);
@@ -2018,7 +2123,7 @@ body.modal-open {
     }
 
 
-    /* OLD CATEGORIES */
+    /* CATEGORIES */
 
     .categories {
         grid-template-columns: 1fr;
@@ -2096,9 +2201,26 @@ body.modal-open {
     }
 
 
+    /* ANNOUNCEMENT */
+
+    .yuga-announcement {
+        height: 34px;
+    }
+
+    .announcement-track span {
+        padding: 0 25px;
+
+        font-size: 8px;
+
+        letter-spacing: 2px;
+    }
+
+
     /* PREMIUM HERO */
 
     .hero-premium {
+        min-height: calc(100vh - 99px);
+
         padding-top: 50px;
 
         padding-bottom: 70px;
@@ -2472,92 +2594,17 @@ body.modal-open {
     }
 
     *,
+
     *::before,
+
     *::after {
         animation: none !important;
 
         transition: none !important;
     }
 
-}
-/* =========================================================
-   YUGA MOVING ANNOUNCEMENT BAR
-========================================================= */
-
-.yuga-announcement {
-    width: 100%;
-    height: 38px;
-
-    background: #000;
-    color: #fff;
-
-    overflow: hidden;
-    white-space: nowrap;
-
-    display: flex;
-    align-items: center;
-
-    border-bottom: 1px solid #222;
-}
-
-
-/* MOVING TRACK */
-
-.announcement-track {
-    display: flex;
-    align-items: center;
-
-    width: max-content;
-
-    animation: yugaAnnouncement 18s linear infinite;
-
-    will-change: transform;
-}
-
-
-/* TEXT */
-
-.announcement-track span {
-    display: inline-block;
-
-    padding: 0 35px;
-
-    font-size: 10px;
-    font-weight: 700;
-
-    letter-spacing: 2.5px;
-}
-
-
-/* ANIMATION */
-
-@keyframes yugaAnnouncement {
-
-    from {
-        transform: translateX(0);
-    }
-
-    to {
-        transform: translateX(-50%);
-    }
-
-}
-
-
-/* MOBILE */
-
-@media (max-width: 550px) {
-
-    .yuga-announcement {
-        height: 34px;
-    }
-
-    .announcement-track span {
-        padding: 0 25px;
-
-        font-size: 8px;
-
-        letter-spacing: 2px;
+    .announcement-track {
+        animation: none !important;
     }
 
 }
