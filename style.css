@@ -1,6 +1,6 @@
 /* =========================================================
    YUGA FASHION
-   MAIN WEBSITE STYLES
+   COMPLETE WEBSITE STYLES
 ========================================================= */
 
 
@@ -59,9 +59,7 @@ header img {
 .hero {
     background: #111;
     color: white;
-
     text-align: center;
-
     padding: 70px 20px;
 }
 
@@ -73,7 +71,6 @@ header img {
 
 .hero p {
     margin-top: 12px;
-
     letter-spacing: 4px;
     font-size: 14px;
 }
@@ -115,7 +112,6 @@ header img {
     grid-template-columns: repeat(3, 1fr);
 
     gap: 16px;
-
     padding: 35px;
 
     background: #f5f5f5;
@@ -147,9 +143,7 @@ header img {
 
 .category h2 {
     font-size: 22px;
-
     letter-spacing: 2px;
-
     margin-bottom: 8px;
 }
 
@@ -172,23 +166,18 @@ header img {
 
 .collections-section > h2 {
     font-size: 28px;
-
     letter-spacing: 2px;
-
     margin-bottom: 10px;
 }
 
 .collection-subtitle {
     font-size: 13px;
-
     color: #666;
-
     margin-bottom: 35px;
 }
 
 .collections-section .categories {
     max-width: 1200px;
-
     margin: 0 auto;
 
     padding: 0;
@@ -210,21 +199,17 @@ header img {
 
 .collections-section .category h2 {
     font-size: 25px;
-
     letter-spacing: 3px;
-
     margin-bottom: 10px;
 }
 
 .collections-section .category p {
     color: #666;
-
     margin-bottom: 18px;
 }
 
 .collections-section .category span {
     font-size: 12px;
-
     letter-spacing: 1px;
 }
 
@@ -512,6 +497,8 @@ header img {
 
     border: 1px solid #111;
 
+    border-radius: 5px;
+
     background: white;
 
     color: #111;
@@ -520,13 +507,18 @@ header img {
 
     font-size: 13px;
 
-    transition: 0.2s ease;
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
 }
 
 .back-button:hover {
     background: #111;
 
     color: white;
+
+    transform: translateX(-3px);
 }
 
 
@@ -572,19 +564,31 @@ header img {
 ========================================================= */
 
 .product {
+    position: relative;
+
     background: white;
 
     border: 1px solid #e2e2e2;
 
+    border-radius: 8px;
+
     overflow: hidden;
 
-    transition: 0.25s ease;
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
 
     cursor: pointer;
 }
 
 .product:hover {
-    transform: translateY(-4px);
+    transform: translateY(-6px);
+
+    border-color: #ccc;
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.08);
 }
 
 
@@ -603,12 +607,6 @@ header img {
 
     background: #eee;
 
-    /*
-       IMPORTANT:
-       overflow is controlled by the .product container.
-       The image itself can now be transformed by JS.
-    */
-
     transform-origin: center center;
 
     transition: transform 0.12s ease-out;
@@ -616,7 +614,7 @@ header img {
 
 
 /* =========================================================
-   PRODUCT IMAGE HOVER ZOOM
+   PRODUCT IMAGE ZOOM
 ========================================================= */
 
 .product-image-zoom {
@@ -628,15 +626,8 @@ header img {
 
     height: 380px;
 
-    background: #eee;
+    background: #f7f7f7;
 }
-
-
-/*
-   When JavaScript adds this class,
-   the image becomes larger while remaining
-   inside the same image box.
-*/
 
 .product-image-zoom.is-zooming img {
     cursor: crosshair;
@@ -663,6 +654,8 @@ header img {
     font-size: 16px;
 
     font-weight: bold;
+
+    letter-spacing: 0.3px;
 
     margin-top: 0;
 }
@@ -745,6 +738,12 @@ header img {
 ========================================================= */
 
 .store-stock {
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
     font-size: 12px !important;
 
     font-weight: bold;
@@ -752,9 +751,23 @@ header img {
     margin: 12px 0 0 !important;
 }
 
+.store-stock::before {
+    content: "";
+
+    width: 7px;
+
+    height: 7px;
+
+    background: #16803c;
+
+    border-radius: 50%;
+
+    display: inline-block;
+}
+
 
 /* =========================================================
-   YUGA FOOTER
+   FOOTER
 ========================================================= */
 
 footer {
@@ -789,56 +802,53 @@ footer h2 {
 
 
 /* =========================================================
-   FOOTER CONTACT LINKS
+   FOOTER SOCIAL
 ========================================================= */
 
-.footer-contact {
+.footer-social {
     display: flex;
 
     justify-content: center;
 
     align-items: center;
 
-    gap: 35px;
+    gap: 22px;
 
-    margin: 28px 0 25px;
-
-    flex-wrap: wrap;
+    margin: 18px 0;
 }
 
-.footer-contact a {
-    color: #fff;
+.footer-link {
+    color: #fff !important;
 
-    text-decoration: none;
+    text-decoration: none !important;
 
     font-size: 13px;
 
-    letter-spacing: 1px;
+    font-weight: 600;
 
-    padding-bottom: 4px;
+    letter-spacing: 0.5px;
 
-    border-bottom: 1px solid transparent;
-
-    transition: 0.25s ease;
+    transition: 0.2s ease;
 }
 
-.footer-contact a:hover {
-    color: #25D366;
-
-    border-bottom-color: #25D366;
+.footer-link:visited {
+    color: #fff !important;
 }
 
+.footer-link:hover {
+    color: #aaa !important;
 
-/* =========================================================
-   FOOTER COPYRIGHT
-========================================================= */
+    text-decoration: underline !important;
+}
 
-.footer-copy {
-    color: #666;
+footer a,
+footer a:link,
+footer a:visited,
+footer a:hover,
+footer a:active {
+    color: #fff !important;
 
-    font-size: 11px;
-
-    margin-top: 10px;
+    text-decoration: none !important;
 }
 
 
@@ -900,6 +910,9 @@ footer h2 {
 
     border-radius: 14px;
 
+    box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.25);
+
     transform: scale(0.92);
 
     transition: transform 0.25s ease;
@@ -942,6 +955,8 @@ footer h2 {
 ========================================================= */
 
 .modal-info {
+    position: relative;
+
     padding: 50px 40px;
 
     display: flex;
@@ -959,6 +974,8 @@ footer h2 {
     font-weight: bold;
 
     margin-bottom: 10px;
+
+    opacity: 0.65;
 }
 
 .modal-info h2 {
@@ -971,6 +988,8 @@ footer h2 {
     font-size: 24px;
 
     font-weight: bold;
+
+    letter-spacing: 0.3px;
 
     margin-bottom: 20px;
 }
@@ -1032,6 +1051,40 @@ footer h2 {
 
 
 /* =========================================================
+   SELECTABLE SIZE
+========================================================= */
+
+.selectable-size {
+    cursor: pointer;
+
+    border-radius: 5px;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.selectable-size:hover {
+    background: #111 !important;
+
+    color: #fff !important;
+
+    transform: translateY(-2px);
+}
+
+.selected-size {
+    background: #111 !important;
+
+    color: #fff !important;
+
+    border-color: #111 !important;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
    MODAL STORE STATUS
 ========================================================= */
 
@@ -1053,51 +1106,143 @@ footer h2 {
 
 
 /* =========================================================
+   ORDER CONTROLS
+========================================================= */
+
+#orderControls {
+    margin-top: 25px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid #eee;
+}
+
+
+/* =========================================================
+   QUANTITY
+========================================================= */
+
+.quantity-section {
+    margin-bottom: 18px;
+}
+
+.quantity-title {
+    font-size: 11px !important;
+
+    font-weight: bold;
+
+    letter-spacing: 1.5px;
+
+    color: #555;
+
+    margin: 0 0 8px !important;
+}
+
+.quantity-control {
+    display: flex;
+
+    align-items: center;
+
+    width: fit-content;
+
+    border: 1px solid #ddd;
+
+    border-radius: 6px;
+
+    overflow: hidden;
+
+    background: white;
+}
+
+.quantity-control button {
+    width: 38px;
+
+    height: 38px;
+
+    border: none;
+
+    background: #fff;
+
+    color: #111;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.quantity-control button:hover {
+    background: #111;
+
+    color: #fff;
+}
+
+.quantity-control span {
+    width: 45px;
+
+    text-align: center;
+
+    font-size: 14px;
+
+    font-weight: bold;
+}
+
+
+/* =========================================================
    WHATSAPP ORDER BUTTON
 ========================================================= */
 
-.whatsapp-order {
+.whatsapp-order-button {
+    width: 100%;
+
+    min-height: 52px;
+
+    padding: 16px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    background: #25D366;
+
+    color: #fff;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
     display: flex;
 
     align-items: center;
 
     justify-content: center;
 
-    gap: 10px;
+    gap: 8px;
 
-    margin-top: 15px;
+    box-shadow:
+        0 6px 15px rgba(37, 211, 102, 0.15);
 
-    padding: 15px;
-
-    background: #25D366;
-
-    color: white;
-
-    text-decoration: none;
-
-    font-size: 14px;
-
-    font-weight: bold;
-
-    letter-spacing: 0.5px;
-
-    border: none;
-
-    cursor: pointer;
-
-    transition: 0.2s ease;
-
-    border-radius: 4px;
+    transition: 0.25s;
 }
 
-.whatsapp-order:hover {
+.whatsapp-order-button::before {
+    content: "✓";
+
+    font-size: 16px;
+}
+
+.whatsapp-order-button:hover {
     background: #1ebe5d;
 
     transform: translateY(-2px);
-}
 
-.whatsapp-icon {
-    font-size: 20px;
+    box-shadow:
+        0 10px 22px rgba(37, 211, 102, 0.22);
 }
 
 
@@ -1106,13 +1251,15 @@ footer h2 {
 ========================================================= */
 
 .order-note {
-    font-size: 11px;
+    text-align: center;
+
+    font-size: 11px !important;
 
     color: #777;
 
-    text-align: center;
+    margin: 10px 0 0 !important;
 
-    margin-top: 9px;
+    padding: 0 8px;
 
     line-height: 1.5;
 }
@@ -1146,10 +1293,16 @@ footer h2 {
     cursor: pointer;
 
     z-index: 2;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
 }
 
 .modal-close:hover {
     background: #eee;
+
+    transform: rotate(5deg);
 }
 
 
@@ -1224,6 +1377,21 @@ body.modal-open {
     .map-container iframe {
         min-height: 350px;
     }
+
+
+    /* IMAGE ZOOM MOBILE SAFETY */
+
+    .product-image-zoom {
+        overflow: hidden;
+
+        position: relative;
+    }
+
+    .product-image-zoom img {
+        transform: none !important;
+
+        transition: none;
+    }
 }
 
 
@@ -1258,11 +1426,13 @@ body.modal-open {
     /* COLLECTION */
 
     .collection {
-        padding: 25px 15px 50px;
+        padding: 25px 12px 50px;
     }
 
     .collection > h2 {
         font-size: 22px;
+
+        margin-bottom: 28px;
     }
 
 
@@ -1272,6 +1442,12 @@ body.modal-open {
         grid-template-columns: 1fr;
 
         max-width: 400px;
+
+        gap: 14px;
+    }
+
+    .product {
+        border-radius: 7px;
     }
 
     .product img {
@@ -1280,6 +1456,31 @@ body.modal-open {
 
     .product-image-zoom {
         height: 400px;
+    }
+
+
+    /* PRODUCT TEXT */
+
+    .product h3 {
+        margin-top: 14px;
+
+        margin-left: 15px;
+
+        margin-right: 15px;
+    }
+
+    .product p {
+        margin-left: 15px;
+
+        margin-right: 15px;
+    }
+
+    .stock {
+        margin-left: 15px;
+
+        margin-right: 15px;
+
+        margin-bottom: 15px;
     }
 
 
@@ -1320,14 +1521,14 @@ body.modal-open {
         letter-spacing: 5px;
     }
 
-    .footer-contact {
-        gap: 18px;
+    .footer-social {
+        gap: 16px;
 
-        flex-direction: column;
+        flex-wrap: wrap;
     }
 
-    .footer-contact a {
-        font-size: 13px;
+    .footer-link {
+        font-size: 12px;
     }
 }
 
@@ -1339,7 +1540,7 @@ body.modal-open {
 @media (max-width: 700px) {
 
     .product-modal {
-        padding: 10px;
+        padding: 0;
 
         align-items: flex-end;
     }
@@ -1347,15 +1548,18 @@ body.modal-open {
     .modal-content {
         width: 100%;
 
-        max-height: 92vh;
+        max-height: 94vh;
 
         grid-template-columns: 1fr;
 
         grid-template-rows: 42vh auto;
 
-        border-radius: 16px 16px 0 0;
+        border-radius: 18px 18px 0 0;
 
         overflow-y: auto;
+
+        box-shadow:
+            0 -10px 40px rgba(0, 0, 0, 0.18);
     }
 
     .modal-image {
@@ -1369,27 +1573,76 @@ body.modal-open {
     }
 
     .modal-info {
-        padding: 25px;
+        padding: 24px 20px 30px;
     }
 
     .modal-info h2 {
         font-size: 25px;
+
+        margin-bottom: 8px;
     }
 
     .modal-price {
         font-size: 21px;
+
+        margin-bottom: 16px;
     }
 
     .modal-colour {
-        margin-bottom: 20px;
+        margin-bottom: 18px;
     }
 
     .modal-store {
         margin-top: 20px;
     }
 
-    .whatsapp-order {
-        padding: 14px;
+
+    /* SIZE BUTTONS */
+
+    .modal-sizes {
+        gap: 7px;
+    }
+
+    .modal-sizes span {
+        min-width: 52px;
+
+        min-height: 42px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+    }
+
+
+    /* QUANTITY */
+
+    .quantity-control button {
+        width: 44px;
+
+        height: 42px;
+    }
+
+    .quantity-control span {
+        width: 48px;
+    }
+
+
+    /* ORDER BUTTON */
+
+    .whatsapp-order-button {
+        min-height: 54px;
+
+        padding: 15px;
+
+        font-size: 12px;
+    }
+
+    .order-note {
+        font-size: 10px !important;
+
+        margin-top: 9px !important;
     }
 
 
@@ -1409,111 +1662,41 @@ body.modal-open {
 
 
 /* =========================================================
-   YUGA FOOTER SOCIAL LINKS
+   VERY SMALL PHONES
 ========================================================= */
 
-.footer-social {
-    display: flex;
+@media (max-width: 380px) {
 
-    justify-content: center;
-
-    align-items: center;
-
-    gap: 22px;
-
-    margin: 18px 0;
-}
-
-.footer-link {
-    color: #fff;
-
-    text-decoration: none;
-
-    font-size: 13px;
-
-    font-weight: 600;
-
-    letter-spacing: 0.5px;
-
-    transition: 0.2s ease;
-}
-
-.footer-link:visited {
-    color: #fff;
-}
-
-.footer-link:hover {
-    color: #aaa;
-
-    text-decoration: underline;
-}
-
-@media (max-width: 600px) {
-
-    .footer-social {
-        gap: 16px;
-
-        flex-wrap: wrap;
+    .product img,
+    .product-image-zoom {
+        height: 340px;
     }
 
-    .footer-link {
-        font-size: 12px;
+    .modal-info {
+        padding: 20px 16px 25px;
     }
 
+    .modal-info h2 {
+        font-size: 23px;
+    }
+
+    .modal-price {
+        font-size: 20px;
+    }
+
+    .modal-sizes {
+        gap: 6px;
+    }
+
+    .modal-sizes span {
+        min-width: 46px;
+    }
 }
 
 
 /* =========================================================
-   FIX FOOTER LINKS - NO BLUE
+   DESKTOP IMAGE ZOOM
 ========================================================= */
-
-footer a,
-footer a:link,
-footer a:visited,
-footer a:hover,
-footer a:active {
-    color: #fff !important;
-
-    text-decoration: none !important;
-}
-
-.footer-social {
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    gap: 22px;
-
-    margin: 18px 0;
-}
-
-.footer-link {
-    color: #fff !important;
-
-    text-decoration: none !important;
-}
-
-.footer-link:visited {
-    color: #fff !important;
-}
-
-.footer-link:hover {
-    color: #aaa !important;
-
-    text-decoration: underline !important;
-}
-
-
-/* =========================================================
-   PRODUCT IMAGE ZOOM - DESKTOP
-========================================================= */
-
-/*
-   This keeps the image inside its existing box.
-   JavaScript will control the exact zoom position.
-*/
 
 @media (min-width: 801px) {
 
@@ -1530,26 +1713,4 @@ footer a:active {
 
         transform-origin: center center;
     }
-
-}
-
-
-/* =========================================================
-   PRODUCT IMAGE ZOOM - MOBILE SAFETY
-========================================================= */
-
-@media (max-width: 800px) {
-
-    .product-image-zoom {
-        overflow: hidden;
-
-        position: relative;
-    }
-
-    .product-image-zoom img {
-        transform: none !important;
-
-        transition: none;
-    }
-
 }
