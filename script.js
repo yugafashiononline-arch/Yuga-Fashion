@@ -906,3 +906,51 @@ document.addEventListener(
 ========================================================= */
 
 createOrderControls();
+/* =========================================================
+   PRODUCT IMAGE MOUSE ZOOM
+========================================================= */
+
+document.querySelectorAll(".product-image-zoom").forEach(function (box) {
+
+    const image = box.querySelector("img");
+
+    if (!image) {
+        return;
+    }
+
+    box.addEventListener("mouseenter", function () {
+
+        box.classList.add("is-zooming");
+
+        image.style.transform = "scale(1.8)";
+
+    });
+
+
+    box.addEventListener("mousemove", function (event) {
+
+        const rect = box.getBoundingClientRect();
+
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+
+        const xPercent = (x / rect.width) * 100;
+        const yPercent = (y / rect.height) * 100;
+
+        image.style.transformOrigin =
+            xPercent + "% " + yPercent + "%";
+
+    });
+
+
+    box.addEventListener("mouseleave", function () {
+
+        box.classList.remove("is-zooming");
+
+        image.style.transformOrigin = "center center";
+
+        image.style.transform = "scale(1)";
+
+    });
+
+});
