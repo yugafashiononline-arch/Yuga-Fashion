@@ -118,7 +118,7 @@ function createOrderControls() {
             class="whatsapp-order-button"
             id="whatsappOrderButton"
         >
-            ORDER NOW ON WHATSAPP
+            🛒 ORDER ON WHATSAPP
         </button>
 
 
