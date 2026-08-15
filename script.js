@@ -5,36 +5,30 @@
 
 
 /* =========================================================
-   YOUR WHATSAPP NUMBER
+   WHATSAPP NUMBER
+   Country code included
 ========================================================= */
 
 const WHATSAPP_NUMBER = "917888759939";
 
 
 /* =========================================================
-   GET EXISTING MODAL ELEMENTS FROM HTML
+   GET MODAL ELEMENTS
 ========================================================= */
 
-const productModal =
-    document.getElementById("productModal");
+const productModal = document.getElementById("productModal");
 
-const modalClose =
-    document.getElementById("modalClose");
+const modalClose = document.getElementById("modalClose");
 
-const modalImage =
-    document.getElementById("modalImage");
+const modalImage = document.getElementById("modalImage");
 
-const modalName =
-    document.getElementById("modalName");
+const modalName = document.getElementById("modalName");
 
-const modalPrice =
-    document.getElementById("modalPrice");
+const modalPrice = document.getElementById("modalPrice");
 
-const modalColour =
-    document.getElementById("modalColour");
+const modalColour = document.getElementById("modalColour");
 
-const modalSizes =
-    document.getElementById("modalSizes");
+const modalSizes = document.getElementById("modalSizes");
 
 
 /* =========================================================
@@ -52,7 +46,7 @@ let quantity = 1;
 
 
 /* =========================================================
-   ADD ORDER CONTROLS
+   CREATE ORDER CONTROLS
 ========================================================= */
 
 function createOrderControls() {
@@ -61,8 +55,7 @@ function createOrderControls() {
         return;
     }
 
-    const modalInfo =
-        productModal.querySelector(".modal-info");
+    const modalInfo = productModal.querySelector(".modal-info");
 
     if (!modalInfo) {
         return;
@@ -71,18 +64,16 @@ function createOrderControls() {
 
     /* Prevent duplicate controls */
 
-    if (
-        document.getElementById("orderControls")
-    ) {
+    if (document.getElementById("orderControls")) {
         return;
     }
 
 
-    const orderControls =
-        document.createElement("div");
+    /* Create order controls */
 
-    orderControls.id =
-        "orderControls";
+    const orderControls = document.createElement("div");
+
+    orderControls.id = "orderControls";
 
 
     orderControls.innerHTML = `
@@ -138,10 +129,9 @@ function createOrderControls() {
     `;
 
 
-    /* Put controls after store message */
+    /* Put controls after store status */
 
-    const storeBox =
-        modalInfo.querySelector(".modal-store");
+    const storeBox = modalInfo.querySelector(".modal-store");
 
 
     if (storeBox) {
@@ -174,13 +164,11 @@ function createOrderControls() {
         document.getElementById("quantityValue");
 
     const whatsappOrderButton =
-        document.getElementById(
-            "whatsappOrderButton"
-        );
+        document.getElementById("whatsappOrderButton");
 
 
     /* =====================================================
-       QUANTITY MINUS
+       QUANTITY -
     ===================================================== */
 
     quantityMinus.addEventListener(
@@ -193,8 +181,7 @@ function createOrderControls() {
 
                 quantity--;
 
-                quantityValue.textContent =
-                    quantity;
+                quantityValue.textContent = quantity;
 
             }
 
@@ -203,7 +190,7 @@ function createOrderControls() {
 
 
     /* =====================================================
-       QUANTITY PLUS
+       QUANTITY +
     ===================================================== */
 
     quantityPlus.addEventListener(
@@ -216,8 +203,7 @@ function createOrderControls() {
 
                 quantity++;
 
-                quantityValue.textContent =
-                    quantity;
+                quantityValue.textContent = quantity;
 
             }
 
@@ -236,7 +222,9 @@ function createOrderControls() {
             event.stopPropagation();
 
 
-            /* CHECK SIZE */
+            /* ---------------------------------------------
+               CHECK SIZE
+            --------------------------------------------- */
 
             if (!selectedSize) {
 
@@ -249,13 +237,11 @@ function createOrderControls() {
             }
 
 
-            /* =================================================
-               CREATE WHATSAPP MESSAGE
-            ================================================= */
+            /* ---------------------------------------------
+               CREATE ORDER MESSAGE
+            --------------------------------------------- */
 
-            const message =
-
-`Hi YUGA!
+            const message = `Hi YUGA!
 
 I want to place an order.
 
@@ -285,22 +271,20 @@ YUGA Fashion
 Wear Your Era.`;
 
 
-            /* =================================================
+            /* ---------------------------------------------
                CREATE WHATSAPP URL
-            ================================================= */
+            --------------------------------------------- */
 
             const whatsappURL =
                 "https://wa.me/" +
                 WHATSAPP_NUMBER +
                 "?text=" +
-                encodeURIComponent(
-                    message
-                );
+                encodeURIComponent(message);
 
 
-            /* =================================================
+            /* ---------------------------------------------
                OPEN WHATSAPP
-            ================================================= */
+            --------------------------------------------- */
 
             window.open(
                 whatsappURL,
@@ -314,28 +298,25 @@ Wear Your Era.`;
 
 
 /* =========================================================
-   ORDER CSS
+   ORDER CONTROLS CSS
 ========================================================= */
 
-const orderStyles =
-    document.createElement("style");
-
+const orderStyles = document.createElement("style");
 
 orderStyles.innerHTML = `
-
-/* ORDER CONTROLS */
 
 #orderControls {
     margin-top: 25px;
 }
 
 
-/* QUANTITY */
+/* =========================
+   QUANTITY
+========================= */
 
 .quantity-section {
     margin-bottom: 18px;
 }
-
 
 .quantity-title {
     font-size: 11px !important;
@@ -344,7 +325,6 @@ orderStyles.innerHTML = `
     margin: 0 0 8px !important;
 }
 
-
 .quantity-control {
     display: flex;
     align-items: center;
@@ -352,87 +332,111 @@ orderStyles.innerHTML = `
     border: 1px solid #ddd;
 }
 
-
 .quantity-control button {
     width: 38px;
     height: 38px;
+
     border: none;
+
     background: #fff;
+    color: #111;
+
     font-size: 20px;
+
     cursor: pointer;
+
     transition: 0.2s;
 }
-
 
 .quantity-control button:hover {
     background: #111;
     color: #fff;
 }
 
-
 .quantity-control span {
     width: 45px;
+
     text-align: center;
+
     font-size: 14px;
     font-weight: bold;
 }
 
 
-/* SIZE SELECTION */
+/* =========================
+   SIZE SELECTION
+========================= */
 
 .selectable-size {
     cursor: pointer;
     transition: 0.2s;
 }
 
-
 .selectable-size:hover {
     background: #111 !important;
     color: #fff !important;
 }
 
-
 .selected-size {
     background: #111 !important;
     color: #fff !important;
+
     border-color: #111 !important;
 }
 
 
-/* WHATSAPP BUTTON */
+/* =========================
+   WHATSAPP BUTTON
+========================= */
 
 .whatsapp-order-button {
+
     width: 100%;
+
     padding: 16px;
+
     border: none;
-    background: #111;
+
+    background: #25D366;
     color: #fff;
+
     font-size: 13px;
     font-weight: bold;
+
     letter-spacing: 1px;
+
     cursor: pointer;
+
     transition: 0.25s;
 }
 
-
 .whatsapp-order-button:hover {
-    background: #25D366;
-    color: #fff;
+
+    background: #1ebe5d;
+
     transform: translateY(-2px);
 }
 
 
-/* ORDER NOTE */
+/* =========================
+   ORDER NOTE
+========================= */
 
 .order-note {
+
     text-align: center;
+
     font-size: 11px !important;
+
     color: #777;
+
     margin: 10px 0 0 !important;
 }
 
 
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 700px) {
 
@@ -448,9 +452,7 @@ orderStyles.innerHTML = `
 
 `;
 
-document.head.appendChild(
-    orderStyles
-);
+document.head.appendChild(orderStyles);
 
 
 /* =========================================================
@@ -480,29 +482,36 @@ document
 function openProductModal(product) {
 
 
-    /* GET PRODUCT IMAGE */
+    /* =====================================================
+       GET PRODUCT IMAGE
+    ===================================================== */
 
     const productImage =
         product.querySelector("img");
 
 
-    /* GET PRODUCT NAME */
+    /* =====================================================
+       GET PRODUCT NAME
+    ===================================================== */
 
     const productName =
         product.querySelector("h3");
 
 
-    /* GET PRODUCT PRICE */
+    /* =====================================================
+       GET PRODUCT PRICE
+    ===================================================== */
 
     const productPrice =
         product.querySelector(".price");
 
 
-    /* GET COLOUR */
+    /* =====================================================
+       GET PRODUCT COLOUR
+    ===================================================== */
 
     const paragraphs =
         product.querySelectorAll("p");
-
 
     let colour = "";
 
@@ -534,7 +543,9 @@ function openProductModal(product) {
     );
 
 
-    /* STORE PRODUCT DATA */
+    /* =====================================================
+       STORE PRODUCT DATA
+    ===================================================== */
 
     selectedProduct =
         productName
@@ -558,7 +569,9 @@ function openProductModal(product) {
             : "";
 
 
-    /* RESET */
+    /* =====================================================
+       RESET ORDER
+    ===================================================== */
 
     selectedSize = "";
 
@@ -566,20 +579,19 @@ function openProductModal(product) {
 
 
     const quantityValue =
-        document.getElementById(
-            "quantityValue"
-        );
+        document.getElementById("quantityValue");
 
 
     if (quantityValue) {
 
-        quantityValue.textContent =
-            "1";
+        quantityValue.textContent = "1";
 
     }
 
 
-    /* UPDATE MODAL */
+    /* =====================================================
+       UPDATE PRODUCT NAME
+    ===================================================== */
 
     if (modalName) {
 
@@ -589,6 +601,10 @@ function openProductModal(product) {
     }
 
 
+    /* =====================================================
+       UPDATE PRICE
+    ===================================================== */
+
     if (modalPrice) {
 
         modalPrice.textContent =
@@ -597,9 +613,11 @@ function openProductModal(product) {
     }
 
 
-    if (modalColour) {
+    /* =====================================================
+       UPDATE COLOUR
+    ===================================================== */
 
-        /* FIXED: no duplicate "Colour:" */
+    if (modalColour) {
 
         modalColour.textContent =
             selectedColour;
@@ -607,11 +625,14 @@ function openProductModal(product) {
     }
 
 
+    /* =====================================================
+       UPDATE IMAGE
+    ===================================================== */
+
     if (modalImage) {
 
         modalImage.src =
             selectedImage;
-
 
         modalImage.alt =
             selectedProduct +
@@ -621,7 +642,9 @@ function openProductModal(product) {
     }
 
 
-    /* LOAD SIZES */
+    /* =====================================================
+       CLEAR OLD SIZES
+    ===================================================== */
 
     if (modalSizes) {
 
@@ -629,6 +652,10 @@ function openProductModal(product) {
 
     }
 
+
+    /* =====================================================
+       GET AVAILABLE SIZES
+    ===================================================== */
 
     const sizeElements =
         product.querySelectorAll(
@@ -640,7 +667,9 @@ function openProductModal(product) {
         function (sizeElement) {
 
 
-            /* GET SIZE */
+            /* ---------------------------------------------
+               GET SIZE TEXT
+            --------------------------------------------- */
 
             let sizeText =
                 sizeElement.textContent
@@ -649,7 +678,9 @@ function openProductModal(product) {
                     .trim();
 
 
-            /* CHECK STOCK */
+            /* ---------------------------------------------
+               CHECK STOCK
+            --------------------------------------------- */
 
             const available =
                 sizeElement.classList.contains(
@@ -657,26 +688,27 @@ function openProductModal(product) {
                 );
 
 
-            /* CREATE SIZE */
+            /* ---------------------------------------------
+               CREATE SIZE BUTTON
+            --------------------------------------------- */
 
             const sizeButton =
-                document.createElement(
-                    "span"
-                );
+                document.createElement("span");
 
 
             sizeButton.textContent =
                 sizeText;
 
 
-            /* AVAILABLE */
+            /* ---------------------------------------------
+               AVAILABLE SIZE
+            --------------------------------------------- */
 
             if (available) {
 
                 sizeButton.classList.add(
                     "modal-in-stock"
                 );
-
 
                 sizeButton.classList.add(
                     "selectable-size"
@@ -690,7 +722,7 @@ function openProductModal(product) {
                         event.stopPropagation();
 
 
-                        /* Remove previous selection */
+                        /* Remove old selection */
 
                         modalSizes
                             .querySelectorAll(
@@ -707,7 +739,7 @@ function openProductModal(product) {
                             );
 
 
-                        /* Select size */
+                        /* Select new size */
 
                         sizeButton.classList.add(
                             "selected-size"
@@ -723,7 +755,9 @@ function openProductModal(product) {
             }
 
 
-            /* OUT OF STOCK */
+            /* ---------------------------------------------
+               OUT OF STOCK
+            --------------------------------------------- */
 
             else {
 
@@ -734,7 +768,9 @@ function openProductModal(product) {
             }
 
 
-            /* ADD TO MODAL */
+            /* ---------------------------------------------
+               ADD SIZE TO MODAL
+            --------------------------------------------- */
 
             if (modalSizes) {
 
@@ -748,26 +784,23 @@ function openProductModal(product) {
     );
 
 
-    /* SHOW MODAL */
+    /* =====================================================
+       SHOW MODAL
+    ===================================================== */
 
     if (productModal) {
 
-        productModal.classList.add(
-            "active"
-        );
+        productModal.classList.add("active");
 
     }
 
-
-    document.body.classList.add(
-        "modal-open"
-    );
+    document.body.classList.add("modal-open");
 
 }
 
 
 /* =========================================================
-   CLOSE MODAL
+   CLOSE PRODUCT MODAL
 ========================================================= */
 
 function closeProductModal() {
@@ -777,14 +810,9 @@ function closeProductModal() {
     }
 
 
-    productModal.classList.remove(
-        "active"
-    );
+    productModal.classList.remove("active");
 
-
-    document.body.classList.remove(
-        "modal-open"
-    );
+    document.body.classList.remove("modal-open");
 
 
     selectedSize = "";
@@ -800,8 +828,7 @@ function closeProductModal() {
 
     if (quantityValue) {
 
-        quantityValue.textContent =
-            "1";
+        quantityValue.textContent = "1";
 
     }
 
@@ -839,8 +866,7 @@ if (productModal) {
         function (event) {
 
             if (
-                event.target ===
-                productModal
+                event.target === productModal
             ) {
 
                 closeProductModal();
@@ -864,9 +890,7 @@ document.addEventListener(
         if (
             event.key === "Escape" &&
             productModal &&
-            productModal.classList.contains(
-                "active"
-            )
+            productModal.classList.contains("active")
         ) {
 
             closeProductModal();
