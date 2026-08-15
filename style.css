@@ -602,6 +602,44 @@ header img {
     display: block;
 
     background: #eee;
+
+    /*
+       IMPORTANT:
+       overflow is controlled by the .product container.
+       The image itself can now be transformed by JS.
+    */
+
+    transform-origin: center center;
+
+    transition: transform 0.12s ease-out;
+}
+
+
+/* =========================================================
+   PRODUCT IMAGE HOVER ZOOM
+========================================================= */
+
+.product-image-zoom {
+    overflow: hidden;
+
+    position: relative;
+
+    width: 100%;
+
+    height: 380px;
+
+    background: #eee;
+}
+
+
+/*
+   When JavaScript adds this class,
+   the image becomes larger while remaining
+   inside the same image box.
+*/
+
+.product-image-zoom.is-zooming img {
+    cursor: crosshair;
 }
 
 
@@ -1140,6 +1178,10 @@ body.modal-open {
         height: 320px;
     }
 
+    .product-image-zoom {
+        height: 320px;
+    }
+
     .categories {
         grid-template-columns: 1fr;
 
@@ -1233,6 +1275,10 @@ body.modal-open {
     }
 
     .product img {
+        height: 400px;
+    }
+
+    .product-image-zoom {
         height: 400px;
     }
 
@@ -1360,6 +1406,8 @@ body.modal-open {
         margin-top: 10px;
     }
 }
+
+
 /* =========================================================
    YUGA FOOTER SOCIAL LINKS
 ========================================================= */
@@ -1376,17 +1424,10 @@ body.modal-open {
     margin: 18px 0;
 }
 
+.footer-link {
+    color: #fff;
 
-/* ALL LINK STATES */
-
-.footer-social a,
-.footer-social a:link,
-.footer-social a:visited,
-.footer-social a:hover,
-.footer-social a:active {
-    color: #fff !important;
-
-    text-decoration: none !important;
+    text-decoration: none;
 
     font-size: 13px;
 
@@ -1397,32 +1438,118 @@ body.modal-open {
     transition: 0.2s ease;
 }
 
+.footer-link:visited {
+    color: #fff;
+}
 
-/* HOVER */
+.footer-link:hover {
+    color: #aaa;
 
-.footer-social a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+
+    .footer-social {
+        gap: 16px;
+
+        flex-wrap: wrap;
+    }
+
+    .footer-link {
+        font-size: 12px;
+    }
+
+}
+
+
+/* =========================================================
+   FIX FOOTER LINKS - NO BLUE
+========================================================= */
+
+footer a,
+footer a:link,
+footer a:visited,
+footer a:hover,
+footer a:active {
+    color: #fff !important;
+
+    text-decoration: none !important;
+}
+
+.footer-social {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 22px;
+
+    margin: 18px 0;
+}
+
+.footer-link {
+    color: #fff !important;
+
+    text-decoration: none !important;
+}
+
+.footer-link:visited {
+    color: #fff !important;
+}
+
+.footer-link:hover {
     color: #aaa !important;
 
     text-decoration: underline !important;
 }
 
 
-/* MOBILE */
+/* =========================================================
+   PRODUCT IMAGE ZOOM - DESKTOP
+========================================================= */
 
-@media (max-width: 600px) {
+/*
+   This keeps the image inside its existing box.
+   JavaScript will control the exact zoom position.
+*/
 
-    .footer-social {
+@media (min-width: 801px) {
 
-        gap: 16px;
+    .product-image-zoom {
+        overflow: hidden;
 
-        flex-wrap: wrap;
+        position: relative;
 
+        cursor: crosshair;
     }
 
-    .footer-social a {
+    .product-image-zoom img {
+        will-change: transform;
 
-        font-size: 12px;
+        transform-origin: center center;
+    }
 
+}
+
+
+/* =========================================================
+   PRODUCT IMAGE ZOOM - MOBILE SAFETY
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .product-image-zoom {
+        overflow: hidden;
+
+        position: relative;
+    }
+
+    .product-image-zoom img {
+        transform: none !important;
+
+        transition: none;
     }
 
 }
