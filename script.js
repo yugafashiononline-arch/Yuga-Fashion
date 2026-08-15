@@ -241,13 +241,7 @@ function createOrderControls() {
                CREATE ORDER MESSAGE
             --------------------------------------------- */
 
-            const message = `Hi YUGA!
-
-I want to place an order.
-
---------------------
-ORDER DETAILS
---------------------
+    const message = `Hi YUGA, I want to place an order.
 
 Product: ${selectedProduct}
 Colour: ${selectedColour}
@@ -255,18 +249,9 @@ Price: ${selectedPrice}
 Size: ${selectedSize}
 Quantity: ${quantity}
 
---------------------
-CUSTOMER DETAILS
---------------------
-
-Name:
-Phone:
-Address:
-
 Please confirm availability and total amount.
 
 Thank you!
-
 YUGA Fashion
 Wear Your Era.`;
 
