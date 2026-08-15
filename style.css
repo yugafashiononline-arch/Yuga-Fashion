@@ -1099,5 +1099,24 @@ body.modal-open {
     .whatsapp-button {
         margin-top: 10px;
     }
+   .footer-contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.footer-contact a {
+    color: inherit;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.footer-contact a:hover {
+    opacity: 0.6;
+}
 
 }
