@@ -1402,3 +1402,37 @@ body.modal-open {
     }
 
 }
+/* =========================================================
+   FIX FOOTER LINKS - NO BLUE
+========================================================= */
+
+footer a,
+footer a:link,
+footer a:visited,
+footer a:hover,
+footer a:active {
+    color: #fff !important;
+    text-decoration: none !important;
+}
+
+.footer-social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 22px;
+    margin: 18px 0;
+}
+
+.footer-link {
+    color: #fff !important;
+    text-decoration: none !important;
+}
+
+.footer-link:visited {
+    color: #fff !important;
+}
+
+.footer-link:hover {
+    color: #aaa !important;
+    text-decoration: underline !important;
+}
