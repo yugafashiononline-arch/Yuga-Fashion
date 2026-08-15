@@ -25,10 +25,7 @@
 
         <a href="index.html">
 
-            <img
-                src="Logo.png"
-                alt="YUGA Fashion"
-            >
+            <img src="Logo.png" alt="YUGA Fashion">
 
         </a>
 
@@ -40,10 +37,7 @@
          BACK BUTTON
     ========================== -->
 
-    <a
-        href="index.html"
-        class="back-button"
-    >
+    <a href="index.html" class="back-button">
         ← Back to Collections
     </a>
 
@@ -62,87 +56,7 @@
 
 
             <!-- =========================
-                 PRODUCT 1 : BLACK
-            ========================== -->
-
-            <div
-                class="product"
-
-                data-name="YUGA Essential Tee"
-
-                data-price="₹199"
-
-                data-colour="Black"
-
-                data-image="Black S.png"
-            >
-
-                <img
-                    src="Black S.png"
-                    alt="YUGA Essential Tee Black"
-                >
-
-
-                <h3>
-                    YUGA Essential Tee
-                </h3>
-
-
-                <p class="price">
-                    ₹199
-                </p>
-
-
-                <p>
-                    Colour: Black
-                </p>
-
-
-                <p>
-                    Sizes: S • M • L • XL
-                </p>
-
-
-                <div class="stock">
-
-                    <p class="stock-title">
-                        AVAILABILITY
-                    </p>
-
-
-                    <div class="sizes">
-
-                        <span class="in-stock">
-                            S ✓
-                        </span>
-
-                        <span class="in-stock">
-                            M ✓
-                        </span>
-
-                        <span class="out-stock">
-                            L ✕
-                        </span>
-
-                        <span class="in-stock">
-                            XL ✓
-                        </span>
-
-                    </div>
-
-
-                    <p class="store-stock">
-                        Available in Store
-                    </p>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- =========================
-                 PRODUCT 2 : DROP SHOULDER
+                 PRODUCT 1 : DROP SHOULDER
             ========================== -->
 
             <div
@@ -222,7 +136,7 @@
 
 
             <!-- =========================
-                 PRODUCT 3 : OLIVE GREEN
+                 PRODUCT 2 : OLIVE GREEN
             ========================== -->
 
             <div
@@ -232,7 +146,7 @@
 
                 data-price="₹199"
 
-                data-colour="Olive Green "
+                data-colour="Olive Green"
 
                 data-image="Olive Green S.png"
             >
@@ -302,7 +216,7 @@
 
 
             <!-- =========================
-                 PRODUCT 4 : RED
+                 PRODUCT 3 : RED
             ========================== -->
 
             <div
@@ -382,7 +296,7 @@
 
 
             <!-- =========================
-                 PRODUCT 5 : SKY BLUE
+                 PRODUCT 4 : SKY BLUE
             ========================== -->
 
             <div
@@ -462,7 +376,7 @@
 
 
             <!-- =========================
-                 PRODUCT 6 : YELLOW
+                 PRODUCT 5 : YELLOW
             ========================== -->
 
             <div
@@ -540,72 +454,202 @@
             </div>
 
 
-        </div>
 
-    </section>
-    ```html
-<!-- =========================
-     PRODUCT POPUP
-========================= -->
+            <!-- =========================
+                 PRODUCT 6 : BLACK ESSENTIAL
+            ========================== -->
 
-<div class="product-modal" id="productModal">
+            <div
+                class="product"
 
-    <div class="modal-content">
+                data-name="YUGA Essential Tee"
 
-        <button class="modal-close" id="modalClose">
-            ×
-        </button>
+                data-price="₹199"
 
+                data-colour="Black"
 
-        <div class="modal-image">
+                data-image="Black S.png"
+            >
 
-            <img id="modalImage" src="" alt="">
-
-        </div>
-
-
-        <div class="modal-info">
-
-            <p class="modal-brand">
-                YUGA
-            </p>
-
-            <h2 id="modalName">
-                YUGA Essential Tee
-            </h2>
-
-            <p class="modal-price" id="modalPrice">
-                ₹199
-            </p>
-
-            <p class="modal-colour">
-                Colour:
-                <span id="modalColour"></span>
-            </p>
+                <img
+                    src="Black S.png"
+                    alt="YUGA Essential Tee Black"
+                >
 
 
-            <div class="modal-stock">
+                <h3>
+                    YUGA Essential Tee
+                </h3>
 
-                <p class="modal-stock-title">
-                    AVAILABLE SIZES
+
+                <p class="price">
+                    ₹199
                 </p>
 
-                <div id="modalSizes" class="modal-sizes">
+
+                <p>
+                    Colour: Black
+                </p>
+
+
+                <p>
+                    Sizes: S • M • L • XL
+                </p>
+
+
+                <div class="stock">
+
+                    <p class="stock-title">
+                        AVAILABILITY
+                    </p>
+
+
+                    <div class="sizes">
+
+                        <span class="in-stock">
+                            S ✓
+                        </span>
+
+                        <span class="in-stock">
+                            M ✓
+                        </span>
+
+                        <span class="out-stock">
+                            L ✕
+                        </span>
+
+                        <span class="in-stock">
+                            XL ✓
+                        </span>
+
+                    </div>
+
+
+                    <p class="store-stock">
+                        Available in Store
+                    </p>
+
                 </div>
 
             </div>
 
 
-            <div class="modal-store">
-                🏪 Available in Store
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         PRODUCT POPUP
+    ========================== -->
+
+    <div
+        class="product-modal"
+        id="productModal"
+    >
+
+        <div class="modal-content">
+
+
+            <!-- CLOSE BUTTON -->
+
+            <button
+                class="modal-close"
+                id="modalClose"
+            >
+                ×
+            </button>
+
+
+
+            <!-- PRODUCT IMAGE -->
+
+            <div class="modal-image">
+
+                <img
+                    id="modalImage"
+                    src=""
+                    alt=""
+                >
+
+            </div>
+
+
+
+            <!-- PRODUCT INFORMATION -->
+
+            <div class="modal-info">
+
+
+                <p class="modal-brand">
+                    YUGA
+                </p>
+
+
+                <h2 id="modalName">
+                    YUGA Essential Tee
+                </h2>
+
+
+                <p
+                    class="modal-price"
+                    id="modalPrice"
+                >
+                    ₹199
+                </p>
+
+
+                <p class="modal-colour">
+
+                    Colour:
+
+                    <span id="modalColour"></span>
+
+                </p>
+
+
+
+                <!-- AVAILABLE SIZES -->
+
+                <div class="modal-stock">
+
+                    <p class="modal-stock-title">
+                        AVAILABLE SIZES
+                    </p>
+
+
+                    <div
+                        id="modalSizes"
+                        class="modal-sizes"
+                    >
+                    </div>
+
+                </div>
+
+
+
+                <!-- STORE AVAILABILITY -->
+
+                <div class="modal-store">
+                    🏪 Available in Store
+                </div>
+
+
+                <!--
+                    QUANTITY + WHATSAPP
+                    ARE AUTOMATICALLY CREATED
+                    BY script.js
+                -->
+
+
             </div>
 
         </div>
 
     </div>
 
-</div>
-```
+
 
     <!-- =========================
          FOOTER
