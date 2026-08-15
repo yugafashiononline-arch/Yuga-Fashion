@@ -68,9 +68,8 @@ function createOrderControls() {
         return;
     }
 
-    /*
-       Prevent duplicate controls
-    */
+
+    /* Prevent duplicate controls */
 
     if (
         document.getElementById("orderControls")
@@ -139,9 +138,7 @@ function createOrderControls() {
     `;
 
 
-    /*
-       Put controls after store message
-    */
+    /* Put controls after store message */
 
     const storeBox =
         modalInfo.querySelector(".modal-store");
@@ -239,9 +236,7 @@ function createOrderControls() {
             event.stopPropagation();
 
 
-            /* =============================================
-               CHECK SIZE
-            ============================================= */
+            /* CHECK SIZE */
 
             if (!selectedSize) {
 
@@ -254,13 +249,11 @@ function createOrderControls() {
             }
 
 
-            /* =============================================
+            /* =================================================
                CREATE WHATSAPP MESSAGE
-            ============================================= */
+            ================================================= */
 
             const message =
-
-const message =
 
 `Hi YUGA!
 
@@ -292,9 +285,9 @@ YUGA Fashion
 Wear Your Era.`;
 
 
-            /* =============================================
+            /* =================================================
                CREATE WHATSAPP URL
-            ============================================= */
+            ================================================= */
 
             const whatsappURL =
                 "https://wa.me/" +
@@ -305,9 +298,9 @@ Wear Your Era.`;
                 );
 
 
-            /* =============================================
+            /* =================================================
                OPEN WHATSAPP
-            ============================================= */
+            ================================================= */
 
             window.open(
                 whatsappURL,
@@ -330,201 +323,125 @@ const orderStyles =
 
 orderStyles.innerHTML = `
 
-/* =====================================================
-   ORDER CONTROLS
-===================================================== */
+/* ORDER CONTROLS */
 
 #orderControls {
-
     margin-top: 25px;
-
 }
 
 
-/* =====================================================
-   QUANTITY
-===================================================== */
+/* QUANTITY */
 
 .quantity-section {
-
     margin-bottom: 18px;
-
 }
 
 
 .quantity-title {
-
     font-size: 11px !important;
-
     font-weight: bold;
-
     letter-spacing: 1.5px;
-
     margin: 0 0 8px !important;
-
 }
 
 
 .quantity-control {
-
     display: flex;
-
     align-items: center;
-
     width: fit-content;
-
     border: 1px solid #ddd;
-
 }
 
 
 .quantity-control button {
-
     width: 38px;
-
     height: 38px;
-
     border: none;
-
     background: #fff;
-
     font-size: 20px;
-
     cursor: pointer;
-
     transition: 0.2s;
-
 }
 
 
 .quantity-control button:hover {
-
     background: #111;
-
     color: #fff;
-
 }
 
 
 .quantity-control span {
-
     width: 45px;
-
     text-align: center;
-
     font-size: 14px;
-
     font-weight: bold;
-
 }
 
 
-/* =====================================================
-   SIZE SELECTION
-===================================================== */
+/* SIZE SELECTION */
 
 .selectable-size {
-
     cursor: pointer;
-
     transition: 0.2s;
-
 }
 
 
 .selectable-size:hover {
-
     background: #111 !important;
-
     color: #fff !important;
-
 }
 
 
 .selected-size {
-
     background: #111 !important;
-
     color: #fff !important;
-
     border-color: #111 !important;
-
 }
 
 
-/* =====================================================
-   WHATSAPP BUTTON
-===================================================== */
+/* WHATSAPP BUTTON */
 
 .whatsapp-order-button {
-
     width: 100%;
-
     padding: 16px;
-
     border: none;
-
     background: #111;
-
     color: #fff;
-
     font-size: 13px;
-
     font-weight: bold;
-
     letter-spacing: 1px;
-
     cursor: pointer;
-
     transition: 0.25s;
-
 }
 
 
 .whatsapp-order-button:hover {
-
     background: #25D366;
-
     color: #fff;
-
     transform: translateY(-2px);
-
 }
 
 
-/* =====================================================
-   ORDER NOTE
-===================================================== */
+/* ORDER NOTE */
 
 .order-note {
-
     text-align: center;
-
     font-size: 11px !important;
-
     color: #777;
-
     margin: 10px 0 0 !important;
-
 }
 
 
-/* =====================================================
-   MOBILE
-===================================================== */
+/* MOBILE */
 
 @media (max-width: 700px) {
 
     #orderControls {
-
         margin-top: 20px;
-
     }
 
     .whatsapp-order-button {
-
         padding: 15px;
-
     }
 
 }
@@ -563,33 +480,25 @@ document
 function openProductModal(product) {
 
 
-    /* =====================================================
-       GET PRODUCT IMAGE
-    ===================================================== */
+    /* GET PRODUCT IMAGE */
 
     const productImage =
         product.querySelector("img");
 
 
-    /* =====================================================
-       GET PRODUCT NAME
-    ===================================================== */
+    /* GET PRODUCT NAME */
 
     const productName =
         product.querySelector("h3");
 
 
-    /* =====================================================
-       GET PRODUCT PRICE
-    ===================================================== */
+    /* GET PRODUCT PRICE */
 
     const productPrice =
         product.querySelector(".price");
 
 
-    /* =====================================================
-       GET COLOUR
-    ===================================================== */
+    /* GET COLOUR */
 
     const paragraphs =
         product.querySelectorAll("p");
@@ -625,9 +534,7 @@ function openProductModal(product) {
     );
 
 
-    /* =====================================================
-       STORE PRODUCT DATA
-    ===================================================== */
+    /* STORE PRODUCT DATA */
 
     selectedProduct =
         productName
@@ -651,9 +558,7 @@ function openProductModal(product) {
             : "";
 
 
-    /* =====================================================
-       RESET
-    ===================================================== */
+    /* RESET */
 
     selectedSize = "";
 
@@ -674,9 +579,7 @@ function openProductModal(product) {
     }
 
 
-    /* =====================================================
-       UPDATE MODAL
-    ===================================================== */
+    /* UPDATE MODAL */
 
     if (modalName) {
 
@@ -696,8 +599,9 @@ function openProductModal(product) {
 
     if (modalColour) {
 
+        /* FIXED: no duplicate "Colour:" */
+
         modalColour.textContent =
-            "Colour: " +
             selectedColour;
 
     }
@@ -717,9 +621,7 @@ function openProductModal(product) {
     }
 
 
-    /* =====================================================
-       LOAD SIZES
-    ===================================================== */
+    /* LOAD SIZES */
 
     if (modalSizes) {
 
@@ -738,9 +640,7 @@ function openProductModal(product) {
         function (sizeElement) {
 
 
-            /* =============================================
-               GET SIZE
-            ============================================= */
+            /* GET SIZE */
 
             let sizeText =
                 sizeElement.textContent
@@ -749,9 +649,7 @@ function openProductModal(product) {
                     .trim();
 
 
-            /* =============================================
-               CHECK STOCK
-            ============================================= */
+            /* CHECK STOCK */
 
             const available =
                 sizeElement.classList.contains(
@@ -759,9 +657,7 @@ function openProductModal(product) {
                 );
 
 
-            /* =============================================
-               CREATE SIZE
-            ============================================= */
+            /* CREATE SIZE */
 
             const sizeButton =
                 document.createElement(
@@ -773,9 +669,7 @@ function openProductModal(product) {
                 sizeText;
 
 
-            /* =============================================
-               AVAILABLE
-            ============================================= */
+            /* AVAILABLE */
 
             if (available) {
 
@@ -796,9 +690,7 @@ function openProductModal(product) {
                         event.stopPropagation();
 
 
-                        /*
-                           Remove previous selection
-                        */
+                        /* Remove previous selection */
 
                         modalSizes
                             .querySelectorAll(
@@ -815,9 +707,7 @@ function openProductModal(product) {
                             );
 
 
-                        /*
-                           Select size
-                        */
+                        /* Select size */
 
                         sizeButton.classList.add(
                             "selected-size"
@@ -833,9 +723,7 @@ function openProductModal(product) {
             }
 
 
-            /* =============================================
-               OUT OF STOCK
-            ============================================= */
+            /* OUT OF STOCK */
 
             else {
 
@@ -846,9 +734,7 @@ function openProductModal(product) {
             }
 
 
-            /* =============================================
-               ADD TO MODAL
-            ============================================= */
+            /* ADD TO MODAL */
 
             if (modalSizes) {
 
@@ -862,9 +748,7 @@ function openProductModal(product) {
     );
 
 
-    /* =====================================================
-       SHOW MODAL
-    ===================================================== */
+    /* SHOW MODAL */
 
     if (productModal) {
 
