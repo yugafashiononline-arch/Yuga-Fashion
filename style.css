@@ -3116,3 +3116,685 @@ body.modal-open {
     }
 
 }
+/* =========================================================
+   YUGA FASHION
+   FINAL MOBILE POLISH
+   ADD THIS ENTIRE BLOCK AT THE VERY END OF style.css
+========================================================= */
+
+
+/* =========================================================
+   MOBILE SHOPPING EXPERIENCE
+========================================================= */
+
+@media (max-width: 800px) {
+
+    /* -----------------------------------------------------
+       BETTER TOUCH EXPERIENCE
+    ----------------------------------------------------- */
+
+    button,
+    a,
+    .product,
+    .collection-panel {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    button,
+    .hero-shop-button,
+    .shop-all-button,
+    .map-button,
+    .whatsapp-button,
+    .whatsapp-order-button,
+    .collection-explore {
+        touch-action: manipulation;
+    }
+
+
+    /* -----------------------------------------------------
+       HEADER
+    ----------------------------------------------------- */
+
+    header {
+        position: sticky;
+        top: 0;
+        height: 65px;
+    }
+
+
+    /* -----------------------------------------------------
+       ANNOUNCEMENT BAR
+    ----------------------------------------------------- */
+
+    .yuga-announcement {
+        position: relative;
+        height: 34px;
+    }
+
+    .announcement-track {
+        animation-duration: 13s;
+    }
+
+    .announcement-track span {
+        padding-left: 22px;
+        padding-right: 22px;
+    }
+
+
+    /* -----------------------------------------------------
+       PREMIUM HERO
+    ----------------------------------------------------- */
+
+    .hero-premium {
+        min-height: calc(100svh - 99px);
+        padding: 55px 14px 80px;
+    }
+
+    .hero-premium-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .hero-premium h1 {
+        font-size: clamp(52px, 18vw, 78px);
+        letter-spacing: 4px;
+        line-height: 0.95;
+        width: 100%;
+        text-align: center;
+    }
+
+    .hero-tagline {
+        font-size: 11px;
+        letter-spacing: 2.5px;
+        line-height: 1.5;
+    }
+
+    .hero-description {
+        max-width: 330px;
+        font-size: 11px;
+        line-height: 1.75;
+    }
+
+    .hero-shop-button {
+        min-height: 52px;
+        max-width: 290px;
+        width: 100%;
+        margin-top: 28px;
+    }
+
+    .hero-scroll {
+        bottom: 16px;
+    }
+
+
+    /* -----------------------------------------------------
+       BRAND STATEMENT
+    ----------------------------------------------------- */
+
+    .brand-statement {
+        padding: 65px 20px;
+    }
+
+    .statement-small {
+        font-size: 9px;
+        letter-spacing: 3px;
+    }
+
+    .brand-statement h2 {
+        font-size: clamp(27px, 8vw, 34px);
+        line-height: 1.2;
+    }
+
+    .brand-statement p {
+        max-width: 330px;
+        font-size: 12px;
+        line-height: 1.75;
+    }
+
+
+    /* -----------------------------------------------------
+       COLLECTION HEADING
+    ----------------------------------------------------- */
+
+    .collection-heading {
+        padding: 65px 18px 30px;
+    }
+
+    .collection-heading h2 {
+        font-size: 25px;
+        letter-spacing: 3px;
+    }
+
+    .collection-heading p {
+        font-size: 12px;
+        line-height: 1.6;
+    }
+
+
+    /* -----------------------------------------------------
+       COLLECTION CARDS
+    ----------------------------------------------------- */
+
+    .collection-showcase {
+        grid-template-columns: 1fr;
+        padding: 0 14px 60px;
+        gap: 12px;
+    }
+
+    .collection-panel {
+        height: min(118vw, 470px);
+        min-height: 390px;
+        border-radius: 4px;
+    }
+
+    .collection-overlay {
+        opacity: 1;
+        transform: none;
+        justify-content: flex-end;
+        padding: 30px 20px 38px;
+    }
+
+    .collection-panel::after {
+        opacity: 0.72;
+    }
+
+    .collection-overlay img.logo {
+        width: 45px;
+        margin-bottom: 15px;
+    }
+
+    .collection-overlay h3 {
+        font-size: clamp(27px, 8vw, 34px);
+        letter-spacing: 4px;
+    }
+
+    .collection-overlay p {
+        font-size: 9px;
+        letter-spacing: 1.5px;
+        margin-bottom: 17px;
+    }
+
+    .collection-explore {
+        min-height: 44px;
+        padding: 13px 22px;
+    }
+
+
+    /* -----------------------------------------------------
+       SHOP ALL
+    ----------------------------------------------------- */
+
+    .shop-all-section {
+        padding: 0 18px 70px;
+    }
+
+    .shop-all-button {
+        width: 100%;
+        max-width: 320px;
+        min-height: 50px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    /* =====================================================
+       PRODUCT GRID
+       2 PRODUCTS PER ROW ON MOBILE
+    ===================================================== */
+
+    .collection {
+        padding: 25px 10px 55px;
+    }
+
+    .products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        width: 100%;
+        max-width: 600px;
+    }
+
+    .product {
+        border-radius: 6px;
+        transform: none !important;
+        box-shadow: none !important;
+    }
+
+    .product:active {
+        transform: scale(0.985) !important;
+    }
+
+
+    /* -----------------------------------------------------
+       PRODUCT IMAGE
+    ----------------------------------------------------- */
+
+    .product img,
+    .product-image-zoom {
+        width: 100%;
+        height: 52vw;
+        min-height: 190px;
+        max-height: 280px;
+    }
+
+    .product img {
+        object-fit: contain;
+    }
+
+
+    /* -----------------------------------------------------
+       PRODUCT INFORMATION
+    ----------------------------------------------------- */
+
+    .product h3 {
+        font-size: 13px;
+        line-height: 1.35;
+        margin: 11px 10px 5px;
+    }
+
+    .product p {
+        font-size: 12px;
+        margin: 4px 10px;
+    }
+
+    .product .price {
+        font-size: 13px;
+    }
+
+    .store-stock {
+        font-size: 10px !important;
+        margin: 9px 10px 0 !important;
+    }
+
+    .store-stock::before {
+        width: 6px;
+        height: 6px;
+    }
+
+
+    /* -----------------------------------------------------
+       STOCK / SIZES
+    ----------------------------------------------------- */
+
+    .stock {
+        margin: 12px 10px;
+        padding-top: 9px;
+    }
+
+    .stock-title {
+        font-size: 10px !important;
+        margin-bottom: 7px !important;
+    }
+
+    .sizes {
+        gap: 4px;
+    }
+
+    .sizes span {
+        padding: 5px 7px;
+        font-size: 10px;
+    }
+
+
+    /* =====================================================
+       CONTACT SECTION
+    ===================================================== */
+
+    .yuga-contact {
+        padding: 60px 15px 70px;
+    }
+
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .contact-info {
+        padding: 40px 25px;
+    }
+
+    .contact-info h2 {
+        font-size: clamp(42px, 13vw, 58px);
+    }
+
+    .contact-tagline {
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+    .contact-details {
+        margin-top: 32px;
+    }
+
+    .contact-item {
+        gap: 13px;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+    }
+
+    .contact-item p {
+        font-size: 13px;
+    }
+
+    .map-container,
+    .map-container iframe {
+        min-height: 330px;
+    }
+
+
+    /* -----------------------------------------------------
+       CONTACT BUTTONS
+    ----------------------------------------------------- */
+
+    .map-button,
+    .whatsapp-button {
+        width: 100%;
+        min-height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+
+    footer {
+        padding: 42px 18px 30px;
+    }
+
+    footer h2 {
+        font-size: 27px;
+        letter-spacing: 5px;
+    }
+
+    .footer-tagline {
+        font-size: 11px;
+        line-height: 1.6;
+    }
+
+    .footer-social {
+        gap: 14px;
+    }
+
+    .footer-link {
+        font-size: 11px;
+        padding: 6px 4px;
+    }
+
+
+    /* =====================================================
+       MOBILE CHATBOT
+    ===================================================== */
+
+    #yugaChatButton {
+        right: 14px;
+        bottom: 14px;
+        width: 54px;
+        height: 54px;
+        font-size: 23px;
+    }
+
+    #yugaChatbot {
+        right: 8px;
+        bottom: 78px;
+        width: calc(100vw - 16px);
+        height: min(72vh, 560px);
+        max-height: 560px;
+        border-radius: 18px;
+    }
+
+    .yuga-chat-header {
+        padding: 15px 16px;
+    }
+
+    #yugaChatMessages {
+        padding: 15px;
+    }
+
+    .yuga-message {
+        max-width: 88%;
+        font-size: 12px;
+    }
+
+    .yuga-quick-buttons button {
+        min-height: 38px;
+        padding: 8px 11px;
+    }
+
+    #yugaChatInput {
+        min-height: 42px;
+        font-size: 13px;
+    }
+
+    #yugaChatSend {
+        width: 42px;
+        height: 42px;
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .hero-premium {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .hero-premium h1 {
+        font-size: 50px;
+        letter-spacing: 3px;
+    }
+
+    .hero-tagline {
+        font-size: 10px;
+        letter-spacing: 2px;
+    }
+
+    .hero-description {
+        font-size: 10px;
+        max-width: 290px;
+    }
+
+
+    /* Smaller product cards */
+
+    .products {
+        gap: 8px;
+    }
+
+    .product img,
+    .product-image-zoom {
+        height: 48vw;
+        min-height: 165px;
+    }
+
+    .product h3 {
+        font-size: 12px;
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+
+    .product p {
+        font-size: 11px;
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+
+    .product .price {
+        font-size: 12px;
+    }
+
+    .stock {
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+
+    .sizes span {
+        padding: 4px 6px;
+        font-size: 9px;
+    }
+
+    .store-stock {
+        margin-left: 8px !important;
+        margin-right: 8px !important;
+    }
+
+
+    /* Collections */
+
+    .collection-panel {
+        min-height: 350px;
+        height: 110vw;
+    }
+}
+
+
+/* =========================================================
+   MOBILE PRODUCT MODAL — PREMIUM SHOPPING SHEET
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .product-modal {
+        padding: 0;
+        align-items: flex-end;
+    }
+
+    .modal-content {
+        width: 100%;
+        max-height: 94svh;
+        grid-template-columns: 1fr;
+        grid-template-rows: 40svh auto;
+        border-radius: 20px 20px 0 0;
+    }
+
+    .modal-image {
+        height: 40svh;
+        min-height: 0;
+    }
+
+    .modal-image img {
+        max-height: 40svh;
+    }
+
+    .modal-info {
+        padding: 22px 18px 28px;
+    }
+
+    .modal-close {
+        top: 10px;
+        right: 12px;
+        width: 40px;
+        height: 40px;
+        font-size: 25px;
+        box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+    }
+
+    .modal-brand {
+        font-size: 10px;
+        letter-spacing: 2.5px;
+    }
+
+    .modal-info h2 {
+        font-size: 24px;
+    }
+
+    .modal-price {
+        font-size: 21px;
+    }
+
+    .modal-colour {
+        font-size: 13px;
+    }
+
+    .modal-sizes {
+        gap: 7px;
+    }
+
+    .modal-sizes span {
+        min-width: 52px;
+        min-height: 44px;
+        padding: 10px;
+    }
+
+    .selectable-size:active {
+        transform: scale(0.95);
+    }
+
+    .modal-store {
+        margin-top: 18px;
+        padding: 13px;
+        font-size: 12px;
+    }
+
+    #orderControls {
+        margin-top: 20px;
+        padding-top: 18px;
+    }
+
+    .quantity-control button {
+        width: 44px;
+        height: 44px;
+    }
+
+    .quantity-control span {
+        width: 48px;
+    }
+
+    .whatsapp-order-button {
+        min-height: 56px;
+        border-radius: 7px;
+        font-size: 12px;
+    }
+}
+
+
+/* =========================================================
+   PREVENT HORIZONTAL MOBILE OVERFLOW
+========================================================= */
+
+@media (max-width: 800px) {
+
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    img,
+    video,
+    iframe {
+        max-width: 100%;
+    }
+}
+
+
+/* =========================================================
+   MOBILE ACCESSIBILITY / TAP TARGETS
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .hero-shop-button,
+    .shop-all-button,
+    .collection-explore,
+    .map-button,
+    .whatsapp-button,
+    .whatsapp-order-button {
+        min-height: 44px;
+    }
+
+    #yugaChatClose,
+    .modal-close {
+        touch-action: manipulation;
+    }
+}
