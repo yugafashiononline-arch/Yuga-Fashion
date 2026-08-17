@@ -939,3 +939,399 @@ document.querySelectorAll(".product-image-zoom").forEach(function (box) {
     });
 
 });
+/* =========================================================
+   YUGA AI CHATBOT
+========================================================= */
+
+const yugaChatButton =
+    document.getElementById("yugaChatButton");
+
+const yugaChatbot =
+    document.getElementById("yugaChatbot");
+
+const yugaChatClose =
+    document.getElementById("yugaChatClose");
+
+const yugaChatInput =
+    document.getElementById("yugaChatInput");
+
+const yugaChatSend =
+    document.getElementById("yugaChatSend");
+
+const yugaChatMessages =
+    document.getElementById("yugaChatMessages");
+
+
+/* =========================================================
+   OPEN CHAT
+========================================================= */
+
+if (yugaChatButton) {
+
+    yugaChatButton.addEventListener("click", function () {
+
+        yugaChatbot.classList.add("active");
+
+        if (yugaChatInput) {
+            yugaChatInput.focus();
+        }
+
+    });
+
+}
+
+
+/* =========================================================
+   CLOSE CHAT
+========================================================= */
+
+if (yugaChatClose) {
+
+    yugaChatClose.addEventListener("click", function () {
+
+        yugaChatbot.classList.remove("active");
+
+    });
+
+}
+
+
+/* =========================================================
+   ADD MESSAGE
+========================================================= */
+
+function addYugaMessage(message, type) {
+
+    const messageDiv =
+        document.createElement("div");
+
+    messageDiv.className =
+        "yuga-message " + type;
+
+    messageDiv.innerHTML =
+        message;
+
+    yugaChatMessages.appendChild(messageDiv);
+
+    yugaChatMessages.scrollTop =
+        yugaChatMessages.scrollHeight;
+
+}
+
+
+/* =========================================================
+   YUGA AI RESPONSES
+========================================================= */
+
+function getYugaResponse(question) {
+
+    const q =
+        question.toLowerCase();
+
+
+    /* GREETING */
+
+    if (
+        q.includes("hi") ||
+        q.includes("hello") ||
+        q.includes("hey")
+    ) {
+
+        return `
+            Hey! 👋 Welcome to <strong>YUGA Fashion</strong>.
+            <br><br>
+            I'm here to help you with products, prices,
+            sizes and orders.
+        `;
+
+    }
+
+
+    /* PRODUCTS */
+
+    if (
+        q.includes("t-shirt") ||
+        q.includes("tshirt") ||
+        q.includes("t shirt") ||
+        q.includes("product") ||
+        q.includes("collection")
+    ) {
+
+        return `
+            👕 We have YUGA collections including
+            <strong>Plain, Polo and Printed</strong> styles.
+            <br><br>
+            You can explore them from the
+            <strong>Our Collections</strong> section.
+        `;
+
+    }
+
+
+    /* PRICE */
+
+    if (
+        q.includes("price") ||
+        q.includes("cost") ||
+        q.includes("how much")
+    ) {
+
+        return `
+            💰 You can see the current price by
+            opening any product.
+            <br><br>
+            Select a product from our collection
+            to view its price.
+        `;
+
+    }
+
+
+    /* SIZE */
+
+    if (
+        q.includes("size") ||
+        q.includes("sizes")
+    ) {
+
+        return `
+            📏 Available sizes are shown when you
+            open a product.
+            <br><br>
+            Choose an available size before placing
+            your order.
+        `;
+
+    }
+
+
+    /* ORDER */
+
+    if (
+        q.includes("order") ||
+        q.includes("buy") ||
+        q.includes("purchase")
+    ) {
+
+        return `
+            🛒 Ordering is simple!
+            <br><br>
+            1. Choose your product.<br>
+            2. Select your size.<br>
+            3. Select quantity.<br>
+            4. Click <strong>ORDER ON WHATSAPP</strong>.
+            <br><br>
+            We'll confirm the order with you.
+        `;
+
+    }
+
+
+    /* DELIVERY */
+
+    if (
+        q.includes("delivery") ||
+        q.includes("deliver") ||
+        q.includes("shipping")
+    ) {
+
+        return `
+            🚚 For delivery and shipping information,
+            please contact YUGA directly on WhatsApp.
+            <br><br>
+            We'll confirm availability and delivery
+            details with you.
+        `;
+
+    }
+
+
+    /* CONTACT */
+
+    if (
+        q.includes("contact") ||
+        q.includes("whatsapp") ||
+        q.includes("talk")
+    ) {
+
+        return `
+            💬 You can contact YUGA through WhatsApp.
+            <br><br>
+            Open a product and click
+            <strong>ORDER ON WHATSAPP</strong>.
+        `;
+
+    }
+
+
+    /* LOCATION */
+
+    if (
+        q.includes("location") ||
+        q.includes("address") ||
+        q.includes("where")
+    ) {
+
+        return `
+            📍 Our store location is:
+            <br><br>
+            <strong>Sector 20, Chandigarh</strong>
+            <br>
+            160020
+            <br><br>
+            You can use the
+            <strong>OPEN IN GOOGLE MAPS</strong>
+            button on our website.
+        `;
+
+    }
+
+
+    /* BRAND */
+
+    if (
+        q.includes("yuga") ||
+        q.includes("brand")
+    ) {
+
+        return `
+            ✦ <strong>YUGA Fashion</strong>
+            <br><br>
+            Fashion for your era.
+            <br><br>
+            <em>Wear Your Era.</em>
+        `;
+
+    }
+
+
+    /* DEFAULT */
+
+    return `
+        Hmm 🤔 I'm still learning!
+        <br><br>
+        Try asking me about:
+        <br>
+        👕 Products
+        <br>
+        💰 Prices
+        <br>
+        📏 Sizes
+        <br>
+        🛒 Ordering
+        <br>
+        🚚 Delivery
+        <br>
+        📍 Location
+    `;
+
+}
+
+
+/* =========================================================
+   SEND MESSAGE
+========================================================= */
+
+function sendYugaMessage() {
+
+    const question =
+        yugaChatInput.value.trim();
+
+
+    if (!question) {
+        return;
+    }
+
+
+    /* USER MESSAGE */
+
+    addYugaMessage(
+        question,
+        "user"
+    );
+
+
+    /* CLEAR INPUT */
+
+    yugaChatInput.value = "";
+
+
+    /* BOT RESPONSE */
+
+    setTimeout(function () {
+
+        const response =
+            getYugaResponse(question);
+
+        addYugaMessage(
+            response,
+            "bot"
+        );
+
+    }, 350);
+
+}
+
+
+/* =========================================================
+   SEND BUTTON
+========================================================= */
+
+if (yugaChatSend) {
+
+    yugaChatSend.addEventListener(
+        "click",
+        sendYugaMessage
+    );
+
+}
+
+
+/* =========================================================
+   ENTER KEY
+========================================================= */
+
+if (yugaChatInput) {
+
+    yugaChatInput.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (event.key === "Enter") {
+
+                event.preventDefault();
+
+                sendYugaMessage();
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   QUICK QUESTIONS
+========================================================= */
+
+document
+    .querySelectorAll(".yuga-quick-buttons button")
+    .forEach(function (button) {
+
+        button.addEventListener(
+            "click",
+            function () {
+
+                const question =
+                    button.dataset.question;
+
+                yugaChatInput.value =
+                    question;
+
+                sendYugaMessage();
+
+            }
+        );
+
+    });
