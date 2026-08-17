@@ -1028,6 +1028,94 @@
 
 
     </script>
+     </script>
+
+
+    <!-- =========================================================
+         YUGA AI CHATBOT
+    ========================================================== -->
+
+    <button
+        id="yugaChatButton"
+        aria-label="Open YUGA AI"
+        title="YUGA AI"
+    >
+        🤖
+    </button>
+
+
+    <div id="yugaChatbot">
+
+        <div class="yuga-chat-header">
+
+            <div>
+                <strong>YUGA AI</strong>
+                <span>● Online</span>
+            </div>
+
+            <button
+                id="yugaChatClose"
+                aria-label="Close chatbot"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div id="yugaChatMessages">
+
+            <div class="yuga-message bot">
+
+                Hey! 👋 Welcome to
+                <strong>YUGA Fashion</strong>.
+
+                <br><br>
+
+                I'm YUGA AI. How can I help you today?
+
+            </div>
+
+
+            <div class="yuga-quick-buttons">
+
+                <button data-question="What T-shirts do you have?">
+                    👕 T-Shirts
+                </button>
+
+                <button data-question="What are your prices?">
+                    💰 Prices
+                </button>
+
+                <button data-question="What sizes are available?">
+                    📏 Sizes
+                </button>
+
+                <button data-question="How can I order?">
+                    🛒 How to Order
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="yuga-chat-input">
+
+            <input
+                type="text"
+                id="yugaChatInput"
+                placeholder="Ask YUGA AI..."
+                autocomplete="off"
+            >
+
+            <button id="yugaChatSend">
+                ➤
+            </button>
+
+        </div>
+
+    </div>
 
 
 </body>
