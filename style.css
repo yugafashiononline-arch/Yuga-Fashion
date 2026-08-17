@@ -3798,3 +3798,67 @@ body.modal-open {
         touch-action: manipulation;
     }
 }
+/* =========================================================
+   YUGA MOBILE STICKY SHOP BUTTON
+========================================================= */
+
+.yuga-mobile-shop {
+    display: none;
+}
+
+@media (max-width: 600px) {
+
+    .yuga-mobile-shop {
+        display: flex;
+
+        position: fixed;
+
+        left: 15px;
+        right: 15px;
+        bottom: 15px;
+
+        height: 52px;
+
+        align-items: center;
+        justify-content: center;
+
+        background: #111;
+        color: #fff;
+
+        text-decoration: none;
+
+        font-size: 11px;
+        font-weight: 700;
+
+        letter-spacing: 2px;
+
+        border-radius: 7px;
+
+        z-index: 9990;
+
+        box-shadow:
+            0 8px 25px rgba(0, 0, 0, 0.22);
+
+        transition:
+            transform 0.2s ease,
+            background 0.2s ease;
+    }
+
+    .yuga-mobile-shop:active {
+        transform: scale(0.97);
+    }
+
+    .yuga-mobile-shop:hover {
+        background: #222;
+    }
+
+    /* Keep chatbot above the shop button */
+    #yugaChatButton {
+        bottom: 80px;
+    }
+
+    #yugaChatbot {
+        bottom: 145px;
+    }
+
+}
