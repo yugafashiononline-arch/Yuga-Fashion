@@ -327,143 +327,21 @@
 
 
         /* =====================================================
-           REDUCED MOTION
+           YUGA SEA WAVE CURSOR
         ====================================================== */
 
-        @media (prefers-reduced-motion: reduce) {
-
-            .floating-social-link {
-
-                transition: none;
-
-            }
-
-        }
-
-
-
-        /* =====================================================
-           YUGA MOUSE WIND / GREY WAVE EFFECT
-        ====================================================== */
-
-        #yugaMouseWave {
+        #yugaWaveCanvas {
 
             position: fixed;
 
-            width: 420px;
-            height: 420px;
+            inset: 0;
 
-            left: 0;
-            top: 0;
-
-            border-radius: 50%;
+            width: 100%;
+            height: 100%;
 
             pointer-events: none;
 
-            z-index: 9997;
-
-            opacity: 0;
-
-            transform:
-                translate3d(-50%, -50%, 0)
-                scale(0.75);
-
-            background:
-
-                radial-gradient(
-                    circle,
-
-                    rgba(190, 190, 190, 0.16) 0%,
-
-                    rgba(150, 150, 150, 0.10) 18%,
-
-                    rgba(120, 120, 120, 0.055) 34%,
-
-                    rgba(100, 100, 100, 0.025) 48%,
-
-                    transparent 70%
-
-                );
-
-            filter: blur(12px);
-
-            transition:
-
-                opacity 0.45s ease,
-
-                transform 0.7s cubic-bezier(
-                    0.16,
-                    1,
-                    0.3,
-                    1
-                );
-
-            mix-blend-mode: screen;
-
-        }
-
-
-        /* subtle second wave */
-
-        #yugaMouseWave::before {
-
-            content: "";
-
-            position: absolute;
-
-            inset: 70px;
-
-            border-radius: 50%;
-
-            border: 1px solid rgba(
-                200,
-                200,
-                200,
-                0.08
-            );
-
-            filter: blur(5px);
-
-            transform: scale(0.8);
-
-            transition:
-                transform 0.8s ease,
-                opacity 0.8s ease;
-
-        }
-
-
-        #yugaMouseWave.active {
-
-            opacity: 1;
-
-            transform:
-                translate3d(-50%, -50%, 0)
-                scale(1);
-
-        }
-
-
-        #yugaMouseWave.active::before {
-
-            transform: scale(1.35);
-
-            opacity: 0;
-
-        }
-
-
-        /* =====================================================
-           HIDE MOUSE EFFECT ON TOUCH DEVICES
-        ====================================================== */
-
-        @media (hover: none), (pointer: coarse) {
-
-            #yugaMouseWave {
-
-                display: none;
-
-            }
+            z-index: 9996;
 
         }
 
@@ -474,7 +352,7 @@
 
         @media (prefers-reduced-motion: reduce) {
 
-            #yugaMouseWave {
+            #yugaWaveCanvas {
 
                 display: none;
 
@@ -491,10 +369,10 @@
 
 
     <!-- =========================================================
-         MOUSE WIND / WAVE
+         YUGA SEA WAVE CANVAS
     ========================================================== -->
 
-    <div id="yugaMouseWave"></div>
+    <canvas id="yugaWaveCanvas"></canvas>
 
 
 
@@ -1304,91 +1182,236 @@
 
 
         /* =====================================================
-           YUGA MOUSE WIND / GREY WAVE
+           YUGA SEA WAVE CURSOR EFFECT
+           
+           Creates flowing grey ripples around the
+           mouse instead of a simple grey circle.
         ===================================================== */
 
-        const mouseWave =
-            document.getElementById("yugaMouseWave");
+        const canvas =
+            document.getElementById("yugaWaveCanvas");
+
+        const ctx =
+            canvas ? canvas.getContext("2d") : null;
 
 
-        let mouseX = 0;
-        let mouseY = 0;
-
-        let waveX = 0;
-        let waveY = 0;
-
-        let mouseMoving = false;
-
-
-        /* Detect whether the device supports a mouse */
-
-        const hasMouse =
+        const mouseSupported =
             window.matchMedia(
                 "(hover: hover) and (pointer: fine)"
             ).matches;
 
 
-        if (hasMouse && mouseWave) {
+        if (
+            canvas &&
+            ctx &&
+            mouseSupported &&
+            !window.matchMedia(
+                "(prefers-reduced-motion: reduce)"
+            ).matches
+        ) {
 
 
-            document.addEventListener(
-                "mousemove",
-                function(event) {
+            let width =
+                window.innerWidth;
 
-                    mouseX = event.clientX;
-                    mouseY = event.clientY;
+            let height =
+                window.innerHeight;
 
-                    mouseMoving = true;
 
-                    mouseWave.classList.add(
-                        "active"
+            let mouseX =
+                width / 2;
+
+            let mouseY =
+                height / 2;
+
+
+            let targetX =
+                mouseX;
+
+            let targetY =
+                mouseY;
+
+
+            let lastX =
+                mouseX;
+
+            let lastY =
+                mouseY;
+
+
+            let mouseMoving =
+                false;
+
+
+            const ripples = [];
+
+
+
+            /* =================================================
+               CANVAS SIZE
+            ================================================= */
+
+            function resizeWaveCanvas() {
+
+                const dpr =
+                    Math.min(
+                        window.devicePixelRatio || 1,
+                        2
                     );
 
-                },
-                {
-                    passive: true
-                }
-            );
+
+                width =
+                    window.innerWidth;
+
+                height =
+                    window.innerHeight;
 
 
-            /* Smooth movement */
+                canvas.width =
+                    width * dpr;
 
-            function animateMouseWave() {
-
-                waveX +=
-                    (mouseX - waveX) * 0.10;
-
-                waveY +=
-                    (mouseY - waveY) * 0.10;
+                canvas.height =
+                    height * dpr;
 
 
-                mouseWave.style.left =
-                    waveX + "px";
+                canvas.style.width =
+                    width + "px";
 
-                mouseWave.style.top =
-                    waveY + "px";
+                canvas.style.height =
+                    height + "px";
 
 
-                requestAnimationFrame(
-                    animateMouseWave
+                ctx.setTransform(
+                    dpr,
+                    0,
+                    0,
+                    dpr,
+                    0,
+                    0
                 );
 
             }
 
 
-            animateMouseWave();
+            resizeWaveCanvas();
+
+
+            window.addEventListener(
+                "resize",
+                resizeWaveCanvas
+            );
 
 
 
-            /* Hide when mouse leaves the page */
+            /* =================================================
+               CREATE RIPPLE
+            ================================================= */
+
+            function createRipple(
+                x,
+                y,
+                strength = 1
+            ) {
+
+                ripples.push({
+
+                    x: x,
+
+                    y: y,
+
+                    radius: 8,
+
+                    opacity:
+                        0.18 * strength,
+
+                    width:
+                        1.2 + strength,
+
+                    speed:
+                        1.8 + Math.random() * 1.4,
+
+                    wobble:
+                        Math.random() * Math.PI * 2
+
+                });
+
+
+                /* Keep performance smooth */
+
+                if (ripples.length > 18) {
+
+                    ripples.shift();
+
+                }
+
+            }
+
+
+
+            /* =================================================
+               MOUSE MOVEMENT
+            ================================================= */
+
+            document.addEventListener(
+                "mousemove",
+
+                function(event) {
+
+                    targetX =
+                        event.clientX;
+
+                    targetY =
+                        event.clientY;
+
+
+                    const movement =
+                        Math.hypot(
+                            targetX - lastX,
+                            targetY - lastY
+                        );
+
+
+                    if (movement > 5) {
+
+                        mouseMoving = true;
+
+
+                        createRipple(
+                            targetX,
+                            targetY,
+                            Math.min(
+                                movement / 18,
+                                1.6
+                            )
+                        );
+
+
+                        lastX =
+                            targetX;
+
+                        lastY =
+                            targetY;
+
+                    }
+
+                },
+
+                {
+                    passive: true
+                }
+
+            );
+
+
+
+            /* =================================================
+               HIDE WHEN MOUSE LEAVES
+            ================================================= */
 
             document.addEventListener(
                 "mouseleave",
-                function() {
 
-                    mouseWave.classList.remove(
-                        "active"
-                    );
+                function() {
 
                     mouseMoving = false;
 
@@ -1396,22 +1419,265 @@
             );
 
 
-            /* Show again */
-
             document.addEventListener(
                 "mouseenter",
-                function() {
 
-                    if (mouseMoving) {
+                function(event) {
 
-                        mouseWave.classList.add(
-                            "active"
+                    targetX =
+                        event.clientX;
+
+                    targetY =
+                        event.clientY;
+
+                    lastX =
+                        targetX;
+
+                    lastY =
+                        targetY;
+
+                }
+            );
+
+
+
+            /* =================================================
+               DRAW ORGANIC SEA RIPPLE
+            ================================================= */
+
+            function drawRipple(ripple) {
+
+                const points =
+                    64;
+
+
+                ctx.beginPath();
+
+
+                for (
+                    let i = 0;
+                    i <= points;
+                    i++
+                ) {
+
+                    const angle =
+                        (Math.PI * 2 * i) /
+                        points;
+
+
+                    const wave =
+                        Math.sin(
+                            angle * 5 +
+                            ripple.wobble +
+                            ripple.radius * 0.025
+                        ) * 4;
+
+
+                    const wave2 =
+                        Math.sin(
+                            angle * 9 +
+                            ripple.wobble * 1.7
+                        ) * 2;
+
+
+                    const radius =
+                        ripple.radius +
+                        wave +
+                        wave2;
+
+
+                    const x =
+                        ripple.x +
+                        Math.cos(angle) *
+                        radius;
+
+
+                    const y =
+                        ripple.y +
+                        Math.sin(angle) *
+                        radius;
+
+
+                    if (i === 0) {
+
+                        ctx.moveTo(
+                            x,
+                            y
+                        );
+
+                    } else {
+
+                        ctx.lineTo(
+                            x,
+                            y
                         );
 
                     }
 
                 }
-            );
+
+
+                ctx.closePath();
+
+
+                ctx.strokeStyle =
+                    `rgba(
+                        190,
+                        190,
+                        190,
+                        ${ripple.opacity}
+                    )`;
+
+
+                ctx.lineWidth =
+                    ripple.width;
+
+
+                ctx.stroke();
+
+            }
+
+
+
+            /* =================================================
+               MAIN ANIMATION
+            ================================================= */
+
+            function animateWave() {
+
+                ctx.clearRect(
+                    0,
+                    0,
+                    width,
+                    height
+                );
+
+
+                /* Smooth mouse movement */
+
+                mouseX +=
+                    (targetX - mouseX) *
+                    0.12;
+
+                mouseY +=
+                    (targetY - mouseY) *
+                    0.12;
+
+
+
+                /* =============================================
+                   SOFT GREY GLOW AROUND CURSOR
+                ============================================= */
+
+                if (mouseMoving) {
+
+                    const glow =
+                        ctx.createRadialGradient(
+                            mouseX,
+                            mouseY,
+                            0,
+                            mouseX,
+                            mouseY,
+                            170
+                        );
+
+
+                    glow.addColorStop(
+                        0,
+                        "rgba(210,210,210,0.07)"
+                    );
+
+
+                    glow.addColorStop(
+                        0.35,
+                        "rgba(170,170,170,0.035)"
+                    );
+
+
+                    glow.addColorStop(
+                        1,
+                        "rgba(100,100,100,0)"
+                    );
+
+
+                    ctx.fillStyle =
+                        glow;
+
+
+                    ctx.beginPath();
+
+                    ctx.arc(
+                        mouseX,
+                        mouseY,
+                        170,
+                        0,
+                        Math.PI * 2
+                    );
+
+                    ctx.fill();
+
+                }
+
+
+
+                /* =============================================
+                   UPDATE + DRAW RIPPLE WAVES
+                ============================================= */
+
+                for (
+                    let i = ripples.length - 1;
+                    i >= 0;
+                    i--
+                ) {
+
+                    const ripple =
+                        ripples[i];
+
+
+                    ripple.radius +=
+                        ripple.speed;
+
+
+                    ripple.opacity *=
+                        0.975;
+
+
+                    ripple.wobble +=
+                        0.015;
+
+
+                    ripple.width *=
+                        0.997;
+
+
+                    drawRipple(
+                        ripple
+                    );
+
+
+                    if (
+                        ripple.opacity < 0.008 ||
+                        ripple.radius > 230
+                    ) {
+
+                        ripples.splice(
+                            i,
+                            1
+                        );
+
+                    }
+
+                }
+
+
+                requestAnimationFrame(
+                    animateWave
+                );
+
+            }
+
+
+            animateWave();
 
         }
 
