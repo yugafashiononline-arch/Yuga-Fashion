@@ -121,12 +121,12 @@
 
                     <div class="sizes">
 
-                        <span class="in-stock">
-                            S ✓
+                        <span class="out-stock">
+                            S ✕
                         </span>
 
-                        <span class="in-stock">
-                            M ✓
+                        <span class="out-stock">
+                            M ✕
                         </span>
 
                         <span class="out-stock">
@@ -215,8 +215,8 @@
                             M ✕
                         </span>
 
-                        <span class="out-stock">
-                            L ✕
+                        <span class="in-stock">
+                            L ✓
                         </span>
 
                         <span class="in-stock">
@@ -293,8 +293,8 @@
 
                     <div class="sizes">
 
-                        <span class="in-stock">
-                            S ✓
+                        <span class="out-stock">
+                            S ✕
                         </span>
 
                         <span class="in-stock">
@@ -305,8 +305,8 @@
                             L ✕
                         </span>
 
-                        <span class="in-stock">
-                            XL ✓
+                        <span class="out-stock">
+                            XL ✕
                         </span>
 
                     </div>
@@ -379,8 +379,8 @@
 
                     <div class="sizes">
 
-                        <span class="in-stock">
-                            S ✓
+                        <span class="out-stock">
+                            S ✕
                         </span>
 
                         <span class="in-stock">
@@ -391,8 +391,8 @@
                             L ✕
                         </span>
 
-                        <span class="in-stock">
-                            XL ✓
+                        <span class="out-stock">
+                            XL ✕
                         </span>
 
                     </div>
@@ -465,20 +465,20 @@
 
                     <div class="sizes">
 
-                        <span class="in-stock">
-                            S ✓
+                        <span class="out-stock">
+                            S ✕
                         </span>
 
                         <span class="in-stock">
                             M ✓
                         </span>
 
-                        <span class="out-stock">
-                            L ✕
+                        <span class="in-stock">
+                            L ✓
                         </span>
 
-                        <span class="in-stock">
-                            XL ✓
+                        <span class="out-stock">
+                            XL ✕
                         </span>
 
                     </div>
@@ -551,8 +551,8 @@
 
                     <div class="sizes">
 
-                        <span class="in-stock">
-                            S ✓
+                        <span class="out-stock">
+                            S ✕
                         </span>
 
                         <span class="in-stock">
@@ -754,6 +754,118 @@
 
     </footer>
 
+
+
+        <!-- =========================================================
+         YUGA AI CHATBOT
+    ========================================================== -->
+
+    <button
+        id="yugaChatButton"
+        aria-label="Open YUGA AI"
+        title="YUGA AI"
+    >
+        🤖
+    </button>
+
+
+    <div id="yugaChatbot">
+
+        <div class="yuga-chat-header">
+
+            <div>
+                <strong>YUGA AI</strong>
+                <span>● Online</span>
+            </div>
+
+            <button
+                id="yugaChatClose"
+                aria-label="Close chatbot"
+                type="button"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div id="yugaChatMessages">
+
+            <div class="yuga-message bot">
+
+                Hey! 👋 Welcome to
+                <strong>YUGA Fashion</strong>.
+
+                <br><br>
+
+                I'm YUGA AI. How can I help you today?
+
+            </div>
+
+
+            <div class="yuga-quick-buttons">
+
+                <button
+                    type="button"
+                    data-question="Tell me about the Plain collection"
+                >
+                    👕 Plain Collection are Starting with Rs.199 /-With Specific Colours Avaialble .
+                </button>
+
+                <button
+                    type="button"
+                    data-question="Tell me about the Printed collection"
+                >
+                    🎨 Printed Collection are Starting with Rs.399 /-With Specific Colours Avaialble .
+                </button>
+
+                <button
+                    type="button"
+                    data-question="Tell me about the Polo collection"
+                >
+                    👔 Polo Collection are Starting with Rs.249 /-With Specific Colours Avaialble .
+                </button>
+
+                <button
+                    type="button"
+                    data-question="What are your prices?"
+                >
+                    💰 Plain Tees - 199 rs /- 
+                    💰 Polo Tees - 249 rs /-
+                    💰 Printed Tees -399 rs /-
+                </button>
+
+                <button
+                    type="button"
+                    data-question="How can I order?"
+                >
+                    🛒 Click on Specific Product , Go to Order on Whatsapp.
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="yuga-chat-input">
+
+            <input
+                type="text"
+                id="yugaChatInput"
+                placeholder="Ask YUGA AI..."
+                autocomplete="off"
+            >
+
+            <button
+                id="yugaChatSend"
+                type="button"
+            >
+                ➤
+            </button>
+
+        </div>
+
+    </div>
 
 
     <!-- =========================================================
