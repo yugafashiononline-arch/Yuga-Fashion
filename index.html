@@ -340,12 +340,162 @@
 
         }
 
+
+
+        /* =====================================================
+           YUGA MOUSE WIND / GREY WAVE EFFECT
+        ====================================================== */
+
+        #yugaMouseWave {
+
+            position: fixed;
+
+            width: 420px;
+            height: 420px;
+
+            left: 0;
+            top: 0;
+
+            border-radius: 50%;
+
+            pointer-events: none;
+
+            z-index: 9997;
+
+            opacity: 0;
+
+            transform:
+                translate3d(-50%, -50%, 0)
+                scale(0.75);
+
+            background:
+
+                radial-gradient(
+                    circle,
+
+                    rgba(190, 190, 190, 0.16) 0%,
+
+                    rgba(150, 150, 150, 0.10) 18%,
+
+                    rgba(120, 120, 120, 0.055) 34%,
+
+                    rgba(100, 100, 100, 0.025) 48%,
+
+                    transparent 70%
+
+                );
+
+            filter: blur(12px);
+
+            transition:
+
+                opacity 0.45s ease,
+
+                transform 0.7s cubic-bezier(
+                    0.16,
+                    1,
+                    0.3,
+                    1
+                );
+
+            mix-blend-mode: screen;
+
+        }
+
+
+        /* subtle second wave */
+
+        #yugaMouseWave::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 70px;
+
+            border-radius: 50%;
+
+            border: 1px solid rgba(
+                200,
+                200,
+                200,
+                0.08
+            );
+
+            filter: blur(5px);
+
+            transform: scale(0.8);
+
+            transition:
+                transform 0.8s ease,
+                opacity 0.8s ease;
+
+        }
+
+
+        #yugaMouseWave.active {
+
+            opacity: 1;
+
+            transform:
+                translate3d(-50%, -50%, 0)
+                scale(1);
+
+        }
+
+
+        #yugaMouseWave.active::before {
+
+            transform: scale(1.35);
+
+            opacity: 0;
+
+        }
+
+
+        /* =====================================================
+           HIDE MOUSE EFFECT ON TOUCH DEVICES
+        ====================================================== */
+
+        @media (hover: none), (pointer: coarse) {
+
+            #yugaMouseWave {
+
+                display: none;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           REDUCED MOTION
+        ====================================================== */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            #yugaMouseWave {
+
+                display: none;
+
+            }
+
+        }
+
     </style>
 
 </head>
 
 
 <body>
+
+
+    <!-- =========================================================
+         MOUSE WIND / WAVE
+    ========================================================== -->
+
+    <div id="yugaMouseWave"></div>
+
 
 
     <!-- =========================================================
@@ -818,8 +968,6 @@
         <div class="footer-social">
 
 
-            <!-- INSTAGRAM -->
-
             <a
                 href="https://www.instagram.com/yugafashionindia/"
                 target="_blank"
@@ -830,9 +978,6 @@
             </a>
 
 
-
-            <!-- CUSTOMER CARE -->
-
             <a
                 href="mailto:yugafashiononline@gmail.com"
                 class="footer-link"
@@ -840,9 +985,6 @@
                 Customer Care
             </a>
 
-
-
-            <!-- WHATSAPP -->
 
             <a
                 href="https://wa.me/YOUR_WHATSAPP_NUMBER"
@@ -868,15 +1010,12 @@
 
     <!-- =========================================================
          FLOATING SOCIAL ICONS
-         LEFT SIDE
     ========================================================== -->
 
     <div class="floating-social">
 
 
-        <!-- =====================================================
-             WHATSAPP FLOATING BUTTON
-        ====================================================== -->
+        <!-- WHATSAPP -->
 
         <a
             href="https://wa.me/YOUR_WHATSAPP_NUMBER"
@@ -901,9 +1040,7 @@
 
 
 
-        <!-- =====================================================
-             INSTAGRAM FLOATING BUTTON
-        ====================================================== -->
+        <!-- INSTAGRAM -->
 
         <a
             href="https://www.instagram.com/yugafashionindia/"
@@ -920,7 +1057,7 @@
                 aria-hidden="true"
             >
 
-                <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9ZM17.75 5.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/>
+                <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9ZM17.75 5.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0-3-3Z"/>
 
             </svg>
 
@@ -932,11 +1069,149 @@
 
 
     <!-- =========================================================
-         JAVASCRIPT
+         YUGA AI CHATBOT
+    ========================================================== -->
+
+    <button
+        id="yugaChatButton"
+        type="button"
+        aria-label="Open YUGA AI"
+        title="YUGA AI"
+    >
+        🤖
+    </button>
+
+
+    <div id="yugaChatbot">
+
+
+        <!-- CHAT HEADER -->
+
+        <div class="yuga-chat-header">
+
+            <div>
+
+                <strong>
+                    YUGA AI
+                </strong>
+
+                <span>
+                    ● Online
+                </span>
+
+            </div>
+
+
+            <button
+                id="yugaChatClose"
+                type="button"
+                aria-label="Close chatbot"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+
+        <!-- CHAT MESSAGES -->
+
+        <div id="yugaChatMessages">
+
+            <div class="yuga-message bot">
+
+                Hey! 👋 Welcome to
+                <strong>YUGA Fashion</strong>.
+
+                <br><br>
+
+                I'm YUGA AI. How can I help you today?
+
+            </div>
+
+
+
+            <!-- QUICK QUESTIONS -->
+
+            <div class="yuga-quick-buttons">
+
+
+                <button
+                    type="button"
+                    data-question="Tell me about the Plain collection"
+                >
+                    👕 Plain Collection
+                </button>
+
+
+                <button
+                    type="button"
+                    data-question="Tell me about the Printed collection"
+                >
+                    🎨 Printed Collection
+                </button>
+
+
+                <button
+                    type="button"
+                    data-question="Tell me about the Polo collection"
+                >
+                    👔 Polo Collection
+                </button>
+
+
+                <button
+                    type="button"
+                    data-question="What are your prices?"
+                >
+                    💰 Prices
+                </button>
+
+
+                <button
+                    type="button"
+                    data-question="How can I order?"
+                >
+                    🛒 How to Order
+                </button>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- CHAT INPUT -->
+
+        <div class="yuga-chat-input">
+
+            <input
+                type="text"
+                id="yugaChatInput"
+                placeholder="Ask YUGA AI..."
+                autocomplete="off"
+            >
+
+
+            <button
+                id="yugaChatSend"
+                type="button"
+            >
+                ➤
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================================
+         INDEX JAVASCRIPT
     ========================================================== -->
 
     <script>
-
 
         /* =====================================================
            SCROLL REVEAL
@@ -1027,138 +1302,130 @@
         });
 
 
+
+        /* =====================================================
+           YUGA MOUSE WIND / GREY WAVE
+        ===================================================== */
+
+        const mouseWave =
+            document.getElementById("yugaMouseWave");
+
+
+        let mouseX = 0;
+        let mouseY = 0;
+
+        let waveX = 0;
+        let waveY = 0;
+
+        let mouseMoving = false;
+
+
+        /* Detect whether the device supports a mouse */
+
+        const hasMouse =
+            window.matchMedia(
+                "(hover: hover) and (pointer: fine)"
+            ).matches;
+
+
+        if (hasMouse && mouseWave) {
+
+
+            document.addEventListener(
+                "mousemove",
+                function(event) {
+
+                    mouseX = event.clientX;
+                    mouseY = event.clientY;
+
+                    mouseMoving = true;
+
+                    mouseWave.classList.add(
+                        "active"
+                    );
+
+                },
+                {
+                    passive: true
+                }
+            );
+
+
+            /* Smooth movement */
+
+            function animateMouseWave() {
+
+                waveX +=
+                    (mouseX - waveX) * 0.10;
+
+                waveY +=
+                    (mouseY - waveY) * 0.10;
+
+
+                mouseWave.style.left =
+                    waveX + "px";
+
+                mouseWave.style.top =
+                    waveY + "px";
+
+
+                requestAnimationFrame(
+                    animateMouseWave
+                );
+
+            }
+
+
+            animateMouseWave();
+
+
+
+            /* Hide when mouse leaves the page */
+
+            document.addEventListener(
+                "mouseleave",
+                function() {
+
+                    mouseWave.classList.remove(
+                        "active"
+                    );
+
+                    mouseMoving = false;
+
+                }
+            );
+
+
+            /* Show again */
+
+            document.addEventListener(
+                "mouseenter",
+                function() {
+
+                    if (mouseMoving) {
+
+                        mouseWave.classList.add(
+                            "active"
+                        );
+
+                    }
+
+                }
+            );
+
+        }
+
     </script>
-    
+
+
+
     <!-- =========================================================
-     YUGA AI CHATBOT
-========================================================= -->
+         LOAD YUGA JAVASCRIPT
+    ========================================================== -->
 
-<button
-    id="yugaChatButton"
-    type="button"
-    aria-label="Open YUGA AI"
-    title="YUGA AI"
->
-    🤖
-</button>
+    <script src="script.js"></script>
 
 
-<div id="yugaChatbot">
-
-    <!-- CHAT HEADER -->
-
-    <div class="yuga-chat-header">
-
-        <div>
-            <strong>YUGA AI</strong>
-            <span>● Online</span>
-        </div>
-
-        <button
-            id="yugaChatClose"
-            type="button"
-            aria-label="Close chatbot"
-        >
-            ×
-        </button>
-
-    </div>
-
-
-    <!-- CHAT MESSAGES -->
-
-    <div id="yugaChatMessages">
-
-        <div class="yuga-message bot">
-
-            Hey! 👋 Welcome to
-            <strong>YUGA Fashion</strong>.
-
-            <br><br>
-
-            I'm YUGA AI. How can I help you today?
-
-        </div>
-
-
-        <!-- QUICK QUESTIONS -->
-
-        <div class="yuga-quick-buttons">
-
-            <button
-                type="button"
-                data-question="Tell me about the Plain collection"
-            >
-                👕 Plain Collection
-            </button>
-
-
-            <button
-                type="button"
-                data-question="Tell me about the Printed collection"
-            >
-                🎨 Printed Collection
-            </button>
-
-
-            <button
-                type="button"
-                data-question="Tell me about the Polo collection"
-            >
-                👔 Polo Collection
-            </button>
-
-
-            <button
-                type="button"
-                data-question="What are your prices?"
-            >
-                💰 Prices
-            </button>
-
-
-            <button
-                type="button"
-                data-question="How can I order?"
-            >
-                🛒 How to Order
-            </button>
-
-        </div>
-
-    </div>
-
-
-    <!-- CHAT INPUT -->
-
-    <div class="yuga-chat-input">
-
-        <input
-            type="text"
-            id="yugaChatInput"
-            placeholder="Ask YUGA AI..."
-            autocomplete="off"
-        >
-
-
-        <button
-            id="yugaChatSend"
-            type="button"
-        >
-            ➤
-        </button>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     LOAD YUGA JAVASCRIPT
-========================================================= -->
-
-<script src="script.js"></script>
-    
 </body>
 
 </html>
