@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Policies | YUGA Fashion</title>
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="Y Falvion.png"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <style>
+
+        /* =====================================================
+           YUGA POLICIES PAGE
+        ===================================================== */
+
+        .policies-page {
+            min-height: 100vh;
+            background: #fff;
+            color: #111;
+        }
+
+
+        /* =====================================================
+           POLICY HEADER
+        ===================================================== */
+
+        .policies-header {
+            padding: 55px 20px 45px;
+            text-align: center;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .policies-header .eyebrow {
+            font-size: 11px;
+            letter-spacing: 4px;
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+
+        .policies-header h1 {
+            margin: 0;
+            font-size: clamp(42px, 7vw, 82px);
+            letter-spacing: 5px;
+            line-height: 0.95;
+        }
+
+        .policies-header p {
+            margin: 22px auto 0;
+            max-width: 600px;
+            font-size: 14px;
+            line-height: 1.7;
+            color: #666;
+        }
+
+
+        /* =====================================================
+           POLICY CONTENT
+        ===================================================== */
+
+        .policies-container {
+            width: min(100% - 40px, 900px);
+            margin: 0 auto;
+            padding: 65px 0 90px;
+        }
+
+
+        .policy-section {
+            padding: 38px 0;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .policy-section:first-child {
+            padding-top: 0;
+        }
+
+        .policy-section:last-child {
+            border-bottom: none;
+        }
+
+
+        .policy-section h2 {
+            margin: 0 0 18px;
+            font-size: 24px;
+            letter-spacing: 1px;
+        }
+
+        .policy-section h3 {
+            margin: 26px 0 10px;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+        }
+
+        .policy-section p {
+            margin: 0 0 14px;
+            font-size: 14px;
+            line-height: 1.85;
+            color: #444;
+        }
+
+        .policy-section ul {
+            margin: 10px 0 18px;
+            padding-left: 22px;
+        }
+
+        .policy-section li {
+            margin-bottom: 10px;
+            font-size: 14px;
+            line-height: 1.75;
+            color: #444;
+        }
+
+
+        /* =====================================================
+           POLICY TOP NOTE
+        ===================================================== */
+
+        .policy-note {
+            background: #f6f6f6;
+            padding: 22px 24px;
+            margin-bottom: 45px;
+            border-left: 3px solid #111;
+        }
+
+        .policy-note p {
+            margin: 0;
+            color: #333;
+        }
+
+
+        /* =====================================================
+           BACK BUTTON
+        ===================================================== */
+
+        .policy-back {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            margin-top: 15px;
+
+            padding: 14px 24px;
+
+            background: #111;
+            color: #fff;
+
+            text-decoration: none;
+
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+
+            transition:
+                background 0.25s ease,
+                transform 0.25s ease;
+        }
+
+        .policy-back:hover {
+            background: #333;
+            transform: translateY(-2px);
+        }
+
+
+        /* =====================================================
+           CONTACT BOX
+        ===================================================== */
+
+        .policy-contact-box {
+            margin-top: 25px;
+            padding: 28px;
+            background: #f7f7f7;
+        }
+
+        .policy-contact-box strong {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+
+        .policy-contact-box a {
+            color: #111;
+            text-decoration: underline;
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 600px) {
+
+            .policies-header {
+                padding: 42px 18px 38px;
+            }
+
+            .policies-header h1 {
+                font-size: 44px;
+                letter-spacing: 3px;
+            }
+
+            .policies-header p {
+                font-size: 12px;
+            }
+
+            .policies-container {
+                width: min(100% - 30px, 900px);
+                padding: 45px 0 65px;
+            }
+
+            .policy-section {
+                padding: 30px 0;
+            }
+
+            .policy-section h2 {
+                font-size: 21px;
+            }
+
+            .policy-section p,
+            .policy-section li {
+                font-size: 13px;
+                line-height: 1.8;
+            }
+
+            .policy-note {
+                padding: 18px;
+                margin-bottom: 30px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header>
+
+        <a href="index.html">
+
+            <img
+                src="Logo.png"
+                alt="YUGA Fashion"
+            >
+
+        </a>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         POLICIES PAGE
+    ====================================================== -->
+
+    <main class="policies-page">
+
+
+        <!-- =================================================
+             PAGE HEADER
+        ================================================== -->
+
+        <section class="policies-header">
+
+            <p class="eyebrow">
+                YUGA FASHION
+            </p>
+
+            <h1>
+                POLICIES
+            </h1>
+
+            <p>
+                Simple, clear and transparent information
+                about shopping with YUGA.
+            </p>
+
+        </section>
+
+
+
+        <!-- =================================================
+             POLICY CONTENT
+        ================================================== -->
+
+        <div class="policies-container">
+
+
+            <div class="policy-note">
+
+                <p>
+                    <strong>Important:</strong>
+                    Please read these policies before placing
+                    an order with YUGA Fashion. By placing an
+                    order, you agree to the applicable terms
+                    mentioned below.
+                </p>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 PRIVACY POLICY
+            ================================================== -->
+
+            <section class="policy-section">
+
+                <h2>
+                    01. PRIVACY POLICY
+                </h2>
+
+                <p>
+                    YUGA Fashion respects your privacy and is
+                    committed to protecting the information you
+                    share with us.
+                </p>
+
+                <h3>
+                    Information We May Collect
+                </h3>
+
+                <p>
+                    When you contact us or place an order, we
+                    may receive information such as your name,
+                    phone number, delivery address and order
+                    details.
+                </p>
+
+                <h3>
+                    How We Use Your Information
+                </h3>
+
+                <ul>
+
+                    <li>
+                        To process and confirm your orders.
+                    </li>
+
+                    <li>
+                        To communicate with you regarding your order.
+                    </li>
+
+                    <li>
+                        To arrange delivery of your purchase.
+                    </li>
+
+                    <li>
+                        To provide customer support.
+                    </li>
+
+                </ul>
+
+                <p>
+                    We do not intentionally sell your personal
+                    information to third parties.
+                </p>
+
+                <p>
+                    We may share necessary information with
+                    delivery or service providers when required
+                    to complete your order.
+                </p>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 TERMS & CONDITIONS
+            ================================================== -->
+
+            <section class="policy-section">
+
+                <h2>
+                    02. TERMS & CONDITIONS
+                </h2>
+
+                <p>
+                    By using the YUGA Fashion website or placing
+                    an order with us, you agree to these terms.
+                </p>
+
+                <h3>
+                    Products
+                </h3>
+
+                <p>
+                    Product images are provided for representation.
+                    Actual colours may vary slightly depending on
+                    lighting, photography and your device display.
+                </p>
+
+                <h3>
+                    Product Availability
+                </h3>
+
+                <p>
+                    Product availability and sizes may change
+                    without prior notice. An item shown on the
+                    website is not guaranteed to remain available
+                    until an order has been confirmed.
+                </p>
+
+                <h3>
+                    Pricing
+                </h3>
+
+                <p>
+                    YUGA Fashion reserves the right to change
+                    product prices or offers when necessary.
+                    The price confirmed at the time of purchase
+                    will apply to that order.
+                </p>
+
+                <h3>
+                    Website Information
+                </h3>
+
+                <p>
+                    We aim to keep all website information
+                    accurate and updated. However, occasional
+                    errors in product information, pricing or
+                    availability may occur.
+                </p>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 SHIPPING POLICY
+            ================================================== -->
+
+            <section class="policy-section">
+
+                <h2>
+                    03. SHIPPING POLICY
+                </h2>
+
+                <p>
+                    Orders are processed after the order has been
+                    confirmed by YUGA Fashion.
+                </p>
+
+                <h3>
+                    Processing
+                </h3>
+
+                <p>
+                    Processing time may vary depending on product
+                    availability and order volume.
+                </p>
+
+                <h3>
+                    Delivery
+                </h3>
+
+                <p>
+                    Delivery time depends on the customer's
+                    location and the courier or delivery service
+                    used.
+                </p>
+
+                <p>
+                    Delays caused by courier services, weather,
+                    public holidays, unforeseen events or
+                    circumstances outside YUGA Fashion's control
+                    may occur.
+                </p>
+
+                <h3>
+                    Incorrect Address
+                </h3>
+
+                <p>
+                    Customers are responsible for providing a
+                    correct and complete delivery address and
+                    contact information.
+                </p>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 RETURN & EXCHANGE POLICY
+            ================================================== -->
+
+            <section class="policy-section">
+
+                <h2>
+                    04. RETURN & EXCHANGE POLICY
+                </h2>
+
+                <p>
+                    YUGA Fashion aims to provide products in good
+                    condition and according to the confirmed order.
+                </p>
+
+                <h3>
+                    Exchange Requests
+                </h3>
+
+                <p>
+                    If you receive a damaged, defective or incorrect
+                    product, contact YUGA Fashion as soon as
+                    possible after delivery.
+                </p>
+
+                <p>
+                    The product may need to be unused, unworn and
+                    in its original condition for an exchange to
+                    be considered.
+                </p>
+
+                <h3>
+                    Size Exchanges
+                </h3>
+
+                <p>
+                    Size exchanges may be considered depending on
+                    product availability and the condition of the
+                    returned product.
+                </p>
+
+                <h3>
+                    Items Not Eligible
+                </h3>
+
+                <ul>
+
+                    <li>
+                        Products that have been worn or washed.
+                    </li>
+
+                    <li>
+                        Products damaged after delivery due to
+                        customer handling.
+                    </li>
+
+                    <li>
+                        Products altered or modified by the customer.
+                    </li>
+
+                    <li>
+                        Products returned without prior communication
+                        with YUGA Fashion.
+                    </li>
+
+                </ul>
+
+                <p>
+                    Approval of a return or exchange is subject
+                    to inspection and availability.
+                </p>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 CANCELLATION POLICY
+            ================================================== -->
+
+            <section class="policy-section">
+
+                <h2>
+                    05. CANCELLATION POLICY
+                </h2>
+
+                <p>
+                    If you need to cancel an order, contact YUGA
+                    Fashion as soon as possible.
+                </p>
+
+                <p>
+                    Cancellation requests may not be accepted once
+                    an order has already been processed, packed or
+                    dispatched.
+                </p>
+
+                <p>
+                    If an order has already been dispatched,
+                    cancellation may no longer be possible.
+                </p>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 PAYMENT POLICY
+            ================================================== -->
+
+            <section class="policy-section">
+
+                <h2>
+                    06. PAYMENT POLICY
+                </h2>
+
+                <p>
+                    Payment methods available for an order will be
+                    communicated or displayed during the ordering
+                    process.
+                </p>
+
+                <p>
+                    Orders may be confirmed only after the required
+                    payment or order verification has been completed.
+                </p>
+
+                <p>
+                    Customers should keep their payment
+                    confirmation or transaction details until the
+                    order has been successfully received.
+                </p>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 CUSTOMER CARE
+            ================================================== -->
+
+            <section class="policy-section">
+
+                <h2>
+                    07. CUSTOMER CARE
+                </h2>
+
+                <p>
+                    Have a question about an order, product,
+                    exchange or delivery?
+                </p>
+
+                <div class="policy-contact-box">
+
+                    <strong>
+                        YUGA FASHION CUSTOMER CARE
+                    </strong>
+
+                    <p>
+                        Email:
+                        <a href="mailto:yugafashiononline@gmail.com">
+                            yugafashiononline@gmail.com
+                        </a>
+                    </p>
+
+                    <p>
+                        WhatsApp:
+                        <a
+                            href="https://wa.me/917888759939"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Chat with YUGA
+                        </a>
+                    </p>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 LAST UPDATED
+            ================================================== -->
+
+            <section class="policy-section">
+
+                <h2>
+                    08. POLICY UPDATES
+                </h2>
+
+                <p>
+                    YUGA Fashion may update these policies from
+                    time to time to reflect changes in our business,
+                    services or applicable requirements.
+                </p>
+
+                <p>
+                    Any updated version will be published on this
+                    page.
+                </p>
+
+                <p>
+                    <strong>
+                        Last Updated: 18 August 2026
+                    </strong>
+                </p>
+
+                <a
+                    href="index.html"
+                    class="policy-back"
+                >
+                    ← BACK TO YUGA
+                </a>
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
+
+        <h2>
+            YUGA
+        </h2>
+
+        <p class="footer-tagline">
+            Wear Your Era.
+        </p>
+
+
+        <div class="footer-social">
+
+            <a
+                href="https://www.instagram.com/yugafashionindia/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="footer-link"
+            >
+                Instagram
+            </a>
+
+
+            <a
+                href="mailto:yugafashiononline@gmail.com"
+                class="footer-link"
+            >
+                Customer Care
+            </a>
+
+
+            <a
+                href="https://wa.me/917888759939"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="footer-link"
+            >
+                WhatsApp
+            </a>
+
+
+            <a
+                href="policies.html"
+                class="footer-link"
+            >
+                Policies
+            </a>
+
+        </div>
+
+
+        <p class="footer-copy">
+            © 2026 YUGA Fashion
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>
