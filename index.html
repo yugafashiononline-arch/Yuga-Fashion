@@ -13,12 +13,15 @@
 
     <link rel="stylesheet" href="style.css">
 
-
     <!-- =====================================================
          INDEX PAGE ONLY - MOBILE + FLOATING SOCIAL FIXES
     ====================================================== -->
 
     <style>
+
+        /* =====================================================
+           ANNOUNCEMENT BAR
+        ====================================================== */
 
         .announcement-track {
             flex-shrink: 0;
@@ -65,6 +68,10 @@
 
         }
 
+
+        /* =====================================================
+           SMALLER PHONES
+        ====================================================== */
 
         @media (max-width: 500px) {
 
@@ -113,6 +120,10 @@
         }
 
 
+        /* =====================================================
+           VERY SMALL PHONES
+        ====================================================== */
+
         @media (max-width: 380px) {
 
             .hero-premium h1 {
@@ -130,36 +141,27 @@
 
         /* =====================================================
            FLOATING SOCIAL BUTTONS
+           MOBILE LEFT SIDE
         ====================================================== */
 
         .floating-social {
-
             position: fixed;
-
             left: 12px;
             bottom: 22px;
-
             display: flex;
             flex-direction: column;
-
             gap: 9px;
-
             z-index: 9998;
-
         }
 
 
         .floating-social-link {
-
             width: 45px;
             height: 45px;
-
             border-radius: 50%;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
             text-decoration: none;
 
             box-shadow:
@@ -170,9 +172,12 @@
                 box-shadow 0.25s ease;
 
             -webkit-tap-highlight-color: transparent;
-
         }
 
+
+        /* =====================================================
+           WHATSAPP
+        ====================================================== */
 
         .whatsapp-float {
             background: #25D366;
@@ -180,17 +185,17 @@
 
 
         .whatsapp-float svg {
-
             width: 24px;
             height: 24px;
-
             fill: white;
-
         }
 
 
-        .instagram-float {
+        /* =====================================================
+           INSTAGRAM
+        ====================================================== */
 
+        .instagram-float {
             background:
                 linear-gradient(
                     135deg,
@@ -199,93 +204,82 @@
                     #FD1D1D,
                     #FCAF45
                 );
-
         }
 
 
         .instagram-float svg {
-
             width: 23px;
             height: 23px;
-
             fill: white;
-
         }
 
 
-        .floating-social-link:hover {
+        /* =====================================================
+           HOVER
+        ====================================================== */
 
+        .floating-social-link:hover {
             transform: scale(1.12);
 
             box-shadow:
                 0 8px 24px rgba(0, 0, 0, 0.35);
-
         }
 
+
+        /* =====================================================
+           MOBILE SIZE
+        ====================================================== */
 
         @media (max-width: 550px) {
 
             .floating-social {
-
                 left: 10px;
                 bottom: 18px;
-
                 gap: 8px;
-
             }
 
             .floating-social-link {
-
                 width: 42px;
                 height: 42px;
-
             }
 
             .whatsapp-float svg {
-
                 width: 22px;
                 height: 22px;
-
             }
 
             .instagram-float svg {
-
                 width: 21px;
                 height: 21px;
-
             }
 
         }
 
 
+        /* =====================================================
+           VERY SMALL PHONES
+        ====================================================== */
+
         @media (max-width: 380px) {
 
             .floating-social {
-
                 left: 8px;
                 bottom: 15px;
-
             }
 
             .floating-social-link {
-
                 width: 38px;
                 height: 38px;
-
             }
 
             .whatsapp-float svg {
-
                 width: 20px;
                 height: 20px;
-
             }
 
             .instagram-float svg {
-
                 width: 19px;
                 height: 19px;
-
             }
 
         }
@@ -296,256 +290,23 @@
         ====================================================== */
 
         #yugaWaveCanvas {
-
             position: fixed;
-
             inset: 0;
-
             width: 100%;
             height: 100%;
-
             pointer-events: none;
-
             z-index: 9996;
-
         }
 
+
+        /* =====================================================
+           REDUCED MOTION
+        ====================================================== */
 
         @media (prefers-reduced-motion: reduce) {
 
             #yugaWaveCanvas {
                 display: none;
-            }
-
-        }
-
-
-        /* =====================================================
-           YUGA POLICY SECTION
-        ====================================================== */
-
-        .yuga-policies {
-
-            padding: 110px 6%;
-
-            background: #f7f7f7;
-
-            border-top: 1px solid #e5e5e5;
-
-        }
-
-
-        .policy-heading {
-
-            text-align: center;
-
-            max-width: 700px;
-
-            margin: 0 auto 55px;
-
-        }
-
-
-        .policy-heading .eyebrow {
-
-            font-size: 11px;
-
-            letter-spacing: 4px;
-
-            font-weight: 600;
-
-            margin-bottom: 15px;
-
-        }
-
-
-        .policy-heading h2 {
-
-            font-size: clamp(34px, 5vw, 60px);
-
-            margin: 0 0 15px;
-
-            letter-spacing: -2px;
-
-        }
-
-
-        .policy-heading p {
-
-            color: #666;
-
-            font-size: 15px;
-
-            line-height: 1.7;
-
-        }
-
-
-        .policy-grid {
-
-            max-width: 1200px;
-
-            margin: auto;
-
-            display: grid;
-
-            grid-template-columns: repeat(3, 1fr);
-
-            gap: 20px;
-
-        }
-
-
-        .policy-card {
-
-            background: #ffffff;
-
-            padding: 35px 30px;
-
-            border: 1px solid #e5e5e5;
-
-            transition:
-                transform 0.3s ease,
-                box-shadow 0.3s ease;
-
-        }
-
-
-        .policy-card:hover {
-
-            transform: translateY(-5px);
-
-            box-shadow:
-                0 15px 35px rgba(0, 0, 0, 0.08);
-
-        }
-
-
-        .policy-icon {
-
-            width: 46px;
-            height: 46px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            border: 1px solid #111;
-
-            border-radius: 50%;
-
-            font-size: 20px;
-
-            margin-bottom: 22px;
-
-        }
-
-
-        .policy-card h3 {
-
-            font-size: 18px;
-
-            letter-spacing: 1px;
-
-            margin: 0 0 18px;
-
-        }
-
-
-        .policy-card p {
-
-            color: #666;
-
-            font-size: 13px;
-
-            line-height: 1.8;
-
-            margin: 0 0 12px;
-
-        }
-
-
-        .policy-card strong {
-
-            color: #111;
-
-        }
-
-
-        .policy-note {
-
-            max-width: 1200px;
-
-            margin: 25px auto 0;
-
-            padding: 22px 25px;
-
-            background: #111;
-
-            color: white;
-
-            text-align: center;
-
-            font-size: 13px;
-
-            line-height: 1.7;
-
-            letter-spacing: 0.3px;
-
-        }
-
-
-        @media (max-width: 850px) {
-
-            .yuga-policies {
-
-                padding: 80px 20px;
-
-            }
-
-            .policy-grid {
-
-                grid-template-columns: 1fr;
-
-                max-width: 600px;
-
-            }
-
-        }
-
-
-        @media (max-width: 500px) {
-
-            .yuga-policies {
-
-                padding: 70px 15px;
-
-            }
-
-            .policy-heading {
-
-                margin-bottom: 35px;
-
-            }
-
-            .policy-heading h2 {
-
-                font-size: 38px;
-
-            }
-
-            .policy-card {
-
-                padding: 28px 23px;
-
-            }
-
-            .policy-note {
-
-                padding: 18px;
-
-                font-size: 12px;
-
             }
 
         }
@@ -575,22 +336,18 @@
 
             <span>✦ NEW DROP LIVE</span>
             <span>✦ WEAR YOUR ERA</span>
-            <span>✦ FREE DELIVERY ABOVE ₹999</span>
             <span>✦ SHOP YUGA</span>
 
             <span>✦ NEW DROP LIVE</span>
             <span>✦ WEAR YOUR ERA</span>
-            <span>✦ FREE DELIVERY ABOVE ₹999</span>
             <span>✦ SHOP YUGA</span>
 
             <span>✦ NEW DROP LIVE</span>
             <span>✦ WEAR YOUR ERA</span>
-            <span>✦ FREE DELIVERY ABOVE ₹999</span>
             <span>✦ SHOP YUGA</span>
 
             <span>✦ NEW DROP LIVE</span>
             <span>✦ WEAR YOUR ERA</span>
-            <span>✦ FREE DELIVERY ABOVE ₹999</span>
             <span>✦ SHOP YUGA</span>
 
         </div>
@@ -711,7 +468,9 @@
         <div class="collection-showcase">
 
 
-            <!-- PLAIN -->
+            <!-- =================================================
+                 PLAIN COLLECTION
+            ================================================== -->
 
             <a
                 href="plain.html"
@@ -749,7 +508,9 @@
             </a>
 
 
-            <!-- POLO -->
+            <!-- =================================================
+                 POLO COLLECTION
+            ================================================== -->
 
             <a
                 href="polo.html"
@@ -787,7 +548,9 @@
             </a>
 
 
-            <!-- PRINTED -->
+            <!-- =================================================
+                 PRINTED COLLECTION
+            ================================================== -->
 
             <a
                 href="printed.html"
@@ -824,11 +587,12 @@
 
             </a>
 
-
         </div>
 
 
-        <!-- SHOP ALL -->
+        <!-- =====================================================
+             SHOP ALL
+        ====================================================== -->
 
         <div class="shop-all-section reveal">
 
@@ -861,166 +625,6 @@
         <p>
             Explore our collection and find what fits your style.
         </p>
-
-    </section>
-
-
-    <!-- =========================================================
-         YUGA POLICY ONE
-    ========================================================== -->
-
-    <section class="yuga-policies">
-
-        <div class="policy-heading reveal">
-
-            <p class="eyebrow">
-                YUGA CARE
-            </p>
-
-            <h2>
-                POLICIES
-            </h2>
-
-            <p>
-                Simple, transparent and made to keep your YUGA
-                experience smooth.
-            </p>
-
-        </div>
-
-
-        <div class="policy-grid">
-
-
-            <!-- DELIVERY -->
-
-            <div class="policy-card reveal">
-
-                <div class="policy-icon">
-                    🚚
-                </div>
-
-                <h3>
-                    DELIVERY
-                </h3>
-
-                <p>
-                    <strong>Free delivery</strong> on orders above
-                    ₹999.
-                </p>
-
-                <p>
-                    Orders below ₹999 may have a delivery charge
-                    depending on the delivery location.
-                </p>
-
-                <p>
-                    Orders are generally dispatched within
-                    <strong>2–3 days</strong>.
-                </p>
-
-                <p>
-                    Estimated delivery time is
-                    <strong>5–10 days</strong>, depending on the
-                    location and courier service.
-                </p>
-
-                <p>
-                    Tracking details will be provided whenever
-                    tracking is available from the courier.
-                </p>
-
-            </div>
-
-
-            <!-- RETURNS & EXCHANGE -->
-
-            <div class="policy-card reveal">
-
-                <div class="policy-icon">
-                    ↩
-                </div>
-
-                <h3>
-                    RETURNS & EXCHANGE
-                </h3>
-
-                <p>
-                    Return requests must be raised within
-                    <strong>3 days</strong> of receiving the order.
-                </p>
-
-                <p>
-                    Products must be unused, unwashed and in their
-                    original condition with tags intact.
-                </p>
-
-                <p>
-                    Size exchanges are subject to product and size
-                    availability.
-                </p>
-
-                <p>
-                    For a size exchange, the customer is responsible
-                    for the applicable return/shipping cost.
-                </p>
-
-                <p>
-                    If the product is damaged or the wrong product
-                    was sent due to a YUGA error, YUGA will handle
-                    the applicable return/shipping cost.
-                </p>
-
-            </div>
-
-
-            <!-- PAYMENT -->
-
-            <div class="policy-card reveal">
-
-                <div class="policy-icon">
-                    ₹
-                </div>
-
-                <h3>
-                    PAYMENT
-                </h3>
-
-                <p>
-                    <strong>UPI payment</strong> is currently
-                    available for YUGA orders.
-                </p>
-
-                <p>
-                    Payment details can be confirmed with YUGA
-                    while placing your order.
-                </p>
-
-                <p>
-                    <strong>Cash on Delivery (COD)</strong> is not
-                    currently available and may be introduced in
-                    the future.
-                </p>
-
-                <p>
-                    Refunds for approved returns will be processed
-                    through <strong>UPI</strong>.
-                </p>
-
-            </div>
-
-
-        </div>
-
-
-        <div class="policy-note reveal">
-
-            Sale items follow the same return and exchange
-            conditions unless specifically mentioned otherwise.
-            For any questions about an order, contact YUGA before
-            sending the product back.
-
-        </div>
 
     </section>
 
@@ -1173,6 +777,7 @@
 
         <div class="footer-social">
 
+
             <a
                 href="https://www.instagram.com/yugafashionindia/"
                 target="_blank"
@@ -1182,12 +787,14 @@
                 Instagram
             </a>
 
+
             <a
                 href="mailto:yugafashiononline@gmail.com"
                 class="footer-link"
             >
                 Customer Care
             </a>
+
 
             <a
                 href="https://wa.me/917888759939"
@@ -1197,6 +804,7 @@
             >
                 WhatsApp
             </a>
+
 
         </div>
 
@@ -1261,6 +869,7 @@
             </svg>
 
         </a>
+
 
     </div>
 
@@ -1330,12 +939,14 @@
 
             <div class="yuga-quick-buttons">
 
+
                 <button
                     type="button"
                     data-question="Tell me about the Plain collection"
                 >
                     👕 Plain Collection
                 </button>
+
 
                 <button
                     type="button"
@@ -1344,12 +955,14 @@
                     🎨 Printed Collection
                 </button>
 
+
                 <button
                     type="button"
                     data-question="Tell me about the Polo collection"
                 >
                     👔 Polo Collection
                 </button>
+
 
                 <button
                     type="button"
@@ -1358,12 +971,14 @@
                     💰 Prices
                 </button>
 
+
                 <button
                     type="button"
                     data-question="How can I order?"
                 >
                     🛒 How to Order
                 </button>
+
 
             </div>
 
@@ -1380,6 +995,7 @@
                 placeholder="Ask YUGA AI..."
                 autocomplete="off"
             >
+
 
             <button
                 id="yugaChatSend"
@@ -1489,6 +1105,9 @@
 
         /* =====================================================
            YUGA SEA WAVE CURSOR EFFECT
+
+           Creates flowing grey ripples around the
+           mouse instead of a simple grey circle.
         ====================================================== */
 
         const canvas =
@@ -1635,6 +1254,8 @@
 
                 });
 
+
+                /* Keep performance smooth */
 
                 if (ripples.length > 18) {
 
@@ -1847,6 +1468,8 @@
                 );
 
 
+                /* Smooth mouse movement */
+
                 mouseX +=
                     (targetX - mouseX) *
                     0.12;
@@ -1856,7 +1479,9 @@
                     0.12;
 
 
-                /* SOFT GREY GLOW */
+                /* =============================================
+                   SOFT GREY GLOW AROUND CURSOR
+                ============================================== */
 
                 if (mouseMoving) {
 
@@ -1908,7 +1533,9 @@
                 }
 
 
-                /* UPDATE + DRAW RIPPLE WAVES */
+                /* =============================================
+                   UPDATE + DRAW RIPPLE WAVES
+                ============================================== */
 
                 for (
                     let i = ripples.length - 1;
@@ -1975,10 +1602,6 @@
     ========================================================== -->
 
     <script src="script.js"></script>
-
-</body>
-
-</html>
 
 </body>
 
