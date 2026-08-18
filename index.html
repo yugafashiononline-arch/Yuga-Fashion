@@ -13,6 +13,7 @@
 
     <link rel="stylesheet" href="style.css">
 
+
     <!-- =====================================================
          INDEX PAGE ONLY - MOBILE + FLOATING SOCIAL FIXES
     ====================================================== -->
@@ -145,23 +146,33 @@
         ====================================================== */
 
         .floating-social {
+
             position: fixed;
+
             left: 12px;
             bottom: 22px;
+
             display: flex;
             flex-direction: column;
+
             gap: 9px;
+
             z-index: 9998;
+
         }
 
 
         .floating-social-link {
+
             width: 45px;
             height: 45px;
+
             border-radius: 50%;
+
             display: flex;
             align-items: center;
             justify-content: center;
+
             text-decoration: none;
 
             box-shadow:
@@ -172,6 +183,7 @@
                 box-shadow 0.25s ease;
 
             -webkit-tap-highlight-color: transparent;
+
         }
 
 
@@ -185,9 +197,12 @@
 
 
         .whatsapp-float svg {
+
             width: 24px;
             height: 24px;
+
             fill: white;
+
         }
 
 
@@ -196,6 +211,7 @@
         ====================================================== */
 
         .instagram-float {
+
             background:
                 linear-gradient(
                     135deg,
@@ -204,13 +220,17 @@
                     #FD1D1D,
                     #FCAF45
                 );
+
         }
 
 
         .instagram-float svg {
+
             width: 23px;
             height: 23px;
+
             fill: white;
+
         }
 
 
@@ -219,10 +239,12 @@
         ====================================================== */
 
         .floating-social-link:hover {
+
             transform: scale(1.12);
 
             box-shadow:
                 0 8px 24px rgba(0, 0, 0, 0.35);
+
         }
 
 
@@ -233,24 +255,33 @@
         @media (max-width: 550px) {
 
             .floating-social {
+
                 left: 10px;
                 bottom: 18px;
+
                 gap: 8px;
+
             }
 
             .floating-social-link {
+
                 width: 42px;
                 height: 42px;
+
             }
 
             .whatsapp-float svg {
+
                 width: 22px;
                 height: 22px;
+
             }
 
             .instagram-float svg {
+
                 width: 21px;
                 height: 21px;
+
             }
 
         }
@@ -263,23 +294,31 @@
         @media (max-width: 380px) {
 
             .floating-social {
+
                 left: 8px;
                 bottom: 15px;
+
             }
 
             .floating-social-link {
+
                 width: 38px;
                 height: 38px;
+
             }
 
             .whatsapp-float svg {
+
                 width: 20px;
                 height: 20px;
+
             }
 
             .instagram-float svg {
+
                 width: 19px;
                 height: 19px;
+
             }
 
         }
@@ -290,12 +329,18 @@
         ====================================================== */
 
         #yugaWaveCanvas {
+
             position: fixed;
+
             inset: 0;
+
             width: 100%;
             height: 100%;
+
             pointer-events: none;
+
             z-index: 9996;
+
         }
 
 
@@ -715,7 +760,7 @@
                 </div>
 
 
-                <!-- GOOGLE MAP -->
+                <!-- GOOGLE MAP BUTTON -->
 
                 <a
                     href="https://maps.app.goo.gl/DiNDMBHSDeVYcHna7"
@@ -777,6 +822,7 @@
 
         <div class="footer-social">
 
+            <!-- INSTAGRAM -->
 
             <a
                 href="https://www.instagram.com/yugafashionindia/"
@@ -788,6 +834,8 @@
             </a>
 
 
+            <!-- CUSTOMER CARE -->
+
             <a
                 href="mailto:yugafashiononline@gmail.com"
                 class="footer-link"
@@ -795,6 +843,8 @@
                 Customer Care
             </a>
 
+
+            <!-- WHATSAPP -->
 
             <a
                 href="https://wa.me/917888759939"
@@ -805,6 +855,15 @@
                 WhatsApp
             </a>
 
+
+            <!-- POLICIES -->
+
+            <a
+                href="policies.html"
+                class="footer-link"
+            >
+                Policies
+            </a>
 
         </div>
 
@@ -869,7 +928,6 @@
             </svg>
 
         </a>
-
 
     </div>
 
@@ -939,7 +997,6 @@
 
             <div class="yuga-quick-buttons">
 
-
                 <button
                     type="button"
                     data-question="Tell me about the Plain collection"
@@ -978,7 +1035,6 @@
                 >
                     🛒 How to Order
                 </button>
-
 
             </div>
 
@@ -1105,9 +1161,6 @@
 
         /* =====================================================
            YUGA SEA WAVE CURSOR EFFECT
-
-           Creates flowing grey ripples around the
-           mouse instead of a simple grey circle.
         ====================================================== */
 
         const canvas =
@@ -1254,8 +1307,6 @@
 
                 });
 
-
-                /* Keep performance smooth */
 
                 if (ripples.length > 18) {
 
@@ -1479,9 +1530,7 @@
                     0.12;
 
 
-                /* =============================================
-                   SOFT GREY GLOW AROUND CURSOR
-                ============================================== */
+                /* SOFT GREY GLOW */
 
                 if (mouseMoving) {
 
@@ -1533,9 +1582,7 @@
                 }
 
 
-                /* =============================================
-                   UPDATE + DRAW RIPPLE WAVES
-                ============================================== */
+                /* UPDATE + DRAW RIPPLE WAVES */
 
                 for (
                     let i = ripples.length - 1;
