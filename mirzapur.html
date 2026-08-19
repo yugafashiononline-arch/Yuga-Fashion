@@ -24,381 +24,629 @@
         href="style.css"
     >
 
+
+    <!-- =========================================================
+         MIRZAPUR PAGE ONLY
+         ONE PRODUCT + SIX IMAGE GALLERY
+    ========================================================== -->
+
     <style>
 
-        /* =========================================================
-           MIRZAPUR PRODUCT PAGE
-        ========================================================== */
+        /* =====================================================
+           MIRZAPUR PRODUCT LAYOUT
+        ====================================================== */
+
+        .mirzapur-product-section {
+
+            width: 100%;
+
+            max-width: 1400px;
+
+            margin: 0 auto;
+
+            padding: 30px 20px 80px;
+
+        }
+
 
         .mirzapur-product {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 20px;
+
+            display: grid;
+
+            grid-template-columns:
+                minmax(0, 1.15fr)
+                minmax(320px, 0.85fr);
+
+            gap: 60px;
+
+            align-items: start;
+
         }
 
 
-        /* =========================================================
-           GALLERY
-        ========================================================== */
+        /* =====================================================
+           IMAGE GALLERY
+        ====================================================== */
 
         .mirzapur-gallery {
+
             width: 100%;
-            max-width: 650px;
-            margin: 0 auto 30px;
+
+            min-width: 0;
+
         }
 
 
-        .main-product-image {
+        .mirzapur-main-image {
+
             position: relative;
+
             width: 100%;
+
             aspect-ratio: 1 / 1;
+
             overflow: hidden;
-            background: #f5f5f5;
+
+            background: #f4f4f4;
+
             cursor: zoom-in;
-            border-radius: 4px;
+
         }
 
 
-        .main-product-image img {
+        .mirzapur-main-image img {
+
             width: 100%;
+
             height: 100%;
+
             object-fit: contain;
+
             display: block;
-            transition: transform 0.45s ease;
+
+            transition:
+                transform 0.45s ease;
+
         }
 
 
-        /* ZOOM ON HOVER */
+        .mirzapur-main-image:hover img {
 
-        .main-product-image:hover img {
-            transform: scale(1.12);
+            transform: scale(1.04);
+
         }
 
 
-        .zoom-label {
+        /* =====================================================
+           IMAGE ARROWS
+        ====================================================== */
+
+        .mirzapur-gallery-arrow {
+
             position: absolute;
-            right: 15px;
-            bottom: 15px;
-            background: rgba(0,0,0,0.75);
-            color: #fff;
-            padding: 8px 12px;
-            font-size: 11px;
-            letter-spacing: 1px;
-            z-index: 2;
-            pointer-events: none;
-        }
 
+            top: 50%;
 
-        /* =========================================================
-           THUMBNAILS
-        ========================================================== */
+            transform: translateY(-50%);
 
-        .thumbnail-container {
+            width: 44px;
+
+            height: 44px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background: rgba(255,255,255,0.92);
+
+            color: #111;
+
+            font-size: 22px;
+
             display: flex;
-            gap: 10px;
-            margin-top: 12px;
-            overflow-x: auto;
-            padding-bottom: 5px;
-        }
 
+            align-items: center;
 
-        .thumbnail-container::-webkit-scrollbar {
-            height: 4px;
-        }
+            justify-content: center;
 
-
-        .thumbnail {
-            width: 82px;
-            height: 82px;
-            flex: 0 0 82px;
-            object-fit: cover;
-            background: #f5f5f5;
             cursor: pointer;
-            border: 2px solid transparent;
-            transition: all 0.25s ease;
+
+            z-index: 5;
+
+            box-shadow:
+                0 4px 15px rgba(0,0,0,0.16);
+
+            transition:
+                transform 0.2s ease,
+                background 0.2s ease;
+
         }
 
 
-        .thumbnail:hover {
-            transform: translateY(-2px);
+        .mirzapur-gallery-arrow:hover {
+
+            transform:
+                translateY(-50%)
+                scale(1.08);
+
+            background: #fff;
+
         }
 
 
-        .thumbnail.active {
+        .mirzapur-gallery-prev {
+
+            left: 15px;
+
+        }
+
+
+        .mirzapur-gallery-next {
+
+            right: 15px;
+
+        }
+
+
+        /* =====================================================
+           THUMBNAILS
+        ====================================================== */
+
+        .mirzapur-thumbnails {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(6, minmax(0, 1fr));
+
+            gap: 10px;
+
+            margin-top: 12px;
+
+        }
+
+
+        .mirzapur-thumbnail {
+
+            position: relative;
+
+            aspect-ratio: 1 / 1;
+
+            padding: 0;
+
+            border: 1px solid transparent;
+
+            background: #f4f4f4;
+
+            overflow: hidden;
+
+            cursor: pointer;
+
+        }
+
+
+        .mirzapur-thumbnail img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+
+        }
+
+
+        .mirzapur-thumbnail.active {
+
             border: 2px solid #111;
+
         }
 
 
-        /* =========================================================
+        /* =====================================================
            PRODUCT INFORMATION
-        ========================================================== */
+        ====================================================== */
 
         .mirzapur-info {
-            text-align: center;
-            max-width: 650px;
-            margin: 0 auto;
+
+            position: sticky;
+
+            top: 30px;
+
         }
 
 
-        .mirzapur-info h3 {
-            font-size: 25px;
-            margin: 10px 0 5px;
-        }
+        .mirzapur-badge {
 
+            display: inline-block;
 
-        .limited-label {
-            font-size: 11px;
+            padding: 8px 13px;
+
+            background: #111;
+
+            color: #fff;
+
+            font-size: 10px;
+
             font-weight: 700;
+
             letter-spacing: 2px;
-            margin: 0 0 15px;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .mirzapur-info h1 {
+
+            margin: 0 0 12px;
+
+            font-size: clamp(30px, 4vw, 52px);
+
+            line-height: 1.05;
+
+            letter-spacing: 1px;
+
+        }
+
+
+        .mirzapur-subtitle {
+
+            margin: 0 0 22px;
+
+            font-size: 13px;
+
+            letter-spacing: 1px;
+
+            opacity: 0.72;
+
         }
 
 
         .mirzapur-price {
-            font-size: 24px;
-            font-weight: 700;
-            margin: 10px 0;
-        }
 
+            margin: 0 0 28px;
 
-        .mirzapur-details {
-            font-size: 14px;
-            line-height: 1.8;
-        }
-
-
-        /* =========================================================
-           PRE-BOOK SIZE SELECTOR
-        ========================================================== */
-
-        .prebook-box {
-            margin: 25px auto;
-            padding: 20px;
-            max-width: 500px;
-            border: 1px solid #ddd;
-            background: #fafafa;
-        }
-
-
-        .prebook-title {
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-        }
-
-
-        .size-selector {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-        }
-
-
-        .size-option {
-            position: relative;
-        }
-
-
-        .size-option input {
-            display: none;
-        }
-
-
-        .size-option label {
-            display: block;
-            min-width: 65px;
-            padding: 12px 18px;
-            border: 1px solid #bbb;
-            background: #fff;
-            cursor: pointer;
-            font-size: 13px;
-            font-weight: 600;
-            transition: all 0.2s ease;
-        }
-
-
-        .size-option input:checked + label {
-            background: #111;
-            color: #fff;
-            border-color: #111;
-        }
-
-
-        .size-option.disabled label {
-            color: #aaa;
-            background: #eee;
-            text-decoration: line-through;
-            cursor: not-allowed;
-        }
-
-
-        /* =========================================================
-           WHATSAPP PRE-BOOK BUTTON
-        ========================================================== */
-
-        .prebook-whatsapp {
-            width: 100%;
-            max-width: 500px;
-            padding: 16px 25px;
-            border: none;
-            background: #111;
-            color: #fff;
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            cursor: pointer;
-            transition: all 0.25s ease;
-        }
-
-
-        .prebook-whatsapp:hover {
-            background: #333;
-            transform: translateY(-2px);
-        }
-
-
-        .prebook-note {
-            font-size: 11px;
-            color: #666;
-            margin-top: 12px;
-        }
-
-
-        /* =========================================================
-           FULLSCREEN IMAGE VIEWER
-        ========================================================== */
-
-        .image-viewer {
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.94);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 99999;
-            padding: 20px;
-        }
-
-
-        .image-viewer.active {
-            display: flex;
-        }
-
-
-        .viewer-image {
-            max-width: 90vw;
-            max-height: 90vh;
-            object-fit: contain;
-        }
-
-
-        .viewer-close {
-            position: absolute;
-            top: 20px;
-            right: 25px;
-            width: 45px;
-            height: 45px;
-            border: none;
-            background: #fff;
-            color: #111;
-            font-size: 28px;
-            cursor: pointer;
-            border-radius: 50%;
-            z-index: 3;
-        }
-
-
-        .viewer-prev,
-        .viewer-next {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 50px;
-            height: 50px;
-            border: none;
-            background: rgba(255,255,255,0.9);
-            color: #111;
             font-size: 25px;
-            cursor: pointer;
-            border-radius: 50%;
-            z-index: 3;
+
+            font-weight: 700;
+
         }
 
 
-        .viewer-prev {
-            left: 25px;
+        .mirzapur-detail {
+
+            margin: 12px 0;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+
         }
 
 
-        .viewer-next {
-            right: 25px;
+        .mirzapur-detail strong {
+
+            font-weight: 700;
+
         }
 
 
-        .viewer-counter {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #fff;
-            font-size: 12px;
+        /* =====================================================
+           SIZE SECTION
+        ====================================================== */
+
+        .mirzapur-size-section {
+
+            margin-top: 30px;
+
+            padding-top: 25px;
+
+            border-top: 1px solid #ddd;
+
+        }
+
+
+        .mirzapur-size-title {
+
+            margin: 0 0 13px;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
             letter-spacing: 2px;
+
         }
 
 
-        /* =========================================================
-           MOBILE
-        ========================================================== */
+        .mirzapur-sizes {
 
-        @media (max-width: 600px) {
+            display: flex;
+
+            gap: 10px;
+
+        }
+
+
+        .mirzapur-size {
+
+            min-width: 62px;
+
+            padding: 13px 17px;
+
+            border: 1px solid #111;
+
+            background: #fff;
+
+            color: #111;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            text-align: center;
+
+        }
+
+
+        /* =====================================================
+           PRE-BOOK BUTTON
+        ====================================================== */
+
+        .mirzapur-prebook {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            width: 100%;
+
+            margin-top: 30px;
+
+            padding: 17px 20px;
+
+            background: #111;
+
+            color: #fff;
+
+            text-decoration: none;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            letter-spacing: 2px;
+
+            transition:
+                transform 0.25s ease,
+                background 0.25s ease;
+
+        }
+
+
+        .mirzapur-prebook:hover {
+
+            transform: translateY(-2px);
+
+            background: #222;
+
+        }
+
+
+        /* =====================================================
+           AVAILABILITY
+        ====================================================== */
+
+        .mirzapur-availability {
+
+            margin-top: 20px;
+
+            padding: 15px;
+
+            background: #f5f5f5;
+
+            font-size: 12px;
+
+            line-height: 1.6;
+
+        }
+
+
+        .mirzapur-availability strong {
+
+            display: block;
+
+            margin-bottom: 4px;
+
+            font-size: 10px;
+
+            letter-spacing: 2px;
+
+        }
+
+
+        /* =====================================================
+           MOBILE SWIPE GALLERY
+        ====================================================== */
+
+        @media (max-width: 850px) {
 
             .mirzapur-product {
-                padding: 15px;
+
+                grid-template-columns: 1fr;
+
+                gap: 35px;
+
             }
 
 
-            .main-product-image {
+            .mirzapur-info {
+
+                position: static;
+
+            }
+
+
+            .mirzapur-product-section {
+
+                padding:
+                    25px 15px 60px;
+
+            }
+
+        }
+
+
+        @media (max-width: 550px) {
+
+            .mirzapur-main-image {
+
                 aspect-ratio: 1 / 1;
+
             }
 
 
-            .thumbnail {
-                width: 65px;
-                height: 65px;
-                flex-basis: 65px;
+            .mirzapur-thumbnails {
+
+                display: flex;
+
+                overflow-x: auto;
+
+                gap: 8px;
+
+                padding-bottom: 5px;
+
+                scroll-snap-type: x mandatory;
+
             }
 
 
-            .mirzapur-info h3 {
-                font-size: 22px;
+            .mirzapur-thumbnail {
+
+                flex:
+                    0 0 70px;
+
+                scroll-snap-align: start;
+
             }
 
 
-            .viewer-prev,
-            .viewer-next {
-                width: 40px;
-                height: 40px;
-                font-size: 20px;
+            .mirzapur-gallery-arrow {
+
+                width: 38px;
+
+                height: 38px;
+
+                font-size: 19px;
+
             }
 
 
-            .viewer-prev {
+            .mirzapur-gallery-prev {
+
                 left: 10px;
+
             }
 
 
-            .viewer-next {
+            .mirzapur-gallery-next {
+
                 right: 10px;
+
             }
 
 
-            .viewer-close {
-                top: 10px;
-                right: 10px;
+            .mirzapur-info h1 {
+
+                font-size: 32px;
+
             }
+
+
+            .mirzapur-price {
+
+                font-size: 23px;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           IMAGE FULLSCREEN VIEWER
+        ====================================================== */
+
+        .mirzapur-lightbox {
+
+            position: fixed;
+
+            inset: 0;
+
+            background: rgba(0,0,0,0.94);
+
+            display: none;
+
+            align-items: center;
+
+            justify-content: center;
+
+            z-index: 10000;
+
+            padding: 25px;
+
+        }
+
+
+        .mirzapur-lightbox.active {
+
+            display: flex;
+
+        }
+
+
+        .mirzapur-lightbox img {
+
+            max-width: 95vw;
+
+            max-height: 90vh;
+
+            width: auto;
+
+            height: auto;
+
+            object-fit: contain;
+
+        }
+
+
+        .mirzapur-lightbox-close {
+
+            position: absolute;
+
+            top: 20px;
+
+            right: 25px;
+
+            width: 45px;
+
+            height: 45px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background: #fff;
+
+            color: #111;
+
+            font-size: 28px;
+
+            cursor: pointer;
 
         }
 
@@ -443,39 +691,11 @@
 
 
     <!-- =========================================================
-         MIRZAPUR COLLECTION
+         MIRZAPUR PRODUCT
     ========================================================== -->
 
-    <section class="collection">
+    <section class="mirzapur-product-section">
 
-        <h2>
-            MIRZAPUR — LIMITED DROP
-        </h2>
-
-
-        <!-- PRE-BOOK NOTICE -->
-
-        <div
-            style="
-                text-align:center;
-                margin:0 auto 35px;
-                padding:15px 20px;
-                max-width:600px;
-                background:#111;
-                color:#fff;
-                font-size:12px;
-                font-weight:600;
-                letter-spacing:2px;
-            "
-        >
-            🔥 PRE-BOOK NOW — LIMITED EDITION
-        </div>
-
-
-
-        <!-- =====================================================
-             PRODUCT
-        ====================================================== -->
 
         <div class="mirzapur-product">
 
@@ -487,22 +707,36 @@
             <div class="mirzapur-gallery">
 
 
-                <!-- MAIN IMAGE -->
-
                 <div
-                    class="main-product-image"
-                    id="mainProductImage"
+                    class="mirzapur-main-image"
+                    id="mirzapurMainImage"
                 >
 
                     <img
-                        id="mainGalleryImage"
+                        id="mirzapurMainImageElement"
                         src="mirz 1.png"
-                        alt="YUGA Premium Mirzapur Tee"
+                        alt="Premium Mirzapur Tee Limited Edition"
                     >
 
-                    <span class="zoom-label">
-                        🔍 CLICK TO ZOOM
-                    </span>
+
+                    <button
+                        type="button"
+                        class="mirzapur-gallery-arrow mirzapur-gallery-prev"
+                        id="mirzapurPrev"
+                        aria-label="Previous image"
+                    >
+                        ←
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="mirzapur-gallery-arrow mirzapur-gallery-next"
+                        id="mirzapurNext"
+                        aria-label="Next image"
+                    >
+                        →
+                    </button>
 
                 </div>
 
@@ -512,55 +746,92 @@
                      THUMBNAILS
                 ================================================== -->
 
-                <div class="thumbnail-container">
+                <div class="mirzapur-thumbnails">
 
 
-                    <img
-                        class="thumbnail active"
-                        src="mirz 1.png"
+                    <button
+                        type="button"
+                        class="mirzapur-thumbnail active"
                         data-image="mirz 1.png"
-                        alt="Mirzapur T-shirt image 1"
                     >
 
+                        <img
+                            src="mirz 1.png"
+                            alt="Mirzapur Tee image 1"
+                        >
 
-                    <img
-                        class="thumbnail"
-                        src="mirz 2.png"
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="mirzapur-thumbnail"
                         data-image="mirz 2.png"
-                        alt="Mirzapur T-shirt image 2"
                     >
 
+                        <img
+                            src="mirz 2.png"
+                            alt="Mirzapur Tee image 2"
+                        >
 
-                    <img
-                        class="thumbnail"
-                        src="mirz 3.png"
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="mirzapur-thumbnail"
                         data-image="mirz 3.png"
-                        alt="Mirzapur T-shirt image 3"
                     >
 
+                        <img
+                            src="mirz 3.png"
+                            alt="Mirzapur Tee image 3"
+                        >
 
-                    <img
-                        class="thumbnail"
-                        src="mirz 4.png"
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="mirzapur-thumbnail"
                         data-image="mirz 4.png"
-                        alt="Mirzapur T-shirt image 4"
                     >
 
+                        <img
+                            src="mirz 4.png"
+                            alt="Mirzapur Tee image 4"
+                        >
 
-                    <img
-                        class="thumbnail"
-                        src="mirz 5.png"
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="mirzapur-thumbnail"
                         data-image="mirz 5.png"
-                        alt="Mirzapur T-shirt image 5"
                     >
 
+                        <img
+                            src="mirz 5.png"
+                            alt="Mirzapur Tee image 5"
+                        >
 
-                    <img
-                        class="thumbnail"
-                        src="mirz 6.png"
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="mirzapur-thumbnail"
                         data-image="mirz 6.png"
-                        alt="Mirzapur T-shirt image 6"
                     >
+
+                        <img
+                            src="mirz 6.png"
+                            alt="Mirzapur Tee image 6"
+                        >
+
+                    </button>
+
 
                 </div>
 
@@ -575,170 +846,116 @@
             <div class="mirzapur-info">
 
 
-                <h3>
+                <span class="mirzapur-badge">
+                    🔥 PRE-BOOK NOW
+                </span>
+
+
+                <h1>
                     Premium Mirzapur Tee
-                </h3>
+                    <br>
+                    Limited Edition
+                </h1>
 
 
-                <p class="limited-label">
-                    LIMITED EDITION
+                <p class="mirzapur-subtitle">
+                    YUGA × MIRZAPUR
                 </p>
 
+
+                <!-- PRICE -->
 
                 <p class="mirzapur-price">
                     ₹399
                 </p>
 
 
-                <div class="mirzapur-details">
+                <!-- COLOUR -->
 
-                    <p>
-                        <strong>Colour:</strong> Black
+                <p class="mirzapur-detail">
+
+                    <strong>
+                        Colour:
+                    </strong>
+
+                    Black
+
+                </p>
+
+
+                <!-- PRODUCT -->
+
+                <p class="mirzapur-detail">
+
+                    <strong>
+                        Product:
+                    </strong>
+
+                    Premium Limited Edition T-Shirt
+
+                </p>
+
+
+                <!-- SIZES -->
+
+                <div class="mirzapur-size-section">
+
+
+                    <p class="mirzapur-size-title">
+                        AVAILABLE SIZES
                     </p>
 
-                    <p>
-                        <strong>Pre-Book Sizes:</strong> L • XL
-                    </p>
+
+                    <div class="mirzapur-sizes">
+
+
+                        <span class="mirzapur-size">
+                            L
+                        </span>
+
+
+                        <span class="mirzapur-size">
+                            XL
+                        </span>
+
+
+                    </div>
 
                 </div>
 
 
 
-                <!-- =================================================
-                     PRE-BOOK BOX
-                ================================================== -->
+                <!-- PRE-BOOK -->
 
-                <div class="prebook-box">
-
-
-                    <div class="prebook-title">
-                        SELECT YOUR SIZE
-                    </div>
-
-
-
-                    <div class="size-selector">
-
-
-                        <!-- S -->
-
-                        <div class="size-option disabled">
-
-                            <input
-                                type="radio"
-                                id="sizeS"
-                                name="mirzapurSize"
-                                value="S"
-                                disabled
-                            >
-
-                            <label for="sizeS">
-                                S
-                            </label>
-
-                        </div>
-
-
-
-                        <!-- M -->
-
-                        <div class="size-option disabled">
-
-                            <input
-                                type="radio"
-                                id="sizeM"
-                                name="mirzapurSize"
-                                value="M"
-                                disabled
-                            >
-
-                            <label for="sizeM">
-                                M
-                            </label>
-
-                        </div>
-
-
-
-                        <!-- L -->
-
-                        <div class="size-option">
-
-                            <input
-                                type="radio"
-                                id="sizeL"
-                                name="mirzapurSize"
-                                value="L"
-                                checked
-                            >
-
-                            <label for="sizeL">
-                                L
-                            </label>
-
-                        </div>
-
-
-
-                        <!-- XL -->
-
-                        <div class="size-option">
-
-                            <input
-                                type="radio"
-                                id="sizeXL"
-                                name="mirzapurSize"
-                                value="XL"
-                            >
-
-                            <label for="sizeXL">
-                                XL
-                            </label>
-
-                        </div>
-
-
-                    </div>
-
-
-
-                    <!-- =================================================
-                         WHATSAPP BUTTON
-                    ================================================== -->
-
-                    <button
-                        type="button"
-                        class="prebook-whatsapp"
-                        id="prebookWhatsApp"
-                    >
-                        🔥 PRE-BOOK NOW ON WHATSAPP
-                    </button>
-
-
-                    <p class="prebook-note">
-                        You'll be redirected to WhatsApp to confirm your pre-booking.
-                    </p>
-
-
-                </div>
-
-
-
-                <!-- PRE-BOOK STATUS -->
-
-                <div
-                    style="
-                        font-weight:600;
-                        font-size:12px;
-                        letter-spacing:1px;
-                        margin-top:15px;
-                    "
+                <a
+                    href="https://wa.me/917888759939?text=Hi%20YUGA%2C%20I%20want%20to%20pre-book%20the%20Premium%20Mirzapur%20Tee%20Limited%20Edition.%20Size%3A%20"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="mirzapur-prebook"
                 >
-                    ✓ PRE-BOOK AVAILABLE
+                    PRE-BOOK NOW →
+                </a>
+
+
+
+                <!-- AVAILABILITY -->
+
+                <div class="mirzapur-availability">
+
+                    <strong>
+                        AVAILABILITY
+                    </strong>
+
+                    Currently available for
+                    <b>PRE-BOOK</b>.
+
+                    Limited edition drop.
+
                 </div>
 
 
             </div>
+
 
         </div>
 
@@ -747,182 +964,29 @@
 
 
     <!-- =========================================================
-         FULLSCREEN IMAGE VIEWER
+         LIGHTBOX
     ========================================================== -->
 
     <div
-        class="image-viewer"
-        id="imageViewer"
+        class="mirzapur-lightbox"
+        id="mirzapurLightbox"
     >
 
-
         <button
-            class="viewer-close"
-            id="viewerClose"
             type="button"
-            aria-label="Close image viewer"
+            class="mirzapur-lightbox-close"
+            id="mirzapurLightboxClose"
+            aria-label="Close image"
         >
             ×
         </button>
 
 
-
-        <button
-            class="viewer-prev"
-            id="viewerPrev"
-            type="button"
-            aria-label="Previous image"
-        >
-            ‹
-        </button>
-
-
-
         <img
-            class="viewer-image"
-            id="viewerImage"
-            src="mirz 1.png"
-            alt="Mirzapur T-shirt enlarged"
+            id="mirzapurLightboxImage"
+            src=""
+            alt="Mirzapur Tee"
         >
-
-
-
-        <button
-            class="viewer-next"
-            id="viewerNext"
-            type="button"
-            aria-label="Next image"
-        >
-            ›
-        </button>
-
-
-
-        <div
-            class="viewer-counter"
-            id="viewerCounter"
-        >
-            1 / 6
-        </div>
-
-
-    </div>
-
-
-
-    <!-- =========================================================
-         PRODUCT POPUP / MODAL
-    ========================================================== -->
-
-    <div
-        class="product-modal"
-        id="productModal"
-    >
-
-        <div class="modal-content">
-
-
-            <button
-                class="modal-close"
-                id="modalClose"
-                type="button"
-            >
-                ×
-            </button>
-
-
-
-            <div class="modal-image">
-
-                <img
-                    id="modalImage"
-                    src="mirz 1.png"
-                    alt="YUGA Premium Mirzapur Tee"
-                >
-
-            </div>
-
-
-
-            <div class="modal-info">
-
-                <p class="modal-brand">
-                    YUGA
-                </p>
-
-
-
-                <h2 id="modalName">
-                    Premium Mirzapur Tee
-                </h2>
-
-
-
-                <p
-                    class="modal-price"
-                    id="modalPrice"
-                >
-                    ₹399
-                </p>
-
-
-
-                <p class="modal-colour">
-
-                    Colour:
-
-                    <span id="modalColour">
-                        Black
-                    </span>
-
-                </p>
-
-
-
-                <div class="modal-stock">
-
-                    <p class="modal-stock-title">
-                        PRE-BOOK SIZES
-                    </p>
-
-
-
-                    <div
-                        id="modalSizes"
-                        class="modal-sizes"
-                    >
-
-                        <span class="out-stock">
-                            S ✕
-                        </span>
-
-                        <span class="out-stock">
-                            M ✕
-                        </span>
-
-                        <span class="in-stock">
-                            L ✓
-                        </span>
-
-                        <span class="in-stock">
-                            XL ✓
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-
-                <div class="modal-store">
-
-                    🔥 PRE-BOOK AVAILABLE
-
-                </div>
-
-            </div>
-
-        </div>
 
     </div>
 
@@ -944,7 +1008,6 @@
         </p>
 
 
-
         <div class="footer-social">
 
 
@@ -958,14 +1021,12 @@
             </a>
 
 
-
             <a
                 href="mailto:yugafashiononline@gmail.com"
                 class="footer-link"
             >
                 Customer Care
             </a>
-
 
 
             <a
@@ -978,7 +1039,6 @@
             </a>
 
 
-
             <a
                 href="policies.html"
                 class="footer-link"
@@ -988,7 +1048,6 @@
 
 
         </div>
-
 
 
         <p>
@@ -1013,11 +1072,8 @@
     </button>
 
 
-
     <div id="yugaChatbot">
 
-
-        <!-- CHAT HEADER -->
 
         <div class="yuga-chat-header">
 
@@ -1034,7 +1090,6 @@
             </div>
 
 
-
             <button
                 id="yugaChatClose"
                 aria-label="Close chatbot"
@@ -1047,12 +1102,8 @@
 
 
 
-        <!-- CHAT MESSAGES -->
-
         <div id="yugaChatMessages">
 
-
-            <!-- WELCOME MESSAGE -->
 
             <div class="yuga-message bot">
 
@@ -1067,45 +1118,47 @@
 
 
 
-            <!-- QUICK BUTTONS -->
-
             <div class="yuga-quick-buttons">
 
 
                 <button
                     type="button"
-                    data-question="Tell me about the Mirzapur Limited Edition"
+                    data-question="Tell me about the Mirzapur Limited Edition and how to pre-book it"
                 >
                     🔥 Mirzapur Drop
                 </button>
 
 
-
                 <button
                     type="button"
-                    data-question="What are the Mirzapur T-shirt sizes?"
+                    data-question="Tell me about the Plain collection"
                 >
-                    👕 Available Sizes
+                    👕 Plain Collection
                 </button>
-
-
-
-                <button
-                    type="button"
-                    data-question="What is the price of the Mirzapur T-shirt?"
-                >
-                    💰 Price
-                </button>
-
 
 
                 <button
                     type="button"
-                    data-question="How can I pre-book the Mirzapur T-shirt?"
+                    data-question="Tell me about the Printed collection"
                 >
-                    🔒 Pre-Book
+                    🎨 Printed Collection
                 </button>
 
+
+                <button
+                    type="button"
+                    data-question="Tell me about the Polo collection"
+                >
+                    👔 Polo Collection
+                </button>
+
+
+                <button
+                    type="button"
+                    data-question="What are your prices?"
+                >
+                    💰 Prices
+                </button>
 
 
                 <button
@@ -1122,8 +1175,6 @@
 
 
 
-        <!-- CHAT INPUT -->
-
         <div class="yuga-chat-input">
 
             <input
@@ -1132,7 +1183,6 @@
                 placeholder="Ask YUGA AI..."
                 autocomplete="off"
             >
-
 
 
             <button
@@ -1149,332 +1199,375 @@
 
 
     <!-- =========================================================
-         JAVASCRIPT
+         MIRZAPUR GALLERY JAVASCRIPT
     ========================================================== -->
 
     <script>
 
-        /* =========================================================
-           MIRZAPUR IMAGE GALLERY
-        ========================================================== */
+        /* =====================================================
+           IMAGE DATA
+        ====================================================== */
 
-        const galleryImages = [
+        const mirzapurImages = [
+
             "mirz 1.png",
             "mirz 2.png",
             "mirz 3.png",
             "mirz 4.png",
             "mirz 5.png",
             "mirz 6.png"
+
         ];
 
 
-        let currentImageIndex = 0;
+        let mirzapurCurrentIndex = 0;
 
 
-        const mainGalleryImage =
-            document.getElementById("mainGalleryImage");
+
+        /* =====================================================
+           ELEMENTS
+        ====================================================== */
+
+        const mainImage =
+            document.getElementById(
+                "mirzapurMainImageElement"
+            );
+
+
+        const previousButton =
+            document.getElementById(
+                "mirzapurPrev"
+            );
+
+
+        const nextButton =
+            document.getElementById(
+                "mirzapurNext"
+            );
+
 
         const thumbnails =
-            document.querySelectorAll(".thumbnail");
-
-        const imageViewer =
-            document.getElementById("imageViewer");
-
-        const viewerImage =
-            document.getElementById("viewerImage");
-
-        const viewerCounter =
-            document.getElementById("viewerCounter");
+            document.querySelectorAll(
+                ".mirzapur-thumbnail"
+            );
 
 
-
-        /* =========================================================
-           CHANGE MAIN IMAGE
-        ========================================================== */
-
-        function changeGalleryImage(index) {
-
-            currentImageIndex = index;
-
-            mainGalleryImage.src =
-                galleryImages[index];
-
-            viewerImage.src =
-                galleryImages[index];
-
-            viewerCounter.textContent =
-                (index + 1) + " / " + galleryImages.length;
+        const lightbox =
+            document.getElementById(
+                "mirzapurLightbox"
+            );
 
 
-            thumbnails.forEach(function(thumbnail, i) {
+        const lightboxImage =
+            document.getElementById(
+                "mirzapurLightboxImage"
+            );
 
-                thumbnail.classList.toggle(
-                    "active",
-                    i === index
-                );
 
-            });
-
-        }
+        const lightboxClose =
+            document.getElementById(
+                "mirzapurLightboxClose"
+            );
 
 
 
-        /* =========================================================
-           THUMBNAIL CLICK
-        ========================================================== */
+        /* =====================================================
+           SHOW IMAGE
+        ====================================================== */
 
-        thumbnails.forEach(function(thumbnail, index) {
+        function showMirzapurImage(index) {
 
-            thumbnail.addEventListener("click", function() {
+            if (index < 0) {
 
-                changeGalleryImage(index);
-
-            });
-
-        });
-
-
-
-        /* =========================================================
-           OPEN FULLSCREEN VIEWER
-        ========================================================== */
-
-        document
-            .getElementById("mainProductImage")
-            .addEventListener("click", function() {
-
-                imageViewer.classList.add("active");
-
-                document.body.style.overflow = "hidden";
-
-                viewerImage.src =
-                    galleryImages[currentImageIndex];
-
-            });
-
-
-
-        /* =========================================================
-           CLOSE VIEWER
-        ========================================================== */
-
-        document
-            .getElementById("viewerClose")
-            .addEventListener("click", closeViewer);
-
-
-        imageViewer.addEventListener("click", function(event) {
-
-            if (event.target === imageViewer) {
-
-                closeViewer();
+                index =
+                    mirzapurImages.length - 1;
 
             }
 
-        });
-
-
-        function closeViewer() {
-
-            imageViewer.classList.remove("active");
-
-            document.body.style.overflow = "";
-
-        }
-
-
-
-        /* =========================================================
-           NEXT IMAGE
-        ========================================================== */
-
-        document
-            .getElementById("viewerNext")
-            .addEventListener("click", function(event) {
-
-                event.stopPropagation();
-
-                currentImageIndex++;
-
-                if (
-                    currentImageIndex >=
-                    galleryImages.length
-                ) {
-
-                    currentImageIndex = 0;
-
-                }
-
-                changeGalleryImage(currentImageIndex);
-
-            });
-
-
-
-        /* =========================================================
-           PREVIOUS IMAGE
-        ========================================================== */
-
-        document
-            .getElementById("viewerPrev")
-            .addEventListener("click", function(event) {
-
-                event.stopPropagation();
-
-                currentImageIndex--;
-
-                if (currentImageIndex < 0) {
-
-                    currentImageIndex =
-                        galleryImages.length - 1;
-
-                }
-
-                changeGalleryImage(currentImageIndex);
-
-            });
-
-
-
-        /* =========================================================
-           KEYBOARD CONTROLS
-        ========================================================== */
-
-        document.addEventListener("keydown", function(event) {
 
             if (
-                !imageViewer.classList.contains("active")
+                index >=
+                mirzapurImages.length
             ) {
 
-                return;
+                index = 0;
 
             }
 
 
-            if (event.key === "Escape") {
-
-                closeViewer();
-
-            }
+            mirzapurCurrentIndex =
+                index;
 
 
-            if (event.key === "ArrowRight") {
-
-                document
-                    .getElementById("viewerNext")
-                    .click();
-
-            }
+            mainImage.src =
+                mirzapurImages[index];
 
 
-            if (event.key === "ArrowLeft") {
+            thumbnails.forEach(
+                function(thumbnail, thumbnailIndex) {
 
-                document
-                    .getElementById("viewerPrev")
-                    .click();
-
-            }
-
-        });
-
-
-
-        /* =========================================================
-           PRE-BOOK → WHATSAPP
-        ========================================================== */
-
-        document
-            .getElementById("prebookWhatsApp")
-            .addEventListener("click", function() {
-
-
-                const selectedSize =
-                    document.querySelector(
-                        'input[name="mirzapurSize"]:checked'
+                    thumbnail.classList.toggle(
+                        "active",
+                        thumbnailIndex === index
                     );
 
+                }
+            );
 
-                if (!selectedSize) {
+        }
 
-                    alert(
-                        "Please select your T-shirt size first."
-                    );
+
+
+        /* =====================================================
+           PREVIOUS
+        ====================================================== */
+
+        previousButton.addEventListener(
+            "click",
+            function(event) {
+
+                event.preventDefault();
+
+                showMirzapurImage(
+                    mirzapurCurrentIndex - 1
+                );
+
+            }
+        );
+
+
+
+        /* =====================================================
+           NEXT
+        ====================================================== */
+
+        nextButton.addEventListener(
+            "click",
+            function(event) {
+
+                event.preventDefault();
+
+                showMirzapurImage(
+                    mirzapurCurrentIndex + 1
+                );
+
+            }
+        );
+
+
+
+        /* =====================================================
+           THUMBNAIL CLICK
+        ====================================================== */
+
+        thumbnails.forEach(
+            function(thumbnail, index) {
+
+                thumbnail.addEventListener(
+                    "click",
+                    function() {
+
+                        showMirzapurImage(index);
+
+                    }
+                );
+
+            }
+        );
+
+
+
+        /* =====================================================
+           TOUCH SWIPE
+        ====================================================== */
+
+        let touchStartX = 0;
+
+        let touchEndX = 0;
+
+
+        const gallery =
+            document.getElementById(
+                "mirzapurMainImage"
+            );
+
+
+        gallery.addEventListener(
+            "touchstart",
+            function(event) {
+
+                touchStartX =
+                    event.changedTouches[0].screenX;
+
+            },
+            {
+                passive: true
+            }
+        );
+
+
+        gallery.addEventListener(
+            "touchend",
+            function(event) {
+
+                touchEndX =
+                    event.changedTouches[0].screenX;
+
+
+                const difference =
+                    touchStartX - touchEndX;
+
+
+                if (
+                    Math.abs(difference) < 45
+                ) {
 
                     return;
 
                 }
 
 
-                const size =
-                    selectedSize.value;
+                if (difference > 0) {
+
+                    showMirzapurImage(
+                        mirzapurCurrentIndex + 1
+                    );
+
+                } else {
+
+                    showMirzapurImage(
+                        mirzapurCurrentIndex - 1
+                    );
+
+                }
+
+            },
+            {
+                passive: true
+            }
+        );
 
 
-                const product =
-                    "Premium Mirzapur Tee — Limited Edition";
+
+        /* =====================================================
+           LIGHTBOX
+        ====================================================== */
+
+        gallery.addEventListener(
+            "click",
+            function(event) {
+
+                if (
+                    event.target === previousButton ||
+                    event.target === nextButton
+                ) {
+
+                    return;
+
+                }
 
 
-                const price =
-                    "₹399";
+                lightboxImage.src =
+                    mirzapurImages[
+                        mirzapurCurrentIndex
+                    ];
 
 
-                const colour =
-                    "Black";
-
-
-                const message =
-                    "🔥 YUGA MIRZAPUR PRE-BOOKING" +
-                    "\n\n" +
-
-                    "Product: " +
-                    product +
-
-                    "\nPrice: " +
-                    price +
-
-                    "\nColour: " +
-                    colour +
-
-                    "\nSize: " +
-                    size +
-
-                    "\n\n" +
-
-                    "I want to pre-book this T-shirt.";
-
-
-                const whatsappURL =
-                    "https://wa.me/917888759939?text=" +
-                    encodeURIComponent(message);
-
-
-                window.open(
-                    whatsappURL,
-                    "_blank"
+                lightbox.classList.add(
+                    "active"
                 );
 
-            });
+
+                document.body.style.overflow =
+                    "hidden";
+
+            }
+        );
 
 
 
-        /* =========================================================
-           PRELOAD IMAGES
-        ========================================================== */
+        /* =====================================================
+           CLOSE LIGHTBOX
+        ====================================================== */
 
-        galleryImages.forEach(function(image) {
+        function closeLightbox() {
 
-            const img =
-                new Image();
+            lightbox.classList.remove(
+                "active"
+            );
 
-            img.src = image;
 
-        });
+            document.body.style.overflow =
+                "";
+
+        }
+
+
+        lightboxClose.addEventListener(
+            "click",
+            closeLightbox
+        );
+
+
+        lightbox.addEventListener(
+            "click",
+            function(event) {
+
+                if (
+                    event.target === lightbox
+                ) {
+
+                    closeLightbox();
+
+                }
+
+            }
+        );
+
+
+        document.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (
+                    event.key === "Escape"
+                ) {
+
+                    closeLightbox();
+
+                }
+
+
+                if (
+                    event.key === "ArrowRight"
+                ) {
+
+                    showMirzapurImage(
+                        mirzapurCurrentIndex + 1
+                    );
+
+                }
+
+
+                if (
+                    event.key === "ArrowLeft"
+                ) {
+
+                    showMirzapurImage(
+                        mirzapurCurrentIndex - 1
+                    );
+
+                }
+
+            }
+        );
 
     </script>
 
 
 
     <!-- =========================================================
-         YOUR EXISTING YUGA SCRIPT
+         LOAD YUGA JAVASCRIPT
     ========================================================== -->
 
     <script src="script.js"></script>
