@@ -5,13 +5,23 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>YUGA Fashion | Wear Your Era</title>
 
-    <link rel="icon" type="image/png" href="Y Falvion.png">
+    <link
+        rel="icon"
+        type="image/png"
+        href="Y Falvion.png"
+    >
 
-    <link rel="stylesheet" href="style.css">
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 
 
     <!-- =====================================================
@@ -19,6 +29,7 @@
     ====================================================== -->
 
     <style>
+
 
         /* =====================================================
            ANNOUNCEMENT BAR
@@ -325,6 +336,161 @@
 
 
         /* =====================================================
+           MIRZAPUR LIMITED DROP
+        ====================================================== */
+
+        .mirzapur-drop-panel {
+
+            position: relative;
+
+            overflow: hidden;
+
+            display: block;
+
+            min-height: 500px;
+
+            text-decoration: none;
+
+            color: #fff;
+
+            background: #111;
+
+        }
+
+
+        .mirzapur-drop-panel .collection-image {
+
+            width: 100%;
+
+            height: 100%;
+
+            min-height: 500px;
+
+            object-fit: cover;
+
+            transition:
+                transform 0.7s ease;
+
+        }
+
+
+        .mirzapur-drop-panel:hover
+        .collection-image {
+
+            transform:
+                scale(1.05);
+
+        }
+
+
+        .mirzapur-drop-panel::after {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    to top,
+                    rgba(0,0,0,0.9),
+                    rgba(0,0,0,0.3),
+                    rgba(0,0,0,0.05)
+                );
+
+            pointer-events: none;
+
+        }
+
+
+        .mirzapur-drop-panel
+        .collection-overlay {
+
+            position: absolute;
+
+            z-index: 2;
+
+        }
+
+
+        .mirzapur-badge {
+
+            display: inline-block;
+
+            margin-bottom: 12px;
+
+            padding: 7px 12px;
+
+            background: #fff;
+
+            color: #111;
+
+            font-size: 9px;
+
+            font-weight: 700;
+
+            letter-spacing: 2px;
+
+        }
+
+
+        .mirzapur-drop-panel h3 {
+
+            font-size: 42px;
+
+            letter-spacing: 4px;
+
+        }
+
+
+        .mirzapur-drop-panel p {
+
+            font-size: 13px;
+
+            letter-spacing: 1px;
+
+        }
+
+
+        .mirzapur-price {
+
+            margin-top: 10px;
+
+            font-size: 17px !important;
+
+            font-weight: 700;
+
+        }
+
+
+        @media (max-width: 800px) {
+
+            .mirzapur-drop-panel {
+
+                min-height: 430px;
+
+            }
+
+
+            .mirzapur-drop-panel
+            .collection-image {
+
+                min-height: 430px;
+
+            }
+
+
+            .mirzapur-drop-panel h3 {
+
+                font-size: 30px;
+
+            }
+
+        }
+
+
+        /* =====================================================
            YUGA SEA WAVE CURSOR
         ====================================================== */
 
@@ -371,6 +537,7 @@
     <canvas id="yugaWaveCanvas"></canvas>
 
 
+
     <!-- =========================================================
          MOVING ANNOUNCEMENT BAR
     ========================================================== -->
@@ -379,18 +546,22 @@
 
         <div class="announcement-track">
 
+            <span>✦ MIRZAPUR COLLECTION LIVE</span>
             <span>✦ NEW DROP LIVE</span>
             <span>✦ WEAR YOUR ERA</span>
             <span>✦ SHOP YUGA</span>
 
+            <span>✦ MIRZAPUR COLLECTION LIVE</span>
             <span>✦ NEW DROP LIVE</span>
             <span>✦ WEAR YOUR ERA</span>
             <span>✦ SHOP YUGA</span>
 
+            <span>✦ MIRZAPUR COLLECTION LIVE</span>
             <span>✦ NEW DROP LIVE</span>
             <span>✦ WEAR YOUR ERA</span>
             <span>✦ SHOP YUGA</span>
 
+            <span>✦ MIRZAPUR COLLECTION LIVE</span>
             <span>✦ NEW DROP LIVE</span>
             <span>✦ WEAR YOUR ERA</span>
             <span>✦ SHOP YUGA</span>
@@ -398,6 +569,7 @@
         </div>
 
     </div>
+
 
 
     <!-- =========================================================
@@ -418,6 +590,7 @@
     </header>
 
 
+
     <!-- =========================================================
          PREMIUM HERO
     ========================================================== -->
@@ -430,18 +603,22 @@
                 YUGA FASHION
             </p>
 
+
             <h1>
                 YUGA
             </h1>
+
 
             <p class="hero-tagline">
                 WEAR YOUR ERA.
             </p>
 
+
             <p class="hero-description">
                 Modern essentials and expressive pieces
                 made for the generation creating its own style.
             </p>
+
 
             <a
                 href="#collections"
@@ -460,6 +637,7 @@
     </section>
 
 
+
     <!-- =========================================================
          BRAND STATEMENT
     ========================================================== -->
@@ -470,18 +648,29 @@
             THE YUGA MINDSET
         </p>
 
+
         <h2>
+
             Not just what you wear.
+
             <br>
-            <span>It's the era you represent.</span>
+
+            <span>
+                It's the era you represent.
+            </span>
+
         </h2>
 
+
         <p>
+
             YUGA is built for people who create their own identity,
             express their own style and wear every era their way.
+
         </p>
 
     </section>
+
 
 
     <!-- =========================================================
@@ -493,21 +682,25 @@
         id="collections"
     >
 
+
         <div class="collection-heading reveal">
 
             <p class="eyebrow">
                 DISCOVER YUGA
             </p>
 
+
             <h2>
                 OUR COLLECTIONS
             </h2>
+
 
             <p>
                 Find your style. Wear your era.
             </p>
 
         </div>
+
 
 
         <div class="collection-showcase">
@@ -528,6 +721,7 @@
                     class="collection-image"
                 >
 
+
                 <div class="collection-overlay">
 
                     <img
@@ -536,13 +730,16 @@
                         class="logo"
                     >
 
+
                     <h3>
                         PLAIN
                     </h3>
 
+
                     <p>
                         Essential Everyday Wear
                     </p>
+
 
                     <span class="collection-explore">
                         Explore Collection →
@@ -551,6 +748,7 @@
                 </div>
 
             </a>
+
 
 
             <!-- =================================================
@@ -568,6 +766,7 @@
                     class="collection-image"
                 >
 
+
                 <div class="collection-overlay">
 
                     <img
@@ -576,13 +775,16 @@
                         class="logo"
                     >
 
+
                     <h3>
                         POLO
                     </h3>
 
+
                     <p>
                         Classic. Clean. Timeless.
                     </p>
+
 
                     <span class="collection-explore">
                         Explore Collection →
@@ -591,6 +793,7 @@
                 </div>
 
             </a>
+
 
 
             <!-- =================================================
@@ -608,6 +811,7 @@
                     class="collection-image"
                 >
 
+
                 <div class="collection-overlay">
 
                     <img
@@ -616,13 +820,16 @@
                         class="logo"
                     >
 
+
                     <h3>
                         PRINTED
                     </h3>
 
+
                     <p>
                         Express Yourself
                     </p>
+
 
                     <span class="collection-explore">
                         Explore Collection →
@@ -632,7 +839,57 @@
 
             </a>
 
+
+
+            <!-- =================================================
+                 MIRZAPUR LIMITED DROP
+            ================================================== -->
+
+            <a
+                href="mirzapur.html"
+                class="collection-panel mirzapur-drop-panel reveal"
+            >
+
+                <img
+                    src="mirz 1.png"
+                    alt="YUGA Mirzapur Limited Edition"
+                    class="collection-image"
+                >
+
+
+                <div class="collection-overlay">
+
+                    <span class="mirzapur-badge">
+                        🔥 PRE-BOOK NOW
+                    </span>
+
+
+                    <h3>
+                        MIRZAPUR
+                    </h3>
+
+
+                    <p>
+                        Limited Edition Drop
+                    </p>
+
+
+                    <p class="mirzapur-price">
+                        ₹399
+                    </p>
+
+
+                    <span class="collection-explore">
+                        View Limited Drop →
+                    </span>
+
+                </div>
+
+            </a>
+
+
         </div>
+
 
 
         <!-- =====================================================
@@ -653,6 +910,7 @@
     </section>
 
 
+
     <!-- =========================================================
          ABOUT YUGA
     ========================================================== -->
@@ -663,15 +921,18 @@
             YUGA
         </h2>
 
+
         <p>
             Fashion for your era.
         </p>
+
 
         <p>
             Explore our collection and find what fits your style.
         </p>
 
     </section>
+
 
 
     <!-- =========================================================
@@ -689,13 +950,16 @@
                     YUGA FASHION
                 </p>
 
+
                 <h2>
                     VISIT US
                 </h2>
 
+
                 <p class="contact-tagline">
                     Wear Your Era.
                 </p>
+
 
 
                 <div class="contact-details">
@@ -709,11 +973,13 @@
                             📍
                         </span>
 
+
                         <div>
 
                             <strong>
                                 STORE LOCATION
                             </strong>
+
 
                             <p>
                                 Sector 20, Chandigarh,<br>
@@ -725,6 +991,7 @@
                     </div>
 
 
+
                     <!-- WHATSAPP -->
 
                     <div class="contact-item">
@@ -733,11 +1000,13 @@
                             📱
                         </span>
 
+
                         <div>
 
                             <strong>
                                 WHATSAPP
                             </strong>
+
 
                             <p>
 
@@ -760,6 +1029,7 @@
                 </div>
 
 
+
                 <!-- GOOGLE MAP BUTTON -->
 
                 <a
@@ -770,6 +1040,7 @@
                 >
                     OPEN IN GOOGLE MAPS →
                 </a>
+
 
 
                 <!-- WHATSAPP BUTTON -->
@@ -786,6 +1057,7 @@
             </div>
 
 
+
             <!-- GOOGLE MAP -->
 
             <div class="map-container reveal">
@@ -799,10 +1071,10 @@
 
             </div>
 
-
         </div>
 
     </section>
+
 
 
     <!-- =========================================================
@@ -815,12 +1087,15 @@
             YUGA
         </h2>
 
+
         <p class="footer-tagline">
             Wear Your Era.
         </p>
 
 
+
         <div class="footer-social">
+
 
             <!-- INSTAGRAM -->
 
@@ -834,6 +1109,7 @@
             </a>
 
 
+
             <!-- CUSTOMER CARE -->
 
             <a
@@ -842,6 +1118,7 @@
             >
                 Customer Care
             </a>
+
 
 
             <!-- WHATSAPP -->
@@ -854,6 +1131,7 @@
             >
                 WhatsApp
             </a>
+
 
 
             <!-- POLICIES -->
@@ -873,6 +1151,7 @@
         </p>
 
     </footer>
+
 
 
     <!-- =========================================================
@@ -906,6 +1185,7 @@
         </a>
 
 
+
         <!-- INSTAGRAM -->
 
         <a
@@ -932,6 +1212,7 @@
     </div>
 
 
+
     <!-- =========================================================
          YUGA AI CHATBOT
     ========================================================== -->
@@ -946,6 +1227,7 @@
     </button>
 
 
+
     <div id="yugaChatbot">
 
 
@@ -958,6 +1240,7 @@
                 <strong>
                     YUGA AI
                 </strong>
+
 
                 <span>
                     ● Online
@@ -977,9 +1260,11 @@
         </div>
 
 
+
         <!-- CHAT MESSAGES -->
 
         <div id="yugaChatMessages">
+
 
             <div class="yuga-message bot">
 
@@ -993,9 +1278,24 @@
             </div>
 
 
+
             <!-- QUICK QUESTIONS -->
 
             <div class="yuga-quick-buttons">
+
+
+                <!-- MIRZAPUR -->
+
+                <button
+                    type="button"
+                    data-question="Tell me about the Mirzapur Limited Edition and how to pre-book it"
+                >
+                    🔥 Mirzapur Drop
+                </button>
+
+
+
+                <!-- PLAIN -->
 
                 <button
                     type="button"
@@ -1005,6 +1305,9 @@
                 </button>
 
 
+
+                <!-- PRINTED -->
+
                 <button
                     type="button"
                     data-question="Tell me about the Printed collection"
@@ -1012,6 +1315,9 @@
                     🎨 Printed Collection
                 </button>
 
+
+
+                <!-- POLO -->
 
                 <button
                     type="button"
@@ -1021,6 +1327,9 @@
                 </button>
 
 
+
+                <!-- PRICE -->
+
                 <button
                     type="button"
                     data-question="What are your prices?"
@@ -1028,6 +1337,9 @@
                     💰 Prices
                 </button>
 
+
+
+                <!-- ORDER -->
 
                 <button
                     type="button"
@@ -1039,6 +1351,7 @@
             </div>
 
         </div>
+
 
 
         <!-- CHAT INPUT -->
@@ -1065,11 +1378,13 @@
     </div>
 
 
+
     <!-- =========================================================
          INDEX JAVASCRIPT
     ========================================================== -->
 
     <script>
+
 
         /* =====================================================
            SCROLL REVEAL
@@ -1112,6 +1427,7 @@
             revealObserver.observe(element);
 
         });
+
 
 
         /* =====================================================
@@ -1159,12 +1475,14 @@
         });
 
 
+
         /* =====================================================
            YUGA SEA WAVE CURSOR EFFECT
         ====================================================== */
 
         const canvas =
             document.getElementById("yugaWaveCanvas");
+
 
         const ctx =
             canvas ? canvas.getContext("2d") : null;
@@ -1185,8 +1503,10 @@
             ).matches
         ) {
 
+
             let width =
                 window.innerWidth;
+
 
             let height =
                 window.innerHeight;
@@ -1195,6 +1515,7 @@
             let mouseX =
                 width / 2;
 
+
             let mouseY =
                 height / 2;
 
@@ -1202,12 +1523,14 @@
             let targetX =
                 mouseX;
 
+
             let targetY =
                 mouseY;
 
 
             let lastX =
                 mouseX;
+
 
             let lastY =
                 mouseY;
@@ -1218,6 +1541,7 @@
 
 
             const ripples = [];
+
 
 
             /* =================================================
@@ -1236,6 +1560,7 @@
                 width =
                     window.innerWidth;
 
+
                 height =
                     window.innerHeight;
 
@@ -1243,12 +1568,14 @@
                 canvas.width =
                     width * dpr;
 
+
                 canvas.height =
                     height * dpr;
 
 
                 canvas.style.width =
                     width + "px";
+
 
                 canvas.style.height =
                     height + "px";
@@ -1273,6 +1600,7 @@
                 "resize",
                 resizeWaveCanvas
             );
+
 
 
             /* =================================================
@@ -1317,6 +1645,7 @@
             }
 
 
+
             /* =================================================
                MOUSE MOVEMENT
             ================================================== */
@@ -1328,6 +1657,7 @@
 
                     targetX =
                         event.clientX;
+
 
                     targetY =
                         event.clientY;
@@ -1358,6 +1688,7 @@
                         lastX =
                             targetX;
 
+
                         lastY =
                             targetY;
 
@@ -1370,6 +1701,7 @@
                 }
 
             );
+
 
 
             /* =================================================
@@ -1395,17 +1727,21 @@
                     targetX =
                         event.clientX;
 
+
                     targetY =
                         event.clientY;
 
+
                     lastX =
                         targetX;
+
 
                     lastY =
                         targetY;
 
                 }
             );
+
 
 
             /* =================================================
@@ -1505,6 +1841,7 @@
             }
 
 
+
             /* =================================================
                MAIN ANIMATION
             ================================================== */
@@ -1525,9 +1862,11 @@
                     (targetX - mouseX) *
                     0.12;
 
+
                 mouseY +=
                     (targetY - mouseY) *
                     0.12;
+
 
 
                 /* SOFT GREY GLOW */
@@ -1569,6 +1908,7 @@
 
                     ctx.beginPath();
 
+
                     ctx.arc(
                         mouseX,
                         mouseY,
@@ -1577,9 +1917,11 @@
                         Math.PI * 2
                     );
 
+
                     ctx.fill();
 
                 }
+
 
 
                 /* UPDATE + DRAW RIPPLE WAVES */
@@ -1644,11 +1986,13 @@
     </script>
 
 
+
     <!-- =========================================================
          LOAD YUGA JAVASCRIPT
     ========================================================== -->
 
     <script src="script.js"></script>
+
 
 </body>
 
