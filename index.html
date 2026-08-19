@@ -25,10 +25,11 @@
 
 
     <!-- =====================================================
-         INDEX PAGE ONLY - MOBILE + COLLECTION FIXES
+         INDEX PAGE ONLY - MOBILE + FLOATING SOCIAL FIXES
     ====================================================== -->
 
     <style>
+
 
         /* =====================================================
            ANNOUNCEMENT BAR
@@ -152,6 +153,7 @@
 
         /* =====================================================
            FLOATING SOCIAL BUTTONS
+           MOBILE LEFT SIDE
         ====================================================== */
 
         .floating-social {
@@ -334,101 +336,18 @@
 
 
         /* =====================================================
-           COLLECTION LAYOUT FIX
-           
-           IMPORTANT:
-           4 COLLECTIONS = 4 EQUAL CARDS
+           MIRZAPUR LIMITED DROP
         ====================================================== */
 
-        .collection-showcase {
-
-            display: grid !important;
-
-            grid-template-columns:
-                repeat(4, minmax(0, 1fr)) !important;
-
-            gap: 18px !important;
-
-            width: 100%;
-
-        }
-
-
-        /* Every collection gets EXACTLY the same size */
-
-        .collection-showcase .collection-panel {
+        .mirzapur-drop-panel {
 
             position: relative;
-
-            width: 100%;
-
-            height: 560px;
-
-            min-height: 560px;
 
             overflow: hidden;
 
             display: block;
 
-            text-decoration: none;
-
-            color: #fff;
-
-        }
-
-
-        /* Images fill their own card */
-
-        .collection-showcase
-        .collection-panel
-        .collection-image {
-
-            width: 100%;
-
-            height: 100%;
-
-            min-height: 100%;
-
-            object-fit: cover;
-
-            display: block;
-
-            transition:
-                transform 0.7s ease;
-
-        }
-
-
-        /* Hover zoom */
-
-        .collection-showcase
-        .collection-panel:hover
-        .collection-image {
-
-            transform: scale(1.05);
-
-        }
-
-
-        /* =====================================================
-           MIRZAPUR CARD
-           
-           SAME SIZE AS ALL OTHER COLLECTIONS
-        ====================================================== */
-
-        .mirzapur-drop-panel {
-
-            position: relative !important;
-
-            overflow: hidden !important;
-
-            display: block !important;
-
-            width: 100% !important;
-
-            height: 560px !important;
-
-            min-height: 560px !important;
+            min-height: 500px;
 
             text-decoration: none;
 
@@ -439,18 +358,15 @@
         }
 
 
-        .mirzapur-drop-panel
-        .collection-image {
+        .mirzapur-drop-panel .collection-image {
 
-            width: 100% !important;
+            width: 100%;
 
-            height: 100% !important;
+            height: 100%;
 
-            min-height: 100% !important;
+            min-height: 500px;
 
-            object-fit: cover !important;
-
-            display: block;
+            object-fit: cover;
 
             transition:
                 transform 0.7s ease;
@@ -461,12 +377,11 @@
         .mirzapur-drop-panel:hover
         .collection-image {
 
-            transform: scale(1.05);
+            transform:
+                scale(1.05);
 
         }
 
-
-        /* Dark overlay */
 
         .mirzapur-drop-panel::after {
 
@@ -480,13 +395,11 @@
                 linear-gradient(
                     to top,
                     rgba(0,0,0,0.9),
-                    rgba(0,0,0,0.35),
+                    rgba(0,0,0,0.3),
                     rgba(0,0,0,0.05)
                 );
 
             pointer-events: none;
-
-            z-index: 1;
 
         }
 
@@ -524,119 +437,44 @@
 
         .mirzapur-drop-panel h3 {
 
-            font-size: 34px;
+            font-size: 42px;
 
-            letter-spacing: 3px;
+            letter-spacing: 4px;
 
         }
 
 
         .mirzapur-drop-panel p {
 
-            font-size: 12px;
+            font-size: 13px;
 
             letter-spacing: 1px;
 
         }
 
 
-        .mirzapur-price {
+        @media (max-width: 800px) {
 
-            margin-top: 10px;
-
-            font-size: 17px !important;
-
-            font-weight: 700;
-
-        }
-
-
-        /* =====================================================
-           TABLET
-        ====================================================== */
-
-        @media (max-width: 1100px) {
-
-            .collection-showcase {
-
-                grid-template-columns:
-                    repeat(2, minmax(0, 1fr)) !important;
-
-            }
-
-            .collection-showcase
-            .collection-panel,
             .mirzapur-drop-panel {
 
-                height: 520px !important;
-
-                min-height: 520px !important;
+                min-height: 430px;
 
             }
 
-        }
 
+            .mirzapur-drop-panel
+            .collection-image {
 
-        /* =====================================================
-           MOBILE
-        ====================================================== */
-
-        @media (max-width: 650px) {
-
-            .collection-showcase {
-
-                grid-template-columns: 1fr !important;
-
-                gap: 16px !important;
+                min-height: 430px;
 
             }
 
-            .collection-showcase
-            .collection-panel,
-            .mirzapur-drop-panel {
-
-                height: 480px !important;
-
-                min-height: 480px !important;
-
-            }
-
-        }
-
-
-        /* =====================================================
-           SMALL MOBILE COLLECTIONS
-        ====================================================== */
-
-        @media (max-width: 450px) {
-
-            .collection-showcase
-            .collection-panel,
-            .mirzapur-drop-panel {
-
-                height: 430px !important;
-
-                min-height: 430px !important;
-
-            }
 
             .mirzapur-drop-panel h3 {
 
                 font-size: 30px;
 
             }
-
-        }
-
-
-        /* =====================================================
-           TOUCH EFFECT
-        ====================================================== */
-
-        .collection-panel.touch-active
-        .collection-image {
-
-            transform: scale(1.05);
 
         }
 
@@ -668,9 +506,7 @@
         @media (prefers-reduced-motion: reduce) {
 
             #yugaWaveCanvas {
-
                 display: none;
-
             }
 
         }
@@ -860,7 +696,7 @@
 
 
             <!-- =================================================
-                 1. PLAIN COLLECTION
+                 PLAIN COLLECTION
             ================================================== -->
 
             <a
@@ -905,7 +741,7 @@
 
 
             <!-- =================================================
-                 2. POLO COLLECTION
+                 POLO COLLECTION
             ================================================== -->
 
             <a
@@ -950,7 +786,7 @@
 
 
             <!-- =================================================
-                 3. PRINTED COLLECTION
+                 PRINTED COLLECTION
             ================================================== -->
 
             <a
@@ -995,11 +831,8 @@
 
 
             <!-- =================================================
-                 4. MIRZAPUR LIMITED DROP
-                 
-                 ONE CARD
-                 SAME SIZE AS OTHER 3
-                 ₹399
+                 MIRZAPUR LIMITED DROP
+                 NO PRICE ON HOMEPAGE
             ================================================== -->
 
             <a
@@ -1028,11 +861,6 @@
 
                     <p>
                         Limited Edition Drop
-                    </p>
-
-
-                    <p class="mirzapur-price">
-                        ₹399
                     </p>
 
 
@@ -1335,7 +1163,7 @@
                 aria-hidden="true"
             >
 
-                <path d="M20.52 3.48A11.86 11.86 0 0 0 12.07 0C5.51 0 .17 5.34.17 11.9c0 2.1.55 4.15 1.59 5.96L.1 24l6.3-1.64a11.9 11.9 0 0 0 5.67 1.44h.01c6.56 0 11.9-5.34 11.9-11.9 0-3.18-1.24-6.17-3.46-8.42ZM12.08 21.8h-.01a9.86 9.86 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.23-.37a9.86 9.86 0 0 1-1.51-5.27C2.2 6.45 6.63 2.02 12.08 2.02c2.64 0 5.12 1.03 6.98 2.9a9.82 9.82 0 0 1 2.89 6.99c0 5.45-4.43 9.89-9.87 9.89Zm5.42-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.46-.89-.79-1.49-1.76-1.66-2.06-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.2 5.08 4.49.71.31 1.27.49 1.7.63.71.23 1.35.2 1.86.12.57-.08 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.08-.12-.27-.2-.57-.35Z"/>
+                <path d="M20.52 3.48A11.86 11.86 0 0 0 12.07 0C5.51 .17 5.34 11.9c0 2.1.55 4.15 1.59 5.96L.1 24l6.3-1.64a11.9 11.9 0 0 0 5.67 1.44h.01c6.56 0 11.9-5.34 11.9-11.9 0-3.18-1.24-6.17-3.46-8.42ZM12.08 21.8h-.01a9.86 9.86 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.23-.37a9.86 9.86 0 0 1-1.51-5.27C2.2 6.45 6.63 2.02 12.08 2.02c2.64 0 5.12 1.03 6.98 2.9a9.82 9.82 0 0 1 2.89 6.99c0 5.45-4.43 9.89-9.87 9.89Zm5.42-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.46-.89-.79-1.49-1.76-1.66-2.06-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.2 5.08 4.49.71.31 1.27.49 1.7.63.71.23 1.35.2 1.86.12.57-.08 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.08-.12-.27-.2-.57-.35Z"/>
 
             </svg>
 
@@ -1360,7 +1188,7 @@
                 aria-hidden="true"
             >
 
-                <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9ZM17.75 5.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0-3-3Z"/>
+                <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9ZM17.75 5.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/>
 
             </svg>
 
