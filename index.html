@@ -25,11 +25,10 @@
 
 
     <!-- =====================================================
-         INDEX PAGE ONLY - MOBILE + FLOATING SOCIAL FIXES
+         INDEX PAGE ONLY - MOBILE + COLLECTION FIXES
     ====================================================== -->
 
     <style>
-
 
         /* =====================================================
            ANNOUNCEMENT BAR
@@ -153,7 +152,6 @@
 
         /* =====================================================
            FLOATING SOCIAL BUTTONS
-           MOBILE LEFT SIDE
         ====================================================== */
 
         .floating-social {
@@ -336,18 +334,101 @@
 
 
         /* =====================================================
-           MIRZAPUR LIMITED DROP
+           COLLECTION LAYOUT FIX
+           
+           IMPORTANT:
+           4 COLLECTIONS = 4 EQUAL CARDS
         ====================================================== */
 
-        .mirzapur-drop-panel {
+        .collection-showcase {
+
+            display: grid !important;
+
+            grid-template-columns:
+                repeat(4, minmax(0, 1fr)) !important;
+
+            gap: 18px !important;
+
+            width: 100%;
+
+        }
+
+
+        /* Every collection gets EXACTLY the same size */
+
+        .collection-showcase .collection-panel {
 
             position: relative;
+
+            width: 100%;
+
+            height: 560px;
+
+            min-height: 560px;
 
             overflow: hidden;
 
             display: block;
 
-            min-height: 500px;
+            text-decoration: none;
+
+            color: #fff;
+
+        }
+
+
+        /* Images fill their own card */
+
+        .collection-showcase
+        .collection-panel
+        .collection-image {
+
+            width: 100%;
+
+            height: 100%;
+
+            min-height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+
+            transition:
+                transform 0.7s ease;
+
+        }
+
+
+        /* Hover zoom */
+
+        .collection-showcase
+        .collection-panel:hover
+        .collection-image {
+
+            transform: scale(1.05);
+
+        }
+
+
+        /* =====================================================
+           MIRZAPUR CARD
+           
+           SAME SIZE AS ALL OTHER COLLECTIONS
+        ====================================================== */
+
+        .mirzapur-drop-panel {
+
+            position: relative !important;
+
+            overflow: hidden !important;
+
+            display: block !important;
+
+            width: 100% !important;
+
+            height: 560px !important;
+
+            min-height: 560px !important;
 
             text-decoration: none;
 
@@ -358,15 +439,18 @@
         }
 
 
-        .mirzapur-drop-panel .collection-image {
+        .mirzapur-drop-panel
+        .collection-image {
 
-            width: 100%;
+            width: 100% !important;
 
-            height: 100%;
+            height: 100% !important;
 
-            min-height: 500px;
+            min-height: 100% !important;
 
-            object-fit: cover;
+            object-fit: cover !important;
+
+            display: block;
 
             transition:
                 transform 0.7s ease;
@@ -377,11 +461,12 @@
         .mirzapur-drop-panel:hover
         .collection-image {
 
-            transform:
-                scale(1.05);
+            transform: scale(1.05);
 
         }
 
+
+        /* Dark overlay */
 
         .mirzapur-drop-panel::after {
 
@@ -395,11 +480,13 @@
                 linear-gradient(
                     to top,
                     rgba(0,0,0,0.9),
-                    rgba(0,0,0,0.3),
+                    rgba(0,0,0,0.35),
                     rgba(0,0,0,0.05)
                 );
 
             pointer-events: none;
+
+            z-index: 1;
 
         }
 
@@ -437,16 +524,16 @@
 
         .mirzapur-drop-panel h3 {
 
-            font-size: 42px;
+            font-size: 34px;
 
-            letter-spacing: 4px;
+            letter-spacing: 3px;
 
         }
 
 
         .mirzapur-drop-panel p {
 
-            font-size: 13px;
+            font-size: 12px;
 
             letter-spacing: 1px;
 
@@ -464,28 +551,92 @@
         }
 
 
-        @media (max-width: 800px) {
+        /* =====================================================
+           TABLET
+        ====================================================== */
 
+        @media (max-width: 1100px) {
+
+            .collection-showcase {
+
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr)) !important;
+
+            }
+
+            .collection-showcase
+            .collection-panel,
             .mirzapur-drop-panel {
 
-                min-height: 430px;
+                height: 520px !important;
+
+                min-height: 520px !important;
 
             }
 
+        }
 
-            .mirzapur-drop-panel
-            .collection-image {
 
-                min-height: 430px;
+        /* =====================================================
+           MOBILE
+        ====================================================== */
+
+        @media (max-width: 650px) {
+
+            .collection-showcase {
+
+                grid-template-columns: 1fr !important;
+
+                gap: 16px !important;
 
             }
 
+            .collection-showcase
+            .collection-panel,
+            .mirzapur-drop-panel {
+
+                height: 480px !important;
+
+                min-height: 480px !important;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           SMALL MOBILE COLLECTIONS
+        ====================================================== */
+
+        @media (max-width: 450px) {
+
+            .collection-showcase
+            .collection-panel,
+            .mirzapur-drop-panel {
+
+                height: 430px !important;
+
+                min-height: 430px !important;
+
+            }
 
             .mirzapur-drop-panel h3 {
 
                 font-size: 30px;
 
             }
+
+        }
+
+
+        /* =====================================================
+           TOUCH EFFECT
+        ====================================================== */
+
+        .collection-panel.touch-active
+        .collection-image {
+
+            transform: scale(1.05);
 
         }
 
@@ -517,7 +668,9 @@
         @media (prefers-reduced-motion: reduce) {
 
             #yugaWaveCanvas {
+
                 display: none;
+
             }
 
         }
@@ -707,7 +860,7 @@
 
 
             <!-- =================================================
-                 PLAIN COLLECTION
+                 1. PLAIN COLLECTION
             ================================================== -->
 
             <a
@@ -752,7 +905,7 @@
 
 
             <!-- =================================================
-                 POLO COLLECTION
+                 2. POLO COLLECTION
             ================================================== -->
 
             <a
@@ -797,7 +950,7 @@
 
 
             <!-- =================================================
-                 PRINTED COLLECTION
+                 3. PRINTED COLLECTION
             ================================================== -->
 
             <a
@@ -842,7 +995,11 @@
 
 
             <!-- =================================================
-                 MIRZAPUR LIMITED DROP
+                 4. MIRZAPUR LIMITED DROP
+                 
+                 ONE CARD
+                 SAME SIZE AS OTHER 3
+                 ₹399
             ================================================== -->
 
             <a
