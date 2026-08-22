@@ -28,7 +28,20 @@
 
 
 <body>
+<!-- =========================================================
+     MIRZAPUR COLLECTION LAUNCH CELEBRATION
+========================================================== -->
 
+<div id="mirzapurLaunch">
+
+    <div class="mirzapur-launch-message">
+        <span>MIRZAPUR</span>
+        <strong>COLLECTION OUT NOW !!!</strong>
+    </div>
+
+    <div class="mirzapur-particles"></div>
+
+</div>
 
     <!-- =========================================================
          HEADER
@@ -866,7 +879,262 @@
     ========================================================== -->
 
     <script src="script.js"></script>
+<style>
 
+/* =========================================================
+   MIRZAPUR LAUNCH CELEBRATION
+========================================================= */
+
+#mirzapurLaunch {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    pointer-events: none;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: mirzapurLaunchFade 3.8s ease forwards;
+}
+
+/* Dark cinematic flash */
+
+#mirzapurLaunch::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle at center,
+        rgba(150, 0, 0, 0.30),
+        rgba(0, 0, 0, 0.88) 65%,
+        rgba(0, 0, 0, 0.96)
+    );
+    animation: mirzapurFlash 0.9s ease-out forwards;
+}
+
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+.mirzapur-launch-message {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    color: white;
+    opacity: 0;
+    transform: translateY(35px) scale(0.75);
+    animation:
+        mirzapurMessageIn 0.8s cubic-bezier(.17,.89,.32,1.28) 0.15s forwards,
+        mirzapurMessageOut 1s ease-in 2.6s forwards;
+}
+
+.mirzapur-launch-message span {
+    display: block;
+    font-size: clamp(38px, 8vw, 90px);
+    font-weight: 900;
+    letter-spacing: 8px;
+    line-height: 1;
+    text-shadow:
+        0 0 10px rgba(255,255,255,.8),
+        0 0 30px rgba(255,40,40,.8),
+        0 0 60px rgba(180,0,0,.7);
+}
+
+.mirzapur-launch-message strong {
+    display: block;
+    margin-top: 14px;
+    font-size: clamp(18px, 3vw, 34px);
+    letter-spacing: 4px;
+    font-weight: 800;
+    color: #ff3b3b;
+    text-shadow:
+        0 0 10px rgba(255,0,0,.8),
+        0 0 30px rgba(255,0,0,.6);
+}
+
+
+/* =========================================================
+   PARTICLE BURST
+========================================================= */
+
+.mirzapur-particles,
+.mirzapur-particles::before,
+.mirzapur-particles::after {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.mirzapur-particles {
+    left: 50%;
+    top: 50%;
+    background: #fff;
+    box-shadow:
+        0 -160px #ff3131,
+        80px -140px #fff,
+        150px -80px #ff3131,
+        175px 10px #fff,
+        130px 100px #ff3131,
+        60px 150px #fff,
+        -60px 150px #ff3131,
+        -140px 100px #fff,
+        -175px 10px #ff3131,
+        -145px -90px #fff,
+        -75px -145px #ff3131,
+        20px -190px #fff,
+        100px 180px #ff3131,
+        -110px 180px #fff,
+        210px -130px #ff3131,
+        -210px -120px #fff;
+    animation: mirzapurBurst 1.8s cubic-bezier(.1,.7,.2,1) forwards;
+}
+
+.mirzapur-particles::before {
+    content: "";
+    left: 0;
+    top: 0;
+    background: #ff3131;
+    box-shadow:
+        40px -200px #fff,
+        180px -170px #ff3131,
+        230px -20px #fff,
+        170px 130px #ff3131,
+        20px 210px #fff,
+        -150px 160px #ff3131,
+        -220px 20px #fff,
+        -180px -150px #ff3131;
+    animation: mirzapurBurst 2s cubic-bezier(.1,.7,.2,1) forwards;
+}
+
+.mirzapur-particles::after {
+    content: "";
+    left: 0;
+    top: 0;
+    background: #fff;
+    box-shadow:
+        100px -230px #ff3131,
+        250px -90px #fff,
+        240px 100px #ff3131,
+        110px 220px #fff,
+        -90px 230px #ff3131,
+        -240px 110px #fff,
+        -250px -80px #ff3131,
+        -100px -220px #fff;
+    animation: mirzapurBurst 2.2s cubic-bezier(.1,.7,.2,1) forwards;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes mirzapurMessageIn {
+
+    0% {
+        opacity: 0;
+        transform: translateY(35px) scale(.75);
+    }
+
+    60% {
+        opacity: 1;
+        transform: translateY(-5px) scale(1.08);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+@keyframes mirzapurMessageOut {
+
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-100px) scale(.9);
+    }
+
+}
+
+
+@keyframes mirzapurBurst {
+
+    0% {
+        opacity: 1;
+        transform: scale(.1);
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.8);
+    }
+
+}
+
+
+@keyframes mirzapurFlash {
+
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+
+}
+
+
+@keyframes mirzapurLaunchFade {
+
+    0% {
+        visibility: visible;
+    }
+
+    85% {
+        visibility: visible;
+    }
+
+    100% {
+        visibility: hidden;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .mirzapur-launch-message span {
+        letter-spacing: 4px;
+    }
+
+    .mirzapur-launch-message strong {
+        letter-spacing: 2px;
+        margin-top: 10px;
+    }
+
+    .mirzapur-particles {
+        transform-origin: center;
+    }
+
+}
+
+</style>
 
 </body>
 
