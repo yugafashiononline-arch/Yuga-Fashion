@@ -3948,3 +3948,227 @@ body.modal-open {
     }
 
 }
+/* =====================================================
+   MIRZAPUR FEATURED MOVING BANNER — COMPACT
+====================================================== */
+
+.mirzapur-moving-banner {
+    position: relative;
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    text-decoration: none;
+    color: #fff;
+    background: #050505;
+    border-top: 1px solid rgba(255,255,255,0.10);
+    border-bottom: 1px solid rgba(255,255,255,0.10);
+    cursor: pointer;
+    margin: 0;
+}
+
+.mirzapur-banner-inner {
+    position: relative;
+    width: 100%;
+    min-height: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.mirzapur-banner-glow {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,255,255,0.07),
+            transparent 48%
+        );
+    pointer-events: none;
+}
+
+.mirzapur-banner-track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    white-space: nowrap;
+    animation:
+        mirzapurBannerMove
+        24s
+        linear
+        infinite;
+}
+
+.mirzapur-banner-content {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding-right: 24px;
+}
+
+.mirzapur-banner-title {
+    font-size: clamp(19px, 2.4vw, 30px);
+    line-height: 1;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.mirzapur-banner-subtitle {
+    font-size: clamp(7px, 0.75vw, 10px);
+    letter-spacing: 1.8px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.mirzapur-banner-separator {
+    font-size: 12px;
+    opacity: 0.5;
+}
+
+.mirzapur-banner-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 10px;
+    border: 1px solid rgba(255,255,255,0.7);
+    font-size: 7px;
+    letter-spacing: 1.2px;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition:
+        background 0.25s ease,
+        color 0.25s ease;
+}
+
+@keyframes mirzapurBannerMove {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-33.333%);
+    }
+}
+
+.mirzapur-moving-banner:hover
+.mirzapur-banner-track {
+    animation-play-state: paused;
+}
+
+.mirzapur-moving-banner:hover
+.mirzapur-banner-button {
+    background: #fff;
+    color: #000;
+}
+
+
+/* =====================================================
+   TABLET
+====================================================== */
+
+@media (max-width: 800px) {
+
+    .mirzapur-banner-inner {
+        min-height: 42px;
+        height: 42px;
+    }
+
+    .mirzapur-banner-content {
+        gap: 18px;
+        padding-right: 18px;
+    }
+
+    .mirzapur-banner-title {
+        font-size: 21px;
+        letter-spacing: 1px;
+    }
+
+    .mirzapur-banner-subtitle {
+        font-size: 7px;
+        letter-spacing: 1.5px;
+    }
+
+    .mirzapur-banner-separator {
+        font-size: 11px;
+    }
+
+    .mirzapur-banner-button {
+        padding: 5px 9px;
+        font-size: 6px;
+    }
+}
+
+
+/* =====================================================
+   MOBILE
+====================================================== */
+
+@media (max-width: 500px) {
+
+    .mirzapur-banner-inner {
+        min-height: 38px;
+        height: 38px;
+    }
+
+    .mirzapur-banner-track {
+        animation-duration: 18s;
+    }
+
+    .mirzapur-banner-content {
+        gap: 13px;
+        padding-right: 13px;
+    }
+
+    .mirzapur-banner-title {
+        font-size: 19px;
+        letter-spacing: 0.8px;
+    }
+
+    .mirzapur-banner-subtitle {
+        font-size: 6px;
+        letter-spacing: 1.2px;
+    }
+
+    .mirzapur-banner-separator {
+        font-size: 10px;
+    }
+
+    .mirzapur-banner-button {
+        padding: 4px 8px;
+        font-size: 6px;
+        letter-spacing: 0.8px;
+    }
+}
+
+
+/* =====================================================
+   VERY SMALL PHONES
+====================================================== */
+
+@media (max-width: 380px) {
+
+    .mirzapur-banner-inner {
+        min-height: 36px;
+        height: 36px;
+    }
+
+    .mirzapur-banner-content {
+        gap: 11px;
+        padding-right: 11px;
+    }
+
+    .mirzapur-banner-title {
+        font-size: 18px;
+    }
+
+    .mirzapur-banner-subtitle {
+        font-size: 6px;
+    }
+
+    .mirzapur-banner-button {
+        padding: 4px 7px;
+        font-size: 5.5px;
+    }
+}
