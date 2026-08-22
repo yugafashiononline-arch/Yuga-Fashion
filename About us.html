@@ -1,0 +1,2066 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>About YUGA Fashion | Wear Your Era</title>
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="Y Falvion.png"
+    >
+
+    <style>
+
+        /* =====================================================
+           YUGA ABOUT PAGE
+           PREMIUM / MINIMAL / RESPONSIVE
+        ====================================================== */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            background: #000;
+
+            color: #fff;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            overflow-x: hidden;
+
+        }
+
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+
+        /* =====================================================
+           ANNOUNCEMENT BAR
+        ====================================================== */
+
+        .yuga-announcement {
+
+            width: 100%;
+
+            overflow: hidden;
+
+            background: #fff;
+
+            color: #000;
+
+            border-bottom:
+                1px solid #ddd;
+
+        }
+
+
+        .announcement-track {
+
+            display: flex;
+
+            width: max-content;
+
+            white-space: nowrap;
+
+            animation:
+                announcementMove
+                25s
+                linear
+                infinite;
+
+        }
+
+
+        .announcement-track span {
+
+            padding:
+                9px 28px;
+
+            font-size: 9px;
+
+            font-weight: 700;
+
+            letter-spacing: 2px;
+
+        }
+
+
+        @keyframes announcementMove {
+
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-25%);
+            }
+
+        }
+
+
+        /* =====================================================
+           HEADER
+        ====================================================== */
+
+        header {
+
+            background: #000;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            padding:
+                24px 20px 18px;
+
+        }
+
+
+        header a {
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+        }
+
+
+        header img {
+
+            width: 120px;
+
+            max-width: 40vw;
+
+            height: auto;
+
+            display: block;
+
+        }
+
+
+        /* =====================================================
+           NAVIGATION
+        ====================================================== */
+
+        .yuga-main-nav {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 38px;
+
+            padding:
+                0 20px 18px;
+
+            background: #000;
+
+        }
+
+
+        .yuga-main-nav a {
+
+            color: #fff;
+
+            text-decoration: none;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            position: relative;
+
+            transition:
+                opacity 0.25s ease,
+                transform 0.25s ease;
+
+        }
+
+
+        .yuga-main-nav a::after {
+
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+
+            bottom: -6px;
+
+            width: 0;
+
+            height: 1px;
+
+            background: #fff;
+
+            transition:
+                width 0.25s ease;
+
+        }
+
+
+        .yuga-main-nav a:hover {
+
+            opacity: 0.7;
+
+            transform:
+                translateY(-1px);
+
+        }
+
+
+        .yuga-main-nav a:hover::after {
+
+            width: 100%;
+
+        }
+
+
+        .yuga-main-nav .nav-active::after {
+
+            width: 100%;
+
+        }
+
+
+        .yuga-main-nav .nav-order {
+
+            padding:
+                9px 16px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.65);
+
+        }
+
+
+        .yuga-main-nav .nav-order::after {
+
+            display: none;
+
+        }
+
+
+        .yuga-main-nav .nav-order:hover {
+
+            background: #fff;
+
+            color: #000;
+
+            opacity: 1;
+
+        }
+
+
+        /* =====================================================
+           HERO
+        ====================================================== */
+
+        .about-hero {
+
+            min-height: 76vh;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            padding:
+                90px 20px;
+
+            position: relative;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,0.12);
+
+            overflow: hidden;
+
+        }
+
+
+        .about-hero::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 650px;
+
+            height: 650px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(255,255,255,0.065),
+                    transparent 68%
+                );
+
+            pointer-events: none;
+
+        }
+
+
+        .about-hero-content {
+
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 1000px;
+
+        }
+
+
+        .hero-eyebrow {
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            letter-spacing: 5px;
+
+            margin-bottom: 30px;
+
+            opacity: 0.65;
+
+        }
+
+
+        .about-hero h1 {
+
+            font-size:
+                clamp(65px, 13vw, 180px);
+
+            line-height: 0.85;
+
+            letter-spacing:
+                clamp(5px, 1vw, 14px);
+
+            font-weight: 900;
+
+        }
+
+
+        .about-hero-tagline {
+
+            margin-top: 35px;
+
+            font-size:
+                clamp(14px, 2vw, 22px);
+
+            letter-spacing: 6px;
+
+            font-weight: 700;
+
+        }
+
+
+        .hero-line {
+
+            width: 55px;
+
+            height: 1px;
+
+            background: #fff;
+
+            margin:
+                35px auto 0;
+
+            opacity: 0.5;
+
+        }
+
+
+        /* =====================================================
+           GENERAL SECTION
+        ====================================================== */
+
+        .about-section {
+
+            padding:
+                120px 7vw;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,0.10);
+
+        }
+
+
+        .section-inner {
+
+            max-width: 1150px;
+
+            margin: 0 auto;
+
+        }
+
+
+        .section-label {
+
+            font-size: 9px;
+
+            letter-spacing: 4px;
+
+            font-weight: 700;
+
+            opacity: 0.55;
+
+            margin-bottom: 24px;
+
+        }
+
+
+        .about-section h2 {
+
+            font-size:
+                clamp(40px, 6vw, 82px);
+
+            line-height: 0.95;
+
+            letter-spacing: -2px;
+
+            margin-bottom: 35px;
+
+            font-weight: 800;
+
+        }
+
+
+        .about-section h2 span {
+
+            opacity: 0.45;
+
+        }
+
+
+        .about-section p {
+
+            max-width: 780px;
+
+            font-size:
+                clamp(15px, 1.6vw, 19px);
+
+            line-height: 1.9;
+
+            color: rgba(255,255,255,0.72);
+
+        }
+
+
+        /* =====================================================
+           OUR STORY
+        ====================================================== */
+
+        .story-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                0.75fr 1.25fr;
+
+            gap: 80px;
+
+            align-items: start;
+
+        }
+
+
+        .story-number {
+
+            font-size:
+                clamp(90px, 13vw, 180px);
+
+            line-height: 0.75;
+
+            font-weight: 900;
+
+            letter-spacing: -10px;
+
+            opacity: 0.09;
+
+        }
+
+
+        .story-content h2 {
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .story-content p {
+
+            margin-bottom: 22px;
+
+        }
+
+
+        /* =====================================================
+           NEW ERA
+        ====================================================== */
+
+        .era-section {
+
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #000,
+                    #080808,
+                    #000
+                );
+
+        }
+
+
+        .era-section .section-inner {
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+        }
+
+
+        .era-section h2 {
+
+            max-width: 900px;
+
+            font-size:
+                clamp(45px, 7vw, 100px);
+
+        }
+
+
+        .era-section p {
+
+            margin: 0 auto;
+
+        }
+
+
+        .era-highlight {
+
+            display: inline-block;
+
+            margin-top: 45px;
+
+            padding:
+                12px 20px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.35);
+
+            font-size: 9px;
+
+            letter-spacing: 3px;
+
+            font-weight: 700;
+
+        }
+
+
+        /* =====================================================
+           PROMISE
+        ====================================================== */
+
+        .promise-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 1px;
+
+            margin-top: 65px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.12);
+
+        }
+
+
+        .promise-card {
+
+            padding:
+                45px 35px;
+
+            min-height: 230px;
+
+            border-right:
+                1px solid
+                rgba(255,255,255,0.12);
+
+            transition:
+                background 0.3s ease;
+
+        }
+
+
+        .promise-card:last-child {
+
+            border-right: none;
+
+        }
+
+
+        .promise-card:hover {
+
+            background: #0c0c0c;
+
+        }
+
+
+        .promise-number {
+
+            font-size: 10px;
+
+            letter-spacing: 3px;
+
+            opacity: 0.4;
+
+            margin-bottom: 35px;
+
+        }
+
+
+        .promise-card h3 {
+
+            font-size: 20px;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .promise-card p {
+
+            font-size: 13px;
+
+            line-height: 1.7;
+
+            max-width: none;
+
+        }
+
+
+        /* =====================================================
+           FOUNDERS
+        ====================================================== */
+
+        .founders-section {
+
+            background: #050505;
+
+        }
+
+
+        .founders-heading {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: end;
+
+            gap: 30px;
+
+            margin-bottom: 60px;
+
+        }
+
+
+        .founders-heading p {
+
+            max-width: 350px;
+
+            font-size: 13px;
+
+            line-height: 1.7;
+
+        }
+
+
+        .founders-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            border-top:
+                1px solid
+                rgba(255,255,255,0.15);
+
+            border-left:
+                1px solid
+                rgba(255,255,255,0.15);
+
+        }
+
+
+        .founder {
+
+            min-height: 230px;
+
+            padding:
+                30px 25px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: space-between;
+
+            border-right:
+                1px solid
+                rgba(255,255,255,0.15);
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,0.15);
+
+            transition:
+                background 0.3s ease;
+
+        }
+
+
+        .founder:hover {
+
+            background: #0d0d0d;
+
+        }
+
+
+        .founder-number {
+
+            font-size: 9px;
+
+            letter-spacing: 3px;
+
+            opacity: 0.4;
+
+        }
+
+
+        .founder-name {
+
+            font-size:
+                clamp(17px, 2vw, 24px);
+
+            font-weight: 700;
+
+            letter-spacing: 0.5px;
+
+            line-height: 1.25;
+
+        }
+
+
+        .founder-role {
+
+            margin-top: 10px;
+
+            font-size: 8px;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            opacity: 0.45;
+
+        }
+
+
+        /* =====================================================
+           VISION
+        ====================================================== */
+
+        .vision-section {
+
+            text-align: center;
+
+        }
+
+
+        .vision-section .section-inner {
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+        }
+
+
+        .vision-section h2 {
+
+            max-width: 1000px;
+
+        }
+
+
+        .vision-section p {
+
+            margin: 0 auto;
+
+        }
+
+
+        /* =====================================================
+           CLOSING CTA
+        ====================================================== */
+
+        .about-cta {
+
+            min-height: 55vh;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            padding:
+                100px 20px;
+
+            background: #fff;
+
+            color: #000;
+
+        }
+
+
+        .about-cta-content {
+
+            max-width: 1000px;
+
+        }
+
+
+        .about-cta-small {
+
+            font-size: 9px;
+
+            font-weight: 700;
+
+            letter-spacing: 4px;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .about-cta h2 {
+
+            font-size:
+                clamp(55px, 11vw, 150px);
+
+            line-height: 0.85;
+
+            letter-spacing:
+                clamp(2px, 0.8vw, 10px);
+
+            font-weight: 900;
+
+        }
+
+
+        .about-cta p {
+
+            margin-top: 30px;
+
+            font-size: 13px;
+
+            letter-spacing: 2px;
+
+        }
+
+
+        .cta-button {
+
+            display: inline-flex;
+
+            margin-top: 35px;
+
+            padding:
+                14px 25px;
+
+            border:
+                1px solid #000;
+
+            font-size: 9px;
+
+            font-weight: 700;
+
+            letter-spacing: 2px;
+
+            transition:
+                background 0.25s ease,
+                color 0.25s ease;
+
+        }
+
+
+        .cta-button:hover {
+
+            background: #000;
+
+            color: #fff;
+
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ====================================================== */
+
+        footer {
+
+            background: #000;
+
+            color: #fff;
+
+            text-align: center;
+
+            padding:
+                65px 20px 30px;
+
+        }
+
+
+        footer h2 {
+
+            font-size: 42px;
+
+            letter-spacing: 8px;
+
+        }
+
+
+        .footer-tagline {
+
+            margin-top: 10px;
+
+            font-size: 10px;
+
+            letter-spacing: 3px;
+
+            opacity: 0.55;
+
+        }
+
+
+        .footer-social {
+
+            display: flex;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 28px;
+
+            margin-top: 35px;
+
+        }
+
+
+        .footer-link {
+
+            font-size: 9px;
+
+            font-weight: 700;
+
+            letter-spacing: 1.5px;
+
+            text-transform: uppercase;
+
+            opacity: 0.7;
+
+            transition:
+                opacity 0.25s ease;
+
+        }
+
+
+        .footer-link:hover {
+
+            opacity: 1;
+
+        }
+
+
+        .footer-copy {
+
+            margin-top: 45px;
+
+            padding-top: 22px;
+
+            border-top:
+                1px solid
+                rgba(255,255,255,0.10);
+
+            font-size: 8px;
+
+            letter-spacing: 2px;
+
+            opacity: 0.35;
+
+        }
+
+
+        /* =====================================================
+           SCROLL REVEAL
+        ====================================================== */
+
+        .reveal {
+
+            opacity: 0;
+
+            transform:
+                translateY(25px);
+
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s ease;
+
+        }
+
+
+        .reveal.visible {
+
+            opacity: 1;
+
+            transform:
+                translateY(0);
+
+        }
+
+
+        /* =====================================================
+           TABLET
+        ====================================================== */
+
+        @media (max-width: 900px) {
+
+            .story-grid {
+
+                grid-template-columns: 1fr;
+
+                gap: 30px;
+
+            }
+
+
+            .story-number {
+
+                font-size: 100px;
+
+            }
+
+
+            .founders-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+
+            .promise-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .promise-card {
+
+                border-right: none;
+
+                border-bottom:
+                    1px solid
+                    rgba(255,255,255,0.12);
+
+            }
+
+
+            .promise-card:last-child {
+
+                border-bottom: none;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ====================================================== */
+
+        @media (max-width: 600px) {
+
+            .announcement-track span {
+
+                padding:
+                    8px 18px;
+
+                font-size: 8px;
+
+            }
+
+
+            header {
+
+                padding:
+                    20px 15px 15px;
+
+            }
+
+
+            header img {
+
+                width: 105px;
+
+            }
+
+
+            .yuga-main-nav {
+
+                gap: 12px;
+
+                padding:
+                    0 8px 14px;
+
+                flex-wrap: wrap;
+
+            }
+
+
+            .yuga-main-nav a {
+
+                font-size: 7px;
+
+                letter-spacing: 1px;
+
+            }
+
+
+            .yuga-main-nav .nav-order {
+
+                padding:
+                    7px 10px;
+
+            }
+
+
+            .about-hero {
+
+                min-height: 70vh;
+
+                padding:
+                    70px 18px;
+
+            }
+
+
+            .about-hero h1 {
+
+                font-size:
+                    clamp(58px, 21vw, 105px);
+
+                letter-spacing: 3px;
+
+            }
+
+
+            .hero-eyebrow {
+
+                font-size: 8px;
+
+                letter-spacing: 3px;
+
+                margin-bottom: 22px;
+
+            }
+
+
+            .about-hero-tagline {
+
+                font-size: 10px;
+
+                letter-spacing: 3px;
+
+                margin-top: 25px;
+
+            }
+
+
+            .about-section {
+
+                padding:
+                    80px 22px;
+
+            }
+
+
+            .about-section h2 {
+
+                font-size:
+                    clamp(38px, 12vw, 60px);
+
+                letter-spacing: -1px;
+
+            }
+
+
+            .about-section p {
+
+                font-size: 14px;
+
+                line-height: 1.8;
+
+            }
+
+
+            .story-number {
+
+                font-size: 80px;
+
+                letter-spacing: -5px;
+
+            }
+
+
+            .promise-grid {
+
+                margin-top: 40px;
+
+            }
+
+
+            .promise-card {
+
+                padding:
+                    35px 25px;
+
+                min-height: 190px;
+
+            }
+
+
+            .founders-heading {
+
+                display: block;
+
+                margin-bottom: 40px;
+
+            }
+
+
+            .founders-heading p {
+
+                margin-top: 20px;
+
+            }
+
+
+            .founders-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .founder {
+
+                min-height: 180px;
+
+            }
+
+
+            .about-cta {
+
+                min-height: 50vh;
+
+                padding:
+                    80px 20px;
+
+            }
+
+
+            .about-cta h2 {
+
+                font-size:
+                    clamp(48px, 17vw, 90px);
+
+            }
+
+
+            .about-cta p {
+
+                font-size: 10px;
+
+                letter-spacing: 1.5px;
+
+            }
+
+
+            .footer-social {
+
+                gap: 18px;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           REDUCED MOTION
+        ====================================================== */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            html {
+                scroll-behavior: auto;
+            }
+
+
+            .announcement-track {
+
+                animation: none;
+
+            }
+
+
+            .reveal {
+
+                opacity: 1;
+
+                transform: none;
+
+                transition: none;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         ANNOUNCEMENT
+    ====================================================== -->
+
+    <div class="yuga-announcement">
+
+        <div class="announcement-track">
+
+            <span>✦ MIRZAPUR COLLECTION LIVE</span>
+            <span>✦ NEW DROP LIVE</span>
+            <span>✦ WEAR YOUR ERA</span>
+            <span>✦ SHOP YUGA</span>
+
+            <span>✦ MIRZAPUR COLLECTION LIVE</span>
+            <span>✦ NEW DROP LIVE</span>
+            <span>✦ WEAR YOUR ERA</span>
+            <span>✦ SHOP YUGA</span>
+
+            <span>✦ MIRZAPUR COLLECTION LIVE</span>
+            <span>✦ NEW DROP LIVE</span>
+            <span>✦ WEAR YOUR ERA</span>
+            <span>✦ SHOP YUGA</span>
+
+            <span>✦ MIRZAPUR COLLECTION LIVE</span>
+            <span>✦ NEW DROP LIVE</span>
+            <span>✦ WEAR YOUR ERA</span>
+            <span>✦ SHOP YUGA</span>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header>
+
+        <a href="index.html">
+
+            <img
+                src="Logo.png"
+                alt="YUGA Fashion"
+            >
+
+        </a>
+
+    </header>
+
+
+    <!-- =====================================================
+         NAVIGATION
+    ====================================================== -->
+
+    <nav
+        class="yuga-main-nav"
+        aria-label="Main navigation"
+    >
+
+        <a href="index.html#collections">
+            Our Collections
+        </a>
+
+
+        <a
+            href="about.html"
+            class="nav-active"
+        >
+            About Us
+        </a>
+
+
+        <a
+            href="https://wa.me/917888759939"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="nav-order"
+        >
+            Order Now
+        </a>
+
+    </nav>
+
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <section class="about-hero">
+
+        <div class="about-hero-content reveal">
+
+            <p class="hero-eyebrow">
+                THE STORY BEHIND YUGA
+            </p>
+
+
+            <h1>
+                ABOUT
+            </h1>
+
+
+            <p class="about-hero-tagline">
+                WEAR YOUR ERA.
+            </p>
+
+
+            <div class="hero-line"></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         OUR STORY
+    ====================================================== -->
+
+    <section class="about-section">
+
+        <div class="section-inner story-grid">
+
+            <div class="story-number reveal">
+                01
+            </div>
+
+
+            <div class="story-content reveal">
+
+                <p class="section-label">
+                    OUR STORY
+                </p>
+
+
+                <h2>
+                    Four minds.
+                    <br>
+                    <span>One beginning.</span>
+                </h2>
+
+
+                <p>
+
+                    YUGA was started by four aspiring college
+                    students who shared a passion to start
+                    something of their own and build something
+                    meaningful.
+
+                </p>
+
+
+                <p>
+
+                    What began with an idea became a vision —
+                    to create a fashion brand that represents
+                    a new generation and makes quality fashion
+                    accessible to people across India.
+
+                </p>
+
+
+                <p>
+
+                    YUGA is more than a name. It represents
+                    the rise of a new era.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         A NEW ERA
+    ====================================================== -->
+
+    <section class="about-section era-section">
+
+        <div class="section-inner reveal">
+
+            <p class="section-label">
+                THE YUGA ERA
+            </p>
+
+
+            <h2>
+
+                A new generation.
+                <br>
+                <span>A new era.</span>
+
+            </h2>
+
+
+            <p>
+
+                YUGA represents the rise of the new era —
+                the Gen-Z era.
+
+                A generation that is expressive,
+                ambitious, creative and unafraid to
+                define its own identity.
+
+            </p>
+
+
+            <span class="era-highlight">
+                WEAR YOUR ERA.
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         OUR PROMISE
+    ====================================================== -->
+
+    <section class="about-section">
+
+        <div class="section-inner">
+
+            <div class="reveal">
+
+                <p class="section-label">
+                    OUR PROMISE
+                </p>
+
+
+                <h2>
+                    Quality should
+                    <br>
+                    <span>be for everyone.</span>
+                </h2>
+
+
+                <p>
+
+                    YUGA brings high-quality fashion at
+                    reasonable prices, with the goal of
+                    making great everyday fashion accessible
+                    to people across India.
+
+                </p>
+
+            </div>
+
+
+            <div class="promise-grid reveal">
+
+
+                <div class="promise-card">
+
+                    <div class="promise-number">
+                        01 / QUALITY
+                    </div>
+
+
+                    <h3>
+                        Made to Matter
+                    </h3>
+
+
+                    <p>
+                        We believe everyday clothing should
+                        feel good, look good and be worth
+                        wearing again and again.
+                    </p>
+
+                </div>
+
+
+                <div class="promise-card">
+
+                    <div class="promise-number">
+                        02 / VALUE
+                    </div>
+
+
+                    <h3>
+                        Reasonable Pricing
+                    </h3>
+
+
+                    <p>
+                        Premium quality should not have to
+                        come with an unreasonable price tag.
+                    </p>
+
+                </div>
+
+
+                <div class="promise-card">
+
+                    <div class="promise-number">
+                        03 / INDIA
+                    </div>
+
+
+                    <h3>
+                        Made for India
+                    </h3>
+
+
+                    <p>
+                        YUGA is built with India's new
+                        generation in mind — its style,
+                        energy and individuality.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         FOUNDERS
+    ====================================================== -->
+
+    <section class="about-section founders-section">
+
+        <div class="section-inner">
+
+
+            <div class="founders-heading reveal">
+
+                <div>
+
+                    <p class="section-label">
+                        THE FOUNDERS
+                    </p>
+
+
+                    <h2>
+                        Four people.
+                        <br>
+                        <span>One YUGA.</span>
+                    </h2>
+
+                </div>
+
+
+                <p>
+
+                    YUGA was built by four aspiring college
+                    students who decided to turn their
+                    ambition into something of their own.
+
+                </p>
+
+            </div>
+
+
+            <div class="founders-grid reveal">
+
+
+                <div class="founder">
+
+                    <span class="founder-number">
+                        FOUNDER / 01
+                    </span>
+
+
+                    <div>
+
+                        <div class="founder-name">
+                            Harsh Prajapati
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="founder">
+
+                    <span class="founder-number">
+                        FOUNDER / 02
+                    </span>
+
+
+                    <div>
+
+                        <div class="founder-name">
+                            Altaf Mohammad
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="founder">
+
+                    <span class="founder-number">
+                        FOUNDER / 03
+                    </span>
+
+
+                    <div>
+
+                        <div class="founder-name">
+                            Sumit Pratap Singh
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="founder">
+
+                    <span class="founder-number">
+                        FOUNDER / 04
+                    </span>
+
+
+                    <div>
+
+                        <div class="founder-name">
+                            Kashmiri Manchanda
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         VISION
+    ====================================================== -->
+
+    <section class="about-section vision-section">
+
+        <div class="section-inner reveal">
+
+            <p class="section-label">
+                OUR VISION
+            </p>
+
+
+            <h2>
+
+                This is only
+                <br>
+                <span>the beginning.</span>
+
+            </h2>
+
+
+            <p>
+
+                YUGA is starting with a simple idea:
+                create quality fashion at a reasonable price
+                and build something that people can truly
+                make their own.
+
+                From a college idea to a growing Indian
+                fashion brand, our journey is just beginning.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CLOSING CTA
+    ====================================================== -->
+
+    <section class="about-cta">
+
+        <div class="about-cta-content reveal">
+
+            <p class="about-cta-small">
+                WELCOME TO THE NEW ERA
+            </p>
+
+
+            <h2>
+                WEAR
+                <br>
+                YOUR ERA.
+            </h2>
+
+
+            <p>
+                Discover YUGA Fashion.
+            </p>
+
+
+            <a
+                href="index.html#collections"
+                class="cta-button"
+            >
+                EXPLORE COLLECTIONS →
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
+
+        <h2>
+            YUGA
+        </h2>
+
+
+        <p class="footer-tagline">
+            Wear Your Era.
+        </p>
+
+
+        <div class="footer-social">
+
+
+            <a
+                href="https://www.instagram.com/yugafashionindia/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="footer-link"
+            >
+                Instagram
+            </a>
+
+
+            <a
+                href="https://www.youtube.com/@YUGAFashionIndia"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="footer-link"
+            >
+                YouTube
+            </a>
+
+
+            <a
+                href="mailto:yugafashiononline@gmail.com"
+                class="footer-link"
+            >
+                Customer Care
+            </a>
+
+
+            <a
+                href="https://wa.me/917888759939"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="footer-link"
+            >
+                WhatsApp
+            </a>
+
+
+            <a
+                href="policies.html"
+                class="footer-link"
+            >
+                Policies
+            </a>
+
+
+            <a
+                href="about.html"
+                class="footer-link"
+            >
+                About Us
+            </a>
+
+        </div>
+
+
+        <p class="footer-copy">
+            © 2026 YUGA Fashion
+        </p>
+
+    </footer>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+
+        const revealElements =
+            document.querySelectorAll(".reveal");
+
+
+        const revealObserver =
+            new IntersectionObserver(
+
+                function(entries) {
+
+                    entries.forEach(function(entry) {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.classList.add(
+                                "visible"
+                            );
+
+                            revealObserver.unobserve(
+                                entry.target
+                            );
+
+                        }
+
+                    });
+
+                },
+
+                {
+                    threshold: 0.12
+                }
+
+            );
+
+
+        revealElements.forEach(function(element) {
+
+            revealObserver.observe(element);
+
+        });
+
+    </script>
+
+
+</body>
+
+</html>
