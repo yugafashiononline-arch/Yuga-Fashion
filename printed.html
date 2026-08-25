@@ -14,6 +14,60 @@
 
     <link rel="stylesheet" href="style.css">
 
+    <style>
+        /* =========================================================
+           PRINTED COLLECTION — FRONT / BACK SLIDER
+        ========================================================== */
+
+        .printed-slider {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .printed-slider img {
+            display: block;
+            width: 100%;
+            height: auto;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .printed-slider img.slider-fade {
+            opacity: 0;
+        }
+
+        .printed-slider img.slider-visible {
+            opacity: 1;
+        }
+
+        /* Small swipe/slide indicator */
+        .printed-slider-dots {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 5px;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .printed-slider-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.45);
+            transition: all 0.3s ease;
+        }
+
+        .printed-slider-dot.active {
+            width: 16px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.95);
+        }
+    </style>
+
 </head>
 
 
@@ -38,7 +92,6 @@
     </header>
 
 
-
     <!-- =========================================================
          BACK BUTTON
     ========================================================== -->
@@ -49,7 +102,6 @@
     >
         ← Back to Collections
     </a>
-
 
 
     <!-- =========================================================
@@ -65,27 +117,37 @@
 
 
             <!-- =================================================
-                 PRINTED 1 : BLACK DESIGN
+                 PRINTED 1
             ================================================== -->
 
             <div
                 class="product"
-
                 data-name="YUGA Graphic Tee"
-
                 data-price="₹399"
-
                 data-colour="Black Design"
-
-                data-image="Black Design 1.png"
+                data-image="Front 1.png"
             >
 
                 <div class="product-image-zoom">
 
-                    <img
-                        src="Black Design 1.png"
-                        alt="YUGA Black Printed T-Shirt"
+                    <div
+                        class="printed-slider"
+                        data-front="Front 1.png"
+                        data-back="Back 1.png"
                     >
+
+                        <img
+                            src="Front 1.png"
+                            alt="YUGA Black Printed T-Shirt Front"
+                            class="slider-visible"
+                        >
+
+                        <div class="printed-slider-dots">
+                            <span class="printed-slider-dot active"></span>
+                            <span class="printed-slider-dot"></span>
+                        </div>
+
+                    </div>
 
                 </div>
 
@@ -94,17 +156,14 @@
                     YUGA Graphic Tee
                 </h3>
 
-
                 <p class="price">
                     ₹399
                 </p>
-
 
                 <p>
                     Colour: Black Design
                 </p>
 
-
                 <p>
                     Sizes: S • M • L • XL
                 </p>
@@ -116,27 +175,14 @@
                         AVAILABILITY
                     </p>
 
-
                     <div class="sizes">
 
-                        <span class="in-stock">
-                            S ✓
-                        </span>
-
-                        <span class="in-stock">
-                            M ✓
-                        </span>
-
-                        <span class="in-stock">
-                            L ✓
-                        </span>
-
-                        <span class="in-stock">
-                            XL ✓
-                        </span>
+                        <span class="in-stock">S ✓</span>
+                        <span class="in-stock">M ✓</span>
+                        <span class="in-stock">L ✓</span>
+                        <span class="in-stock">XL ✓</span>
 
                     </div>
-
 
                     <p class="store-stock">
                         Available in Store
@@ -147,51 +193,49 @@
             </div>
 
 
-
             <!-- =================================================
-                 PRINTED 2 : BLUE
+                 PRINTED 2
             ================================================== -->
 
             <div
                 class="product"
-
                 data-name="YUGA Graphic Tee"
-
                 data-price="₹399"
-
                 data-colour="Blue"
-
-                data-image="Blue 1.png"
+                data-image="Front 2.png"
             >
 
                 <div class="product-image-zoom">
 
-                    <img
-                        src="Blue 1.png"
-                        alt="YUGA Blue Printed T-Shirt"
+                    <div
+                        class="printed-slider"
+                        data-front="Front 2.png"
+                        data-back="Back 2.png"
                     >
+
+                        <img
+                            src="Front 2.png"
+                            alt="YUGA Blue Printed T-Shirt Front"
+                            class="slider-visible"
+                        >
+
+                        <div class="printed-slider-dots">
+                            <span class="printed-slider-dot active"></span>
+                            <span class="printed-slider-dot"></span>
+                        </div>
+
+                    </div>
 
                 </div>
 
 
-                <h3>
-                    YUGA Graphic Tee
-                </h3>
+                <h3>YUGA Graphic Tee</h3>
 
+                <p class="price">₹399</p>
 
-                <p class="price">
-                    ₹399
-                </p>
+                <p>Colour: Blue</p>
 
-
-                <p>
-                    Colour: Blue
-                </p>
-
-
-                <p>
-                    Sizes: S • M • L • XL
-                </p>
+                <p>Sizes: S • M • L • XL</p>
 
 
                 <div class="stock">
@@ -200,27 +244,14 @@
                         AVAILABILITY
                     </p>
 
-
                     <div class="sizes">
 
-                        <span class="in-stock">
-                            S ✓
-                        </span>
-
-                        <span class="in-stock">
-                            M ✓
-                        </span>
-
-                        <span class="in-stock">
-                            L ✓
-                        </span>
-
-                        <span class="in-stock">
-                            XL ✓
-                        </span>
+                        <span class="in-stock">S ✓</span>
+                        <span class="in-stock">M ✓</span>
+                        <span class="in-stock">L ✓</span>
+                        <span class="in-stock">XL ✓</span>
 
                     </div>
-
 
                     <p class="store-stock">
                         Available in Store
@@ -231,51 +262,49 @@
             </div>
 
 
-
             <!-- =================================================
-                 PRINTED 3 : GREEN
+                 PRINTED 3
             ================================================== -->
 
             <div
                 class="product"
-
                 data-name="YUGA Graphic Tee"
-
                 data-price="₹399"
-
                 data-colour="Green"
-
-                data-image="Green 1.png"
+                data-image="Front 3.png"
             >
 
                 <div class="product-image-zoom">
 
-                    <img
-                        src="Green 1.png"
-                        alt="YUGA Green Printed T-Shirt"
+                    <div
+                        class="printed-slider"
+                        data-front="Front 3.png"
+                        data-back="Back 3.png"
                     >
+
+                        <img
+                            src="Front 3.png"
+                            alt="YUGA Green Printed T-Shirt Front"
+                            class="slider-visible"
+                        >
+
+                        <div class="printed-slider-dots">
+                            <span class="printed-slider-dot active"></span>
+                            <span class="printed-slider-dot"></span>
+                        </div>
+
+                    </div>
 
                 </div>
 
 
-                <h3>
-                    YUGA Graphic Tee
-                </h3>
+                <h3>YUGA Graphic Tee</h3>
 
+                <p class="price">₹399</p>
 
-                <p class="price">
-                    ₹399
-                </p>
+                <p>Colour: Green</p>
 
-
-                <p>
-                    Colour: Green
-                </p>
-
-
-                <p>
-                    Sizes: S • M • L • XL
-                </p>
+                <p>Sizes: S • M • L • XL</p>
 
 
                 <div class="stock">
@@ -284,27 +313,14 @@
                         AVAILABILITY
                     </p>
 
-
                     <div class="sizes">
 
-                        <span class="in-stock">
-                            S ✓
-                        </span>
-
-                        <span class="in-stock">
-                            M ✓
-                        </span>
-
-                        <span class="in-stock">
-                            L ✓
-                        </span>
-
-                        <span class="in-stock">
-                            XL ✓
-                        </span>
+                        <span class="in-stock">S ✓</span>
+                        <span class="in-stock">M ✓</span>
+                        <span class="in-stock">L ✓</span>
+                        <span class="in-stock">XL ✓</span>
 
                     </div>
-
 
                     <p class="store-stock">
                         Available in Store
@@ -315,51 +331,49 @@
             </div>
 
 
-
             <!-- =================================================
-                 PRINTED 4 : YELLOW
+                 PRINTED 4
             ================================================== -->
 
             <div
                 class="product"
-
                 data-name="YUGA Graphic Tee"
-
                 data-price="₹399"
-
                 data-colour="Yellow"
-
-                data-image="Yellow1.png"
+                data-image="Front 4.png"
             >
 
                 <div class="product-image-zoom">
 
-                    <img
-                        src="Yellow1.png"
-                        alt="YUGA Yellow Printed T-Shirt"
+                    <div
+                        class="printed-slider"
+                        data-front="Front 4.png"
+                        data-back="Back 4.png"
                     >
+
+                        <img
+                            src="Front 4.png"
+                            alt="YUGA Yellow Printed T-Shirt Front"
+                            class="slider-visible"
+                        >
+
+                        <div class="printed-slider-dots">
+                            <span class="printed-slider-dot active"></span>
+                            <span class="printed-slider-dot"></span>
+                        </div>
+
+                    </div>
 
                 </div>
 
 
-                <h3>
-                    YUGA Graphic Tee
-                </h3>
+                <h3>YUGA Graphic Tee</h3>
 
+                <p class="price">₹399</p>
 
-                <p class="price">
-                    ₹399
-                </p>
+                <p>Colour: Yellow</p>
 
-
-                <p>
-                    Colour: Yellow
-                </p>
-
-
-                <p>
-                    Sizes: S • M • L • XL
-                </p>
+                <p>Sizes: S • M • L • XL</p>
 
 
                 <div class="stock">
@@ -368,27 +382,14 @@
                         AVAILABILITY
                     </p>
 
-
                     <div class="sizes">
 
-                        <span class="in-stock">
-                            S ✓
-                        </span>
-
-                        <span class="in-stock">
-                            M ✓
-                        </span>
-
-                        <span class="in-stock">
-                            L ✓
-                        </span>
-
-                        <span class="in-stock">
-                            XL ✓
-                        </span>
+                        <span class="in-stock">S ✓</span>
+                        <span class="in-stock">M ✓</span>
+                        <span class="in-stock">L ✓</span>
+                        <span class="in-stock">XL ✓</span>
 
                     </div>
-
 
                     <p class="store-stock">
                         Available in Store
@@ -399,51 +400,49 @@
             </div>
 
 
-
             <!-- =================================================
-                 PRINTED 5 : BLUE DESIGN 2
+                 PRINTED 5
             ================================================== -->
 
             <div
                 class="product"
-
                 data-name="YUGA Graphic Tee"
-
                 data-price="₹399"
-
                 data-colour="Blue"
-
-                data-image="Blue 2.png"
+                data-image="Front 5.png"
             >
 
                 <div class="product-image-zoom">
 
-                    <img
-                        src="Blue 2.png"
-                        alt="YUGA Blue Printed T-Shirt"
+                    <div
+                        class="printed-slider"
+                        data-front="Front 5.png"
+                        data-back="Back 5.png"
                     >
+
+                        <img
+                            src="Front 5.png"
+                            alt="YUGA Blue Printed T-Shirt Front"
+                            class="slider-visible"
+                        >
+
+                        <div class="printed-slider-dots">
+                            <span class="printed-slider-dot active"></span>
+                            <span class="printed-slider-dot"></span>
+                        </div>
+
+                    </div>
 
                 </div>
 
 
-                <h3>
-                    YUGA Graphic Tee
-                </h3>
+                <h3>YUGA Graphic Tee</h3>
 
+                <p class="price">₹399</p>
 
-                <p class="price">
-                    ₹399
-                </p>
+                <p>Colour: Blue</p>
 
-
-                <p>
-                    Colour: Blue
-                </p>
-
-
-                <p>
-                    Sizes: S • M • L • XL
-                </p>
+                <p>Sizes: S • M • L • XL</p>
 
 
                 <div class="stock">
@@ -452,27 +451,14 @@
                         AVAILABILITY
                     </p>
 
-
                     <div class="sizes">
 
-                        <span class="in-stock">
-                            S ✓
-                        </span>
-
-                        <span class="in-stock">
-                            M ✓
-                        </span>
-
-                        <span class="in-stock">
-                            L ✓
-                        </span>
-
-                        <span class="in-stock">
-                            XL ✓
-                        </span>
+                        <span class="in-stock">S ✓</span>
+                        <span class="in-stock">M ✓</span>
+                        <span class="in-stock">L ✓</span>
+                        <span class="in-stock">XL ✓</span>
 
                     </div>
-
 
                     <p class="store-stock">
                         Available in Store
@@ -483,51 +469,49 @@
             </div>
 
 
-
             <!-- =================================================
-                 PRINTED 6 : YELLOW DESIGN 2
+                 PRINTED 6
             ================================================== -->
 
             <div
                 class="product"
-
                 data-name="YUGA Graphic Tee"
-
                 data-price="₹399"
-
                 data-colour="Yellow"
-
-                data-image="Yellow 2.png"
+                data-image="Front 6.png"
             >
 
                 <div class="product-image-zoom">
 
-                    <img
-                        src="Yellow 2.png"
-                        alt="YUGA Yellow Printed T-Shirt"
+                    <div
+                        class="printed-slider"
+                        data-front="Front 6.png"
+                        data-back="Back 6.png"
                     >
+
+                        <img
+                            src="Front 6.png"
+                            alt="YUGA Yellow Printed T-Shirt Front"
+                            class="slider-visible"
+                        >
+
+                        <div class="printed-slider-dots">
+                            <span class="printed-slider-dot active"></span>
+                            <span class="printed-slider-dot"></span>
+                        </div>
+
+                    </div>
 
                 </div>
 
 
-                <h3>
-                    YUGA Graphic Tee
-                </h3>
+                <h3>YUGA Graphic Tee</h3>
 
+                <p class="price">₹399</p>
 
-                <p class="price">
-                    ₹399
-                </p>
+                <p>Colour: Yellow</p>
 
-
-                <p>
-                    Colour: Yellow
-                </p>
-
-
-                <p>
-                    Sizes: S • M • L • XL
-                </p>
+                <p>Sizes: S • M • L • XL</p>
 
 
                 <div class="stock">
@@ -536,27 +520,14 @@
                         AVAILABILITY
                     </p>
 
-
                     <div class="sizes">
 
-                        <span class="in-stock">
-                            S ✓
-                        </span>
-
-                        <span class="in-stock">
-                            M ✓
-                        </span>
-
-                        <span class="in-stock">
-                            L ✓
-                        </span>
-
-                        <span class="in-stock">
-                            XL ✓
-                        </span>
+                        <span class="in-stock">S ✓</span>
+                        <span class="in-stock">M ✓</span>
+                        <span class="in-stock">L ✓</span>
+                        <span class="in-stock">XL ✓</span>
 
                     </div>
-
 
                     <p class="store-stock">
                         Available in Store
@@ -567,51 +538,49 @@
             </div>
 
 
-
             <!-- =================================================
-                 PRINTED 7 : RED
+                 PRINTED 7
             ================================================== -->
 
             <div
                 class="product"
-
                 data-name="YUGA Graphic Tee"
-
                 data-price="₹399"
-
                 data-colour="Red"
-
-                data-image="Red 1.png"
+                data-image="Front 7.png"
             >
 
                 <div class="product-image-zoom">
 
-                    <img
-                        src="Red 1.png"
-                        alt="YUGA Red Printed T-Shirt"
+                    <div
+                        class="printed-slider"
+                        data-front="Front 7.png"
+                        data-back="Back 7.png"
                     >
+
+                        <img
+                            src="Front 7.png"
+                            alt="YUGA Red Printed T-Shirt Front"
+                            class="slider-visible"
+                        >
+
+                        <div class="printed-slider-dots">
+                            <span class="printed-slider-dot active"></span>
+                            <span class="printed-slider-dot"></span>
+                        </div>
+
+                    </div>
 
                 </div>
 
 
-                <h3>
-                    YUGA Graphic Tee
-                </h3>
+                <h3>YUGA Graphic Tee</h3>
 
+                <p class="price">₹399</p>
 
-                <p class="price">
-                    ₹399
-                </p>
+                <p>Colour: Red</p>
 
-
-                <p>
-                    Colour: Red
-                </p>
-
-
-                <p>
-                    Sizes: S • M • L • XL
-                </p>
+                <p>Sizes: S • M • L • XL</p>
 
 
                 <div class="stock">
@@ -620,27 +589,14 @@
                         AVAILABILITY
                     </p>
 
-
                     <div class="sizes">
 
-                        <span class="in-stock">
-                            S ✓
-                        </span>
-
-                        <span class="in-stock">
-                            M ✓
-                        </span>
-
-                        <span class="in-stock">
-                            L ✓
-                        </span>
-
-                        <span class="in-stock">
-                            XL ✓
-                        </span>
+                        <span class="in-stock">S ✓</span>
+                        <span class="in-stock">M ✓</span>
+                        <span class="in-stock">L ✓</span>
+                        <span class="in-stock">XL ✓</span>
 
                     </div>
-
 
                     <p class="store-stock">
                         Available in Store
@@ -651,51 +607,49 @@
             </div>
 
 
-
             <!-- =================================================
-                 PRINTED 8 : YELLOW DESIGN 3
+                 PRINTED 8
             ================================================== -->
 
             <div
                 class="product"
-
                 data-name="YUGA Graphic Tee"
-
                 data-price="₹399"
-
                 data-colour="Yellow"
-
-                data-image="Yellow3.png"
+                data-image="Front 8.png"
             >
 
                 <div class="product-image-zoom">
 
-                    <img
-                        src="Yellow3.png"
-                        alt="YUGA Yellow Printed T-Shirt"
+                    <div
+                        class="printed-slider"
+                        data-front="Front 8.png"
+                        data-back="Back 8.png"
                     >
+
+                        <img
+                            src="Front 8.png"
+                            alt="YUGA Yellow Printed T-Shirt Front"
+                            class="slider-visible"
+                        >
+
+                        <div class="printed-slider-dots">
+                            <span class="printed-slider-dot active"></span>
+                            <span class="printed-slider-dot"></span>
+                        </div>
+
+                    </div>
 
                 </div>
 
 
-                <h3>
-                    YUGA Graphic Tee
-                </h3>
+                <h3>YUGA Graphic Tee</h3>
 
+                <p class="price">₹399</p>
 
-                <p class="price">
-                    ₹399
-                </p>
+                <p>Colour: Yellow</p>
 
-
-                <p>
-                    Colour: Yellow
-                </p>
-
-
-                <p>
-                    Sizes: S • M • L • XL
-                </p>
+                <p>Sizes: S • M • L • XL</p>
 
 
                 <div class="stock">
@@ -704,27 +658,14 @@
                         AVAILABILITY
                     </p>
 
-
                     <div class="sizes">
 
-                        <span class="in-stock">
-                            S ✓
-                        </span>
-
-                        <span class="in-stock">
-                            M ✓
-                        </span>
-
-                        <span class="in-stock">
-                            L ✓
-                        </span>
-
-                        <span class="in-stock">
-                            XL ✓
-                        </span>
+                        <span class="in-stock">S ✓</span>
+                        <span class="in-stock">M ✓</span>
+                        <span class="in-stock">L ✓</span>
+                        <span class="in-stock">XL ✓</span>
 
                     </div>
-
 
                     <p class="store-stock">
                         Available in Store
@@ -735,51 +676,49 @@
             </div>
 
 
-
             <!-- =================================================
-                 PRINTED 9 : YELLOW DESIGN 4
+                 PRINTED 9
             ================================================== -->
 
             <div
                 class="product"
-
                 data-name="YUGA Graphic Tee"
-
                 data-price="₹399"
-
                 data-colour="Yellow"
-
-                data-image="Yellow 4.png"
+                data-image="Front 9.png"
             >
 
                 <div class="product-image-zoom">
 
-                    <img
-                        src="Yellow 4.png"
-                        alt="YUGA Yellow Printed T-Shirt"
+                    <div
+                        class="printed-slider"
+                        data-front="Front 9.png"
+                        data-back="Back 9.png"
                     >
+
+                        <img
+                            src="Front 9.png"
+                            alt="YUGA Yellow Printed T-Shirt Front"
+                            class="slider-visible"
+                        >
+
+                        <div class="printed-slider-dots">
+                            <span class="printed-slider-dot active"></span>
+                            <span class="printed-slider-dot"></span>
+                        </div>
+
+                    </div>
 
                 </div>
 
 
-                <h3>
-                    YUGA Graphic Tee
-                </h3>
+                <h3>YUGA Graphic Tee</h3>
 
+                <p class="price">₹399</p>
 
-                <p class="price">
-                    ₹399
-                </p>
+                <p>Colour: Yellow</p>
 
-
-                <p>
-                    Colour: Yellow
-                </p>
-
-
-                <p>
-                    Sizes: S • M • L • XL
-                </p>
+                <p>Sizes: S • M • L • XL</p>
 
 
                 <div class="stock">
@@ -788,27 +727,14 @@
                         AVAILABILITY
                     </p>
 
-
                     <div class="sizes">
 
-                        <span class="in-stock">
-                            S ✓
-                        </span>
-
-                        <span class="in-stock">
-                            M ✓
-                        </span>
-
-                        <span class="in-stock">
-                            L ✓
-                        </span>
-
-                        <span class="in-stock">
-                            XL ✓
-                        </span>
+                        <span class="in-stock">S ✓</span>
+                        <span class="in-stock">M ✓</span>
+                        <span class="in-stock">L ✓</span>
+                        <span class="in-stock">XL ✓</span>
 
                     </div>
-
 
                     <p class="store-stock">
                         Available in Store
@@ -824,7 +750,6 @@
     </section>
 
 
-
     <!-- =========================================================
          PRODUCT POPUP / MODAL
     ========================================================== -->
@@ -836,9 +761,6 @@
 
         <div class="modal-content">
 
-
-            <!-- CLOSE BUTTON -->
-
             <button
                 class="modal-close"
                 id="modalClose"
@@ -847,9 +769,6 @@
                 ×
             </button>
 
-
-
-            <!-- PRODUCT IMAGE -->
 
             <div class="modal-image">
 
@@ -862,21 +781,15 @@
             </div>
 
 
-
-            <!-- PRODUCT INFORMATION -->
-
             <div class="modal-info">
-
 
                 <p class="modal-brand">
                     YUGA
                 </p>
 
-
                 <h2 id="modalName">
                     YUGA Graphic Tee
                 </h2>
-
 
                 <p
                     class="modal-price"
@@ -884,7 +797,6 @@
                 >
                     ₹399
                 </p>
-
 
                 <p class="modal-colour">
 
@@ -895,15 +807,11 @@
                 </p>
 
 
-
-                <!-- AVAILABLE SIZES -->
-
                 <div class="modal-stock">
 
                     <p class="modal-stock-title">
                         AVAILABLE SIZES
                     </p>
-
 
                     <div
                         id="modalSizes"
@@ -914,20 +822,15 @@
                 </div>
 
 
-
-                <!-- STORE STATUS -->
-
                 <div class="modal-store">
                     🏪 Available in Store
                 </div>
-
 
             </div>
 
         </div>
 
     </div>
-
 
 
     <!-- =========================================================
@@ -940,16 +843,12 @@
             YUGA
         </h2>
 
-
         <p class="footer-tagline">
             Wear Your Era.
         </p>
 
 
         <div class="footer-social">
-
-
-            <!-- INSTAGRAM -->
 
             <a
                 href="https://www.instagram.com/yugafashionindia/"
@@ -961,9 +860,6 @@
             </a>
 
 
-
-            <!-- CUSTOMER CARE -->
-
             <a
                 href="mailto:yugafashiononline@gmail.com"
                 class="footer-link"
@@ -971,9 +867,6 @@
                 Customer Care
             </a>
 
-
-
-            <!-- WHATSAPP -->
 
             <a
                 href="https://wa.me/917888759939"
@@ -984,7 +877,6 @@
                 WhatsApp
             </a>
 
-
         </div>
 
 
@@ -993,7 +885,6 @@
         </p>
 
     </footer>
-
 
 
     <!-- =========================================================
@@ -1011,9 +902,6 @@
 
 
     <div id="yugaChatbot">
-
-
-        <!-- CHAT HEADER -->
 
         <div class="yuga-chat-header">
 
@@ -1041,13 +929,7 @@
         </div>
 
 
-
-        <!-- CHAT MESSAGES -->
-
         <div id="yugaChatMessages">
-
-
-            <!-- WELCOME MESSAGE -->
 
             <div class="yuga-message bot">
 
@@ -1061,11 +943,7 @@
             </div>
 
 
-
-            <!-- QUICK BUTTONS -->
-
             <div class="yuga-quick-buttons">
-
 
                 <button
                     type="button"
@@ -1106,14 +984,10 @@
                     🛒 How to Order
                 </button>
 
-
             </div>
 
         </div>
 
-
-
-        <!-- CHAT INPUT -->
 
         <div class="yuga-chat-input">
 
@@ -1137,12 +1011,161 @@
     </div>
 
 
-
     <!-- =========================================================
-         JAVASCRIPT
+         YUGA JAVASCRIPT
     ========================================================== -->
 
     <script src="script.js"></script>
+
+
+    <!-- =========================================================
+         PRINTED FRONT / BACK SLIDER SCRIPT
+    ========================================================== -->
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const sliders = document.querySelectorAll(".printed-slider");
+
+            sliders.forEach(function (slider) {
+
+                const image = slider.querySelector("img");
+
+                const dots = slider.querySelectorAll(".printed-slider-dot");
+
+                const frontImage = slider.dataset.front;
+
+                const backImage = slider.dataset.back;
+
+                let showingBack = false;
+
+                let timer;
+
+
+                function showImage(back) {
+
+                    image.classList.add("slider-fade");
+
+                    setTimeout(function () {
+
+                        if (back) {
+
+                            image.src = backImage;
+
+                            image.alt = "YUGA T-Shirt Back";
+
+                        } else {
+
+                            image.src = frontImage;
+
+                            image.alt = "YUGA T-Shirt Front";
+
+                        }
+
+                        image.classList.remove("slider-fade");
+
+                        image.classList.add("slider-visible");
+
+
+                        dots.forEach(function (dot, index) {
+
+                            dot.classList.toggle(
+                                "active",
+                                back ? index === 1 : index === 0
+                            );
+
+                        });
+
+                    }, 250);
+
+                }
+
+
+                function nextSlide() {
+
+                    showingBack = !showingBack;
+
+                    showImage(showingBack);
+
+                }
+
+
+                function startSlider() {
+
+                    clearInterval(timer);
+
+                    timer = setInterval(
+                        nextSlide,
+                        3000
+                    );
+
+                }
+
+
+                function resetSlider() {
+
+                    clearInterval(timer);
+
+                    startSlider();
+
+                }
+
+
+                /* Automatic front → back → front */
+
+                startSlider();
+
+
+                /* Mobile swipe support */
+
+                let touchStartX = 0;
+
+                let touchEndX = 0;
+
+
+                slider.addEventListener(
+                    "touchstart",
+                    function (event) {
+
+                        touchStartX =
+                            event.changedTouches[0].screenX;
+
+                    },
+                    { passive: true }
+                );
+
+
+                slider.addEventListener(
+                    "touchend",
+                    function (event) {
+
+                        touchEndX =
+                            event.changedTouches[0].screenX;
+
+                        const difference =
+                            touchStartX - touchEndX;
+
+
+                        if (Math.abs(difference) > 40) {
+
+                            showingBack = difference > 0;
+
+                            showImage(showingBack);
+
+                            resetSlider();
+
+                        }
+
+                    },
+                    { passive: true }
+                );
+
+            });
+
+        });
+
+    </script>
 
 
 </body>
