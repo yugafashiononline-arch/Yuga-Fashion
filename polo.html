@@ -16,62 +16,55 @@
 
     <style>
         /* =========================================================
-           PRINTED PRODUCT MANUAL SWIPE
-           No autoplay / no automatic slideshow
+           PRINTED COLLECTION — FRONT / BACK SLIDER
         ========================================================== */
 
-        .product-image-slider {
+        .printed-slider {
+            position: relative;
             width: 100%;
-            overflow-x: auto;
-            overflow-y: hidden;
-            display: flex;
-            scroll-snap-type: x mandatory;
-            scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-            touch-action: pan-x;
-            cursor: grab;
+            overflow: hidden;
+            cursor: pointer;
         }
 
-        .product-image-slider::-webkit-scrollbar {
-            display: none;
-        }
-
-        .product-image-slider:active {
-            cursor: grabbing;
-        }
-
-        .product-slide {
-            min-width: 100%;
-            width: 100%;
-            flex: 0 0 100%;
-            scroll-snap-align: start;
-            scroll-snap-stop: always;
-        }
-
-        .product-slide img {
+        .printed-slider img {
             display: block;
             width: 100%;
             height: auto;
-            object-fit: contain;
-            user-select: none;
-            -webkit-user-drag: none;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .printed-slider img.slider-fade {
+            opacity: 0;
+        }
+
+        .printed-slider img.slider-visible {
+            opacity: 1;
+        }
+
+        /* Small swipe/slide indicator */
+        .printed-slider-dots {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 5px;
             pointer-events: none;
+            z-index: 5;
         }
 
-        /* Small swipe hint */
-        .swipe-hint {
-            text-align: center;
-            font-size: 11px;
-            opacity: 0.55;
-            margin-top: 7px;
-            letter-spacing: 0.5px;
+        .printed-slider-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.45);
+            transition: all 0.3s ease;
         }
 
-        @media (min-width: 768px) {
-            .swipe-hint {
-                font-size: 12px;
-            }
+        .printed-slider-dot.active {
+            width: 16px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.95);
         }
     </style>
 
@@ -99,7 +92,6 @@
     </header>
 
 
-
     <!-- =========================================================
          BACK BUTTON
     ========================================================== -->
@@ -110,7 +102,6 @@
     >
         ← Back to Collections
     </a>
-
 
 
     <!-- =========================================================
@@ -125,7 +116,6 @@
         <div class="products">
 
 
-
             <!-- =================================================
                  PRINTED 1
             ================================================== -->
@@ -135,36 +125,31 @@
                 data-name="YUGA Graphic Tee"
                 data-price="₹399"
                 data-colour="Black Design"
-                data-image="Front 1.jpeg"
+                data-image="Front 1.png"
             >
 
-                <div class="product-image-slider">
+                <div class="product-image-zoom">
 
-                    <div class="product-slide">
-
-                        <img
-                            src="Front 1.jpeg"
-                            alt="YUGA Printed T-Shirt Front 1"
-                            draggable="false"
-                        >
-
-                    </div>
-
-                    <div class="product-slide">
+                    <div
+                        class="printed-slider"
+                        data-front="Front 1.png"
+                        data-back="Back 1.png"
+                    >
 
                         <img
-                            src="Back 1.jpeg"
-                            alt="YUGA Printed T-Shirt Back 1"
-                            draggable="false"
+                            src="Front 1.png"
+                            alt="YUGA Black Printed T-Shirt Front"
+                            class="slider-visible"
                         >
+
+                        <div class="printed-slider-dots">
+                            <span class="printed-slider-dot active"></span>
+                            <span class="printed-slider-dot"></span>
+                        </div>
 
                     </div>
 
                 </div>
-
-                <p class="swipe-hint">
-                    Swipe to view back
-                </p>
 
 
                 <h3>
@@ -182,6 +167,7 @@
                 <p>
                     Sizes: S • M • L • XL
                 </p>
+
 
                 <div class="stock">
 
@@ -207,7 +193,6 @@
             </div>
 
 
-
             <!-- =================================================
                  PRINTED 2
             ================================================== -->
@@ -217,32 +202,32 @@
                 data-name="YUGA Graphic Tee"
                 data-price="₹399"
                 data-colour="Blue"
-                data-image="Front 2.jpeg"
+                data-image="Front 2.png"
             >
 
-                <div class="product-image-slider">
+                <div class="product-image-zoom">
 
-                    <div class="product-slide">
-                        <img
-                            src="Front 2.jpeg"
-                            alt="YUGA Printed T-Shirt Front 2"
-                            draggable="false"
-                        >
-                    </div>
+                    <div
+                        class="printed-slider"
+                        data-front="Front 2.png"
+                        data-back="Back 2.png"
+                    >
 
-                    <div class="product-slide">
                         <img
-                            src="Back 2.jpeg"
-                            alt="YUGA Printed T-Shirt Back 2"
-                            draggable="false"
+                            src="Front 2.png"
+                            alt="YUGA Blue Printed T-Shirt Front"
+                            class="slider-visible"
                         >
+
+                        <div class="printed-slider-dots">
+                            <span class="printed-slider-dot active"></span>
+                            <span class="printed-slider-dot"></span>
+                        </div>
+
                     </div>
 
                 </div>
 
-                <p class="swipe-hint">
-                    Swipe to view back
-                </p>
 
                 <h3>YUGA Graphic Tee</h3>
 
@@ -252,9 +237,12 @@
 
                 <p>Sizes: S • M • L • XL</p>
 
+
                 <div class="stock">
 
-                    <p class="stock-title">AVAILABILITY</p>
+                    <p class="stock-title">
+                        AVAILABILITY
+                    </p>
 
                     <div class="sizes">
 
@@ -272,7 +260,6 @@
                 </div>
 
             </div>
-
 
 
             <!-- =================================================
@@ -284,32 +271,32 @@
                 data-name="YUGA Graphic Tee"
                 data-price="₹399"
                 data-colour="Green"
-                data-image="Front 3.jpeg"
+                data-image="Front 3.png"
             >
 
-                <div class="product-image-slider">
+                <div class="product-image-zoom">
 
-                    <div class="product-slide">
-                        <img
-                            src="Front 3.jpeg"
-                            alt="YUGA Printed T-Shirt Front 3"
-                            draggable="false"
-                        >
-                    </div>
+                    <div
+                        class="printed-slider"
+                        data-front="Front 3.png"
+                        data-back="Back 3.png"
+                    >
 
-                    <div class="product-slide">
                         <img
-                            src="Back 3.jpeg"
-                            alt="YUGA Printed T-Shirt Back 3"
-                            draggable="false"
+                            src="Front 3.png"
+                            alt="YUGA Green Printed T-Shirt Front"
+                            class="slider-visible"
                         >
+
+                        <div class="printed-slider-dots">
+                            <span class="printed-slider-dot active"></span>
+                            <span class="printed-slider-dot"></span>
+                        </div>
+
                     </div>
 
                 </div>
 
-                <p class="swipe-hint">
-                    Swipe to view back
-                </p>
 
                 <h3>YUGA Graphic Tee</h3>
 
@@ -319,9 +306,12 @@
 
                 <p>Sizes: S • M • L • XL</p>
 
+
                 <div class="stock">
 
-                    <p class="stock-title">AVAILABILITY</p>
+                    <p class="stock-title">
+                        AVAILABILITY
+                    </p>
 
                     <div class="sizes">
 
@@ -339,7 +329,6 @@
                 </div>
 
             </div>
-
 
 
             <!-- =================================================
@@ -351,32 +340,32 @@
                 data-name="YUGA Graphic Tee"
                 data-price="₹399"
                 data-colour="Yellow"
-                data-image="Front 4.jpeg"
+                data-image="Front 4.png"
             >
 
-                <div class="product-image-slider">
+                <div class="product-image-zoom">
 
-                    <div class="product-slide">
-                        <img
-                            src="Front 4.jpeg"
-                            alt="YUGA Printed T-Shirt Front 4"
-                            draggable="false"
-                        >
-                    </div>
+                    <div
+                        class="printed-slider"
+                        data-front="Front 4.png"
+                        data-back="Back 4.png"
+                    >
 
-                    <div class="product-slide">
                         <img
-                            src="Back 4.jpeg"
-                            alt="YUGA Printed T-Shirt Back 4"
-                            draggable="false"
+                            src="Front 4.png"
+                            alt="YUGA Yellow Printed T-Shirt Front"
+                            class="slider-visible"
                         >
+
+                        <div class="printed-slider-dots">
+                            <span class="printed-slider-dot active"></span>
+                            <span class="printed-slider-dot"></span>
+                        </div>
+
                     </div>
 
                 </div>
 
-                <p class="swipe-hint">
-                    Swipe to view back
-                </p>
 
                 <h3>YUGA Graphic Tee</h3>
 
@@ -386,9 +375,12 @@
 
                 <p>Sizes: S • M • L • XL</p>
 
+
                 <div class="stock">
 
-                    <p class="stock-title">AVAILABILITY</p>
+                    <p class="stock-title">
+                        AVAILABILITY
+                    </p>
 
                     <div class="sizes">
 
@@ -406,7 +398,6 @@
                 </div>
 
             </div>
-
 
 
             <!-- =================================================
@@ -418,32 +409,32 @@
                 data-name="YUGA Graphic Tee"
                 data-price="₹399"
                 data-colour="Blue"
-                data-image="Front 5.jpeg"
+                data-image="Front 5.png"
             >
 
-                <div class="product-image-slider">
+                <div class="product-image-zoom">
 
-                    <div class="product-slide">
-                        <img
-                            src="Front 5.jpeg"
-                            alt="YUGA Printed T-Shirt Front 5"
-                            draggable="false"
-                        >
-                    </div>
+                    <div
+                        class="printed-slider"
+                        data-front="Front 5.png"
+                        data-back="Back 5.png"
+                    >
 
-                    <div class="product-slide">
                         <img
-                            src="Back 5.jpeg"
-                            alt="YUGA Printed T-Shirt Back 5"
-                            draggable="false"
+                            src="Front 5.png"
+                            alt="YUGA Blue Printed T-Shirt Front"
+                            class="slider-visible"
                         >
+
+                        <div class="printed-slider-dots">
+                            <span class="printed-slider-dot active"></span>
+                            <span class="printed-slider-dot"></span>
+                        </div>
+
                     </div>
 
                 </div>
 
-                <p class="swipe-hint">
-                    Swipe to view back
-                </p>
 
                 <h3>YUGA Graphic Tee</h3>
 
@@ -453,9 +444,12 @@
 
                 <p>Sizes: S • M • L • XL</p>
 
+
                 <div class="stock">
 
-                    <p class="stock-title">AVAILABILITY</p>
+                    <p class="stock-title">
+                        AVAILABILITY
+                    </p>
 
                     <div class="sizes">
 
@@ -473,7 +467,6 @@
                 </div>
 
             </div>
-
 
 
             <!-- =================================================
@@ -485,32 +478,32 @@
                 data-name="YUGA Graphic Tee"
                 data-price="₹399"
                 data-colour="Yellow"
-                data-image="Front 6.jpeg"
+                data-image="Front 6.png"
             >
 
-                <div class="product-image-slider">
+                <div class="product-image-zoom">
 
-                    <div class="product-slide">
-                        <img
-                            src="Front 6.jpeg"
-                            alt="YUGA Printed T-Shirt Front 6"
-                            draggable="false"
-                        >
-                    </div>
+                    <div
+                        class="printed-slider"
+                        data-front="Front 6.png"
+                        data-back="Back 6.png"
+                    >
 
-                    <div class="product-slide">
                         <img
-                            src="Back 6.jpeg"
-                            alt="YUGA Printed T-Shirt Back 6"
-                            draggable="false"
+                            src="Front 6.png"
+                            alt="YUGA Yellow Printed T-Shirt Front"
+                            class="slider-visible"
                         >
+
+                        <div class="printed-slider-dots">
+                            <span class="printed-slider-dot active"></span>
+                            <span class="printed-slider-dot"></span>
+                        </div>
+
                     </div>
 
                 </div>
 
-                <p class="swipe-hint">
-                    Swipe to view back
-                </p>
 
                 <h3>YUGA Graphic Tee</h3>
 
@@ -520,9 +513,12 @@
 
                 <p>Sizes: S • M • L • XL</p>
 
+
                 <div class="stock">
 
-                    <p class="stock-title">AVAILABILITY</p>
+                    <p class="stock-title">
+                        AVAILABILITY
+                    </p>
 
                     <div class="sizes">
 
@@ -540,7 +536,6 @@
                 </div>
 
             </div>
-
 
 
             <!-- =================================================
@@ -552,32 +547,32 @@
                 data-name="YUGA Graphic Tee"
                 data-price="₹399"
                 data-colour="Red"
-                data-image="Front 7.jpeg"
+                data-image="Front 7.png"
             >
 
-                <div class="product-image-slider">
+                <div class="product-image-zoom">
 
-                    <div class="product-slide">
-                        <img
-                            src="Front 7.jpeg"
-                            alt="YUGA Printed T-Shirt Front 7"
-                            draggable="false"
-                        >
-                    </div>
+                    <div
+                        class="printed-slider"
+                        data-front="Front 7.png"
+                        data-back="Back 7.png"
+                    >
 
-                    <div class="product-slide">
                         <img
-                            src="Back 7.jpeg"
-                            alt="YUGA Printed T-Shirt Back 7"
-                            draggable="false"
+                            src="Front 7.png"
+                            alt="YUGA Red Printed T-Shirt Front"
+                            class="slider-visible"
                         >
+
+                        <div class="printed-slider-dots">
+                            <span class="printed-slider-dot active"></span>
+                            <span class="printed-slider-dot"></span>
+                        </div>
+
                     </div>
 
                 </div>
 
-                <p class="swipe-hint">
-                    Swipe to view back
-                </p>
 
                 <h3>YUGA Graphic Tee</h3>
 
@@ -587,9 +582,12 @@
 
                 <p>Sizes: S • M • L • XL</p>
 
+
                 <div class="stock">
 
-                    <p class="stock-title">AVAILABILITY</p>
+                    <p class="stock-title">
+                        AVAILABILITY
+                    </p>
 
                     <div class="sizes">
 
@@ -607,7 +605,6 @@
                 </div>
 
             </div>
-
 
 
             <!-- =================================================
@@ -619,32 +616,32 @@
                 data-name="YUGA Graphic Tee"
                 data-price="₹399"
                 data-colour="Yellow"
-                data-image="Front 8.jpeg"
+                data-image="Front 8.png"
             >
 
-                <div class="product-image-slider">
+                <div class="product-image-zoom">
 
-                    <div class="product-slide">
-                        <img
-                            src="Front 8.jpeg"
-                            alt="YUGA Printed T-Shirt Front 8"
-                            draggable="false"
-                        >
-                    </div>
+                    <div
+                        class="printed-slider"
+                        data-front="Front 8.png"
+                        data-back="Back 8.png"
+                    >
 
-                    <div class="product-slide">
                         <img
-                            src="Back 8.jpeg"
-                            alt="YUGA Printed T-Shirt Back 8"
-                            draggable="false"
+                            src="Front 8.png"
+                            alt="YUGA Yellow Printed T-Shirt Front"
+                            class="slider-visible"
                         >
+
+                        <div class="printed-slider-dots">
+                            <span class="printed-slider-dot active"></span>
+                            <span class="printed-slider-dot"></span>
+                        </div>
+
                     </div>
 
                 </div>
 
-                <p class="swipe-hint">
-                    Swipe to view back
-                </p>
 
                 <h3>YUGA Graphic Tee</h3>
 
@@ -654,9 +651,12 @@
 
                 <p>Sizes: S • M • L • XL</p>
 
+
                 <div class="stock">
 
-                    <p class="stock-title">AVAILABILITY</p>
+                    <p class="stock-title">
+                        AVAILABILITY
+                    </p>
 
                     <div class="sizes">
 
@@ -676,7 +676,6 @@
             </div>
 
 
-
             <!-- =================================================
                  PRINTED 9
             ================================================== -->
@@ -686,32 +685,32 @@
                 data-name="YUGA Graphic Tee"
                 data-price="₹399"
                 data-colour="Yellow"
-                data-image="Front 9.jpeg"
+                data-image="Front 9.png"
             >
 
-                <div class="product-image-slider">
+                <div class="product-image-zoom">
 
-                    <div class="product-slide">
-                        <img
-                            src="Front 9.jpeg"
-                            alt="YUGA Printed T-Shirt Front 9"
-                            draggable="false"
-                        >
-                    </div>
+                    <div
+                        class="printed-slider"
+                        data-front="Front 9.png"
+                        data-back="Back 9.png"
+                    >
 
-                    <div class="product-slide">
                         <img
-                            src="Back 9.jpeg"
-                            alt="YUGA Printed T-Shirt Back 9"
-                            draggable="false"
+                            src="Front 9.png"
+                            alt="YUGA Yellow Printed T-Shirt Front"
+                            class="slider-visible"
                         >
+
+                        <div class="printed-slider-dots">
+                            <span class="printed-slider-dot active"></span>
+                            <span class="printed-slider-dot"></span>
+                        </div>
+
                     </div>
 
                 </div>
 
-                <p class="swipe-hint">
-                    Swipe to view back
-                </p>
 
                 <h3>YUGA Graphic Tee</h3>
 
@@ -721,9 +720,12 @@
 
                 <p>Sizes: S • M • L • XL</p>
 
+
                 <div class="stock">
 
-                    <p class="stock-title">AVAILABILITY</p>
+                    <p class="stock-title">
+                        AVAILABILITY
+                    </p>
 
                     <div class="sizes">
 
@@ -746,7 +748,6 @@
         </div>
 
     </section>
-
 
 
     <!-- =========================================================
@@ -832,7 +833,6 @@
     </div>
 
 
-
     <!-- =========================================================
          FOOTER
     ========================================================== -->
@@ -887,7 +887,6 @@
     </footer>
 
 
-
     <!-- =========================================================
          YUGA AI CHATBOT
     ========================================================== -->
@@ -903,9 +902,6 @@
 
 
     <div id="yugaChatbot">
-
-
-        <!-- CHAT HEADER -->
 
         <div class="yuga-chat-header">
 
@@ -932,8 +928,6 @@
 
         </div>
 
-
-        <!-- CHAT MESSAGES -->
 
         <div id="yugaChatMessages">
 
@@ -995,8 +989,6 @@
         </div>
 
 
-        <!-- CHAT INPUT -->
-
         <div class="yuga-chat-input">
 
             <input
@@ -1005,6 +997,7 @@
                 placeholder="Ask YUGA AI..."
                 autocomplete="off"
             >
+
 
             <button
                 id="yugaChatSend"
@@ -1018,12 +1011,161 @@
     </div>
 
 
-
     <!-- =========================================================
-         JAVASCRIPT
+         YUGA JAVASCRIPT
     ========================================================== -->
 
     <script src="script.js"></script>
+
+
+    <!-- =========================================================
+         PRINTED FRONT / BACK SLIDER SCRIPT
+    ========================================================== -->
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const sliders = document.querySelectorAll(".printed-slider");
+
+            sliders.forEach(function (slider) {
+
+                const image = slider.querySelector("img");
+
+                const dots = slider.querySelectorAll(".printed-slider-dot");
+
+                const frontImage = slider.dataset.front;
+
+                const backImage = slider.dataset.back;
+
+                let showingBack = false;
+
+                let timer;
+
+
+                function showImage(back) {
+
+                    image.classList.add("slider-fade");
+
+                    setTimeout(function () {
+
+                        if (back) {
+
+                            image.src = backImage;
+
+                            image.alt = "YUGA T-Shirt Back";
+
+                        } else {
+
+                            image.src = frontImage;
+
+                            image.alt = "YUGA T-Shirt Front";
+
+                        }
+
+                        image.classList.remove("slider-fade");
+
+                        image.classList.add("slider-visible");
+
+
+                        dots.forEach(function (dot, index) {
+
+                            dot.classList.toggle(
+                                "active",
+                                back ? index === 1 : index === 0
+                            );
+
+                        });
+
+                    }, 250);
+
+                }
+
+
+                function nextSlide() {
+
+                    showingBack = !showingBack;
+
+                    showImage(showingBack);
+
+                }
+
+
+                function startSlider() {
+
+                    clearInterval(timer);
+
+                    timer = setInterval(
+                        nextSlide,
+                        3000
+                    );
+
+                }
+
+
+                function resetSlider() {
+
+                    clearInterval(timer);
+
+                    startSlider();
+
+                }
+
+
+                /* Automatic front → back → front */
+
+                startSlider();
+
+
+                /* Mobile swipe support */
+
+                let touchStartX = 0;
+
+                let touchEndX = 0;
+
+
+                slider.addEventListener(
+                    "touchstart",
+                    function (event) {
+
+                        touchStartX =
+                            event.changedTouches[0].screenX;
+
+                    },
+                    { passive: true }
+                );
+
+
+                slider.addEventListener(
+                    "touchend",
+                    function (event) {
+
+                        touchEndX =
+                            event.changedTouches[0].screenX;
+
+                        const difference =
+                            touchStartX - touchEndX;
+
+
+                        if (Math.abs(difference) > 40) {
+
+                            showingBack = difference > 0;
+
+                            showImage(showingBack);
+
+                            resetSlider();
+
+                        }
+
+                    },
+                    { passive: true }
+                );
+
+            });
+
+        });
+
+    </script>
 
 
 </body>
