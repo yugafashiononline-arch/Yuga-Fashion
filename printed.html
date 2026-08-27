@@ -18,80 +18,115 @@
     <style>
 
         /* =========================================================
-           PRINTED COLLECTION — MANUAL FRONT / BACK GALLERY
+           YUGA PRINTED COLLECTION
+           MANUAL FRONT / BACK PRODUCT GALLERY
         ========================================================== */
 
         .printed-slider {
+
             position: relative;
+
             width: 100%;
+
             overflow: hidden;
-            touch-action: pan-y;
+
             user-select: none;
+
+            touch-action: pan-y;
+
+            background: #f5f5f5;
+
         }
 
 
-        /* IMAGE */
-
         .printed-slider img {
+
             display: block;
+
             width: 100%;
+
             height: auto;
 
             transition:
-                transform 0.35s ease,
-                opacity 0.35s ease;
+                transform 0.35s cubic-bezier(.25,.8,.25,1),
+                opacity 0.25s ease;
+
         }
 
 
         /* =========================================================
-           ARROWS
+           ARROW CONTROLS
         ========================================================== */
 
         .printed-slider-arrow {
+
             position: absolute;
 
             top: 50%;
+
             transform: translateY(-50%);
 
-            width: 40px;
-            height: 40px;
+            width: 42px;
 
-            border: none;
-            border-radius: 50%;
+            height: 42px;
 
-            background: rgba(0, 0, 0, 0.65);
+            border: 1px solid rgba(255,255,255,0.7);
 
-            color: white;
+            border-radius: 10px;
 
-            font-size: 28px;
+            background: rgba(0,0,0,0.48);
 
-            line-height: 40px;
+            backdrop-filter: blur(8px);
 
-            text-align: center;
+            -webkit-backdrop-filter: blur(8px);
+
+            color: #ffffff;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 20px;
+
+            font-weight: 500;
+
+            line-height: 1;
 
             cursor: pointer;
 
-            z-index: 10;
+            z-index: 20;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            opacity: 0.85;
+            opacity: 0;
 
             transition:
+                opacity 0.25s ease,
                 background 0.25s ease,
-                transform 0.25s ease,
-                opacity 0.25s ease;
+                transform 0.25s ease;
+
+            padding: 0;
+
+        }
+
+
+        /* Show controls when hovering */
+
+        .printed-slider:hover
+        .printed-slider-arrow {
+
+            opacity: 1;
+
         }
 
 
         .printed-slider-arrow:hover {
 
-            opacity: 1;
+            background: rgba(0,0,0,0.78);
 
-            background:
-                rgba(0, 0, 0, 0.85);
+            transform:
+                translateY(-50%)
+                scale(1.05);
 
         }
 
@@ -99,45 +134,88 @@
         .printed-slider-arrow:active {
 
             transform:
-                translateY(-50%) scale(0.92);
+                translateY(-50%)
+                scale(0.94);
 
         }
 
 
         .printed-slider-prev {
 
-            left: 10px;
+            left: 14px;
 
         }
 
 
         .printed-slider-next {
 
-            right: 10px;
+            right: 14px;
 
         }
 
 
         /* =========================================================
-           FRONT / BACK DOTS
+           FRONT / BACK LABEL
+        ========================================================== */
+
+        .printed-slider-status {
+
+            position: absolute;
+
+            left: 50%;
+
+            bottom: 14px;
+
+            transform: translateX(-50%);
+
+            z-index: 15;
+
+            padding: 6px 12px;
+
+            border-radius: 20px;
+
+            background: rgba(0,0,0,0.48);
+
+            backdrop-filter: blur(8px);
+
+            -webkit-backdrop-filter: blur(8px);
+
+            color: white;
+
+            font-size: 9px;
+
+            font-weight: 600;
+
+            letter-spacing: 1.5px;
+
+            white-space: nowrap;
+
+            pointer-events: none;
+
+            border: 1px solid rgba(255,255,255,0.35);
+
+        }
+
+
+        /* =========================================================
+           DOT INDICATORS
         ========================================================== */
 
         .printed-slider-dots {
 
             position: absolute;
 
-            bottom: 12px;
+            bottom: 5px;
 
             left: 50%;
 
-            transform:
-                translateX(-50%);
+            transform: translateX(-50%);
 
             display: flex;
 
-            gap: 6px;
+            gap: 5px;
 
-            z-index: 5;
+            z-index: 16;
 
             pointer-events: none;
 
@@ -146,14 +224,13 @@
 
         .printed-slider-dot {
 
-            width: 7px;
+            width: 5px;
 
-            height: 7px;
+            height: 5px;
 
             border-radius: 50%;
 
-            background:
-                rgba(255, 255, 255, 0.5);
+            background: rgba(255,255,255,0.45);
 
             transition:
                 width 0.25s ease,
@@ -164,11 +241,11 @@
 
         .printed-slider-dot.active {
 
-            width: 18px;
+            width: 14px;
 
             border-radius: 10px;
 
-            background: white;
+            background: #ffffff;
 
         }
 
@@ -185,34 +262,52 @@
 
                 height: 34px;
 
-                font-size: 22px;
+                border-radius: 8px;
 
-                line-height: 34px;
+                font-size: 17px;
+
+                opacity: 0.9;
+
+                background: rgba(0,0,0,0.45);
 
             }
 
 
             .printed-slider-prev {
 
-                left: 7px;
+                left: 8px;
 
             }
 
 
             .printed-slider-next {
 
-                right: 7px;
+                right: 8px;
+
+            }
+
+
+            .printed-slider-status {
+
+                bottom: 13px;
+
+                font-size: 8px;
+
+                padding: 5px 9px;
+
+                letter-spacing: 1.2px;
 
             }
 
 
             .printed-slider-dots {
 
-                bottom: 9px;
+                bottom: 5px;
 
             }
 
         }
+
 
     </style>
 
@@ -293,6 +388,12 @@
                             alt="YUGA Black Printed T-Shirt Front"
                         >
 
+
+                        <div class="printed-slider-status">
+                            FRONT
+                        </div>
+
+
                         <div class="printed-slider-dots">
 
                             <span
@@ -339,21 +440,10 @@
 
                     <div class="sizes">
 
-                        <span class="in-stock">
-                            S ✓
-                        </span>
-
-                        <span class="in-stock">
-                            M ✓
-                        </span>
-
-                        <span class="in-stock">
-                            L ✓
-                        </span>
-
-                        <span class="in-stock">
-                            XL ✓
-                        </span>
+                        <span class="in-stock">S ✓</span>
+                        <span class="in-stock">M ✓</span>
+                        <span class="in-stock">L ✓</span>
+                        <span class="in-stock">XL ✓</span>
 
                     </div>
 
@@ -391,6 +481,12 @@
                             src="Front 2.jpeg"
                             alt="YUGA Blue Printed T-Shirt Front"
                         >
+
+
+                        <div class="printed-slider-status">
+                            FRONT
+                        </div>
+
 
                         <div class="printed-slider-dots">
 
@@ -438,21 +534,10 @@
 
                     <div class="sizes">
 
-                        <span class="in-stock">
-                            S ✓
-                        </span>
-
-                        <span class="in-stock">
-                            M ✓
-                        </span>
-
-                        <span class="in-stock">
-                            L ✓
-                        </span>
-
-                        <span class="in-stock">
-                            XL ✓
-                        </span>
+                        <span class="in-stock">S ✓</span>
+                        <span class="in-stock">M ✓</span>
+                        <span class="in-stock">L ✓</span>
+                        <span class="in-stock">XL ✓</span>
 
                     </div>
 
@@ -490,6 +575,12 @@
                             src="Front 3.jpeg"
                             alt="YUGA Green Printed T-Shirt Front"
                         >
+
+
+                        <div class="printed-slider-status">
+                            FRONT
+                        </div>
+
 
                         <div class="printed-slider-dots">
 
@@ -537,21 +628,10 @@
 
                     <div class="sizes">
 
-                        <span class="in-stock">
-                            S ✓
-                        </span>
-
-                        <span class="in-stock">
-                            M ✓
-                        </span>
-
-                        <span class="in-stock">
-                            L ✓
-                        </span>
-
-                        <span class="in-stock">
-                            XL ✓
-                        </span>
+                        <span class="in-stock">S ✓</span>
+                        <span class="in-stock">M ✓</span>
+                        <span class="in-stock">L ✓</span>
+                        <span class="in-stock">XL ✓</span>
 
                     </div>
 
@@ -589,6 +669,12 @@
                             src="Front 4.jpeg"
                             alt="YUGA Yellow Printed T-Shirt Front"
                         >
+
+
+                        <div class="printed-slider-status">
+                            FRONT
+                        </div>
+
 
                         <div class="printed-slider-dots">
 
@@ -636,21 +722,10 @@
 
                     <div class="sizes">
 
-                        <span class="in-stock">
-                            S ✓
-                        </span>
-
-                        <span class="in-stock">
-                            M ✓
-                        </span>
-
-                        <span class="in-stock">
-                            L ✓
-                        </span>
-
-                        <span class="in-stock">
-                            XL ✓
-                        </span>
+                        <span class="in-stock">S ✓</span>
+                        <span class="in-stock">M ✓</span>
+                        <span class="in-stock">L ✓</span>
+                        <span class="in-stock">XL ✓</span>
 
                     </div>
 
@@ -688,6 +763,12 @@
                             src="Front 5.jpeg"
                             alt="YUGA Blue Printed T-Shirt Front"
                         >
+
+
+                        <div class="printed-slider-status">
+                            FRONT
+                        </div>
+
 
                         <div class="printed-slider-dots">
 
@@ -735,21 +816,10 @@
 
                     <div class="sizes">
 
-                        <span class="in-stock">
-                            S ✓
-                        </span>
-
-                        <span class="in-stock">
-                            M ✓
-                        </span>
-
-                        <span class="in-stock">
-                            L ✓
-                        </span>
-
-                        <span class="in-stock">
-                            XL ✓
-                        </span>
+                        <span class="in-stock">S ✓</span>
+                        <span class="in-stock">M ✓</span>
+                        <span class="in-stock">L ✓</span>
+                        <span class="in-stock">XL ✓</span>
 
                     </div>
 
@@ -787,6 +857,12 @@
                             src="Front 6.jpeg"
                             alt="YUGA Yellow Printed T-Shirt Front"
                         >
+
+
+                        <div class="printed-slider-status">
+                            FRONT
+                        </div>
+
 
                         <div class="printed-slider-dots">
 
@@ -834,21 +910,10 @@
 
                     <div class="sizes">
 
-                        <span class="in-stock">
-                            S ✓
-                        </span>
-
-                        <span class="in-stock">
-                            M ✓
-                        </span>
-
-                        <span class="in-stock">
-                            L ✓
-                        </span>
-
-                        <span class="in-stock">
-                            XL ✓
-                        </span>
+                        <span class="in-stock">S ✓</span>
+                        <span class="in-stock">M ✓</span>
+                        <span class="in-stock">L ✓</span>
+                        <span class="in-stock">XL ✓</span>
 
                     </div>
 
@@ -886,6 +951,12 @@
                             src="Front 7.jpeg"
                             alt="YUGA Red Printed T-Shirt Front"
                         >
+
+
+                        <div class="printed-slider-status">
+                            FRONT
+                        </div>
+
 
                         <div class="printed-slider-dots">
 
@@ -933,21 +1004,10 @@
 
                     <div class="sizes">
 
-                        <span class="in-stock">
-                            S ✓
-                        </span>
-
-                        <span class="in-stock">
-                            M ✓
-                        </span>
-
-                        <span class="in-stock">
-                            L ✓
-                        </span>
-
-                        <span class="in-stock">
-                            XL ✓
-                        </span>
+                        <span class="in-stock">S ✓</span>
+                        <span class="in-stock">M ✓</span>
+                        <span class="in-stock">L ✓</span>
+                        <span class="in-stock">XL ✓</span>
 
                     </div>
 
@@ -986,6 +1046,12 @@
                             alt="YUGA Yellow Printed T-Shirt Front"
                         >
 
+
+                        <div class="printed-slider-status">
+                            FRONT
+                        </div>
+
+
                         <div class="printed-slider-dots">
 
                             <span
@@ -1032,21 +1098,10 @@
 
                     <div class="sizes">
 
-                        <span class="in-stock">
-                            S ✓
-                        </span>
-
-                        <span class="in-stock">
-                            M ✓
-                        </span>
-
-                        <span class="in-stock">
-                            L ✓
-                        </span>
-
-                        <span class="in-stock">
-                            XL ✓
-                        </span>
+                        <span class="in-stock">S ✓</span>
+                        <span class="in-stock">M ✓</span>
+                        <span class="in-stock">L ✓</span>
+                        <span class="in-stock">XL ✓</span>
 
                     </div>
 
@@ -1085,6 +1140,12 @@
                             alt="YUGA Yellow Printed T-Shirt Front"
                         >
 
+
+                        <div class="printed-slider-status">
+                            FRONT
+                        </div>
+
+
                         <div class="printed-slider-dots">
 
                             <span
@@ -1131,21 +1192,10 @@
 
                     <div class="sizes">
 
-                        <span class="in-stock">
-                            S ✓
-                        </span>
-
-                        <span class="in-stock">
-                            M ✓
-                        </span>
-
-                        <span class="in-stock">
-                            L ✓
-                        </span>
-
-                        <span class="in-stock">
-                            XL ✓
-                        </span>
+                        <span class="in-stock">S ✓</span>
+                        <span class="in-stock">M ✓</span>
+                        <span class="in-stock">L ✓</span>
+                        <span class="in-stock">XL ✓</span>
 
                     </div>
 
@@ -1176,8 +1226,6 @@
         <div class="modal-content">
 
 
-            <!-- CLOSE BUTTON -->
-
             <button
                 class="modal-close"
                 id="modalClose"
@@ -1186,8 +1234,6 @@
                 ×
             </button>
 
-
-            <!-- PRODUCT IMAGE -->
 
             <div class="modal-image">
 
@@ -1199,8 +1245,6 @@
 
             </div>
 
-
-            <!-- PRODUCT INFORMATION -->
 
             <div class="modal-info">
 
@@ -1231,8 +1275,6 @@
                 </p>
 
 
-                <!-- AVAILABLE SIZES -->
-
                 <div class="modal-stock">
 
                     <p class="modal-stock-title">
@@ -1248,12 +1290,9 @@
                 </div>
 
 
-                <!-- STORE STATUS -->
-
                 <div class="modal-store">
                     🏪 Available in Store
                 </div>
-
 
             </div>
 
@@ -1281,8 +1320,6 @@
         <div class="footer-social">
 
 
-            <!-- INSTAGRAM -->
-
             <a
                 href="https://www.instagram.com/yugafashionindia/"
                 target="_blank"
@@ -1293,8 +1330,6 @@
             </a>
 
 
-            <!-- CUSTOMER CARE -->
-
             <a
                 href="mailto:yugafashiononline@gmail.com"
                 class="footer-link"
@@ -1302,8 +1337,6 @@
                 Customer Care
             </a>
 
-
-            <!-- WHATSAPP -->
 
             <a
                 href="https://wa.me/917888759939"
@@ -1342,8 +1375,6 @@
     <div id="yugaChatbot">
 
 
-        <!-- CHAT HEADER -->
-
         <div class="yuga-chat-header">
 
             <div>
@@ -1370,12 +1401,8 @@
         </div>
 
 
-        <!-- CHAT MESSAGES -->
-
         <div id="yugaChatMessages">
 
-
-            <!-- WELCOME MESSAGE -->
 
             <div class="yuga-message bot">
 
@@ -1388,8 +1415,6 @@
 
             </div>
 
-
-            <!-- QUICK BUTTONS -->
 
             <div class="yuga-quick-buttons">
 
@@ -1439,8 +1464,6 @@
         </div>
 
 
-        <!-- CHAT INPUT -->
-
         <div class="yuga-chat-input">
 
             <input
@@ -1471,7 +1494,7 @@
 
 
     <!-- =========================================================
-         MANUAL FRONT / BACK SWIPE JAVASCRIPT
+         MANUAL FRONT / BACK GALLERY
     ========================================================== -->
 
     <script>
@@ -1479,6 +1502,7 @@
         document.addEventListener(
             "DOMContentLoaded",
             function () {
+
 
                 const sliders =
                     document.querySelectorAll(
@@ -1488,6 +1512,7 @@
 
                 sliders.forEach(
                     function (slider) {
+
 
                         const image =
                             slider.querySelector("img");
@@ -1499,6 +1524,12 @@
                             );
 
 
+                        const status =
+                            slider.querySelector(
+                                ".printed-slider-status"
+                            );
+
+
                         const frontImage =
                             slider.dataset.front;
 
@@ -1507,15 +1538,22 @@
                             slider.dataset.back;
 
 
-                        let showingBack = false;
+                        let showingBack =
+                            false;
+
+
+                        let isAnimating =
+                            false;
 
 
                         /* =================================================
-                           CREATE LEFT ARROW
-                        ================================================= */
+                           LEFT ARROW
+                        ================================================== */
 
                         const prevButton =
-                            document.createElement("button");
+                            document.createElement(
+                                "button"
+                            );
 
 
                         prevButton.className =
@@ -1527,21 +1565,23 @@
 
 
                         prevButton.innerHTML =
-                            "‹";
+                            "←";
 
 
                         prevButton.setAttribute(
                             "aria-label",
-                            "Show front image"
+                            "Show front"
                         );
 
 
                         /* =================================================
-                           CREATE RIGHT ARROW
-                        ================================================= */
+                           RIGHT ARROW
+                        ================================================== */
 
                         const nextButton =
-                            document.createElement("button");
+                            document.createElement(
+                                "button"
+                            );
 
 
                         nextButton.className =
@@ -1553,12 +1593,12 @@
 
 
                         nextButton.innerHTML =
-                            "›";
+                            "→";
 
 
                         nextButton.setAttribute(
                             "aria-label",
-                            "Show back image"
+                            "Show back"
                         );
 
 
@@ -1573,17 +1613,20 @@
 
 
                         /* =================================================
-                           UPDATE IMAGE
-                        ================================================= */
+                           CHANGE IMAGE
+                        ================================================== */
 
                         function showImage(
                             back,
                             direction
                         ) {
 
+
                             if (
                                 back ===
                                 showingBack
+                                ||
+                                isAnimating
                             ) {
 
                                 return;
@@ -1591,18 +1634,23 @@
                             }
 
 
-                            image.style.transform =
-                                direction > 0
-                                    ? "translateX(-25px)"
-                                    : "translateX(25px)";
+                            isAnimating =
+                                true;
 
 
                             image.style.opacity =
                                 "0";
 
 
+                            image.style.transform =
+                                direction > 0
+                                    ? "translateX(-30px)"
+                                    : "translateX(30px)";
+
+
                             setTimeout(
                                 function () {
+
 
                                     if (back) {
 
@@ -1611,6 +1659,9 @@
 
                                         image.alt =
                                             "YUGA T-Shirt Back";
+
+                                        status.textContent =
+                                            "BACK";
 
                                     }
 
@@ -1622,23 +1673,29 @@
                                         image.alt =
                                             "YUGA T-Shirt Front";
 
+                                        status.textContent =
+                                            "FRONT";
+
                                     }
 
 
                                     image.style.transform =
                                         direction > 0
-                                            ? "translateX(25px)"
-                                            : "translateX(-25px)";
+                                            ? "translateX(30px)"
+                                            : "translateX(-30px)";
 
 
                                     requestAnimationFrame(
                                         function () {
 
-                                            image.style.transform =
-                                                "translateX(0)";
 
                                             image.style.opacity =
                                                 "1";
+
+
+                                            image.style.transform =
+                                                "translateX(0)";
+
 
                                         }
                                     );
@@ -1648,13 +1705,12 @@
                                         back;
 
 
-                                    /* UPDATE DOTS */
-
                                     dots.forEach(
                                         function (
                                             dot,
                                             index
                                         ) {
+
 
                                             dot.classList.toggle(
                                                 "active",
@@ -1663,8 +1719,21 @@
                                                     : index === 0
                                             );
 
+
                                         }
                                     );
+
+
+                                    setTimeout(
+                                        function () {
+
+                                            isAnimating =
+                                                false;
+
+                                        },
+                                        350
+                                    );
+
 
                                 },
                                 150
@@ -1674,16 +1743,14 @@
 
 
                         /* =================================================
-                           RIGHT ARROW
-                           FRONT → BACK
-                        ================================================= */
+                           RIGHT → BACK
+                        ================================================== */
 
                         nextButton.addEventListener(
                             "click",
                             function (event) {
 
                                 event.stopPropagation();
-
 
                                 showImage(
                                     true,
@@ -1695,16 +1762,14 @@
 
 
                         /* =================================================
-                           LEFT ARROW
-                           BACK → FRONT
-                        ================================================= */
+                           LEFT → FRONT
+                        ================================================== */
 
                         prevButton.addEventListener(
                             "click",
                             function (event) {
 
                                 event.stopPropagation();
-
 
                                 showImage(
                                     false,
@@ -1717,7 +1782,7 @@
 
                         /* =================================================
                            MOBILE SWIPE
-                        ================================================= */
+                        ================================================== */
 
                         let touchStartX =
                             0;
@@ -1731,6 +1796,7 @@
                             "touchstart",
                             function (event) {
 
+
                                 touchStartX =
                                     event.changedTouches[0]
                                         .screenX;
@@ -1739,6 +1805,7 @@
                                 touchStartY =
                                     event.changedTouches[0]
                                         .screenY;
+
 
                             },
                             {
@@ -1750,6 +1817,7 @@
                         slider.addEventListener(
                             "touchend",
                             function (event) {
+
 
                                 const touchEndX =
                                     event.changedTouches[0]
@@ -1771,29 +1839,26 @@
                                     touchEndY;
 
 
-                                /*
-
-                                   Swipe LEFT
-                                   = FRONT → BACK
-
-                                   Swipe RIGHT
-                                   = BACK → FRONT
-
-                                */
-
                                 if (
+
                                     Math.abs(
                                         differenceX
                                     ) > 40
+
                                     &&
+
                                     Math.abs(
                                         differenceX
                                     ) >
+
                                     Math.abs(
                                         differenceY
                                     )
+
                                 ) {
 
+
+                                    /* SWIPE LEFT */
 
                                     if (
                                         differenceX > 0
@@ -1806,6 +1871,9 @@
 
                                     }
 
+
+                                    /* SWIPE RIGHT */
+
                                     else {
 
                                         showImage(
@@ -1817,6 +1885,7 @@
 
                                 }
 
+
                             },
                             {
                                 passive: true
@@ -1825,8 +1894,8 @@
 
 
                         /* =================================================
-                           PREVENT IMAGE DRAGGING
-                        ================================================= */
+                           PREVENT IMAGE DRAG
+                        ================================================== */
 
                         slider.addEventListener(
                             "dragstart",
@@ -1837,8 +1906,10 @@
                             }
                         );
 
+
                     }
                 );
+
 
             }
         );
