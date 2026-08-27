@@ -5,115 +5,28 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>YUGA Fashion | Wear Your Era</title>
 
-    <link rel="icon" type="image/png" href="Y Falvion.png">
+    <link
+        rel="icon"
+        type="image/png"
+        href="Y Falvion.png"
+    >
 
-    <link rel="stylesheet" href="style.css">
-
-
-    <!-- =====================================================
-         INDEX PAGE ONLY - MOBILE + FLOATING SOCIAL FIXES
-    ====================================================== -->
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 
     <style>
 
-
         /* =====================================================
-           INTERACTIVE HERO PRODUCT
-        ====================================================== */
-
-        .hero-premium {
-            position: relative;
-            overflow: hidden;
-            perspective: 1000px;
-        }
-
-        .hero-product-wrap {
-            position: absolute;
-            right: 7%;
-            top: 50%;
-            width: min(390px, 34vw);
-            transform: translateY(-50%);
-            z-index: 2;
-            pointer-events: none;
-            transition: transform 0.18s ease-out;
-            will-change: transform;
-        }
-
-        .hero-product-glow {
-            position: absolute;
-            inset: 10% 5%;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(0,0,0,0.12), transparent 68%);
-            filter: blur(18px);
-            transform: translateZ(-30px);
-        }
-
-        .hero-product {
-            position: relative;
-            display: block;
-            width: 100%;
-            height: auto;
-            object-fit: contain;
-            filter: drop-shadow(0 25px 25px rgba(0,0,0,0.22));
-            transform: translateZ(30px);
-        }
-
-        .hero-product-label {
-            position: absolute;
-            right: 8%;
-            bottom: 12%;
-            padding: 8px 12px;
-            background: rgba(255,255,255,0.82);
-            border: 1px solid rgba(0,0,0,0.12);
-            backdrop-filter: blur(8px);
-            font-size: 9px;
-            letter-spacing: 2px;
-            font-weight: 700;
-            z-index: 3;
-        }
-
-        @media (max-width: 800px) {
-            .hero-product-wrap {
-                position: relative;
-                right: auto;
-                top: auto;
-                width: min(300px, 72vw);
-                margin: 20px auto 0;
-                transform: none;
-                animation: yugaHeroFloat 4s ease-in-out infinite;
-            }
-
-            .hero-product {
-                transform: none;
-            }
-
-            .hero-product-label {
-                right: 0;
-                bottom: 7%;
-            }
-        }
-
-        @keyframes yugaHeroFloat {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-9px) rotate(1deg); }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .hero-product-wrap {
-                animation: none;
-                transition: none;
-            }
-            .hero-product {
-                transition: none;
-            }
-        }
-
-        /* =====================================================
-           ANNOUNCEMENT BAR
+           INDEX PAGE ONLY - MOBILE + COLLECTION FIXES
         ====================================================== */
 
         .announcement-track {
@@ -131,32 +44,202 @@
         }
 
 
+        /* =====================================================
+           YUGA TOP NAVIGATION
+        ====================================================== */
+
+        .yuga-main-nav {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 38px;
+
+            padding: 0 20px 18px;
+
+            background: #000;
+
+        }
+
+
+        .yuga-main-nav a {
+
+            color: #fff;
+
+            text-decoration: none;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            position: relative;
+
+            transition:
+                opacity 0.25s ease,
+                transform 0.25s ease;
+
+        }
+
+
+        .yuga-main-nav a::after {
+
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+
+            bottom: -6px;
+
+            width: 0;
+
+            height: 1px;
+
+            background: #fff;
+
+            transition:
+                width 0.25s ease;
+
+        }
+
+
+        .yuga-main-nav a:hover {
+
+            opacity: 0.7;
+
+            transform: translateY(-1px);
+
+        }
+
+
+        .yuga-main-nav a:hover::after {
+
+            width: 100%;
+
+        }
+
+
+        .yuga-main-nav .nav-order {
+
+            padding:
+                9px 16px;
+
+            border:
+                1px solid rgba(255,255,255,0.65);
+
+        }
+
+
+        .yuga-main-nav .nav-order::after {
+
+            display: none;
+
+        }
+
+
+        .yuga-main-nav .nav-order:hover {
+
+            background: #fff;
+
+            color: #000;
+
+            opacity: 1;
+
+        }
+
+
+        /* =====================================================
+           HERO MOBILE FIX
+        ====================================================== */
+
         @media (max-width: 800px) {
 
             .hero-premium {
-                min-height: calc(100svh - 99px);
-                padding: 60px 15px 80px;
+
+                min-height:
+                    calc(100svh - 145px);
+
+                padding:
+                    60px 15px 80px;
+
             }
 
             .hero-premium-content {
+
                 width: 100%;
+
                 max-width: 100%;
+
             }
 
             .hero-premium h1 {
-                font-size: clamp(58px, 19vw, 100px);
-                letter-spacing: clamp(3px, 2vw, 9px);
+
+                font-size:
+                    clamp(58px, 19vw, 100px);
+
+                letter-spacing:
+                    clamp(3px, 2vw, 9px);
+
                 line-height: 0.9;
+
                 white-space: nowrap;
+
             }
 
             .hero-tagline {
+
                 letter-spacing: 3px;
+
             }
 
             .hero-description {
+
                 max-width: 500px;
+
                 padding: 0 10px;
+
+            }
+
+
+            /* =================================================
+               MOBILE NAV - INCREASED SIZE
+            ================================================== */
+
+            .yuga-main-nav {
+
+                gap: 18px;
+
+                padding:
+                    0 12px 16px;
+
+                flex-wrap: wrap;
+
+            }
+
+
+            .yuga-main-nav a {
+
+                font-size: 10px;
+
+                letter-spacing: 1.4px;
+
+                white-space: nowrap;
+
+            }
+
+
+            .yuga-main-nav .nav-order {
+
+                padding:
+                    8px 12px;
+
             }
 
         }
@@ -169,45 +252,113 @@
         @media (max-width: 500px) {
 
             .hero-premium {
-                min-height: calc(100svh - 99px);
-                padding: 50px 15px 75px;
+
+                min-height:
+                    calc(100svh - 140px);
+
+                padding:
+                    50px 15px 75px;
+
             }
 
             .hero-premium h1 {
-                font-size: clamp(52px, 18vw, 72px);
+
+                font-size:
+                    clamp(52px, 18vw, 72px);
+
                 letter-spacing: 4px;
+
                 line-height: 0.95;
+
             }
 
             .hero-eyebrow {
+
                 font-size: 8px;
+
                 letter-spacing: 3px;
+
                 margin-bottom: 18px;
+
             }
 
             .hero-tagline {
+
                 font-size: 11px;
+
                 letter-spacing: 2.5px;
+
                 margin-top: 22px;
+
             }
 
             .hero-description {
+
                 font-size: 11px;
+
                 line-height: 1.7;
+
                 max-width: 320px;
+
                 margin-top: 17px;
+
             }
 
             .hero-shop-button {
+
                 width: 100%;
+
                 max-width: 270px;
+
                 margin-top: 28px;
+
             }
 
             .hero-scroll {
+
                 bottom: 18px;
+
                 font-size: 8px;
+
                 letter-spacing: 2px;
+
+            }
+
+
+            /* =================================================
+               SMALL MOBILE NAV - BIGGER + READABLE
+            ================================================== */
+
+            .yuga-main-nav {
+
+                gap: 13px;
+
+                padding:
+                    0 8px 14px;
+
+                flex-wrap: wrap;
+
+            }
+
+
+            .yuga-main-nav a {
+
+                font-size: 9px;
+
+                letter-spacing: 1px;
+
+                font-weight: 800;
+
+            }
+
+
+            .yuga-main-nav .nav-order {
+
+                padding:
+                    7px 10px;
+
+                font-size: 9px;
+
             }
 
         }
@@ -220,13 +371,394 @@
         @media (max-width: 380px) {
 
             .hero-premium h1 {
+
                 font-size: 50px;
+
                 letter-spacing: 3px;
+
             }
 
             .hero-tagline {
+
                 font-size: 10px;
+
                 letter-spacing: 2px;
+
+            }
+
+
+            /* KEEP NAV READABLE ON VERY SMALL PHONES */
+
+            .yuga-main-nav {
+
+                gap: 9px;
+
+                padding:
+                    0 6px 12px;
+
+            }
+
+            .yuga-main-nav a {
+
+                font-size: 8px;
+
+                letter-spacing: 0.7px;
+
+                font-weight: 800;
+
+            }
+
+            .yuga-main-nav .nav-order {
+
+                padding:
+                    6px 8px;
+
+                font-size: 8px;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           MIRZAPUR FEATURED MOVING BANNER
+        ====================================================== */
+
+        .mirzapur-moving-banner {
+
+            position: relative;
+
+            display: block;
+
+            width: 100%;
+
+            overflow: hidden;
+
+            text-decoration: none;
+
+            color: #fff;
+
+            background: #050505;
+
+            border-top:
+                1px solid rgba(255,255,255,0.10);
+
+            border-bottom:
+                1px solid rgba(255,255,255,0.10);
+
+            cursor: pointer;
+
+            margin: 0;
+
+        }
+
+
+        .mirzapur-banner-inner {
+
+            position: relative;
+
+            width: 100%;
+
+            min-height: 175px;
+
+            display: flex;
+
+            align-items: center;
+
+            overflow: hidden;
+
+        }
+
+
+        .mirzapur-banner-glow {
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(255,255,255,0.075),
+                    transparent 48%
+                );
+
+            pointer-events: none;
+
+        }
+
+
+        .mirzapur-banner-track {
+
+            display: flex;
+
+            align-items: center;
+
+            width: max-content;
+
+            white-space: nowrap;
+
+            animation:
+                mirzapurBannerMove
+                24s
+                linear
+                infinite;
+
+        }
+
+
+        .mirzapur-banner-content {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 38px;
+
+            padding-right: 38px;
+
+        }
+
+
+        .mirzapur-banner-title {
+
+            font-size:
+                clamp(42px, 6vw, 82px);
+
+            line-height: 0.9;
+
+            font-weight: 900;
+
+            letter-spacing: 3px;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .mirzapur-banner-subtitle {
+
+            font-size:
+                clamp(12px, 1.4vw, 18px);
+
+            letter-spacing: 4px;
+
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .mirzapur-banner-separator {
+
+            font-size: 28px;
+
+            opacity: 0.55;
+
+        }
+
+
+        .mirzapur-banner-button {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 13px 22px;
+
+            border:
+                1px solid rgba(255,255,255,0.7);
+
+            font-size: 10px;
+
+            letter-spacing: 2px;
+
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+            transition:
+                background 0.25s ease,
+                color 0.25s ease;
+
+        }
+
+
+        @keyframes mirzapurBannerMove {
+
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-33.333%);
+            }
+
+        }
+
+
+        .mirzapur-moving-banner:hover
+        .mirzapur-banner-track {
+
+            animation-play-state: paused;
+
+        }
+
+
+        .mirzapur-moving-banner:hover
+        .mirzapur-banner-button {
+
+            background: #fff;
+
+            color: #000;
+
+        }
+
+
+        /* =====================================================
+           MIRZAPUR BANNER TABLET
+        ====================================================== */
+
+        @media (max-width: 800px) {
+
+            .mirzapur-banner-inner {
+
+                min-height: 145px;
+
+            }
+
+            .mirzapur-banner-content {
+
+                gap: 26px;
+
+                padding-right: 26px;
+
+            }
+
+            .mirzapur-banner-title {
+
+                font-size:
+                    clamp(35px, 9vw, 60px);
+
+                letter-spacing: 2px;
+
+            }
+
+            .mirzapur-banner-subtitle {
+
+                font-size: 10px;
+
+                letter-spacing: 2.5px;
+
+            }
+
+            .mirzapur-banner-separator {
+
+                font-size: 21px;
+
+            }
+
+            .mirzapur-banner-button {
+
+                padding: 11px 17px;
+
+                font-size: 8px;
+
+                letter-spacing: 1.5px;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           MIRZAPUR BANNER MOBILE
+        ====================================================== */
+
+        @media (max-width: 500px) {
+
+            .mirzapur-banner-inner {
+
+                min-height: 120px;
+
+            }
+
+            .mirzapur-banner-track {
+
+                animation-duration: 18s;
+
+            }
+
+            .mirzapur-banner-content {
+
+                gap: 19px;
+
+                padding-right: 19px;
+
+            }
+
+            .mirzapur-banner-title {
+
+                font-size: 30px;
+
+                letter-spacing: 1px;
+
+            }
+
+            .mirzapur-banner-subtitle {
+
+                font-size: 8px;
+
+                letter-spacing: 1.8px;
+
+            }
+
+            .mirzapur-banner-separator {
+
+                font-size: 16px;
+
+            }
+
+            .mirzapur-banner-button {
+
+                padding: 9px 13px;
+
+                font-size: 7px;
+
+                letter-spacing: 1px;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           VERY SMALL MOBILE
+        ====================================================== */
+
+        @media (max-width: 380px) {
+
+            .mirzapur-banner-inner {
+
+                min-height: 108px;
+
+            }
+
+            .mirzapur-banner-title {
+
+                font-size: 27px;
+
+            }
+
+            .mirzapur-banner-content {
+
+                gap: 16px;
+
+                padding-right: 16px;
+
             }
 
         }
@@ -234,7 +766,6 @@
 
         /* =====================================================
            FLOATING SOCIAL BUTTONS
-           MOBILE LEFT SIDE
         ====================================================== */
 
         .floating-social {
@@ -242,9 +773,11 @@
             position: fixed;
 
             left: 12px;
+
             bottom: 22px;
 
             display: flex;
+
             flex-direction: column;
 
             gap: 9px;
@@ -257,12 +790,15 @@
         .floating-social-link {
 
             width: 45px;
+
             height: 45px;
 
             border-radius: 50%;
 
             display: flex;
+
             align-items: center;
+
             justify-content: center;
 
             text-decoration: none;
@@ -293,6 +829,7 @@
         .whatsapp-float svg {
 
             width: 24px;
+
             height: 24px;
 
             fill: white;
@@ -321,7 +858,30 @@
         .instagram-float svg {
 
             width: 23px;
+
             height: 23px;
+
+            fill: white;
+
+        }
+
+
+        /* =====================================================
+           YOUTUBE
+        ====================================================== */
+
+        .youtube-float {
+
+            background: #FF0000;
+
+        }
+
+
+        .youtube-float svg {
+
+            width: 24px;
+
+            height: 24px;
 
             fill: white;
 
@@ -351,6 +911,7 @@
             .floating-social {
 
                 left: 10px;
+
                 bottom: 18px;
 
                 gap: 8px;
@@ -360,6 +921,7 @@
             .floating-social-link {
 
                 width: 42px;
+
                 height: 42px;
 
             }
@@ -367,6 +929,7 @@
             .whatsapp-float svg {
 
                 width: 22px;
+
                 height: 22px;
 
             }
@@ -374,7 +937,16 @@
             .instagram-float svg {
 
                 width: 21px;
+
                 height: 21px;
+
+            }
+
+            .youtube-float svg {
+
+                width: 22px;
+
+                height: 22px;
 
             }
 
@@ -390,6 +962,7 @@
             .floating-social {
 
                 left: 8px;
+
                 bottom: 15px;
 
             }
@@ -397,6 +970,7 @@
             .floating-social-link {
 
                 width: 38px;
+
                 height: 38px;
 
             }
@@ -404,6 +978,7 @@
             .whatsapp-float svg {
 
                 width: 20px;
+
                 height: 20px;
 
             }
@@ -411,9 +986,334 @@
             .instagram-float svg {
 
                 width: 19px;
+
                 height: 19px;
 
             }
+
+            .youtube-float svg {
+
+                width: 20px;
+
+                height: 20px;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           COLLECTION LAYOUT FIX
+        ====================================================== */
+
+        .collection-showcase {
+
+            display: grid !important;
+
+            grid-template-columns:
+                repeat(4, minmax(0, 1fr)) !important;
+
+            gap: 18px !important;
+
+            width: 100%;
+
+        }
+
+
+        .collection-showcase .collection-panel {
+
+            position: relative;
+
+            width: 100%;
+
+            height: 560px;
+
+            min-height: 560px;
+
+            overflow: hidden;
+
+            display: block;
+
+            text-decoration: none;
+
+            color: #fff;
+
+        }
+
+
+        .collection-showcase
+        .collection-panel
+        .collection-image {
+
+            width: 100%;
+
+            height: 100%;
+
+            min-height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+
+            transition:
+                transform 0.7s ease;
+
+        }
+
+
+        .collection-showcase
+        .collection-panel:hover
+        .collection-image {
+
+            transform: scale(1.05);
+
+        }
+
+
+        /* =====================================================
+           MIRZAPUR COLLECTION CARD
+        ====================================================== */
+
+        .mirzapur-drop-panel {
+
+            position: relative !important;
+
+            overflow: hidden !important;
+
+            display: block !important;
+
+            width: 100% !important;
+
+            height: 560px !important;
+
+            min-height: 560px !important;
+
+            text-decoration: none;
+
+            color: #fff;
+
+            background: #111;
+
+        }
+
+
+        .mirzapur-drop-panel
+        .collection-image {
+
+            width: 100% !important;
+
+            height: 100% !important;
+
+            min-height: 100% !important;
+
+            object-fit: cover !important;
+
+            display: block;
+
+            transition:
+                transform 0.7s ease;
+
+        }
+
+
+        .mirzapur-drop-panel:hover
+        .collection-image {
+
+            transform: scale(1.05);
+
+        }
+
+
+        .mirzapur-drop-panel::after {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    to top,
+                    rgba(0,0,0,0.9),
+                    rgba(0,0,0,0.35),
+                    rgba(0,0,0,0.05)
+                );
+
+            pointer-events: none;
+
+            z-index: 1;
+
+        }
+
+
+        .mirzapur-drop-panel
+        .collection-overlay {
+
+            position: absolute;
+
+            z-index: 2;
+
+        }
+
+
+        .mirzapur-badge {
+
+            display: inline-block;
+
+            margin-bottom: 12px;
+
+            padding: 7px 12px;
+
+            background: #fff;
+
+            color: #111;
+
+            font-size: 9px;
+
+            font-weight: 700;
+
+            letter-spacing: 2px;
+
+        }
+
+
+        .mirzapur-drop-panel h3 {
+
+            font-size: 34px;
+
+            letter-spacing: 3px;
+
+        }
+
+
+        .mirzapur-drop-panel p {
+
+            font-size: 12px;
+
+            letter-spacing: 1px;
+
+        }
+
+
+        .mirzapur-price {
+
+            margin-top: 10px;
+
+            font-size: 17px !important;
+
+            font-weight: 700;
+
+        }
+
+
+        /* =====================================================
+           TABLET
+        ====================================================== */
+
+        @media (max-width: 1100px) {
+
+            .collection-showcase {
+
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr)) !important;
+
+            }
+
+            .collection-showcase
+            .collection-panel,
+            .mirzapur-drop-panel {
+
+                height: 520px !important;
+
+                min-height: 520px !important;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ====================================================== */
+
+        @media (max-width: 650px) {
+
+            .collection-showcase {
+
+                grid-template-columns: 1fr !important;
+
+                gap: 16px !important;
+
+            }
+
+            .collection-showcase
+            .collection-panel,
+            .mirzapur-drop-panel {
+
+                height: 480px !important;
+
+                min-height: 480px !important;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           SMALL MOBILE COLLECTIONS
+        ====================================================== */
+
+        @media (max-width: 450px) {
+
+            .collection-showcase
+            .collection-panel,
+            .mirzapur-drop-panel {
+
+                height: 430px !important;
+
+                min-height: 430px !important;
+
+            }
+
+            .mirzapur-drop-panel h3 {
+
+                font-size: 30px;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           TOUCH EFFECT
+        ====================================================== */
+
+        .collection-panel.touch-active
+        .collection-image {
+
+            transform: scale(1.05);
+
+        }
+
+
+        /* =====================================================
+           YUGA SEA WAVE CURSOR
+        ====================================================== */
+
+        #yugaWaveCanvas {
+
+            position: fixed;
+
+            inset: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            pointer-events: none;
+
+            z-index: 9996;
 
         }
 
@@ -424,9 +1324,15 @@
 
         @media (prefers-reduced-motion: reduce) {
 
-            .floating-social-link {
+            #yugaWaveCanvas {
 
-                transition: none;
+                display: none;
+
+            }
+
+            .mirzapur-banner-track {
+
+                animation: none;
 
             }
 
@@ -441,6 +1347,13 @@
 
 
     <!-- =========================================================
+         YUGA SEA WAVE CANVAS
+    ========================================================== -->
+
+    <canvas id="yugaWaveCanvas"></canvas>
+
+
+    <!-- =========================================================
          MOVING ANNOUNCEMENT BAR
     ========================================================== -->
 
@@ -448,18 +1361,22 @@
 
         <div class="announcement-track">
 
+            <span>✦ MIRZAPUR COLLECTION LIVE</span>
             <span>✦ NEW DROP LIVE</span>
             <span>✦ WEAR YOUR ERA</span>
             <span>✦ SHOP YUGA</span>
 
+            <span>✦ MIRZAPUR COLLECTION LIVE</span>
             <span>✦ NEW DROP LIVE</span>
             <span>✦ WEAR YOUR ERA</span>
             <span>✦ SHOP YUGA</span>
 
+            <span>✦ MIRZAPUR COLLECTION LIVE</span>
             <span>✦ NEW DROP LIVE</span>
             <span>✦ WEAR YOUR ERA</span>
             <span>✦ SHOP YUGA</span>
 
+            <span>✦ MIRZAPUR COLLECTION LIVE</span>
             <span>✦ NEW DROP LIVE</span>
             <span>✦ WEAR YOUR ERA</span>
             <span>✦ SHOP YUGA</span>
@@ -467,7 +1384,6 @@
         </div>
 
     </div>
-
 
 
     <!-- =========================================================
@@ -488,6 +1404,38 @@
     </header>
 
 
+    <!-- =========================================================
+         MAIN NAVIGATION
+    ========================================================== -->
+
+    <nav
+        class="yuga-main-nav"
+        aria-label="Main navigation"
+    >
+
+        <a href="#collections">
+            Our Collections
+        </a>
+
+
+        <!-- ABOUT US NOW OPENS ABOUT US PAGE -->
+
+        <a href="About us.html">
+            About Us
+        </a>
+
+
+        <a
+            href="https://wa.me/917888759939"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="nav-order"
+        >
+            Order Now
+        </a>
+
+    </nav>
+
 
     <!-- =========================================================
          PREMIUM HERO
@@ -501,18 +1449,22 @@
                 YUGA FASHION
             </p>
 
+
             <h1>
                 YUGA
             </h1>
+
 
             <p class="hero-tagline">
                 WEAR YOUR ERA.
             </p>
 
+
             <p class="hero-description">
                 Modern essentials and expressive pieces
                 made for the generation creating its own style.
             </p>
+
 
             <a
                 href="#collections"
@@ -524,25 +1476,11 @@
         </div>
 
 
-        <!-- INTERACTIVE HERO PRODUCT -->
-        <div class="hero-product-wrap" id="yugaHeroProduct">
-            <div class="hero-product-glow"></div>
-            <img
-                src="Black Design 1.png"
-                alt="YUGA T-Shirt"
-                class="hero-product"
-                draggable="false"
-            >
-            <div class="hero-product-label">NEW DROP</div>
-        </div>
-
-
         <div class="hero-scroll">
             SCROLL TO EXPLORE
         </div>
 
     </section>
-
 
 
     <!-- =========================================================
@@ -555,19 +1493,158 @@
             THE YUGA MINDSET
         </p>
 
+
         <h2>
+
             Not just what you wear.
+
             <br>
-            <span>It's the era you represent.</span>
+
+            <span>
+                It's the era you represent.
+            </span>
+
         </h2>
 
+
         <p>
+
             YUGA is built for people who create their own identity,
             express their own style and wear every era their way.
+
         </p>
 
     </section>
 
+
+    <!-- =========================================================
+         MIRZAPUR FEATURED MOVING DROP
+    ========================================================== -->
+
+    <a
+        href="mirzapur.html"
+        class="mirzapur-moving-banner"
+        aria-label="Explore YUGA Mirzapur Collection"
+    >
+
+        <div class="mirzapur-banner-inner">
+
+            <div class="mirzapur-banner-glow"></div>
+
+
+            <div class="mirzapur-banner-track">
+
+
+                <!-- SET 1 -->
+
+                <div class="mirzapur-banner-content">
+
+                    <span class="mirzapur-banner-title">
+                        MIRZAPUR
+                    </span>
+
+                    <span class="mirzapur-banner-separator">
+                        ✦
+                    </span>
+
+                    <span class="mirzapur-banner-subtitle">
+                        COLLECTION DROP NOW !!!
+                    </span>
+
+                    <span class="mirzapur-banner-separator">
+                        ✦
+                    </span>
+
+                    <span class="mirzapur-banner-subtitle">
+                        LIMITED EDITION
+                    </span>
+
+                    <span class="mirzapur-banner-separator">
+                        ✦
+                    </span>
+
+                    <span class="mirzapur-banner-button">
+                        PRE-BOOK NOW →
+                    </span>
+
+                </div>
+
+
+                <!-- SET 2 -->
+
+                <div class="mirzapur-banner-content">
+
+                    <span class="mirzapur-banner-title">
+                        MIRZAPUR
+                    </span>
+
+                    <span class="mirzapur-banner-separator">
+                        ✦
+                    </span>
+
+                    <span class="mirzapur-banner-subtitle">
+                        COLLECTION DROP NOW !!!
+                    </span>
+
+                    <span class="mirzapur-banner-separator">
+                        ✦
+                    </span>
+
+                    <span class="mirzapur-banner-subtitle">
+                        LIMITED EDITION
+                    </span>
+
+                    <span class="mirzapur-banner-separator">
+                        ✦
+                    </span>
+
+                    <span class="mirzapur-banner-button">
+                        PRE-BOOK NOW →
+                    </span>
+
+                </div>
+
+
+                <!-- SET 3 -->
+
+                <div class="mirzapur-banner-content">
+
+                    <span class="mirzapur-banner-title">
+                        MIRZAPUR
+                    </span>
+
+                    <span class="mirzapur-banner-separator">
+                        ✦
+                    </span>
+
+                    <span class="mirzapur-banner-subtitle">
+                        COLLECTION DROP NOW !!!
+                    </span>
+
+                    <span class="mirzapur-banner-separator">
+                        ✦
+                    </span>
+
+                    <span class="mirzapur-banner-subtitle">
+                        LIMITED EDITION
+                    </span>
+
+                    <span class="mirzapur-banner-separator">
+                        ✦
+                    </span>
+
+                    <span class="mirzapur-banner-button">
+                        PRE-BOOK NOW →
+                    </span>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </a>
 
 
     <!-- =========================================================
@@ -579,15 +1656,18 @@
         id="collections"
     >
 
+
         <div class="collection-heading reveal">
 
             <p class="eyebrow">
                 DISCOVER YUGA
             </p>
 
+
             <h2>
                 OUR COLLECTIONS
             </h2>
+
 
             <p>
                 Find your style. Wear your era.
@@ -596,13 +1676,10 @@
         </div>
 
 
-
         <div class="collection-showcase">
 
 
-            <!-- =================================================
-                 PLAIN COLLECTION
-            ================================================== -->
+            <!-- PLAIN -->
 
             <a
                 href="plain.html"
@@ -610,10 +1687,11 @@
             >
 
                 <img
-                    src="Black S.png"
+                    src="plain1.c.png"
                     alt="YUGA Plain Collection"
                     class="collection-image"
                 >
+
 
                 <div class="collection-overlay">
 
@@ -623,13 +1701,16 @@
                         class="logo"
                     >
 
+
                     <h3>
                         PLAIN
                     </h3>
 
+
                     <p>
                         Essential Everyday Wear
                     </p>
+
 
                     <span class="collection-explore">
                         Explore Collection →
@@ -640,10 +1721,7 @@
             </a>
 
 
-
-            <!-- =================================================
-                 POLO COLLECTION
-            ================================================== -->
+            <!-- POLO -->
 
             <a
                 href="polo.html"
@@ -651,10 +1729,11 @@
             >
 
                 <img
-                    src="BLACK MODELP.jpg"
+                    src="polo1c.png"
                     alt="YUGA Polo Collection"
                     class="collection-image"
                 >
+
 
                 <div class="collection-overlay">
 
@@ -664,13 +1743,16 @@
                         class="logo"
                     >
 
+
                     <h3>
                         POLO
                     </h3>
 
+
                     <p>
                         Classic. Clean. Timeless.
                     </p>
+
 
                     <span class="collection-explore">
                         Explore Collection →
@@ -681,10 +1763,7 @@
             </a>
 
 
-
-            <!-- =================================================
-                 PRINTED COLLECTION
-            ================================================== -->
+            <!-- PRINTED -->
 
             <a
                 href="printed.html"
@@ -692,10 +1771,11 @@
             >
 
                 <img
-                    src="Black Design 1.png"
+                    src="printed1c.png"
                     alt="YUGA Printed Collection"
                     class="collection-image"
                 >
+
 
                 <div class="collection-overlay">
 
@@ -705,16 +1785,59 @@
                         class="logo"
                     >
 
+
                     <h3>
                         PRINTED
                     </h3>
+
 
                     <p>
                         Express Yourself
                     </p>
 
+
                     <span class="collection-explore">
                         Explore Collection →
+                    </span>
+
+                </div>
+
+            </a>
+
+
+            <!-- MIRZAPUR -->
+
+            <a
+                href="mirzapur.html"
+                class="collection-panel mirzapur-drop-panel reveal"
+            >
+
+                <img
+                    src="mirz 1.png"
+                    alt="YUGA Mirzapur Limited Edition"
+                    class="collection-image"
+                >
+
+
+                <div class="collection-overlay">
+
+                    <span class="mirzapur-badge">
+                        🔥 PRE-BOOK NOW
+                    </span>
+
+
+                    <h3>
+                        MIRZAPUR
+                    </h3>
+
+
+                    <p>
+                        Limited Edition Drop
+                    </p>
+
+
+                    <span class="collection-explore">
+                        View Limited Drop →
                     </span>
 
                 </div>
@@ -725,10 +1848,7 @@
         </div>
 
 
-
-        <!-- =====================================================
-             SHOP ALL
-        ====================================================== -->
+        <!-- SHOP ALL -->
 
         <div class="shop-all-section reveal">
 
@@ -744,27 +1864,30 @@
     </section>
 
 
-
     <!-- =========================================================
          ABOUT YUGA
     ========================================================== -->
 
-    <section class="about-yuga reveal">
+    <section
+        class="about-yuga reveal"
+        id="about-yuga"
+    >
 
         <h2>
             YUGA
         </h2>
 
+
         <p>
             Fashion for your era.
         </p>
+
 
         <p>
             Explore our collection and find what fits your style.
         </p>
 
     </section>
-
 
 
     <!-- =========================================================
@@ -782,14 +1905,15 @@
                     YUGA FASHION
                 </p>
 
+
                 <h2>
                     VISIT US
                 </h2>
 
+
                 <p class="contact-tagline">
                     Wear Your Era.
                 </p>
-
 
 
                 <div class="contact-details">
@@ -803,11 +1927,13 @@
                             📍
                         </span>
 
+
                         <div>
 
                             <strong>
                                 STORE LOCATION
                             </strong>
+
 
                             <p>
                                 Sector 20, Chandigarh,<br>
@@ -819,7 +1945,6 @@
                     </div>
 
 
-
                     <!-- WHATSAPP -->
 
                     <div class="contact-item">
@@ -828,16 +1953,18 @@
                             📱
                         </span>
 
+
                         <div>
 
                             <strong>
                                 WHATSAPP
                             </strong>
 
+
                             <p>
 
                                 <a
-                                    href="https://wa.me/YOUR_WHATSAPP_NUMBER"
+                                    href="https://wa.me/917888759939"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     class="whatsapp-link"
@@ -855,8 +1982,7 @@
                 </div>
 
 
-
-                <!-- GOOGLE MAP -->
+                <!-- GOOGLE MAP BUTTON -->
 
                 <a
                     href="https://maps.app.goo.gl/DiNDMBHSDeVYcHna7"
@@ -868,11 +1994,10 @@
                 </a>
 
 
-
                 <!-- WHATSAPP BUTTON -->
 
                 <a
-                    href="https://wa.me/YOUR_WHATSAPP_NUMBER"
+                    href="https://wa.me/917888759939"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="whatsapp-button"
@@ -881,7 +2006,6 @@
                 </a>
 
             </div>
-
 
 
             <!-- GOOGLE MAP -->
@@ -897,11 +2021,9 @@
 
             </div>
 
-
         </div>
 
     </section>
-
 
 
     <!-- =========================================================
@@ -914,10 +2036,10 @@
             YUGA
         </h2>
 
+
         <p class="footer-tagline">
             Wear Your Era.
         </p>
-
 
 
         <div class="footer-social">
@@ -935,6 +2057,17 @@
             </a>
 
 
+            <!-- YOUTUBE -->
+
+            <a
+                href="https://www.youtube.com/@YUGAFashionIndia"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="footer-link"
+            >
+                YouTube
+            </a>
+
 
             <!-- CUSTOMER CARE -->
 
@@ -946,11 +2079,10 @@
             </a>
 
 
-
             <!-- WHATSAPP -->
 
             <a
-                href="https://wa.me/YOUR_WHATSAPP_NUMBER"
+                href="https://wa.me/917888759939"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="footer-link"
@@ -959,8 +2091,16 @@
             </a>
 
 
-        </div>
+            <!-- POLICIES -->
 
+            <a
+                href="policies.html"
+                class="footer-link"
+            >
+                Policies
+            </a>
+
+        </div>
 
 
         <p class="footer-copy">
@@ -970,21 +2110,17 @@
     </footer>
 
 
-
     <!-- =========================================================
          FLOATING SOCIAL ICONS
-         LEFT SIDE
     ========================================================== -->
 
     <div class="floating-social">
 
 
-        <!-- =====================================================
-             WHATSAPP FLOATING BUTTON
-        ====================================================== -->
+        <!-- WHATSAPP -->
 
         <a
-            href="https://wa.me/YOUR_WHATSAPP_NUMBER"
+            href="https://wa.me/917888759939"
             target="_blank"
             rel="noopener noreferrer"
             class="floating-social-link whatsapp-float"
@@ -1005,10 +2141,7 @@
         </a>
 
 
-
-        <!-- =====================================================
-             INSTAGRAM FLOATING BUTTON
-        ====================================================== -->
+        <!-- INSTAGRAM -->
 
         <a
             href="https://www.instagram.com/yugafashionindia/"
@@ -1025,19 +2158,197 @@
                 aria-hidden="true"
             >
 
-                <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9ZM17.75 5.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/>
+                <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9ZM17.75 5.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0-3-3Z"/>
 
             </svg>
 
         </a>
 
 
+        <!-- YOUTUBE -->
+
+        <a
+            href="https://www.youtube.com/@YUGAFashionIndia"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="floating-social-link youtube-float"
+            aria-label="Subscribe to YUGA on YouTube"
+            title="YouTube"
+        >
+
+            <svg
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+            >
+
+                <path d="M23.5 6.2a3 3 0 0 0-2.11-2.12C19.52 3.5 12 3.5 12 3.5s-7.52 0-9.39.58A3 3 0 0 0 .5 6.2 31.1 31.1 0 0 0 0 12a31.1 31.1 0 0 0 .5 5.8 3 3 0 0 0 2.11 2.12c1.87.58 9.39.58 9.39.58s7.52 0 9.39-.58a3 3 0 0 0 2.11-2.12A31.1 31.1 0 0 0 24 12a31.1 31.1 0 0 0-.5-5.8ZM9.6 15.5v-7l6 3.5-6 3.5Z"/>
+
+            </svg>
+
+        </a>
+
     </div>
 
 
+    <!-- =========================================================
+         YUGA AI CHATBOT
+    ========================================================== -->
+
+    <button
+        id="yugaChatButton"
+        type="button"
+        aria-label="Open YUGA AI"
+        title="YUGA AI"
+    >
+        🤖
+    </button>
+
+
+    <div id="yugaChatbot">
+
+
+        <!-- CHAT HEADER -->
+
+        <div class="yuga-chat-header">
+
+            <div>
+
+                <strong>
+                    YUGA AI
+                </strong>
+
+
+                <span>
+                    ● Online
+                </span>
+
+            </div>
+
+
+            <button
+                id="yugaChatClose"
+                type="button"
+                aria-label="Close chatbot"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <!-- CHAT MESSAGES -->
+
+        <div id="yugaChatMessages">
+
+
+            <div class="yuga-message bot">
+
+                Hey! 👋 Welcome to
+                <strong>YUGA Fashion</strong>.
+
+                <br><br>
+
+                I'm YUGA AI. How can I help you today?
+
+            </div>
+
+
+            <!-- QUICK QUESTIONS -->
+
+            <div class="yuga-quick-buttons">
+
+
+                <!-- MIRZAPUR -->
+
+                <button
+                    type="button"
+                    data-question="Tell me about the Mirzapur Limited Edition and how to pre-book it"
+                >
+                    🔥 Mirzapur Drop
+                </button>
+
+
+                <!-- PLAIN -->
+
+                <button
+                    type="button"
+                    data-question="Tell me about the Plain collection"
+                >
+                    👕 Plain Collection
+                </button>
+
+
+                <!-- PRINTED -->
+
+                <button
+                    type="button"
+                    data-question="Tell me about the Printed collection"
+                >
+                    🎨 Printed Collection
+                </button>
+
+
+                <!-- POLO -->
+
+                <button
+                    type="button"
+                    data-question="Tell me about the Polo collection"
+                >
+                    👔 Polo Collection
+                </button>
+
+
+                <!-- PRICE -->
+
+                <button
+                    type="button"
+                    data-question="What are your prices?"
+                >
+                    💰 Prices
+                </button>
+
+
+                <!-- ORDER -->
+
+                <button
+                    type="button"
+                    data-question="How can I order?"
+                >
+                    🛒 How to Order
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- CHAT INPUT -->
+
+        <div class="yuga-chat-input">
+
+            <input
+                type="text"
+                id="yugaChatInput"
+                placeholder="Ask YUGA AI..."
+                autocomplete="off"
+            >
+
+
+            <button
+                id="yugaChatSend"
+                type="button"
+            >
+                ➤
+            </button>
+
+        </div>
+
+    </div>
+
 
     <!-- =========================================================
-         JAVASCRIPT
+         INDEX JAVASCRIPT
     ========================================================== -->
 
     <script>
@@ -1045,7 +2356,7 @@
 
         /* =====================================================
            SCROLL REVEAL
-        ===================================================== */
+        ====================================================== */
 
         const revealElements =
             document.querySelectorAll(".reveal");
@@ -1086,10 +2397,9 @@
         });
 
 
-
         /* =====================================================
            MOBILE COLLECTION TOUCH
-        ===================================================== */
+        ====================================================== */
 
         const collectionPanels =
             document.querySelectorAll(".collection-panel");
@@ -1132,262 +2442,513 @@
         });
 
 
-    
+        /* =====================================================
+           YUGA SEA WAVE CURSOR EFFECT
+        ====================================================== */
 
-/* =========================================================
-   YUGA AI CHATBOT
-   FRONT-END FAQ VERSION
-========================================================= */
+        const canvas =
+            document.getElementById("yugaWaveCanvas");
 
-(function () {
 
-    const chatButton = document.getElementById("yugaChatButton");
-    const chatWindow = document.getElementById("yugaChatWindow");
-    const chatClose = document.getElementById("yugaChatClose");
-    const chatMessages = document.getElementById("yugaChatMessages");
-    const chatForm = document.getElementById("yugaChatForm");
-    const chatInput = document.getElementById("yugaChatInput");
-    const quickButtons = document.querySelectorAll("[data-yuga-question]");
+        const ctx =
+            canvas ? canvas.getContext("2d") : null;
 
-    if (
-        !chatButton ||
-        !chatWindow ||
-        !chatClose ||
-        !chatMessages ||
-        !chatForm ||
-        !chatInput
-    ) {
-        return;
-    }
 
-    function addMessage(text, sender) {
+        const mouseSupported =
+            window.matchMedia(
+                "(hover: hover) and (pointer: fine)"
+            ).matches;
 
-        const message = document.createElement("div");
-        message.className = "yuga-chat-message " + sender;
 
-        const bubble = document.createElement("div");
-        bubble.className = "yuga-chat-bubble";
-        bubble.textContent = text;
+        if (
+            canvas &&
+            ctx &&
+            mouseSupported &&
+            !window.matchMedia(
+                "(prefers-reduced-motion: reduce)"
+            ).matches
+        ) {
 
-        message.appendChild(bubble);
-        chatMessages.appendChild(message);
 
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
+            let width =
+                window.innerWidth;
 
-    function openChat() {
 
-        chatWindow.classList.add("active");
-        chatWindow.setAttribute("aria-hidden", "false");
+            let height =
+                window.innerHeight;
 
-        if (!chatMessages.dataset.started) {
 
-            addMessage(
-                "Hey! 👋 Welcome to YUGA Fashion.\n\nI'm YUGA AI. I can help you with products, sizes, prices, ordering and general questions.",
-                "bot"
+            let mouseX =
+                width / 2;
+
+
+            let mouseY =
+                height / 2;
+
+
+            let targetX =
+                mouseX;
+
+
+            let targetY =
+                mouseY;
+
+
+            let lastX =
+                mouseX;
+
+
+            let lastY =
+                mouseY;
+
+
+            let mouseMoving =
+                false;
+
+
+            const ripples = [];
+
+
+            /* =================================================
+               CANVAS SIZE
+            ================================================== */
+
+            function resizeWaveCanvas() {
+
+                const dpr =
+                    Math.min(
+                        window.devicePixelRatio || 1,
+                        2
+                    );
+
+
+                width =
+                    window.innerWidth;
+
+
+                height =
+                    window.innerHeight;
+
+
+                canvas.width =
+                    width * dpr;
+
+
+                canvas.height =
+                    height * dpr;
+
+
+                canvas.style.width =
+                    width + "px";
+
+
+                canvas.style.height =
+                    height + "px";
+
+
+                ctx.setTransform(
+                    dpr,
+                    0,
+                    0,
+                    dpr,
+                    0,
+                    0
+                );
+
+            }
+
+
+            resizeWaveCanvas();
+
+
+            window.addEventListener(
+                "resize",
+                resizeWaveCanvas
             );
 
-            chatMessages.dataset.started = "true";
-        }
 
-        setTimeout(function () {
-            chatInput.focus();
-        }, 100);
-    }
+            /* =================================================
+               CREATE RIPPLE
+            ================================================== */
 
-    function closeChat() {
+            function createRipple(
+                x,
+                y,
+                strength = 1
+            ) {
 
-        chatWindow.classList.remove("active");
-        chatWindow.setAttribute("aria-hidden", "true");
-    }
+                ripples.push({
 
-    function getReply(question) {
+                    x: x,
 
-        const q = question.toLowerCase().trim();
+                    y: y,
 
-        if (
-            q.includes("product") ||
-            q.includes("t-shirt") ||
-            q.includes("tshirt") ||
-            q.includes("shirt") ||
-            q.includes("collection")
-        ) {
-            return "You can browse all available YUGA T-shirts directly in our collection. 👕\n\nClick any product to see its price, colour and available sizes.";
-        }
+                    radius: 8,
 
-        if (
-            q.includes("size") ||
-            q.includes("sizing") ||
-            q.includes("fit")
-        ) {
-            return "Sizes depend on the individual product. 📏\n\nOpen a T-shirt from the collection to see which sizes are currently available.";
-        }
+                    opacity:
+                        0.18 * strength,
 
-        if (
-            q.includes("price") ||
-            q.includes("cost") ||
-            q.includes("₹") ||
-            q.includes("rupee")
-        ) {
-            return "You can see the current price by opening any product from the YUGA collection. 💰\n\nPrices can vary by product.";
-        }
+                    width:
+                        1.2 + strength,
 
-        if (
-            q.includes("order") ||
-            q.includes("buy") ||
-            q.includes("purchase")
-        ) {
-            return "Ordering is easy! 🛒\n\n1. Choose a product.\n2. Select an available size.\n3. Select your quantity.\n4. Tap “ORDER ON WHATSAPP”.\n\nWe'll take you to WhatsApp to confirm the order.";
-        }
+                    speed:
+                        1.8 + Math.random() * 1.4,
 
-        if (
-            q.includes("whatsapp") ||
-            q.includes("contact") ||
-            q.includes("reach")
-        ) {
-            return "You can contact YUGA through the WhatsApp ordering option on the website. 💬\n\nOpen a product and tap “ORDER ON WHATSAPP” to start a conversation.";
-        }
+                    wobble:
+                        Math.random() * Math.PI * 2
 
-        if (
-            q.includes("delivery") ||
-            q.includes("deliver") ||
-            q.includes("shipping")
-        ) {
-            return "For delivery availability and shipping details, please contact YUGA through WhatsApp. 🚚\n\nWe'll confirm the details for your location.";
-        }
+                });
 
-        if (
-            q.includes("hello") ||
-            q.includes("hi") ||
-            q.includes("hey")
-        ) {
-            return "Hey! 👋 What would you like to know about YUGA — products, sizes, prices or ordering?";
-        }
 
-        if (
-            q.includes("thank")
-        ) {
-            return "You're welcome! 😎\n\nWear Your Era. — YUGA Fashion";
-        }
+                if (ripples.length > 18) {
 
-        return "I'm currently set up with YUGA's basic FAQ information. 🤖\n\nTry asking me about products, sizes, prices, delivery, ordering or WhatsApp support.";
-    }
+                    ripples.shift();
 
-    function sendMessage(text) {
+                }
 
-        const cleanText = text.trim();
+            }
 
-        if (!cleanText) {
-            return;
-        }
 
-        addMessage(cleanText, "user");
-        chatInput.value = "";
+            /* =================================================
+               MOUSE MOVEMENT
+            ================================================== */
 
-        setTimeout(function () {
-            addMessage(getReply(cleanText), "bot");
-        }, 350);
-    }
+            document.addEventListener(
+                "mousemove",
 
-    chatButton.addEventListener("click", function () {
+                function(event) {
 
-        if (chatWindow.classList.contains("active")) {
-            closeChat();
-        } else {
-            openChat();
-        }
+                    targetX =
+                        event.clientX;
 
-    });
 
-    chatClose.addEventListener("click", function () {
-        closeChat();
-    });
+                    targetY =
+                        event.clientY;
 
-    chatForm.addEventListener("submit", function (event) {
 
-        event.preventDefault();
-        sendMessage(chatInput.value);
+                    const movement =
+                        Math.hypot(
+                            targetX - lastX,
+                            targetY - lastY
+                        );
 
-    });
 
-    quickButtons.forEach(function (button) {
+                    if (movement > 5) {
 
-        button.addEventListener("click", function () {
+                        mouseMoving = true;
 
-            sendMessage(
-                button.getAttribute("data-yuga-question") || ""
+
+                        createRipple(
+                            targetX,
+                            targetY,
+                            Math.min(
+                                movement / 18,
+                                1.6
+                            )
+                        );
+
+
+                        lastX =
+                            targetX;
+
+
+                        lastY =
+                            targetY;
+
+                    }
+
+                },
+
+                {
+                    passive: true
+                }
+
             );
 
-        });
 
-    });
+            /* =================================================
+               HIDE WHEN MOUSE LEAVES
+            ================================================== */
 
-    document.addEventListener("keydown", function (event) {
+            document.addEventListener(
+                "mouseleave",
 
-        if (
-            event.key === "Escape" &&
-            chatWindow.classList.contains("active")
-        ) {
-            closeChat();
+                function() {
+
+                    mouseMoving = false;
+
+                }
+            );
+
+
+            document.addEventListener(
+                "mouseenter",
+
+                function(event) {
+
+                    targetX =
+                        event.clientX;
+
+
+                    targetY =
+                        event.clientY;
+
+
+                    lastX =
+                        targetX;
+
+
+                    lastY =
+                        targetY;
+
+                }
+            );
+
+
+            /* =================================================
+               DRAW ORGANIC SEA RIPPLE
+            ================================================== */
+
+            function drawRipple(ripple) {
+
+                const points =
+                    64;
+
+
+                ctx.beginPath();
+
+
+                for (
+                    let i = 0;
+                    i <= points;
+                    i++
+                ) {
+
+                    const angle =
+                        (Math.PI * 2 * i) /
+                        points;
+
+
+                    const wave =
+                        Math.sin(
+                            angle * 5 +
+                            ripple.wobble +
+                            ripple.radius * 0.025
+                        ) * 4;
+
+
+                    const wave2 =
+                        Math.sin(
+                            angle * 9 +
+                            ripple.wobble * 1.7
+                        ) * 2;
+
+
+                    const radius =
+                        ripple.radius +
+                        wave +
+                        wave2;
+
+
+                    const x =
+                        ripple.x +
+                        Math.cos(angle) *
+                        radius;
+
+
+                    const y =
+                        ripple.y +
+                        Math.sin(angle) *
+                        radius;
+
+
+                    if (i === 0) {
+
+                        ctx.moveTo(
+                            x,
+                            y
+                        );
+
+                    } else {
+
+                        ctx.lineTo(
+                            x,
+                            y
+                        );
+
+                    }
+
+                }
+
+
+                ctx.closePath();
+
+
+                ctx.strokeStyle =
+                    `rgba(
+                        190,
+                        190,
+                        190,
+                        ${ripple.opacity}
+                    )`;
+
+
+                ctx.lineWidth =
+                    ripple.width;
+
+
+                ctx.stroke();
+
+            }
+
+
+            /* =================================================
+               MAIN ANIMATION
+            ================================================== */
+
+            function animateWave() {
+
+                ctx.clearRect(
+                    0,
+                    0,
+                    width,
+                    height
+                );
+
+
+                /* Smooth mouse movement */
+
+                mouseX +=
+                    (targetX - mouseX) *
+                    0.12;
+
+
+                mouseY +=
+                    (targetY - mouseY) *
+                    0.12;
+
+
+                /* SOFT GREY GLOW */
+
+                if (mouseMoving) {
+
+                    const glow =
+                        ctx.createRadialGradient(
+                            mouseX,
+                            mouseY,
+                            0,
+                            mouseX,
+                            mouseY,
+                            170
+                        );
+
+
+                    glow.addColorStop(
+                        0,
+                        "rgba(210,210,210,0.07)"
+                    );
+
+
+                    glow.addColorStop(
+                        0.35,
+                        "rgba(170,170,170,0.035)"
+                    );
+
+
+                    glow.addColorStop(
+                        1,
+                        "rgba(100,100,100,0)"
+                    );
+
+
+                    ctx.fillStyle =
+                        glow;
+
+
+                    ctx.beginPath();
+
+
+                    ctx.arc(
+                        mouseX,
+                        mouseY,
+                        170,
+                        0,
+                        Math.PI * 2
+                    );
+
+
+                    ctx.fill();
+
+                }
+
+
+                /* UPDATE + DRAW RIPPLE WAVES */
+
+                for (
+                    let i = ripples.length - 1;
+                    i >= 0;
+                    i--
+                ) {
+
+                    const ripple =
+                        ripples[i];
+
+
+                    ripple.radius +=
+                        ripple.speed;
+
+
+                    ripple.opacity *=
+                        0.975;
+
+
+                    ripple.wobble +=
+                        0.015;
+
+
+                    ripple.width *=
+                        0.997;
+
+
+                    drawRipple(
+                        ripple
+                    );
+
+
+                    if (
+                        ripple.opacity < 0.008 ||
+                        ripple.radius > 230
+                    ) {
+
+                        ripples.splice(
+                            i,
+                            1
+                        );
+
+                    }
+
+                }
+
+
+                requestAnimationFrame(
+                    animateWave
+                );
+
+            }
+
+
+            animateWave();
+
         }
 
-    });
-
-})();
-
-</script>
+    </script>
 
 
+    <!-- =========================================================
+         LOAD YUGA JAVASCRIPT
+    ========================================================== -->
 
-<!-- =========================================================
-     YUGA AI CHATBOT
-========================================================= -->
-
-<div id="yugaChatbot">
-
-    <button id="yugaChatButton" type="button" aria-label="Open YUGA AI Chat">
-        <span class="yuga-chat-icon">✦</span>
-        <span class="yuga-chat-label">YUGA AI</span>
-    </button>
-
-    <div id="yugaChatWindow" aria-hidden="true">
-
-        <div class="yuga-chat-header">
-            <div>
-                <strong>YUGA AI</strong>
-                <span>Online • Here to help</span>
-            </div>
-
-            <button id="yugaChatClose" type="button" aria-label="Close chat">×</button>
-        </div>
-
-        <div id="yugaChatMessages" class="yuga-chat-messages"></div>
-
-        <div class="yuga-chat-quick">
-            <button type="button" data-yuga-question="What T-shirts do you have?">👕 Products</button>
-            <button type="button" data-yuga-question="What sizes are available?">📏 Sizes</button>
-            <button type="button" data-yuga-question="How do I order?">🛒 How to order</button>
-            <button type="button" data-yuga-question="How can I contact YUGA?">💬 Contact</button>
-        </div>
-
-        <form id="yugaChatForm" class="yuga-chat-input-area">
-            <input
-                id="yugaChatInput"
-                type="text"
-                autocomplete="off"
-                placeholder="Ask YUGA anything..."
-                maxlength="300"
-            >
-            <button type="submit" aria-label="Send message">➤</button>
-        </form>
-
-        <div class="yuga-chat-disclaimer">
-            YUGA AI • Product information may change
-        </div>
-
-    </div>
-
-</div>
+    <script src="script.js"></script>
 
 
 </body>
