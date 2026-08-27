@@ -14,59 +14,206 @@
 
     <link rel="stylesheet" href="style.css">
 
+
     <style>
+
         /* =========================================================
-           PRINTED COLLECTION — FRONT / BACK SLIDER
+           PRINTED COLLECTION — MANUAL FRONT / BACK GALLERY
         ========================================================== */
 
         .printed-slider {
             position: relative;
             width: 100%;
             overflow: hidden;
-            cursor: pointer;
+            touch-action: pan-y;
+            user-select: none;
         }
+
+
+        /* IMAGE */
 
         .printed-slider img {
             display: block;
             width: 100%;
             height: auto;
-            transition: opacity 0.5s ease;
+
+            transition:
+                transform 0.35s ease,
+                opacity 0.35s ease;
         }
 
-        .printed-slider img.slider-fade {
-            opacity: 0;
+
+        /* =========================================================
+           ARROWS
+        ========================================================== */
+
+        .printed-slider-arrow {
+            position: absolute;
+
+            top: 50%;
+            transform: translateY(-50%);
+
+            width: 40px;
+            height: 40px;
+
+            border: none;
+            border-radius: 50%;
+
+            background: rgba(0, 0, 0, 0.65);
+
+            color: white;
+
+            font-size: 28px;
+
+            line-height: 40px;
+
+            text-align: center;
+
+            cursor: pointer;
+
+            z-index: 10;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            opacity: 0.85;
+
+            transition:
+                background 0.25s ease,
+                transform 0.25s ease,
+                opacity 0.25s ease;
         }
 
-        .printed-slider img.slider-visible {
+
+        .printed-slider-arrow:hover {
+
             opacity: 1;
+
+            background:
+                rgba(0, 0, 0, 0.85);
+
         }
 
-        /* FRONT / BACK INDICATOR */
+
+        .printed-slider-arrow:active {
+
+            transform:
+                translateY(-50%) scale(0.92);
+
+        }
+
+
+        .printed-slider-prev {
+
+            left: 10px;
+
+        }
+
+
+        .printed-slider-next {
+
+            right: 10px;
+
+        }
+
+
+        /* =========================================================
+           FRONT / BACK DOTS
+        ========================================================== */
 
         .printed-slider-dots {
+
             position: absolute;
-            bottom: 10px;
+
+            bottom: 12px;
+
             left: 50%;
-            transform: translateX(-50%);
+
+            transform:
+                translateX(-50%);
+
             display: flex;
-            gap: 5px;
-            pointer-events: none;
+
+            gap: 6px;
+
             z-index: 5;
+
+            pointer-events: none;
+
         }
+
 
         .printed-slider-dot {
-            width: 6px;
-            height: 6px;
+
+            width: 7px;
+
+            height: 7px;
+
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.45);
-            transition: all 0.3s ease;
+
+            background:
+                rgba(255, 255, 255, 0.5);
+
+            transition:
+                width 0.25s ease,
+                background 0.25s ease;
+
         }
 
+
         .printed-slider-dot.active {
-            width: 16px;
+
+            width: 18px;
+
             border-radius: 10px;
-            background: rgba(255, 255, 255, 0.95);
+
+            background: white;
+
         }
+
+
+        /* =========================================================
+           MOBILE
+        ========================================================== */
+
+        @media (max-width: 600px) {
+
+            .printed-slider-arrow {
+
+                width: 34px;
+
+                height: 34px;
+
+                font-size: 22px;
+
+                line-height: 34px;
+
+            }
+
+
+            .printed-slider-prev {
+
+                left: 7px;
+
+            }
+
+
+            .printed-slider-next {
+
+                right: 7px;
+
+            }
+
+
+            .printed-slider-dots {
+
+                bottom: 9px;
+
+            }
+
+        }
+
     </style>
 
 </head>
@@ -101,7 +248,9 @@
         href="index.html"
         class="back-button"
     >
+
         ← Back to Collections
+
     </a>
 
 
@@ -111,7 +260,9 @@
 
     <section class="collection">
 
-        <h2>PRINTED COLLECTION</h2>
+        <h2>
+            PRINTED COLLECTION
+        </h2>
 
 
         <div class="products">
@@ -140,12 +291,18 @@
                         <img
                             src="Front 1.jpeg"
                             alt="YUGA Black Printed T-Shirt Front"
-                            class="slider-visible"
                         >
 
                         <div class="printed-slider-dots">
-                            <span class="printed-slider-dot active"></span>
-                            <span class="printed-slider-dot"></span>
+
+                            <span
+                                class="printed-slider-dot active"
+                            ></span>
+
+                            <span
+                                class="printed-slider-dot"
+                            ></span>
+
                         </div>
 
                     </div>
@@ -233,12 +390,18 @@
                         <img
                             src="Front 2.jpeg"
                             alt="YUGA Blue Printed T-Shirt Front"
-                            class="slider-visible"
                         >
 
                         <div class="printed-slider-dots">
-                            <span class="printed-slider-dot active"></span>
-                            <span class="printed-slider-dot"></span>
+
+                            <span
+                                class="printed-slider-dot active"
+                            ></span>
+
+                            <span
+                                class="printed-slider-dot"
+                            ></span>
+
                         </div>
 
                     </div>
@@ -326,12 +489,18 @@
                         <img
                             src="Front 3.jpeg"
                             alt="YUGA Green Printed T-Shirt Front"
-                            class="slider-visible"
                         >
 
                         <div class="printed-slider-dots">
-                            <span class="printed-slider-dot active"></span>
-                            <span class="printed-slider-dot"></span>
+
+                            <span
+                                class="printed-slider-dot active"
+                            ></span>
+
+                            <span
+                                class="printed-slider-dot"
+                            ></span>
+
                         </div>
 
                     </div>
@@ -419,12 +588,18 @@
                         <img
                             src="Front 4.jpeg"
                             alt="YUGA Yellow Printed T-Shirt Front"
-                            class="slider-visible"
                         >
 
                         <div class="printed-slider-dots">
-                            <span class="printed-slider-dot active"></span>
-                            <span class="printed-slider-dot"></span>
+
+                            <span
+                                class="printed-slider-dot active"
+                            ></span>
+
+                            <span
+                                class="printed-slider-dot"
+                            ></span>
+
                         </div>
 
                     </div>
@@ -512,12 +687,18 @@
                         <img
                             src="Front 5.jpeg"
                             alt="YUGA Blue Printed T-Shirt Front"
-                            class="slider-visible"
                         >
 
                         <div class="printed-slider-dots">
-                            <span class="printed-slider-dot active"></span>
-                            <span class="printed-slider-dot"></span>
+
+                            <span
+                                class="printed-slider-dot active"
+                            ></span>
+
+                            <span
+                                class="printed-slider-dot"
+                            ></span>
+
                         </div>
 
                     </div>
@@ -605,12 +786,18 @@
                         <img
                             src="Front 6.jpeg"
                             alt="YUGA Yellow Printed T-Shirt Front"
-                            class="slider-visible"
                         >
 
                         <div class="printed-slider-dots">
-                            <span class="printed-slider-dot active"></span>
-                            <span class="printed-slider-dot"></span>
+
+                            <span
+                                class="printed-slider-dot active"
+                            ></span>
+
+                            <span
+                                class="printed-slider-dot"
+                            ></span>
+
                         </div>
 
                     </div>
@@ -698,12 +885,18 @@
                         <img
                             src="Front 7.jpeg"
                             alt="YUGA Red Printed T-Shirt Front"
-                            class="slider-visible"
                         >
 
                         <div class="printed-slider-dots">
-                            <span class="printed-slider-dot active"></span>
-                            <span class="printed-slider-dot"></span>
+
+                            <span
+                                class="printed-slider-dot active"
+                            ></span>
+
+                            <span
+                                class="printed-slider-dot"
+                            ></span>
+
                         </div>
 
                     </div>
@@ -791,12 +984,18 @@
                         <img
                             src="Front 8.jpeg"
                             alt="YUGA Yellow Printed T-Shirt Front"
-                            class="slider-visible"
                         >
 
                         <div class="printed-slider-dots">
-                            <span class="printed-slider-dot active"></span>
-                            <span class="printed-slider-dot"></span>
+
+                            <span
+                                class="printed-slider-dot active"
+                            ></span>
+
+                            <span
+                                class="printed-slider-dot"
+                            ></span>
+
                         </div>
 
                     </div>
@@ -884,12 +1083,18 @@
                         <img
                             src="Front 9.jpeg"
                             alt="YUGA Yellow Printed T-Shirt Front"
-                            class="slider-visible"
                         >
 
                         <div class="printed-slider-dots">
-                            <span class="printed-slider-dot active"></span>
-                            <span class="printed-slider-dot"></span>
+
+                            <span
+                                class="printed-slider-dot active"
+                            ></span>
+
+                            <span
+                                class="printed-slider-dot"
+                            ></span>
+
                         </div>
 
                     </div>
@@ -1038,8 +1243,7 @@
                     <div
                         id="modalSizes"
                         class="modal-sizes"
-                    >
-                    </div>
+                    ></div>
 
                 </div>
 
@@ -1267,198 +1471,377 @@
 
 
     <!-- =========================================================
-         FRONT / BACK SLIDER JAVASCRIPT
+         MANUAL FRONT / BACK SWIPE JAVASCRIPT
     ========================================================== -->
 
     <script>
 
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
 
-            const sliders =
-                document.querySelectorAll(".printed-slider");
-
-
-            sliders.forEach(function (slider) {
-
-                const image =
-                    slider.querySelector("img");
-
-                const dots =
-                    slider.querySelectorAll(
-                        ".printed-slider-dot"
+                const sliders =
+                    document.querySelectorAll(
+                        ".printed-slider"
                     );
 
 
-                const frontImage =
-                    slider.dataset.front;
+                sliders.forEach(
+                    function (slider) {
 
-                const backImage =
-                    slider.dataset.back;
-
-
-                let showingBack = false;
-
-                let timer;
+                        const image =
+                            slider.querySelector("img");
 
 
-                function showImage(back) {
+                        const dots =
+                            slider.querySelectorAll(
+                                ".printed-slider-dot"
+                            );
 
-                    image.classList.add(
-                        "slider-fade"
-                    );
+
+                        const frontImage =
+                            slider.dataset.front;
 
 
-                    setTimeout(function () {
+                        const backImage =
+                            slider.dataset.back;
 
-                        if (back) {
 
-                            image.src =
-                                backImage;
+                        let showingBack = false;
 
-                            image.alt =
-                                "YUGA T-Shirt Back";
 
-                        } else {
+                        /* =================================================
+                           CREATE LEFT ARROW
+                        ================================================= */
 
-                            image.src =
-                                frontImage;
+                        const prevButton =
+                            document.createElement("button");
 
-                            image.alt =
-                                "YUGA T-Shirt Front";
+
+                        prevButton.className =
+                            "printed-slider-arrow printed-slider-prev";
+
+
+                        prevButton.type =
+                            "button";
+
+
+                        prevButton.innerHTML =
+                            "‹";
+
+
+                        prevButton.setAttribute(
+                            "aria-label",
+                            "Show front image"
+                        );
+
+
+                        /* =================================================
+                           CREATE RIGHT ARROW
+                        ================================================= */
+
+                        const nextButton =
+                            document.createElement("button");
+
+
+                        nextButton.className =
+                            "printed-slider-arrow printed-slider-next";
+
+
+                        nextButton.type =
+                            "button";
+
+
+                        nextButton.innerHTML =
+                            "›";
+
+
+                        nextButton.setAttribute(
+                            "aria-label",
+                            "Show back image"
+                        );
+
+
+                        slider.appendChild(
+                            prevButton
+                        );
+
+
+                        slider.appendChild(
+                            nextButton
+                        );
+
+
+                        /* =================================================
+                           UPDATE IMAGE
+                        ================================================= */
+
+                        function showImage(
+                            back,
+                            direction
+                        ) {
+
+                            if (
+                                back ===
+                                showingBack
+                            ) {
+
+                                return;
+
+                            }
+
+
+                            image.style.transform =
+                                direction > 0
+                                    ? "translateX(-25px)"
+                                    : "translateX(25px)";
+
+
+                            image.style.opacity =
+                                "0";
+
+
+                            setTimeout(
+                                function () {
+
+                                    if (back) {
+
+                                        image.src =
+                                            backImage;
+
+                                        image.alt =
+                                            "YUGA T-Shirt Back";
+
+                                    }
+
+                                    else {
+
+                                        image.src =
+                                            frontImage;
+
+                                        image.alt =
+                                            "YUGA T-Shirt Front";
+
+                                    }
+
+
+                                    image.style.transform =
+                                        direction > 0
+                                            ? "translateX(25px)"
+                                            : "translateX(-25px)";
+
+
+                                    requestAnimationFrame(
+                                        function () {
+
+                                            image.style.transform =
+                                                "translateX(0)";
+
+                                            image.style.opacity =
+                                                "1";
+
+                                        }
+                                    );
+
+
+                                    showingBack =
+                                        back;
+
+
+                                    /* UPDATE DOTS */
+
+                                    dots.forEach(
+                                        function (
+                                            dot,
+                                            index
+                                        ) {
+
+                                            dot.classList.toggle(
+                                                "active",
+                                                back
+                                                    ? index === 1
+                                                    : index === 0
+                                            );
+
+                                        }
+                                    );
+
+                                },
+                                150
+                            );
 
                         }
 
 
-                        image.classList.remove(
-                            "slider-fade"
-                        );
+                        /* =================================================
+                           RIGHT ARROW
+                           FRONT → BACK
+                        ================================================= */
+
+                        nextButton.addEventListener(
+                            "click",
+                            function (event) {
+
+                                event.stopPropagation();
 
 
-                        image.classList.add(
-                            "slider-visible"
-                        );
-
-
-                        dots.forEach(
-                            function (dot, index) {
-
-                                dot.classList.toggle(
-                                    "active",
-                                    back
-                                        ? index === 1
-                                        : index === 0
+                                showImage(
+                                    true,
+                                    1
                                 );
 
                             }
                         );
 
 
-                    }, 250);
+                        /* =================================================
+                           LEFT ARROW
+                           BACK → FRONT
+                        ================================================= */
 
-                }
+                        prevButton.addEventListener(
+                            "click",
+                            function (event) {
 
-
-                function nextSlide() {
-
-                    showingBack =
-                        !showingBack;
-
-                    showImage(showingBack);
-
-                }
+                                event.stopPropagation();
 
 
-                function startSlider() {
+                                showImage(
+                                    false,
+                                    -1
+                                );
 
-                    clearInterval(timer);
-
-
-                    timer = setInterval(
-                        nextSlide,
-                        3000
-                    );
-
-                }
+                            }
+                        );
 
 
-                function resetSlider() {
+                        /* =================================================
+                           MOBILE SWIPE
+                        ================================================= */
 
-                    clearInterval(timer);
-
-                    startSlider();
-
-                }
-
-
-                /* AUTO FRONT → BACK → FRONT */
-
-                startSlider();
+                        let touchStartX =
+                            0;
 
 
-                /* =================================================
-                   MOBILE SWIPE SUPPORT
-                ================================================== */
-
-                let touchStartX = 0;
-
-                let touchEndX = 0;
+                        let touchStartY =
+                            0;
 
 
-                slider.addEventListener(
-                    "touchstart",
-                    function (event) {
+                        slider.addEventListener(
+                            "touchstart",
+                            function (event) {
 
-                        touchStartX =
-                            event.changedTouches[0]
-                                .screenX;
+                                touchStartX =
+                                    event.changedTouches[0]
+                                        .screenX;
 
-                    },
-                    {
-                        passive: true
+
+                                touchStartY =
+                                    event.changedTouches[0]
+                                        .screenY;
+
+                            },
+                            {
+                                passive: true
+                            }
+                        );
+
+
+                        slider.addEventListener(
+                            "touchend",
+                            function (event) {
+
+                                const touchEndX =
+                                    event.changedTouches[0]
+                                        .screenX;
+
+
+                                const touchEndY =
+                                    event.changedTouches[0]
+                                        .screenY;
+
+
+                                const differenceX =
+                                    touchStartX -
+                                    touchEndX;
+
+
+                                const differenceY =
+                                    touchStartY -
+                                    touchEndY;
+
+
+                                /*
+
+                                   Swipe LEFT
+                                   = FRONT → BACK
+
+                                   Swipe RIGHT
+                                   = BACK → FRONT
+
+                                */
+
+                                if (
+                                    Math.abs(
+                                        differenceX
+                                    ) > 40
+                                    &&
+                                    Math.abs(
+                                        differenceX
+                                    ) >
+                                    Math.abs(
+                                        differenceY
+                                    )
+                                ) {
+
+
+                                    if (
+                                        differenceX > 0
+                                    ) {
+
+                                        showImage(
+                                            true,
+                                            1
+                                        );
+
+                                    }
+
+                                    else {
+
+                                        showImage(
+                                            false,
+                                            -1
+                                        );
+
+                                    }
+
+                                }
+
+                            },
+                            {
+                                passive: true
+                            }
+                        );
+
+
+                        /* =================================================
+                           PREVENT IMAGE DRAGGING
+                        ================================================= */
+
+                        slider.addEventListener(
+                            "dragstart",
+                            function (event) {
+
+                                event.preventDefault();
+
+                            }
+                        );
+
                     }
                 );
 
-
-                slider.addEventListener(
-                    "touchend",
-                    function (event) {
-
-                        touchEndX =
-                            event.changedTouches[0]
-                                .screenX;
-
-
-                        const difference =
-                            touchStartX -
-                            touchEndX;
-
-
-                        if (
-                            Math.abs(difference) > 40
-                        ) {
-
-                            showingBack =
-                                difference > 0;
-
-
-                            showImage(
-                                showingBack
-                            );
-
-
-                            resetSlider();
-
-                        }
-
-                    },
-                    {
-                        passive: true
-                    }
-                );
-
-            });
-
-        });
+            }
+        );
 
     </script>
 
