@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YUGA Fashion | Summer Collection</title>
+    <link rel="icon" type="image/png" href="Y Falvion.png">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .summer-page {
+            min-height: 100vh;
+            background: #000;
+            color: #fff;
+            padding: 70px 5vw 100px;
+        }
+
+        .summer-heading {
+            max-width: 1100px;
+            margin: 0 auto 50px;
+            text-align: center;
+        }
+
+        .summer-heading .eyebrow {
+            font-size: 10px;
+            letter-spacing: 4px;
+            font-weight: 800;
+            opacity: 0.7;
+            margin-bottom: 16px;
+        }
+
+        .summer-heading h1 {
+            margin: 0;
+            font-size: clamp(52px, 9vw, 110px);
+            line-height: 0.9;
+            letter-spacing: 4px;
+        }
+
+        .summer-heading p:last-child {
+            margin: 20px auto 0;
+            font-size: 12px;
+            letter-spacing: 3px;
+            opacity: 0.65;
+        }
+
+        .summer-grid {
+            width: 100%;
+            max-width: 1500px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .summer-card {
+            position: relative;
+            display: block;
+            height: 560px;
+            overflow: hidden;
+            color: #fff;
+            text-decoration: none;
+            background: #111;
+        }
+
+        .summer-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.7s ease;
+        }
+
+        .summer-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .summer-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to top,
+                rgba(0,0,0,0.75),
+                rgba(0,0,0,0.05) 60%
+            );
+        }
+
+        .summer-card-content {
+            position: absolute;
+            z-index: 2;
+            left: 28px;
+            right: 28px;
+            bottom: 28px;
+        }
+
+        .summer-card-content h2 {
+            margin: 0;
+            font-size: 42px;
+            letter-spacing: 3px;
+        }
+
+        .summer-card-content p {
+            margin: 8px 0 0;
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+
+        .summer-card-content span {
+            display: inline-block;
+            margin-top: 18px;
+            font-size: 9px;
+            letter-spacing: 2px;
+            font-weight: 800;
+        }
+
+        .summer-back {
+            display: block;
+            width: fit-content;
+            margin: 42px auto 0;
+            color: #fff;
+            text-decoration: none;
+            font-size: 10px;
+            letter-spacing: 2px;
+            font-weight: 800;
+        }
+
+        @media (max-width: 800px) {
+            .summer-page {
+                padding: 50px 16px 80px;
+            }
+
+            .summer-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .summer-card {
+                height: 480px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="index.html">
+            <img src="Logo.png" alt="YUGA Fashion">
+        </a>
+    </header>
+
+    <main class="summer-page">
+        <section class="summer-heading">
+            <p class="eyebrow">YUGA FASHION · SUMMER '26</p>
+            <h1>SUMMER</h1>
+            <p>Choose your era. Find your fit.</p>
+        </section>
+
+        <section class="summer-grid">
+            <a class="summer-card" href="plain.html">
+                <img src="plain1.c.png" alt="YUGA Plain Collection">
+                <div class="summer-card-content">
+                    <h2>PLAIN</h2>
+                    <p>Essential Everyday Wear</p>
+                    <span>SHOP PLAIN →</span>
+                </div>
+            </a>
+
+            <a class="summer-card" href="polo.html">
+                <img src="polo1c.png" alt="YUGA Polo Collection">
+                <div class="summer-card-content">
+                    <h2>POLO</h2>
+                    <p>Classic. Clean. Timeless.</p>
+                    <span>SHOP POLO →</span>
+                </div>
+            </a>
+
+            <a class="summer-card" href="printed.html">
+                <img src="printed1c.png" alt="YUGA Printed Collection">
+                <div class="summer-card-content">
+                    <h2>PRINTED</h2>
+                    <p>Express Yourself</p>
+                    <span>SHOP PRINTED →</span>
+                </div>
+            </a>
+        </section>
+
+        <a class="summer-back" href="index.html#collections">
+            ← BACK TO YUGA
+        </a>
+    </main>
+</body>
+</html>
