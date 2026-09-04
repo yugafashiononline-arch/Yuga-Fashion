@@ -7,66 +7,9 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- YUGA FAVICON -->
-    <link rel="icon" type="image/png" href="Y Falvion.png">
-
-    <title>YUGA | Printed Collection</title>
+    <title>YUGA | Polo Collection</title>
 
     <link rel="stylesheet" href="style.css">
-
-    <style>
-        /* =========================================================
-           PRINTED COLLECTION — FRONT / BACK SLIDER
-        ========================================================== */
-
-        .printed-slider {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            cursor: pointer;
-        }
-
-        .printed-slider img {
-            display: block;
-            width: 100%;
-            height: auto;
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-
-        .printed-slider img.slider-fade {
-            opacity: 0;
-        }
-
-        .printed-slider img.slider-visible {
-            opacity: 1;
-        }
-
-        /* Small swipe/slide indicator */
-        .printed-slider-dots {
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 5px;
-            pointer-events: none;
-            z-index: 5;
-        }
-
-        .printed-slider-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.45);
-            transition: all 0.3s ease;
-        }
-
-        .printed-slider-dot.active {
-            width: 16px;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.95);
-        }
-    </style>
 
 </head>
 
@@ -74,110 +17,66 @@
 <body>
 
 
-    <!-- =========================================================
-         HEADER
-    ========================================================== -->
+    <!-- HEADER -->
 
     <header>
 
         <a href="index.html">
 
-            <img
-                src="Logo.png"
-                alt="YUGA Fashion"
-            >
+            <img src="images/logo.png" alt="YUGA Fashion">
 
         </a>
 
     </header>
 
 
-    <!-- =========================================================
-         BACK BUTTON
-    ========================================================== -->
 
-    <a
-        href="index.html"
-        class="back-button"
-    >
+    <!-- BACK BUTTON -->
+
+    <a href="index.html" class="back-button">
         ← Back to Collections
     </a>
 
 
-    <!-- =========================================================
-         PRINTED COLLECTION
-    ========================================================== -->
+
+    <!-- POLO COLLECTION -->
 
     <section class="collection">
 
-        <h2>PRINTED COLLECTION</h2>
+        <h2>POLO COLLECTION</h2>
 
 
         <div class="products">
 
 
-            <!-- =================================================
-                 PRINTED 1
-            ================================================== -->
+            <!-- POLO 1 : BLACK -->
 
-            <div
-                class="product"
-                data-name="YUGA Graphic Tee"
-                data-price="₹399"
-                data-colour="Black Design"
-                data-image="Front 1.png"
-            >
+            <div class="product"
+                data-name="YUGA Classic Polo"
+                data-price="₹299"
+                data-colour="Black"
+                data-image="POLO BL.png">
 
-                <div class="product-image-zoom">
+                <img
+                    src="POLO BL.png"
+                    alt="YUGA Black Polo"
+                >
 
-                    <div
-                        class="printed-slider"
-                        data-front="Front 1.png"
-                        data-back="Back 1.png"
-                    >
+                <h3>YUGA Classic Polo</h3>
 
-                        <img
-                            src="Front 1.png"
-                            alt="YUGA Black Printed T-Shirt Front"
-                            class="slider-visible"
-                        >
+                <p class="price">₹299</p>
 
-                        <div class="printed-slider-dots">
-                            <span class="printed-slider-dot active"></span>
-                            <span class="printed-slider-dot"></span>
-                        </div>
+                <p>Colour: Black</p>
 
-                    </div>
-
-                </div>
-
-
-                <h3>
-                    YUGA Graphic Tee
-                </h3>
-
-                <p class="price">
-                    ₹399
-                </p>
-
-                <p>
-                    Colour: Black Design
-                </p>
-
-                <p>
-                    Sizes: S • M • L • XL
-                </p>
-
+                <p>Sizes: S • M • L • XL</p>
 
                 <div class="stock">
 
-                    <p class="stock-title">
-                        AVAILABILITY
-                    </p>
+                    <p class="stock-title">AVAILABILITY</p>
 
                     <div class="sizes">
 
-                        <span class="in-stock">S ✓</span>
+                        <span class="out-stock">S ✕</span>
                         <span class="in-stock">M ✓</span>
                         <span class="in-stock">L ✓</span>
                         <span class="in-stock">XL ✓</span>
@@ -193,60 +92,35 @@
             </div>
 
 
-            <!-- =================================================
-                 PRINTED 2
-            ================================================== -->
 
-            <div
-                class="product"
-                data-name="YUGA Graphic Tee"
-                data-price="₹399"
+            <!-- POLO 2 : BLUE -->
+
+            <div class="product"
+                data-name="YUGA Classic Polo"
+                data-price="₹299"
                 data-colour="Blue"
-                data-image="Front 2.png"
-            >
+                data-image="POLO BLU.png">
 
-                <div class="product-image-zoom">
+                <img
+                    src="images/polo/Blue.png"
+                    alt="YUGA Blue Polo"
+                >
 
-                    <div
-                        class="printed-slider"
-                        data-front="Front 2.png"
-                        data-back="Back 2.png"
-                    >
+                <h3>YUGA Classic Polo</h3>
 
-                        <img
-                            src="Front 2.png"
-                            alt="YUGA Blue Printed T-Shirt Front"
-                            class="slider-visible"
-                        >
-
-                        <div class="printed-slider-dots">
-                            <span class="printed-slider-dot active"></span>
-                            <span class="printed-slider-dot"></span>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <h3>YUGA Graphic Tee</h3>
-
-                <p class="price">₹399</p>
+                <p class="price">₹299</p>
 
                 <p>Colour: Blue</p>
 
                 <p>Sizes: S • M • L • XL</p>
 
-
                 <div class="stock">
 
-                    <p class="stock-title">
-                        AVAILABILITY
-                    </p>
+                    <p class="stock-title">AVAILABILITY</p>
 
                     <div class="sizes">
 
-                        <span class="in-stock">S ✓</span>
+                        <span class="out-stock">S ✕</span>
                         <span class="in-stock">M ✓</span>
                         <span class="in-stock">L ✓</span>
                         <span class="in-stock">XL ✓</span>
@@ -262,60 +136,79 @@
             </div>
 
 
-            <!-- =================================================
-                 PRINTED 3
-            ================================================== -->
 
-            <div
-                class="product"
-                data-name="YUGA Graphic Tee"
-                data-price="₹399"
-                data-colour="Green"
-                data-image="Front 3.png"
-            >
+            <!-- POLO 3 : NAVY BLUE -->
 
-                <div class="product-image-zoom">
+            <div class="product"
+                data-name="YUGA Classic Polo"
+                data-price="₹299"
+                data-colour="Navy Blue"
+                data-image="POLO NVBL.png">
 
-                    <div
-                        class="printed-slider"
-                        data-front="Front 3.png"
-                        data-back="Back 3.png"
-                    >
+                <img
+                    src="POLO NVBL.png"
+                    alt="YUGA Navy Blue Polo"
+                >
 
-                        <img
-                            src="Front 3.png"
-                            alt="YUGA Green Printed T-Shirt Front"
-                            class="slider-visible"
-                        >
+                <h3>YUGA Classic Polo</h3>
 
-                        <div class="printed-slider-dots">
-                            <span class="printed-slider-dot active"></span>
-                            <span class="printed-slider-dot"></span>
-                        </div>
+                <p class="price">₹299</p>
+
+                <p>Colour: Navy Blue</p>
+
+                <p>Sizes: S • M • L • XL</p>
+
+                <div class="stock">
+
+                    <p class="stock-title">AVAILABILITY</p>
+
+                    <div class="sizes">
+
+                        <span class="out-stock">S ✕</span>
+                        <span class="out-stock">M ✕</span>
+                        <span class="out-stock">L ✕</span>
+                        <span class="in-stock">XL ✓</span>
 
                     </div>
 
+                    <p class="store-stock">
+                        Available in Store
+                    </p>
+
                 </div>
 
+            </div>
 
-                <h3>YUGA Graphic Tee</h3>
 
-                <p class="price">₹399</p>
+
+            <!-- POLO 4 : GREEN -->
+
+            <div class="product"
+                data-name="YUGA Classic Polo"
+                data-price="₹299"
+                data-colour="Green"
+                data-image="POLO GRN.png">
+
+                <img
+                    src="POLO GRN.png"
+                    alt="YUGA Green Polo"
+                >
+
+                <h3>YUGA Classic Polo</h3>
+
+                <p class="price">₹299</p>
 
                 <p>Colour: Green</p>
 
                 <p>Sizes: S • M • L • XL</p>
 
-
                 <div class="stock">
 
-                    <p class="stock-title">
-                        AVAILABILITY
-                    </p>
+                    <p class="stock-title">AVAILABILITY</p>
 
                     <div class="sizes">
 
-                        <span class="in-stock">S ✓</span>
+                        <span class="out-stock">S ✕</span>
                         <span class="in-stock">M ✓</span>
                         <span class="in-stock">L ✓</span>
                         <span class="in-stock">XL ✓</span>
@@ -331,268 +224,36 @@
             </div>
 
 
-            <!-- =================================================
-                 PRINTED 4
-            ================================================== -->
 
-            <div
-                class="product"
-                data-name="YUGA Graphic Tee"
-                data-price="₹399"
-                data-colour="Yellow"
-                data-image="Front 4.png"
-            >
+            <!-- POLO 5 : RED -->
 
-                <div class="product-image-zoom">
-
-                    <div
-                        class="printed-slider"
-                        data-front="Front 4.png"
-                        data-back="Back 4.png"
-                    >
-
-                        <img
-                            src="Front 4.png"
-                            alt="YUGA Yellow Printed T-Shirt Front"
-                            class="slider-visible"
-                        >
-
-                        <div class="printed-slider-dots">
-                            <span class="printed-slider-dot active"></span>
-                            <span class="printed-slider-dot"></span>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <h3>YUGA Graphic Tee</h3>
-
-                <p class="price">₹399</p>
-
-                <p>Colour: Yellow</p>
-
-                <p>Sizes: S • M • L • XL</p>
-
-
-                <div class="stock">
-
-                    <p class="stock-title">
-                        AVAILABILITY
-                    </p>
-
-                    <div class="sizes">
-
-                        <span class="in-stock">S ✓</span>
-                        <span class="in-stock">M ✓</span>
-                        <span class="in-stock">L ✓</span>
-                        <span class="in-stock">XL ✓</span>
-
-                    </div>
-
-                    <p class="store-stock">
-                        Available in Store
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <!-- =================================================
-                 PRINTED 5
-            ================================================== -->
-
-            <div
-                class="product"
-                data-name="YUGA Graphic Tee"
-                data-price="₹399"
-                data-colour="Blue"
-                data-image="Front 5.png"
-            >
-
-                <div class="product-image-zoom">
-
-                    <div
-                        class="printed-slider"
-                        data-front="Front 5.png"
-                        data-back="Back 5.png"
-                    >
-
-                        <img
-                            src="Front 5.png"
-                            alt="YUGA Blue Printed T-Shirt Front"
-                            class="slider-visible"
-                        >
-
-                        <div class="printed-slider-dots">
-                            <span class="printed-slider-dot active"></span>
-                            <span class="printed-slider-dot"></span>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <h3>YUGA Graphic Tee</h3>
-
-                <p class="price">₹399</p>
-
-                <p>Colour: Blue</p>
-
-                <p>Sizes: S • M • L • XL</p>
-
-
-                <div class="stock">
-
-                    <p class="stock-title">
-                        AVAILABILITY
-                    </p>
-
-                    <div class="sizes">
-
-                        <span class="in-stock">S ✓</span>
-                        <span class="in-stock">M ✓</span>
-                        <span class="in-stock">L ✓</span>
-                        <span class="in-stock">XL ✓</span>
-
-                    </div>
-
-                    <p class="store-stock">
-                        Available in Store
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <!-- =================================================
-                 PRINTED 6
-            ================================================== -->
-
-            <div
-                class="product"
-                data-name="YUGA Graphic Tee"
-                data-price="₹399"
-                data-colour="Yellow"
-                data-image="Front 6.png"
-            >
-
-                <div class="product-image-zoom">
-
-                    <div
-                        class="printed-slider"
-                        data-front="Front 6.png"
-                        data-back="Back 6.png"
-                    >
-
-                        <img
-                            src="Front 6.png"
-                            alt="YUGA Yellow Printed T-Shirt Front"
-                            class="slider-visible"
-                        >
-
-                        <div class="printed-slider-dots">
-                            <span class="printed-slider-dot active"></span>
-                            <span class="printed-slider-dot"></span>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <h3>YUGA Graphic Tee</h3>
-
-                <p class="price">₹399</p>
-
-                <p>Colour: Yellow</p>
-
-                <p>Sizes: S • M • L • XL</p>
-
-
-                <div class="stock">
-
-                    <p class="stock-title">
-                        AVAILABILITY
-                    </p>
-
-                    <div class="sizes">
-
-                        <span class="in-stock">S ✓</span>
-                        <span class="in-stock">M ✓</span>
-                        <span class="in-stock">L ✓</span>
-                        <span class="in-stock">XL ✓</span>
-
-                    </div>
-
-                    <p class="store-stock">
-                        Available in Store
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <!-- =================================================
-                 PRINTED 7
-            ================================================== -->
-
-            <div
-                class="product"
-                data-name="YUGA Graphic Tee"
-                data-price="₹399"
+            <div class="product"
+                data-name="YUGA Classic Polo"
+                data-price="₹299"
                 data-colour="Red"
-                data-image="Front 7.png"
-            >
+                data-image="POLO RED.png">
 
-                <div class="product-image-zoom">
+                <img
+                    src="POLO RED.png"
+                    alt="YUGA Red Polo"
+                >
 
-                    <div
-                        class="printed-slider"
-                        data-front="Front 7.png"
-                        data-back="Back 7.png"
-                    >
+                <h3>YUGA Classic Polo</h3>
 
-                        <img
-                            src="Front 7.png"
-                            alt="YUGA Red Printed T-Shirt Front"
-                            class="slider-visible"
-                        >
-
-                        <div class="printed-slider-dots">
-                            <span class="printed-slider-dot active"></span>
-                            <span class="printed-slider-dot"></span>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <h3>YUGA Graphic Tee</h3>
-
-                <p class="price">₹399</p>
+                <p class="price">₹299</p>
 
                 <p>Colour: Red</p>
 
                 <p>Sizes: S • M • L • XL</p>
 
-
                 <div class="stock">
 
-                    <p class="stock-title">
-                        AVAILABILITY
-                    </p>
+                    <p class="stock-title">AVAILABILITY</p>
 
                     <div class="sizes">
 
-                        <span class="in-stock">S ✓</span>
-                        <span class="in-stock">M ✓</span>
+                        <span class="out-stock">S ✕</span>
+                        <span class="out-stock">M ✕</span>
                         <span class="in-stock">L ✓</span>
                         <span class="in-stock">XL ✓</span>
 
@@ -607,129 +268,35 @@
             </div>
 
 
-            <!-- =================================================
-                 PRINTED 8
-            ================================================== -->
 
-            <div
-                class="product"
-                data-name="YUGA Graphic Tee"
-                data-price="₹399"
+            <!-- POLO 6 : YELLOW -->
+
+            <div class="product"
+                data-name="YUGA Classic Polo"
+                data-price="₹299"
                 data-colour="Yellow"
-                data-image="Front 8.png"
-            >
+                data-image="POLO YLL.png">
 
-                <div class="product-image-zoom">
+                <img
+                    src="POLO YLL.png"
+                    alt="YUGA Yellow Polo"
+                >
 
-                    <div
-                        class="printed-slider"
-                        data-front="Front 8.png"
-                        data-back="Back 8.png"
-                    >
+                <h3>YUGA Classic Polo</h3>
 
-                        <img
-                            src="Front 8.png"
-                            alt="YUGA Yellow Printed T-Shirt Front"
-                            class="slider-visible"
-                        >
-
-                        <div class="printed-slider-dots">
-                            <span class="printed-slider-dot active"></span>
-                            <span class="printed-slider-dot"></span>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <h3>YUGA Graphic Tee</h3>
-
-                <p class="price">₹399</p>
+                <p class="price">₹299</p>
 
                 <p>Colour: Yellow</p>
 
                 <p>Sizes: S • M • L • XL</p>
 
-
                 <div class="stock">
 
-                    <p class="stock-title">
-                        AVAILABILITY
-                    </p>
+                    <p class="stock-title">AVAILABILITY</p>
 
                     <div class="sizes">
 
-                        <span class="in-stock">S ✓</span>
-                        <span class="in-stock">M ✓</span>
-                        <span class="in-stock">L ✓</span>
-                        <span class="in-stock">XL ✓</span>
-
-                    </div>
-
-                    <p class="store-stock">
-                        Available in Store
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <!-- =================================================
-                 PRINTED 9
-            ================================================== -->
-
-            <div
-                class="product"
-                data-name="YUGA Graphic Tee"
-                data-price="₹399"
-                data-colour="Yellow"
-                data-image="Front 9.png"
-            >
-
-                <div class="product-image-zoom">
-
-                    <div
-                        class="printed-slider"
-                        data-front="Front 9.png"
-                        data-back="Back 9.png"
-                    >
-
-                        <img
-                            src="Front 9.png"
-                            alt="YUGA Yellow Printed T-Shirt Front"
-                            class="slider-visible"
-                        >
-
-                        <div class="printed-slider-dots">
-                            <span class="printed-slider-dot active"></span>
-                            <span class="printed-slider-dot"></span>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <h3>YUGA Graphic Tee</h3>
-
-                <p class="price">₹399</p>
-
-                <p>Colour: Yellow</p>
-
-                <p>Sizes: S • M • L • XL</p>
-
-
-                <div class="stock">
-
-                    <p class="stock-title">
-                        AVAILABILITY
-                    </p>
-
-                    <div class="sizes">
-
-                        <span class="in-stock">S ✓</span>
+                        <span class="out-stock">S ✕</span>
                         <span class="in-stock">M ✓</span>
                         <span class="in-stock">L ✓</span>
                         <span class="in-stock">XL ✓</span>
@@ -750,33 +317,21 @@
     </section>
 
 
-    <!-- =========================================================
-         PRODUCT POPUP / MODAL
-    ========================================================== -->
 
-    <div
-        class="product-modal"
-        id="productModal"
-    >
+    <!-- PRODUCT POPUP -->
+
+    <div class="product-modal" id="productModal">
 
         <div class="modal-content">
 
-            <button
-                class="modal-close"
-                id="modalClose"
-                type="button"
-            >
+            <button class="modal-close" id="modalClose">
                 ×
             </button>
 
 
             <div class="modal-image">
 
-                <img
-                    id="modalImage"
-                    src=""
-                    alt=""
-                >
+                <img id="modalImage" src="" alt="">
 
             </div>
 
@@ -788,22 +343,16 @@
                 </p>
 
                 <h2 id="modalName">
-                    YUGA Graphic Tee
+                    YUGA Classic Polo
                 </h2>
 
-                <p
-                    class="modal-price"
-                    id="modalPrice"
-                >
-                    ₹399
+                <p class="modal-price" id="modalPrice">
+                    ₹299
                 </p>
 
                 <p class="modal-colour">
-
                     Colour:
-
                     <span id="modalColour"></span>
-
                 </p>
 
 
@@ -813,10 +362,7 @@
                         AVAILABLE SIZES
                     </p>
 
-                    <div
-                        id="modalSizes"
-                        class="modal-sizes"
-                    >
+                    <div id="modalSizes" class="modal-sizes">
                     </div>
 
                 </div>
@@ -833,339 +379,24 @@
     </div>
 
 
-    <!-- =========================================================
-         FOOTER
-    ========================================================== -->
+
+    <!-- FOOTER -->
 
     <footer>
 
-        <h2>
-            YUGA
-        </h2>
+        <h2>YUGA</h2>
 
-        <p class="footer-tagline">
-            Wear Your Era.
-        </p>
+        <p>Wear Your Era.</p>
 
-
-        <div class="footer-social">
-
-            <a
-                href="https://www.instagram.com/yugafashionindia/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="footer-link"
-            >
-                Instagram
-            </a>
-
-
-            <a
-                href="mailto:yugafashiononline@gmail.com"
-                class="footer-link"
-            >
-                Customer Care
-            </a>
-
-
-            <a
-                href="https://wa.me/917888759939"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="footer-link"
-            >
-                WhatsApp
-            </a>
-
-        </div>
-
-
-        <p class="footer-copy">
-            © 2026 YUGA Fashion
-        </p>
+        <p>© 2026 YUGA Fashion</p>
 
     </footer>
 
 
-    <!-- =========================================================
-         YUGA AI CHATBOT
-    ========================================================== -->
 
-    <button
-        id="yugaChatButton"
-        aria-label="Open YUGA AI"
-        title="YUGA AI"
-        type="button"
-    >
-        🤖
-    </button>
-
-
-    <div id="yugaChatbot">
-
-        <div class="yuga-chat-header">
-
-            <div>
-
-                <strong>
-                    YUGA AI
-                </strong>
-
-                <span>
-                    ● Online
-                </span>
-
-            </div>
-
-
-            <button
-                id="yugaChatClose"
-                aria-label="Close chatbot"
-                type="button"
-            >
-                ×
-            </button>
-
-        </div>
-
-
-        <div id="yugaChatMessages">
-
-            <div class="yuga-message bot">
-
-                Hey! 👋 Welcome to
-                <strong>YUGA Fashion</strong>.
-
-                <br><br>
-
-                I'm YUGA AI. How can I help you today?
-
-            </div>
-
-
-            <div class="yuga-quick-buttons">
-
-                <button
-                    type="button"
-                    data-question="Tell me about the Plain collection"
-                >
-                    👕 Plain Collection
-                </button>
-
-
-                <button
-                    type="button"
-                    data-question="Tell me about the Printed collection"
-                >
-                    🎨 Printed Collection
-                </button>
-
-
-                <button
-                    type="button"
-                    data-question="Tell me about the Polo collection"
-                >
-                    👔 Polo Collection
-                </button>
-
-
-                <button
-                    type="button"
-                    data-question="What are your prices?"
-                >
-                    💰 Prices
-                </button>
-
-
-                <button
-                    type="button"
-                    data-question="How can I order?"
-                >
-                    🛒 How to Order
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <div class="yuga-chat-input">
-
-            <input
-                type="text"
-                id="yugaChatInput"
-                placeholder="Ask YUGA AI..."
-                autocomplete="off"
-            >
-
-
-            <button
-                id="yugaChatSend"
-                type="button"
-            >
-                ➤
-            </button>
-
-        </div>
-
-    </div>
-
-
-    <!-- =========================================================
-         YUGA JAVASCRIPT
-    ========================================================== -->
+    <!-- JAVASCRIPT -->
 
     <script src="script.js"></script>
-
-
-    <!-- =========================================================
-         PRINTED FRONT / BACK SLIDER SCRIPT
-    ========================================================== -->
-
-    <script>
-
-        document.addEventListener("DOMContentLoaded", function () {
-
-            const sliders = document.querySelectorAll(".printed-slider");
-
-            sliders.forEach(function (slider) {
-
-                const image = slider.querySelector("img");
-
-                const dots = slider.querySelectorAll(".printed-slider-dot");
-
-                const frontImage = slider.dataset.front;
-
-                const backImage = slider.dataset.back;
-
-                let showingBack = false;
-
-                let timer;
-
-
-                function showImage(back) {
-
-                    image.classList.add("slider-fade");
-
-                    setTimeout(function () {
-
-                        if (back) {
-
-                            image.src = backImage;
-
-                            image.alt = "YUGA T-Shirt Back";
-
-                        } else {
-
-                            image.src = frontImage;
-
-                            image.alt = "YUGA T-Shirt Front";
-
-                        }
-
-                        image.classList.remove("slider-fade");
-
-                        image.classList.add("slider-visible");
-
-
-                        dots.forEach(function (dot, index) {
-
-                            dot.classList.toggle(
-                                "active",
-                                back ? index === 1 : index === 0
-                            );
-
-                        });
-
-                    }, 250);
-
-                }
-
-
-                function nextSlide() {
-
-                    showingBack = !showingBack;
-
-                    showImage(showingBack);
-
-                }
-
-
-                function startSlider() {
-
-                    clearInterval(timer);
-
-                    timer = setInterval(
-                        nextSlide,
-                        3000
-                    );
-
-                }
-
-
-                function resetSlider() {
-
-                    clearInterval(timer);
-
-                    startSlider();
-
-                }
-
-
-                /* Automatic front → back → front */
-
-                startSlider();
-
-
-                /* Mobile swipe support */
-
-                let touchStartX = 0;
-
-                let touchEndX = 0;
-
-
-                slider.addEventListener(
-                    "touchstart",
-                    function (event) {
-
-                        touchStartX =
-                            event.changedTouches[0].screenX;
-
-                    },
-                    { passive: true }
-                );
-
-
-                slider.addEventListener(
-                    "touchend",
-                    function (event) {
-
-                        touchEndX =
-                            event.changedTouches[0].screenX;
-
-                        const difference =
-                            touchStartX - touchEndX;
-
-
-                        if (Math.abs(difference) > 40) {
-
-                            showingBack = difference > 0;
-
-                            showImage(showingBack);
-
-                            resetSlider();
-
-                        }
-
-                    },
-                    { passive: true }
-                );
-
-            });
-
-        });
-
-    </script>
 
 
 </body>
