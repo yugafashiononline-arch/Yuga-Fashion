@@ -846,6 +846,23 @@
 
 
         /* =====================================================
+           TIGHTER MINDSET / COLLECTION FLOW
+        ====================================================== */
+        .brand-statement {
+            min-height: auto !important;
+            height: auto !important;
+            padding-top: 65px !important;
+            padding-bottom: 12px !important;
+            margin-top: 0 !important;
+            margin-bottom: 0 !important;
+        }
+
+        .collections-section {
+            padding-top: 0 !important;
+            margin-top: 0 !important;
+        }
+
+        /* =====================================================
            COLLECTION SPACING FIX
         ====================================================== */
 
@@ -1108,6 +1125,14 @@
         @keyframes yugaPageOut {
             from { opacity: 1; transform: translateY(0); }
             to { opacity: 0; transform: translateY(-10px); }
+        }
+
+        @media (max-width: 800px) {
+            .brand-statement {
+                min-height: auto !important;
+                padding-top: 48px !important;
+                padding-bottom: 10px !important;
+            }
         }
 
         /* Mobile animation tuning */
