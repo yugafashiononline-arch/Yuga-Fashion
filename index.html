@@ -1102,6 +1102,52 @@
             to { opacity: 0; transform: translateY(-10px); }
         }
 
+        /* Mobile animation tuning */
+        @media (max-width: 800px) {
+            .hero-premium-content {
+                animation-duration: 1s;
+            }
+
+            .yuga-marquee {
+                margin: 10px 0 35px;
+                padding: 13px 0;
+            }
+
+            .yuga-marquee span {
+                font-size: 9px;
+                letter-spacing: 3px;
+                padding-right: 22px;
+            }
+
+            /* Replace desktop hover-only movement with tap-friendly feedback. */
+            .collection-showcase .collection-panel:hover {
+                transform: none;
+                box-shadow: none;
+            }
+
+            .collection-showcase .collection-panel.touch-active {
+                transform: translateY(-3px);
+                box-shadow: 0 18px 40px rgba(0,0,0,.18);
+            }
+
+            .collection-showcase .collection-panel.touch-active .collection-image {
+                transform: scale(1.045);
+            }
+
+            .seasonal-panel:active .collection-overlay h3,
+            .seasonal-panel:active .collection-overlay p,
+            .seasonal-panel:active .collection-explore,
+            .seasonal-panel.touch-active .collection-overlay h3,
+            .seasonal-panel.touch-active .collection-overlay p,
+            .seasonal-panel.touch-active .collection-explore {
+                transform: translateY(0);
+            }
+
+            .seasonal-panel.touch-active .collection-explore {
+                opacity: 1;
+            }
+        }
+
         @media (prefers-reduced-motion: reduce) {
             .hero-premium-content,
             .hero-premium::before,
@@ -2174,11 +2220,16 @@
                 "(hover: hover) and (pointer: fine)"
             ).matches;
 
+        const touchSupported =
+            window.matchMedia(
+                "(hover: none) and (pointer: coarse)"
+            ).matches;
+
 
         if (
             canvas &&
             ctx &&
-            mouseSupported &&
+            (mouseSupported || touchSupported) &&
             !window.matchMedia(
                 "(prefers-reduced-motion: reduce)"
             ).matches
@@ -2379,6 +2430,68 @@
                 }
 
             );
+
+
+            /* =================================================
+               MOBILE TOUCH DROPLETS / RIPPLE TRAIL
+               Works without blocking page scrolling.
+            ================================================== */
+
+            if (touchSupported) {
+                let lastTouchTime = 0;
+
+                document.addEventListener(
+                    "touchstart",
+                    function(event) {
+                        const touch = event.touches[0];
+                        if (!touch) return;
+
+                        targetX = lastX = touch.clientX;
+                        targetY = lastY = touch.clientY;
+                        mouseMoving = true;
+                        createRipple(targetX, targetY, 1.35);
+                        lastTouchTime = Date.now();
+                    },
+                    { passive: true }
+                );
+
+                document.addEventListener(
+                    "touchmove",
+                    function(event) {
+                        const touch = event.touches[0];
+                        if (!touch) return;
+
+                        targetX = touch.clientX;
+                        targetY = touch.clientY;
+
+                        const movement = Math.hypot(
+                            targetX - lastX,
+                            targetY - lastY
+                        );
+
+                        if (movement > 10 && Date.now() - lastTouchTime > 35) {
+                            mouseMoving = true;
+                            createRipple(
+                                targetX,
+                                targetY,
+                                Math.min(movement / 22, 1.45)
+                            );
+                            lastX = targetX;
+                            lastY = targetY;
+                            lastTouchTime = Date.now();
+                        }
+                    },
+                    { passive: true }
+                );
+
+                document.addEventListener(
+                    "touchend",
+                    function() {
+                        mouseMoving = false;
+                    },
+                    { passive: true }
+                );
+            }
 
 
             /* =================================================
