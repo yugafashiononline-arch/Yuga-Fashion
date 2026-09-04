@@ -845,9 +845,41 @@
 
 
         /* =====================================================
-           YUGA SEASON COLLECTION CARDS
-           SUMMER + WINTER '26
+           SEASON COLLECTION — 2 LARGE CARDS
         ====================================================== */
+
+        .collection-showcase {
+            display: grid !important;
+            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            gap: 24px !important;
+            width: 100%;
+            max-width: 1500px;
+            margin: 0 auto;
+        }
+
+        .collection-showcase .collection-panel {
+            position: relative;
+            width: 100%;
+            height: 680px !important;
+            min-height: 680px !important;
+            overflow: hidden;
+            display: block;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .collection-showcase .collection-panel .collection-image {
+            width: 100%;
+            height: 100%;
+            min-height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.7s ease;
+        }
+
+        .collection-showcase .collection-panel:hover .collection-image {
+            transform: scale(1.045);
+        }
 
         .seasonal-panel {
             border: 0;
@@ -857,33 +889,36 @@
             text-align: inherit;
             appearance: none;
             -webkit-appearance: none;
+            background: transparent;
         }
 
         .seasonal-panel .seasonal-overlay {
             background:
                 linear-gradient(
                     to top,
-                    rgba(0,0,0,0.72) 0%,
-                    rgba(0,0,0,0.20) 48%,
+                    rgba(0,0,0,0.78) 0%,
+                    rgba(0,0,0,0.25) 45%,
                     rgba(0,0,0,0.02) 100%
                 );
         }
 
-        .seasonal-panel .collection-image {
-            filter: saturate(0.92);
+        .seasonal-panel .collection-overlay h3 {
+            font-size: clamp(42px, 5vw, 76px);
+            letter-spacing: 5px;
         }
 
-        .winter-card {
-            position: relative;
+        .seasonal-panel .collection-overlay p {
+            font-size: 11px;
+            letter-spacing: 3px;
         }
 
         .winter-card::after {
             content: "COMING SOON";
             position: absolute;
-            top: 22px;
-            right: 22px;
+            top: 24px;
+            right: 24px;
             z-index: 3;
-            padding: 7px 10px;
+            padding: 8px 12px;
             border: 1px solid rgba(255,255,255,0.55);
             background: rgba(0,0,0,0.34);
             color: #fff;
@@ -893,202 +928,26 @@
             backdrop-filter: blur(6px);
         }
 
-        /* WINTER COMING-SOON OVERLAY */
-
-        #winterComingSoon {
-            overflow: hidden;
-        }
-
-        #winterComingSoon:focus-visible {
-            outline: 2px solid #fff;
-            outline-offset: 4px;
-        }
-
-        .winter-modal {
-            position: fixed;
-            inset: 0;
-            z-index: 10050;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 24px;
-            background: rgba(0,0,0,0.88);
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-            transition:
-                opacity 0.35s ease,
-                visibility 0.35s ease;
-            overflow: hidden;
-        }
-
-        .winter-modal.active {
-            opacity: 1;
-            visibility: visible;
-            pointer-events: auto;
-        }
-
-        .winter-modal-content {
-            position: relative;
-            z-index: 5;
-            text-align: center;
-            color: #fff;
-            transform: translateY(18px) scale(0.96);
-            opacity: 0;
-            transition:
-                transform 0.55s cubic-bezier(.2,.8,.2,1),
-                opacity 0.45s ease;
-        }
-
-        .winter-modal.active .winter-modal-content {
-            transform: translateY(0) scale(1);
-            opacity: 1;
-        }
-
-        .winter-modal-kicker {
-            margin: 0 0 18px;
-            font-size: 10px;
-            font-weight: 800;
-            letter-spacing: 5px;
-        }
-
-        .winter-modal-title {
-            margin: 0;
-            font-size: clamp(62px, 12vw, 150px);
-            line-height: 0.85;
-            letter-spacing: 5px;
-            font-weight: 900;
-        }
-
-        .winter-modal-subtitle {
-            margin: 24px 0 0;
-            font-size: clamp(14px, 2vw, 22px);
-            letter-spacing: 7px;
-            font-weight: 800;
-        }
-
-        .winter-modal-note {
-            margin: 20px 0 0;
-            font-size: 10px;
-            letter-spacing: 3px;
-            opacity: 0.65;
-        }
-
-        .winter-close {
-            position: absolute;
-            top: 22px;
-            right: 24px;
-            z-index: 8;
-            width: 44px;
-            height: 44px;
-            border: 1px solid rgba(255,255,255,0.45);
-            border-radius: 50%;
-            background: rgba(255,255,255,0.06);
-            color: #fff;
-            font-size: 24px;
-            line-height: 1;
-            cursor: pointer;
-        }
-
-        .winter-snow {
-            position: absolute;
-            inset: 0;
-            z-index: 2;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
-        .snowflake {
-            position: absolute;
-            top: -40px;
-            color: #fff;
-            font-size: var(--size);
-            opacity: var(--opacity);
-            filter: blur(var(--blur));
-            animation:
-                snowFall var(--duration) linear var(--delay) infinite;
-        }
-
-        @keyframes snowFall {
-            0% {
-                transform: translate3d(0, -50px, 0) rotate(0deg);
+        @media (max-width: 800px) {
+            .collection-showcase {
+                grid-template-columns: 1fr !important;
+                gap: 18px !important;
             }
-            100% {
-                transform: translate3d(var(--drift), 110vh, 0) rotate(360deg);
+
+            .collection-showcase .collection-panel {
+                height: 540px !important;
+                min-height: 540px !important;
+            }
+
+            .seasonal-panel .collection-overlay h3 {
+                font-size: clamp(40px, 13vw, 64px);
             }
         }
 
-        .winter-burst {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            width: 18px;
-            height: 18px;
-            z-index: 3;
-            border-radius: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            background: #fff;
-            box-shadow:
-                0 0 30px 12px rgba(255,255,255,0.65),
-                0 0 100px 30px rgba(210,230,255,0.35);
-            opacity: 0;
-        }
-
-        .winter-modal.active .winter-burst {
-            animation: snowBurst 1.1s cubic-bezier(.15,.75,.25,1) forwards;
-        }
-
-        @keyframes snowBurst {
-            0% {
-                transform: translate(-50%, -50%) scale(0);
-                opacity: 0.95;
-            }
-            35% {
-                transform: translate(-50%, -50%) scale(7);
-                opacity: 0.28;
-            }
-            100% {
-                transform: translate(-50%, -50%) scale(55);
-                opacity: 0;
-            }
-        }
-
-        @media (max-width: 650px) {
-            .winter-card::after {
-                top: 15px;
-                right: 15px;
-                font-size: 7px;
-                letter-spacing: 1.5px;
-            }
-
-            .winter-modal {
-                padding: 18px;
-            }
-
-            .winter-modal-title {
-                font-size: clamp(54px, 17vw, 100px);
-                letter-spacing: 3px;
-            }
-
-            .winter-modal-subtitle {
-                margin-top: 20px;
-                letter-spacing: 4px;
-            }
-
-            .winter-close {
-                top: 15px;
-                right: 15px;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .snowflake,
-            .winter-burst {
-                animation: none !important;
-            }
-
-            .winter-modal-content {
-                transition: none;
+        @media (max-width: 450px) {
+            .collection-showcase .collection-panel {
+                height: 480px !important;
+                min-height: 480px !important;
             }
         }
 
@@ -1281,12 +1140,12 @@
 
 
             <h2>
-                OUR COLLECTIONS
+                SHOP BY SEASON
             </h2>
 
 
             <p>
-                Find your style. Wear your era.
+                Find your season. Wear your era.
             </p>
 
         </div>
@@ -1312,12 +1171,10 @@
                         class="logo"
                     >
 
-                    <h3>
-                        SUMMER
-                    </h3>
+                    <h3>SUMMER</h3>
 
                     <p>
-                        Plain. Polo. Printed.
+                        Plain · Polo · Printed
                     </p>
 
                     <span class="collection-explore">
@@ -1346,12 +1203,10 @@
                         class="logo"
                     >
 
-                    <h3>
-                        WINTER
-                    </h3>
+                    <h3>WINTER</h3>
 
                     <p>
-                        WINTER '26 · COMING SOON
+                        Winter '26 · Coming Soon
                     </p>
 
                     <span class="collection-explore">
@@ -1360,106 +1215,10 @@
                 </div>
             </button>
 
-            <!-- PLAIN -->
-            <a
-                href="plain.html"
-                class="collection-panel reveal"
-            >
-                <img
-                    src="plain1.c.png"
-                    alt="YUGA Plain Collection"
-                    class="collection-image"
-                >
-
-                <div class="collection-overlay">
-                    <img
-                        src="Logo.png"
-                        alt="YUGA"
-                        class="logo"
-                    >
-
-                    <h3>
-                        PLAIN
-                    </h3>
-
-                    <p>
-                        Essential Everyday Wear
-                    </p>
-
-                    <span class="collection-explore">
-                        Explore Collection →
-                    </span>
-                </div>
-            </a>
-
-            <!-- POLO -->
-            <a
-                href="polo.html"
-                class="collection-panel reveal"
-            >
-                <img
-                    src="polo1c.png"
-                    alt="YUGA Polo Collection"
-                    class="collection-image"
-                >
-
-                <div class="collection-overlay">
-                    <img
-                        src="Logo.png"
-                        alt="YUGA"
-                        class="logo"
-                    >
-
-                    <h3>
-                        POLO
-                    </h3>
-
-                    <p>
-                        Classic. Clean. Timeless.
-                    </p>
-
-                    <span class="collection-explore">
-                        Explore Collection →
-                    </span>
-                </div>
-            </a>
-
-            <!-- PRINTED -->
-            <a
-                href="printed.html"
-                class="collection-panel reveal"
-            >
-                <img
-                    src="printed1c.png"
-                    alt="YUGA Printed Collection"
-                    class="collection-image"
-                >
-
-                <div class="collection-overlay">
-                    <img
-                        src="Logo.png"
-                        alt="YUGA"
-                        class="logo"
-                    >
-
-                    <h3>
-                        PRINTED
-                    </h3>
-
-                    <p>
-                        Express Yourself
-                    </p>
-
-                    <span class="collection-explore">
-                        Explore Collection →
-                    </span>
-                </div>
-            </a>
-
         </div>
 
 
-                <!-- SHOP ALL -->
+        <!-- SHOP ALL -->
 
         <div class="shop-all-section reveal">
 
@@ -1719,50 +1478,6 @@
         </p>
 
     </footer>
-
-
-
-    <!-- =========================================================
-         WINTER '26 COMING SOON MODAL
-    ========================================================== -->
-
-    <div
-        class="winter-modal"
-        id="winterModal"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="winterModalTitle"
-    >
-        <button
-            type="button"
-            class="winter-close"
-            id="winterClose"
-            aria-label="Close Winter coming soon"
-        >
-            ×
-        </button>
-
-        <div class="winter-snow" id="winterSnow"></div>
-        <div class="winter-burst" aria-hidden="true"></div>
-
-        <div class="winter-modal-content">
-            <p class="winter-modal-kicker">
-                YUGA FASHION
-            </p>
-
-            <h2 class="winter-modal-title" id="winterModalTitle">
-                WINTER '26
-            </h2>
-
-            <p class="winter-modal-subtitle">
-                COMING SOON
-            </p>
-
-            <p class="winter-modal-note">
-                SOMETHING COLD IS COMING.
-            </p>
-        </div>
-    </div>
 
 
     <!-- =========================================================
@@ -2086,104 +1801,6 @@
 
         });
 
-
-
-        /* =====================================================
-           WINTER '26 COMING SOON SNOW EFFECT
-        ====================================================== */
-
-        const winterCard = document.getElementById("winterComingSoon");
-        const winterModal = document.getElementById("winterModal");
-        const winterClose = document.getElementById("winterClose");
-        const winterSnow = document.getElementById("winterSnow");
-
-        function createWinterSnow() {
-            if (!winterSnow || winterSnow.children.length > 0) return;
-
-            const flakes = 75;
-
-            for (let i = 0; i < flakes; i++) {
-                const flake = document.createElement("span");
-
-                flake.className = "snowflake";
-                flake.textContent = Math.random() > 0.55 ? "❄" : "•";
-
-                flake.style.left = (Math.random() * 100) + "%";
-                flake.style.setProperty(
-                    "--size",
-                    (Math.random() * 15 + 6) + "px"
-                );
-                flake.style.setProperty(
-                    "--opacity",
-                    (Math.random() * 0.65 + 0.25).toFixed(2)
-                );
-                flake.style.setProperty(
-                    "--blur",
-                    (Math.random() * 1.5).toFixed(2) + "px"
-                );
-                flake.style.setProperty(
-                    "--duration",
-                    (Math.random() * 5 + 5).toFixed(2) + "s"
-                );
-                flake.style.setProperty(
-                    "--delay",
-                    (Math.random() * -7).toFixed(2) + "s"
-                );
-                flake.style.setProperty(
-                    "--drift",
-                    ((Math.random() - 0.5) * 220).toFixed(0) + "px"
-                );
-
-                winterSnow.appendChild(flake);
-            }
-        }
-
-        function openWinterModal() {
-            if (!winterModal) return;
-
-            createWinterSnow();
-            winterModal.classList.add("active");
-            document.body.style.overflow = "hidden";
-
-            if (winterClose) {
-                setTimeout(function() {
-                    winterClose.focus();
-                }, 100);
-            }
-        }
-
-        function closeWinterModal() {
-            if (!winterModal) return;
-
-            winterModal.classList.remove("active");
-            document.body.style.overflow = "";
-        }
-
-        if (winterCard) {
-            winterCard.addEventListener("click", openWinterModal);
-        }
-
-        if (winterClose) {
-            winterClose.addEventListener("click", closeWinterModal);
-        }
-
-        if (winterModal) {
-            winterModal.addEventListener("click", function(event) {
-                if (event.target === winterModal) {
-                    closeWinterModal();
-                }
-            });
-        }
-
-        document.addEventListener("keydown", function(event) {
-            if (
-                event.key === "Escape" &&
-                winterModal &&
-                winterModal.classList.contains("active")
-            ) {
-                closeWinterModal();
-            }
-        });
 
         /* =====================================================
            YUGA SEA WAVE CURSOR EFFECT
