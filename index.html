@@ -844,6 +844,20 @@
         }
 
 
+
+        /* =====================================================
+           COLLECTION SPACING FIX
+        ====================================================== */
+
+        .collections-section {
+            padding-top: 40px !important;
+        }
+
+        .collection-heading {
+            margin-top: 0 !important;
+            margin-bottom: 30px !important;
+        }
+
         /* =====================================================
            SEASON COLLECTION — 2 LARGE CARDS
         ====================================================== */
@@ -910,22 +924,6 @@
         .seasonal-panel .collection-overlay p {
             font-size: 11px;
             letter-spacing: 3px;
-        }
-
-        .winter-card::after {
-            content: "COMING SOON";
-            position: absolute;
-            top: 24px;
-            right: 24px;
-            z-index: 3;
-            padding: 8px 12px;
-            border: 1px solid rgba(255,255,255,0.55);
-            background: rgba(0,0,0,0.34);
-            color: #fff;
-            font-size: 8px;
-            font-weight: 800;
-            letter-spacing: 2px;
-            backdrop-filter: blur(6px);
         }
 
         @media (max-width: 800px) {
@@ -1019,7 +1017,7 @@
     >
 
         <a href="#collections">
-            Our Collections
+            Select Season
         </a>
 
 
@@ -1171,7 +1169,7 @@
                         class="logo"
                     >
 
-                    <h3>SUMMER</h3>
+                    <h3>SUMMER '26</h3>
 
                     <p>
                         Plain · Polo · Printed
@@ -1186,13 +1184,11 @@
             <!-- WINTER -->
             <button
                 type="button"
-                class="collection-panel reveal seasonal-panel winter-card"
-                id="winterComingSoon"
-                aria-label="Winter 2026 — Coming Soon"
-            >
+                class="collection-panel reveal seasonal-panel"
+                                            >
                 <img
                     src="polo1c.png"
-                    alt="YUGA Winter Collection — Coming Soon"
+                    alt="YUGA Winter Collection"
                     class="collection-image"
                 >
 
@@ -1203,14 +1199,14 @@
                         class="logo"
                     >
 
-                    <h3>WINTER</h3>
+                    <h3>WINTER '26</h3>
 
                     <p>
-                        Winter '26 · Coming Soon
+                        Winter '26
                     </p>
 
                     <span class="collection-explore">
-                        Stay Tuned →
+                        Explore Winter →
                     </span>
                 </div>
             </button>
