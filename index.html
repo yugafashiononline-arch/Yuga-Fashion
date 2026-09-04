@@ -965,6 +965,160 @@
             }
         }
 
+
+
+        /* =====================================================
+           YUGA PREMIUM MOTION SYSTEM
+        ====================================================== */
+
+        .hero-premium-content {
+            opacity: 0;
+            animation: yugaHeroIn 1.2s cubic-bezier(.16,1,.3,1) .12s forwards;
+        }
+
+        .hero-premium::before {
+            animation: yugaHeroImage 12s ease-out both;
+        }
+
+        .hero-scroll {
+            animation: yugaScrollPulse 2.2s ease-in-out 1.4s infinite;
+        }
+
+        @keyframes yugaHeroIn {
+            from { opacity: 0; transform: translateY(35px); filter: blur(8px); }
+            to { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+
+        @keyframes yugaHeroImage {
+            from { transform: scale(1.08); }
+            to { transform: scale(1); }
+        }
+
+        @keyframes yugaScrollPulse {
+            0%, 100% { opacity: .45; transform: translateY(0); }
+            50% { opacity: 1; transform: translateY(5px); }
+        }
+
+        /* Premium scroll reveals — slightly more cinematic than the base reveal */
+        .reveal {
+            transition:
+                opacity .9s ease,
+                transform .9s cubic-bezier(.16,1,.3,1),
+                filter .9s ease;
+            transform: translateY(34px);
+            filter: blur(4px);
+        }
+
+        .reveal.visible {
+            transform: translateY(0);
+            filter: blur(0);
+        }
+
+        .collection-showcase .collection-panel {
+            transition:
+                transform .55s cubic-bezier(.16,1,.3,1),
+                box-shadow .55s ease;
+        }
+
+        .collection-showcase .collection-panel:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 24px 60px rgba(0,0,0,.22);
+        }
+
+        .collection-showcase .collection-panel:hover .collection-image {
+            transform: scale(1.055);
+        }
+
+        .seasonal-panel .collection-overlay {
+            transition: background .5s ease;
+        }
+
+        .seasonal-panel .collection-overlay h3,
+        .seasonal-panel .collection-overlay p,
+        .seasonal-panel .collection-explore {
+            transition: transform .55s cubic-bezier(.16,1,.3,1), opacity .45s ease;
+        }
+
+        .seasonal-panel .collection-overlay h3 { transform: translateY(12px); }
+        .seasonal-panel .collection-overlay p { transform: translateY(10px); opacity: .75; }
+        .seasonal-panel .collection-explore { transform: translateY(14px); opacity: 0; }
+
+        .seasonal-panel:hover .collection-overlay h3,
+        .seasonal-panel:hover .collection-overlay p,
+        .seasonal-panel:hover .collection-explore {
+            transform: translateY(0);
+        }
+
+        .seasonal-panel:hover .collection-explore { opacity: 1; }
+
+        /* Moving brand strip */
+        .yuga-marquee {
+            overflow: hidden;
+            width: 100%;
+            border-top: 1px solid rgba(0,0,0,.12);
+            border-bottom: 1px solid rgba(0,0,0,.12);
+            margin: 15px 0 55px;
+            padding: 16px 0;
+            white-space: nowrap;
+        }
+
+        .yuga-marquee-track {
+            display: inline-flex;
+            align-items: center;
+            width: max-content;
+            animation: yugaMarquee 22s linear infinite;
+        }
+
+        .yuga-marquee span {
+            display: inline-flex;
+            align-items: center;
+            gap: 28px;
+            padding-right: 28px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .yuga-marquee span::after {
+            content: '✦';
+            font-size: 9px;
+            opacity: .55;
+        }
+
+        @keyframes yugaMarquee {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        /* Smooth internal-page transition */
+        body.yuga-page-leaving {
+            animation: yugaPageOut .42s ease forwards;
+            pointer-events: none;
+        }
+
+        @keyframes yugaPageOut {
+            from { opacity: 1; transform: translateY(0); }
+            to { opacity: 0; transform: translateY(-10px); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .hero-premium-content,
+            .hero-premium::before,
+            .hero-scroll,
+            .yuga-marquee-track {
+                animation: none !important;
+            }
+            .hero-premium-content { opacity: 1; }
+            .reveal { transition: none !important; transform: none; filter: none; }
+            .collection-showcase .collection-panel,
+            .collection-showcase .collection-panel:hover,
+            .collection-showcase .collection-panel:hover .collection-image {
+                transform: none !important;
+                transition: none !important;
+            }
+        }
+
     </style>
 
 
@@ -1281,6 +1435,24 @@
         </p>
 
     </section>
+
+
+    <!-- =========================================================
+         YUGA MOTION MARQUEE
+    ========================================================== -->
+
+    <div class="yuga-marquee" aria-hidden="true">
+        <div class="yuga-marquee-track">
+            <span>YUGA · WEAR YOUR ERA</span>
+            <span>YUGA · WEAR YOUR ERA</span>
+            <span>YUGA · WEAR YOUR ERA</span>
+            <span>YUGA · WEAR YOUR ERA</span>
+            <span>YUGA · WEAR YOUR ERA</span>
+            <span>YUGA · WEAR YOUR ERA</span>
+            <span>YUGA · WEAR YOUR ERA</span>
+            <span>YUGA · WEAR YOUR ERA</span>
+        </div>
+    </div>
 
 
     <!-- =========================================================
@@ -1896,6 +2068,47 @@
 
             revealObserver.observe(element);
 
+        });
+
+
+        /* =====================================================
+           INTERNAL PAGE TRANSITIONS
+        ====================================================== */
+
+        document.querySelectorAll('a[href]').forEach(function (link) {
+            const href = link.getAttribute('href');
+            if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:') || link.target === '_blank') return;
+
+            link.addEventListener('click', function (event) {
+                if (event.defaultPrevented) return;
+                event.preventDefault();
+                const destination = href;
+                document.body.classList.add('yuga-page-leaving');
+                setTimeout(function () {
+                    window.location.href = destination;
+                }, 400);
+            });
+        });
+
+
+        /* =====================================================
+           MOUSE PARALLAX ON SEASON IMAGES
+        ====================================================== */
+
+        document.querySelectorAll('.seasonal-panel').forEach(function (panel) {
+            panel.addEventListener('mousemove', function (event) {
+                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+                const rect = panel.getBoundingClientRect();
+                const x = ((event.clientX - rect.left) / rect.width - 0.5) * 2;
+                const y = ((event.clientY - rect.top) / rect.height - 0.5) * 2;
+                const image = panel.querySelector('.collection-image');
+                if (image) image.style.transform = `scale(1.055) translate(${x * 7}px, ${y * 5}px)`;
+            });
+
+            panel.addEventListener('mouseleave', function () {
+                const image = panel.querySelector('.collection-image');
+                if (image) image.style.transform = '';
+            });
         });
 
 
