@@ -850,12 +850,28 @@
         ====================================================== */
 
         .collections-section {
-            padding-top: 40px !important;
+            padding-top: 0 !important;
+            margin-top: 0 !important;
+        }
+
+        .brand-statement {
+            margin-bottom: 0 !important;
+            padding-bottom: 25px !important;
         }
 
         .collection-heading {
             margin-top: 0 !important;
             margin-bottom: 30px !important;
+        }
+
+        /* Keep the full model head visible while making the season cards larger */
+        .collection-showcase .collection-panel {
+            height: 800px !important;
+            min-height: 800px !important;
+        }
+
+        .collection-showcase .collection-panel .collection-image {
+            object-position: center top !important;
         }
 
         /* =====================================================
@@ -933,8 +949,8 @@
             }
 
             .collection-showcase .collection-panel {
-                height: 540px !important;
-                min-height: 540px !important;
+                height: 620px !important;
+                min-height: 620px !important;
             }
 
             .seasonal-panel .collection-overlay h3 {
@@ -944,8 +960,8 @@
 
         @media (max-width: 450px) {
             .collection-showcase .collection-panel {
-                height: 480px !important;
-                min-height: 480px !important;
+                height: 560px !important;
+                min-height: 560px !important;
             }
         }
 
@@ -1017,7 +1033,7 @@
     >
 
         <a href="#collections">
-            Select Season
+            Select Season.
         </a>
 
 
