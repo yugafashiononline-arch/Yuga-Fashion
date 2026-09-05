@@ -19,8 +19,13 @@
 
         /* =========================================================
            YUGA PRINTED COLLECTION
-           MANUAL FRONT / BACK PRODUCT GALLERY
+           FRONT / BACK PRODUCT GALLERY
         ========================================================== */
+
+        .product {
+            position: relative;
+        }
+
 
         .printed-slider {
 
@@ -55,7 +60,7 @@
 
 
         /* =========================================================
-           OUT OF STOCK — CROSSED OUT
+           OUT OF STOCK
         ========================================================== */
 
         .Out-stock {
@@ -67,6 +72,83 @@
             text-decoration-color: currentColor;
 
             opacity: 0.55;
+
+        }
+
+
+        /* =========================================================
+           PRODUCT STATUS BADGE
+        ========================================================== */
+
+        .product-status {
+
+            position: absolute;
+
+            top: 12px;
+
+            left: 12px;
+
+            z-index: 30;
+
+            padding: 6px 10px;
+
+            border-radius: 4px;
+
+            background: #111;
+
+            color: #fff;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            letter-spacing: 1px;
+
+            pointer-events: none;
+
+        }
+
+
+        .product-status.sold-out {
+
+            background: #b00020;
+
+        }
+
+
+        .product-status.high-demand {
+
+            background: #111;
+
+        }
+
+
+        /* =========================================================
+           DESKTOP PRODUCT IMAGE ZOOM
+        ========================================================== */
+
+        .product-image-zoom {
+
+            cursor: zoom-in;
+
+            overflow: hidden;
+
+        }
+
+
+        .product-image-zoom img {
+
+            transition:
+                transform 0.35s ease,
+                opacity 0.25s ease;
+
+        }
+
+
+        .product:hover
+        .product-image-zoom img {
+
+            transform: scale(1.06);
 
         }
 
@@ -265,11 +347,392 @@
         }
 
 
+
+        /* =========================================================
+           PRODUCT MODAL
+        ========================================================== */
+
+        .product-modal {
+
+            display: none;
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 9999;
+
+            background: rgba(0,0,0,0.72);
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+
+            overflow-y: auto;
+
+        }
+
+
+        .product-modal.active {
+
+            display: flex;
+
+        }
+
+
+        .modal-content {
+
+            position: relative;
+
+            width: min(900px, 100%);
+
+            max-height: 92vh;
+
+            overflow-y: auto;
+
+            background: #fff;
+
+            border-radius: 12px;
+
+            padding: 25px;
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 30px;
+
+            box-sizing: border-box;
+
+        }
+
+
+        .modal-close {
+
+            position: absolute;
+
+            top: 10px;
+
+            right: 15px;
+
+            border: none;
+
+            background: transparent;
+
+            font-size: 32px;
+
+            line-height: 1;
+
+            cursor: pointer;
+
+            z-index: 10;
+
+        }
+
+
+        /* =========================================================
+           MODAL IMAGE ZOOM
+        ========================================================== */
+
+        .modal-image {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            overflow: hidden;
+
+            border-radius: 8px;
+
+            cursor: zoom-in;
+
+        }
+
+
+        .modal-image img {
+
+            width: 100%;
+
+            max-height: 600px;
+
+            object-fit: contain;
+
+            transition: transform 0.35s ease;
+
+        }
+
+
+        .modal-image.zoomed {
+
+            cursor: zoom-out;
+
+        }
+
+
+        .modal-image.zoomed img {
+
+            transform: scale(1.65);
+
+        }
+
+
+        /* =========================================================
+           MODAL INFORMATION
+        ========================================================== */
+
+        .modal-info {
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+        }
+
+
+        .modal-brand {
+
+            font-size: 13px;
+
+            letter-spacing: 3px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .modal-info h2 {
+
+            margin: 0 0 10px;
+
+        }
+
+
+        .modal-price {
+
+            font-size: 22px;
+
+            font-weight: 700;
+
+            margin: 5px 0 15px;
+
+        }
+
+
+
+        /* =========================================================
+           SIZE SELECTION
+        ========================================================== */
+
+        .modal-sizes {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 8px;
+
+            margin-top: 10px;
+
+        }
+
+
+        .modal-size {
+
+            min-width: 48px;
+
+            padding: 10px 13px;
+
+            border: 1px solid #111;
+
+            background: #fff;
+
+            color: #111;
+
+            border-radius: 4px;
+
+            cursor: pointer;
+
+            font-weight: 600;
+
+        }
+
+
+        .modal-size:hover:not(.disabled) {
+
+            background: #111;
+
+            color: #fff;
+
+        }
+
+
+        .modal-size.selected {
+
+            background: #111;
+
+            color: #fff;
+
+        }
+
+
+        .modal-size.disabled {
+
+            opacity: 0.35;
+
+            cursor: not-allowed;
+
+            text-decoration: line-through;
+
+        }
+
+
+
+        /* =========================================================
+           DELIVERY
+        ========================================================== */
+
+        .delivery-section {
+
+            margin-top: 22px;
+
+        }
+
+
+        .delivery-title {
+
+            font-weight: 700;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .delivery-select {
+
+            width: 100%;
+
+            padding: 12px;
+
+            border: 1px solid #ccc;
+
+            border-radius: 5px;
+
+            background: #fff;
+
+            font-size: 14px;
+
+            cursor: pointer;
+
+        }
+
+
+
+        /* =========================================================
+           PRICE CALCULATOR
+        ========================================================== */
+
+        .price-calculator {
+
+            margin-top: 20px;
+
+            padding: 15px;
+
+            background: #f6f6f6;
+
+            border-radius: 7px;
+
+        }
+
+
+        .price-row {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            padding: 5px 0;
+
+            font-size: 14px;
+
+        }
+
+
+        .price-row.total-row {
+
+            margin-top: 8px;
+
+            padding-top: 12px;
+
+            border-top: 1px solid #ccc;
+
+            font-size: 18px;
+
+            font-weight: 700;
+
+        }
+
+
+
+        /* =========================================================
+           WHATSAPP ORDER BUTTON
+        ========================================================== */
+
+        .modal-order-button {
+
+            width: 100%;
+
+            margin-top: 15px;
+
+            padding: 13px;
+
+            border: none;
+
+            border-radius: 5px;
+
+            background: #111;
+
+            color: #fff;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+        }
+
+
+        .modal-order-button:hover {
+
+            opacity: 0.88;
+
+        }
+
+
+        .modal-order-button:disabled {
+
+            opacity: 0.45;
+
+            cursor: not-allowed;
+
+        }
+
+
+
         /* =========================================================
            MOBILE
         ========================================================== */
 
         @media (max-width: 600px) {
+
 
             .printed-slider-arrow {
 
@@ -321,8 +784,75 @@
 
             }
 
-        }
 
+            .product-status {
+
+                top: 8px;
+
+                left: 8px;
+
+                font-size: 9px;
+
+                padding: 5px 7px;
+
+            }
+
+
+            .modal-content {
+
+                grid-template-columns: 1fr;
+
+                gap: 15px;
+
+                padding: 18px;
+
+                max-height: 94vh;
+
+            }
+
+
+            .modal-image {
+
+                max-height: 360px;
+
+            }
+
+
+            .modal-image img {
+
+                max-height: 350px;
+
+            }
+
+
+            .modal-image.zoomed img {
+
+                transform: scale(1.35);
+
+            }
+
+
+            .modal-info {
+
+                justify-content: flex-start;
+
+            }
+
+
+            .modal-info h2 {
+
+                font-size: 22px;
+
+            }
+
+
+            .modal-price {
+
+                font-size: 20px;
+
+            }
+
+        }
 
     </style>
 
@@ -332,7 +862,9 @@
 <body>
 
 
-    <!-- HEADER -->
+    <!-- =========================================================
+         HEADER
+    ========================================================== -->
 
     <header>
 
@@ -348,7 +880,10 @@
     </header>
 
 
-    <!-- BACK BUTTON -->
+
+    <!-- =========================================================
+         BACK BUTTON
+    ========================================================== -->
 
     <a
         href="index.html"
@@ -360,7 +895,10 @@
     </a>
 
 
-    <!-- PRINTED COLLECTION -->
+
+    <!-- =========================================================
+         PRINTED COLLECTION
+    ========================================================== -->
 
     <section class="collection">
 
@@ -372,12 +910,14 @@
         <div class="products">
 
 
-            <!-- PRINTED 1 -->
+            <!-- =================================================
+                 PRINTED 1
+            ================================================== -->
 
             <div
                 class="product"
                 data-name="YUGA Graphic Tee"
-                data-price="₹399"
+                data-price="399"
                 data-colour="Black Design"
                 data-image="Front 1.jpeg"
             >
@@ -416,17 +956,21 @@
                     YUGA Graphic Tee
                 </h3>
 
+
                 <p class="price">
                     ₹399
                 </p>
+
 
                 <p>
                     Colour: Black Design
                 </p>
 
+
                 <p>
                     Sizes: S • M • L • XL
                 </p>
+
 
                 <div class="stock">
 
@@ -434,14 +978,27 @@
                         AVAILABILITY
                     </p>
 
+
                     <div class="sizes">
 
-                        <span class="Out-stock">S </span>
-                        <span class="Out-stock">M </span>
-                        <span class="in-stock">L ✓</span>
-                        <span class="in-stock">XL ✓</span>
+                        <span class="Out-stock">
+                            S
+                        </span>
+
+                        <span class="Out-stock">
+                            M
+                        </span>
+
+                        <span class="in-stock">
+                            L ✓
+                        </span>
+
+                        <span class="in-stock">
+                            XL ✓
+                        </span>
 
                     </div>
+
 
                     <p class="store-stock">
                         Available in Store
@@ -452,12 +1009,15 @@
             </div>
 
 
-            <!-- PRINTED 2 -->
+
+            <!-- =================================================
+                 PRINTED 2
+            ================================================== -->
 
             <div
                 class="product"
                 data-name="YUGA Graphic Tee"
-                data-price="₹399"
+                data-price="399"
                 data-colour="Blue"
                 data-image="Front 2.jpeg"
             >
@@ -496,17 +1056,21 @@
                     YUGA Graphic Tee
                 </h3>
 
+
                 <p class="price">
                     ₹399
                 </p>
+
 
                 <p>
                     Colour: Blue
                 </p>
 
+
                 <p>
                     Sizes: S • M • L • XL
                 </p>
+
 
                 <div class="stock">
 
@@ -514,14 +1078,27 @@
                         AVAILABILITY
                     </p>
 
+
                     <div class="sizes">
 
-                        <span class="Out-stock">S </span>
-                        <span class="in-stock">M ✓</span>
-                        <span class="Out-stock">L </span>
-                        <span class="Out-stock">XL </span>
+                        <span class="Out-stock">
+                            S
+                        </span>
+
+                        <span class="in-stock">
+                            M ✓
+                        </span>
+
+                        <span class="Out-stock">
+                            L
+                        </span>
+
+                        <span class="Out-stock">
+                            XL
+                        </span>
 
                     </div>
+
 
                     <p class="store-stock">
                         Available in Store
@@ -532,12 +1109,15 @@
             </div>
 
 
-            <!-- PRINTED 3 -->
+
+            <!-- =================================================
+                 PRINTED 3
+            ================================================== -->
 
             <div
                 class="product"
                 data-name="YUGA Graphic Tee"
-                data-price="₹399"
+                data-price="399"
                 data-colour="Green"
                 data-image="Front 3.jpeg"
             >
@@ -576,17 +1156,21 @@
                     YUGA Graphic Tee
                 </h3>
 
+
                 <p class="price">
                     ₹399
                 </p>
+
 
                 <p>
                     Colour: Green
                 </p>
 
+
                 <p>
                     Sizes: S • M • L • XL
                 </p>
+
 
                 <div class="stock">
 
@@ -594,14 +1178,27 @@
                         AVAILABILITY
                     </p>
 
+
                     <div class="sizes">
 
-                        <span class="Out-stock">S </span>
-                        <span class="in-stock">M ✓</span>
-                        <span class="Out-stock">L </span>
-                        <span class="Out-stock">XL </span>
+                        <span class="Out-stock">
+                            S
+                        </span>
+
+                        <span class="in-stock">
+                            M ✓
+                        </span>
+
+                        <span class="Out-stock">
+                            L
+                        </span>
+
+                        <span class="Out-stock">
+                            XL
+                        </span>
 
                     </div>
+
 
                     <p class="store-stock">
                         Available in Store
@@ -612,12 +1209,15 @@
             </div>
 
 
-            <!-- PRINTED 4 -->
+
+            <!-- =================================================
+                 PRINTED 4
+            ================================================== -->
 
             <div
                 class="product"
                 data-name="YUGA Graphic Tee"
-                data-price="₹399"
+                data-price="399"
                 data-colour="Yellow"
                 data-image="Front 4.jpeg"
             >
@@ -656,17 +1256,21 @@
                     YUGA Graphic Tee
                 </h3>
 
+
                 <p class="price">
                     ₹399
                 </p>
+
 
                 <p>
                     Colour: Yellow
                 </p>
 
+
                 <p>
                     Sizes: S • M • L • XL
                 </p>
+
 
                 <div class="stock">
 
@@ -674,14 +1278,27 @@
                         AVAILABILITY
                     </p>
 
+
                     <div class="sizes">
 
-                        <span class="Out-stock">S </span>
-                        <span class="Out-stock">M </span>
-                        <span class="in-stock">L ✓</span>
-                        <span class="Out-stock">XL </span>
+                        <span class="Out-stock">
+                            S
+                        </span>
+
+                        <span class="Out-stock">
+                            M
+                        </span>
+
+                        <span class="in-stock">
+                            L ✓
+                        </span>
+
+                        <span class="Out-stock">
+                            XL
+                        </span>
 
                     </div>
+
 
                     <p class="store-stock">
                         Available in Store
@@ -692,12 +1309,15 @@
             </div>
 
 
-            <!-- PRINTED 5 -->
+
+            <!-- =================================================
+                 PRINTED 5
+            ================================================== -->
 
             <div
                 class="product"
                 data-name="YUGA Graphic Tee"
-                data-price="₹399"
+                data-price="399"
                 data-colour="Blue"
                 data-image="Front 5.jpeg"
             >
@@ -736,17 +1356,21 @@
                     YUGA Graphic Tee
                 </h3>
 
+
                 <p class="price">
                     ₹399
                 </p>
+
 
                 <p>
                     Colour: Blue
                 </p>
 
+
                 <p>
                     Sizes: S • M • L • XL
                 </p>
+
 
                 <div class="stock">
 
@@ -754,14 +1378,27 @@
                         AVAILABILITY
                     </p>
 
+
                     <div class="sizes">
 
-                        <span class="Out-stock">S </span>
-                        <span class="Out-stock">M </span>
-                        <span class="Out-stock">L </span>
-                        <span class="in-stock">XL ✓</span>
+                        <span class="Out-stock">
+                            S
+                        </span>
+
+                        <span class="Out-stock">
+                            M
+                        </span>
+
+                        <span class="Out-stock">
+                            L
+                        </span>
+
+                        <span class="in-stock">
+                            XL ✓
+                        </span>
 
                     </div>
+
 
                     <p class="store-stock">
                         Available in Store
@@ -772,12 +1409,15 @@
             </div>
 
 
-            <!-- PRINTED 6 -->
+
+            <!-- =================================================
+                 PRINTED 6
+            ================================================== -->
 
             <div
                 class="product"
                 data-name="YUGA Graphic Tee"
-                data-price="₹399"
+                data-price="399"
                 data-colour="Yellow"
                 data-image="Front 6.jpeg"
             >
@@ -816,17 +1456,21 @@
                     YUGA Graphic Tee
                 </h3>
 
+
                 <p class="price">
                     ₹399
                 </p>
+
 
                 <p>
                     Colour: Yellow
                 </p>
 
+
                 <p>
                     Sizes: S • M • L • XL
                 </p>
+
 
                 <div class="stock">
 
@@ -834,14 +1478,27 @@
                         AVAILABILITY
                     </p>
 
+
                     <div class="sizes">
 
-                        <span class="in-stock">S ✓</span>
-                        <span class="in-stock">M ✓</span>
-                        <span class="Out-stock">L </span>
-                        <span class="Out-stock">XL </span>
+                        <span class="in-stock">
+                            S ✓
+                        </span>
+
+                        <span class="in-stock">
+                            M ✓
+                        </span>
+
+                        <span class="Out-stock">
+                            L
+                        </span>
+
+                        <span class="Out-stock">
+                            XL
+                        </span>
 
                     </div>
+
 
                     <p class="store-stock">
                         Available in Store
@@ -852,12 +1509,15 @@
             </div>
 
 
-            <!-- PRINTED 7 -->
+
+            <!-- =================================================
+                 PRINTED 7
+            ================================================== -->
 
             <div
                 class="product"
                 data-name="YUGA Graphic Tee"
-                data-price="₹399"
+                data-price="399"
                 data-colour="Red"
                 data-image="Front 7.jpeg"
             >
@@ -896,17 +1556,21 @@
                     YUGA Graphic Tee
                 </h3>
 
+
                 <p class="price">
                     ₹399
                 </p>
+
 
                 <p>
                     Colour: Red
                 </p>
 
+
                 <p>
                     Sizes: S • M • L • XL
                 </p>
+
 
                 <div class="stock">
 
@@ -914,14 +1578,27 @@
                         AVAILABILITY
                     </p>
 
+
                     <div class="sizes">
 
-                        <span class="Out-stock">S </span>
-                        <span class="in-stock">M ✓</span>
-                        <span class="Out-stock">L </span>
-                        <span class="Out-stock">XL </span>
+                        <span class="Out-stock">
+                            S
+                        </span>
+
+                        <span class="in-stock">
+                            M ✓
+                        </span>
+
+                        <span class="Out-stock">
+                            L
+                        </span>
+
+                        <span class="Out-stock">
+                            XL
+                        </span>
 
                     </div>
+
 
                     <p class="store-stock">
                         Available in Store
@@ -932,12 +1609,15 @@
             </div>
 
 
-            <!-- PRINTED 8 -->
+
+            <!-- =================================================
+                 PRINTED 8
+            ================================================== -->
 
             <div
                 class="product"
                 data-name="YUGA Graphic Tee"
-                data-price="₹399"
+                data-price="399"
                 data-colour="Yellow"
                 data-image="Front 8.jpeg"
             >
@@ -976,17 +1656,21 @@
                     YUGA Graphic Tee
                 </h3>
 
+
                 <p class="price">
                     ₹399
                 </p>
+
 
                 <p>
                     Colour: Yellow
                 </p>
 
+
                 <p>
                     Sizes: S • M • L • XL
                 </p>
+
 
                 <div class="stock">
 
@@ -994,14 +1678,27 @@
                         AVAILABILITY
                     </p>
 
+
                     <div class="sizes">
 
-                        <span class="Out-stock">S </span>
-                        <span class="Out-stock">M </span>
-                        <span class="in-stock">L ✓</span>
-                        <span class="Out-stock">XL </span>
+                        <span class="Out-stock">
+                            S
+                        </span>
+
+                        <span class="Out-stock">
+                            M
+                        </span>
+
+                        <span class="in-stock">
+                            L ✓
+                        </span>
+
+                        <span class="Out-stock">
+                            XL
+                        </span>
 
                     </div>
+
 
                     <p class="store-stock">
                         Available in Store
@@ -1012,12 +1709,15 @@
             </div>
 
 
-            <!-- PRINTED 9 -->
+
+            <!-- =================================================
+                 PRINTED 9
+            ================================================== -->
 
             <div
                 class="product"
                 data-name="YUGA Graphic Tee"
-                data-price="₹399"
+                data-price="399"
                 data-colour="Yellow"
                 data-image="Front 9.jpeg"
             >
@@ -1056,17 +1756,21 @@
                     YUGA Graphic Tee
                 </h3>
 
+
                 <p class="price">
                     ₹399
                 </p>
+
 
                 <p>
                     Colour: Yellow
                 </p>
 
+
                 <p>
                     Sizes: S • M • L • XL
                 </p>
+
 
                 <div class="stock">
 
@@ -1074,14 +1778,27 @@
                         AVAILABILITY
                     </p>
 
+
                     <div class="sizes">
 
-                        <span class="Out-stock">S </span>
-                        <span class="in-stock">M ✓</span>
-                        <span class="Out-stock">L </span>
-                        <span class="in-stock">XL ✓</span>
+                        <span class="Out-stock">
+                            S
+                        </span>
+
+                        <span class="in-stock">
+                            M ✓
+                        </span>
+
+                        <span class="Out-stock">
+                            L
+                        </span>
+
+                        <span class="in-stock">
+                            XL ✓
+                        </span>
 
                     </div>
+
 
                     <p class="store-stock">
                         Available in Store
@@ -1097,7 +1814,10 @@
     </section>
 
 
-    <!-- PRODUCT POPUP / MODAL -->
+
+    <!-- =========================================================
+         PRODUCT POPUP / MODAL
+    ========================================================== -->
 
     <div
         class="product-modal"
@@ -1105,6 +1825,7 @@
     >
 
         <div class="modal-content">
+
 
             <button
                 class="modal-close"
@@ -1115,7 +1836,10 @@
             </button>
 
 
-            <div class="modal-image">
+            <div
+                class="modal-image"
+                id="modalImageContainer"
+            >
 
                 <img
                     id="modalImage"
@@ -1132,9 +1856,11 @@
                     YUGA
                 </p>
 
+
                 <h2 id="modalName">
                     YUGA Graphic Tee
                 </h2>
+
 
                 <p
                     class="modal-price"
@@ -1142,6 +1868,7 @@
                 >
                     ₹399
                 </p>
+
 
                 <p class="modal-colour">
 
@@ -1158,17 +1885,131 @@
                         AVAILABLE SIZES
                     </p>
 
+
                     <div
                         id="modalSizes"
                         class="modal-sizes"
-                    ></div>
+                    >
+                    </div>
 
                 </div>
 
 
                 <div class="modal-store">
+
                     🏪 Available in Store
+
                 </div>
+
+
+
+                <!-- =================================================
+                     DELIVERY OPTION
+                ================================================== -->
+
+                <div class="delivery-section">
+
+                    <p class="delivery-title">
+                        DELIVERY OPTION
+                    </p>
+
+
+                    <select
+                        id="deliveryOption"
+                        class="delivery-select"
+                    >
+
+                        <option
+                            value="0"
+                            data-label="Store Pickup"
+                        >
+                            🏪 Store Pickup — FREE
+                        </option>
+
+
+                        <option
+                            value="69"
+                            data-label="Standard Delivery"
+                        >
+                            🚚 Standard Delivery — ₹69
+                        </option>
+
+
+                        <option
+                            value="99"
+                            data-label="Express Delivery"
+                        >
+                            ⚡ Express Delivery — ₹99
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     PRICE CALCULATOR
+                ================================================== -->
+
+                <div class="price-calculator">
+
+
+                    <div class="price-row">
+
+                        <span>
+                            Product
+                        </span>
+
+                        <span id="calculatorProduct">
+                            ₹399
+                        </span>
+
+                    </div>
+
+
+                    <div class="price-row">
+
+                        <span>
+                            Delivery
+                        </span>
+
+                        <span id="calculatorDelivery">
+                            FREE
+                        </span>
+
+                    </div>
+
+
+                    <div class="price-row total-row">
+
+                        <span>
+                            FINAL TOTAL
+                        </span>
+
+                        <span id="calculatorTotal">
+                            ₹399
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     ORDER BUTTON
+                ================================================== -->
+
+                <button
+                    type="button"
+                    class="modal-order-button"
+                    id="modalOrderButton"
+                    disabled
+                >
+                    SELECT A SIZE TO ORDER
+                </button>
+
 
             </div>
 
@@ -1177,7 +2018,10 @@
     </div>
 
 
-    <!-- FOOTER -->
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================== -->
 
     <footer>
 
@@ -1185,12 +2029,14 @@
             YUGA
         </h2>
 
+
         <p class="footer-tagline">
             Wear Your Era.
         </p>
 
 
         <div class="footer-social">
+
 
             <a
                 href="https://www.instagram.com/yugafashionindia/"
@@ -1219,6 +2065,7 @@
                 WhatsApp
             </a>
 
+
         </div>
 
 
@@ -1229,7 +2076,10 @@
     </footer>
 
 
-    <!-- YUGA AI CHATBOT -->
+
+    <!-- =========================================================
+         YUGA AI CHATBOT
+    ========================================================== -->
 
     <button
         id="yugaChatButton"
@@ -1242,6 +2092,7 @@
 
 
     <div id="yugaChatbot">
+
 
         <div class="yuga-chat-header">
 
@@ -1269,7 +2120,9 @@
         </div>
 
 
+
         <div id="yugaChatMessages">
+
 
             <div class="yuga-message bot">
 
@@ -1283,7 +2136,9 @@
             </div>
 
 
+
             <div class="yuga-quick-buttons">
+
 
                 <button
                     type="button"
@@ -1324,9 +2179,11 @@
                     🛒 How to Order
                 </button>
 
+
             </div>
 
         </div>
+
 
 
         <div class="yuga-chat-input">
@@ -1351,12 +2208,18 @@
     </div>
 
 
-    <!-- EXISTING YUGA JAVASCRIPT -->
+
+    <!-- =========================================================
+         EXISTING YUGA JAVASCRIPT
+    ========================================================== -->
 
     <script src="script.js"></script>
 
 
-    <!-- MANUAL FRONT / BACK GALLERY -->
+
+    <!-- =========================================================
+         PRINTED FRONT / BACK GALLERY + PRODUCT FEATURES
+    ========================================================== -->
 
     <script>
 
@@ -1364,6 +2227,10 @@
             "DOMContentLoaded",
             function () {
 
+
+                /* =================================================
+                   FRONT / BACK SLIDERS
+                ================================================== */
 
                 const sliders =
                     document.querySelectorAll(
@@ -1407,6 +2274,7 @@
                             false;
 
 
+
                         /* LEFT ARROW */
 
                         const prevButton =
@@ -1431,6 +2299,7 @@
                             "aria-label",
                             "Show front"
                         );
+
 
 
                         /* RIGHT ARROW */
@@ -1469,6 +2338,7 @@
                         );
 
 
+
                         /* CHANGE IMAGE */
 
                         function showImage(
@@ -1478,9 +2348,7 @@
 
 
                             if (
-                                back ===
-                                showingBack
-                                ||
+                                back === showingBack ||
                                 isAnimating
                             ) {
 
@@ -1509,24 +2377,31 @@
 
                                     if (back) {
 
+
                                         image.src =
                                             backImage;
+
 
                                         image.alt =
                                             "YUGA T-Shirt Back";
 
+
                                         status.textContent =
                                             "BACK";
+
 
                                     }
 
                                     else {
 
+
                                         image.src =
                                             frontImage;
 
+
                                         image.alt =
                                             "YUGA T-Shirt Front";
+
 
                                         status.textContent =
                                             "FRONT";
@@ -1551,7 +2426,6 @@
                                             image.style.transform =
                                                 "translateX(0)";
 
-
                                         }
                                     );
 
@@ -1573,7 +2447,6 @@
                                                     ? index === 1
                                                     : index === 0
                                             );
-
 
                                         }
                                     );
@@ -1597,6 +2470,7 @@
                         }
 
 
+
                         /* RIGHT → BACK */
 
                         nextButton.addEventListener(
@@ -1614,6 +2488,7 @@
                         );
 
 
+
                         /* LEFT → FRONT */
 
                         prevButton.addEventListener(
@@ -1629,6 +2504,7 @@
 
                             }
                         );
+
 
 
                         /* MOBILE SWIPE */
@@ -1654,7 +2530,6 @@
                                 touchStartY =
                                     event.changedTouches[0]
                                         .screenY;
-
 
                             },
                             {
@@ -1729,12 +2604,12 @@
 
                                 }
 
-
                             },
                             {
                                 passive: true
                             }
                         );
+
 
 
                         /* PREVENT IMAGE DRAG */
@@ -1748,6 +2623,693 @@
                             }
                         );
 
+                    }
+                );
+
+
+
+                /* =================================================
+                   PRODUCT MODAL ELEMENTS
+                ================================================== */
+
+                const products =
+                    document.querySelectorAll(
+                        ".product"
+                    );
+
+
+                const modal =
+                    document.getElementById(
+                        "productModal"
+                    );
+
+
+                const modalClose =
+                    document.getElementById(
+                        "modalClose"
+                    );
+
+
+                const modalImage =
+                    document.getElementById(
+                        "modalImage"
+                    );
+
+
+                const modalImageContainer =
+                    document.getElementById(
+                        "modalImageContainer"
+                    );
+
+
+                const modalName =
+                    document.getElementById(
+                        "modalName"
+                    );
+
+
+                const modalPrice =
+                    document.getElementById(
+                        "modalPrice"
+                    );
+
+
+                const modalColour =
+                    document.getElementById(
+                        "modalColour"
+                    );
+
+
+                const modalSizes =
+                    document.getElementById(
+                        "modalSizes"
+                    );
+
+
+                const deliveryOption =
+                    document.getElementById(
+                        "deliveryOption"
+                    );
+
+
+                const calculatorProduct =
+                    document.getElementById(
+                        "calculatorProduct"
+                    );
+
+
+                const calculatorDelivery =
+                    document.getElementById(
+                        "calculatorDelivery"
+                    );
+
+
+                const calculatorTotal =
+                    document.getElementById(
+                        "calculatorTotal"
+                    );
+
+
+                const modalOrderButton =
+                    document.getElementById(
+                        "modalOrderButton"
+                    );
+
+
+                let selectedProduct =
+                    null;
+
+
+                let selectedSize =
+                    null;
+
+
+
+                /* =================================================
+                   PRODUCT STATUS
+                ================================================== */
+
+                products.forEach(
+                    function (product) {
+
+
+                        const availableSizes =
+                            product.querySelectorAll(
+                                ".in-stock"
+                            ).length;
+
+
+                        const status =
+                            document.createElement(
+                                "div"
+                            );
+
+
+                        status.classList.add(
+                            "product-status"
+                        );
+
+
+                        if (
+                            availableSizes === 0
+                        ) {
+
+
+                            status.textContent =
+                                "SOLD OUT";
+
+
+                            status.classList.add(
+                                "sold-out"
+                            );
+
+
+                        }
+
+                        else if (
+                            availableSizes <= 2
+                        ) {
+
+
+                            status.textContent =
+                                "HIGH DEMAND";
+
+
+                            status.classList.add(
+                                "high-demand"
+                            );
+
+
+                        }
+
+                        else {
+
+
+                            return;
+
+                        }
+
+
+                        product.appendChild(
+                            status
+                        );
+
+                    }
+                );
+
+
+
+                /* =================================================
+                   OPEN PRODUCT MODAL
+                ================================================== */
+
+                products.forEach(
+                    function (product) {
+
+
+                        product.addEventListener(
+                            "click",
+                            function (event) {
+
+
+                                /*
+                                 Do not open the modal when
+                                 clicking stock information.
+                                */
+
+                                if (
+                                    event.target.closest(
+                                        ".stock"
+                                    ) ||
+                                    event.target.closest(
+                                        ".sizes"
+                                    )
+                                ) {
+
+                                    return;
+
+                                }
+
+
+                                selectedProduct =
+                                    product;
+
+
+                                selectedSize =
+                                    null;
+
+
+                                modalImageContainer
+                                    .classList
+                                    .remove(
+                                        "zoomed"
+                                    );
+
+
+                                /*
+                                 Always start the modal
+                                 with the FRONT image.
+                                */
+
+                                modalImage.src =
+                                    product.dataset.image;
+
+
+                                modalImage.alt =
+                                    product.dataset.name +
+                                    " - " +
+                                    product.dataset.colour;
+
+
+                                modalName.textContent =
+                                    product.dataset.name;
+
+
+                                const price =
+                                    Number(
+                                        product.dataset.price
+                                    );
+
+
+                                modalPrice.textContent =
+                                    "₹" + price;
+
+
+                                modalColour.textContent =
+                                    product.dataset.colour;
+
+
+
+                                /* RESET DELIVERY */
+
+                                deliveryOption.value =
+                                    "0";
+
+
+                                updatePriceCalculator();
+
+
+
+                                /* CLEAR OLD SIZES */
+
+                                modalSizes.innerHTML =
+                                    "";
+
+
+
+                                /* BUILD SIZE BUTTONS */
+
+                                const sizeElements =
+                                    product.querySelectorAll(
+                                        ".sizes span"
+                                    );
+
+
+                                sizeElements.forEach(
+                                    function (
+                                        sizeElement
+                                    ) {
+
+
+                                        const sizeText =
+                                            sizeElement.textContent
+                                            .replace(
+                                                "✓",
+                                                ""
+                                            )
+                                            .replace(
+                                                "✕",
+                                                ""
+                                            )
+                                            .trim();
+
+
+                                        const button =
+                                            document.createElement(
+                                                "button"
+                                            );
+
+
+                                        button.type =
+                                            "button";
+
+
+                                        button.className =
+                                            "modal-size";
+
+
+                                        button.textContent =
+                                            sizeText;
+
+
+
+                                        /* SOLD OUT SIZE */
+
+                                        if (
+                                            sizeElement.classList
+                                            .contains(
+                                                "Out-stock"
+                                            ) ||
+                                            sizeElement.classList
+                                            .contains(
+                                                "out-stock"
+                                            )
+                                        ) {
+
+
+                                            button.classList
+                                                .add(
+                                                    "disabled"
+                                                );
+
+
+                                            button.disabled =
+                                                true;
+
+
+                                        }
+
+
+
+                                        /* AVAILABLE SIZE */
+
+                                        else {
+
+
+                                            button.addEventListener(
+                                                "click",
+                                                function () {
+
+
+                                                    document
+                                                        .querySelectorAll(
+                                                            ".modal-size"
+                                                        )
+                                                        .forEach(
+                                                            function (
+                                                                btn
+                                                            ) {
+
+                                                                btn.classList
+                                                                    .remove(
+                                                                        "selected"
+                                                                    );
+
+                                                            }
+                                                        );
+
+
+                                                    button.classList
+                                                        .add(
+                                                            "selected"
+                                                        );
+
+
+                                                    selectedSize =
+                                                        sizeText;
+
+
+                                                    modalOrderButton
+                                                        .disabled =
+                                                        false;
+
+
+                                                    modalOrderButton
+                                                        .textContent =
+                                                        "ORDER ON WHATSAPP";
+
+                                                }
+                                            );
+
+                                        }
+
+
+                                        modalSizes.appendChild(
+                                            button
+                                        );
+
+                                    }
+                                );
+
+
+
+                                modalOrderButton.disabled =
+                                    true;
+
+
+                                modalOrderButton.textContent =
+                                    "SELECT A SIZE TO ORDER";
+
+
+
+                                /* SHOW MODAL */
+
+                                modal.classList.add(
+                                    "active"
+                                );
+
+
+                                document.body.style.overflow =
+                                    "hidden";
+
+                            }
+                        );
+
+                    }
+                );
+
+
+
+                /* =================================================
+                   PRICE CALCULATOR
+                ================================================== */
+
+                function updatePriceCalculator() {
+
+
+                    if (!selectedProduct) {
+
+                        return;
+
+                    }
+
+
+                    const productPrice =
+                        Number(
+                            selectedProduct.dataset.price
+                        );
+
+
+                    const deliveryPrice =
+                        Number(
+                            deliveryOption.value
+                        );
+
+
+                    calculatorProduct.textContent =
+                        "₹" + productPrice;
+
+
+                    calculatorDelivery.textContent =
+                        deliveryPrice === 0
+                            ? "FREE"
+                            : "₹" + deliveryPrice;
+
+
+                    calculatorTotal.textContent =
+                        "₹" +
+                        (
+                            productPrice +
+                            deliveryPrice
+                        );
+
+                }
+
+
+
+                /* DELIVERY CHANGE */
+
+                deliveryOption.addEventListener(
+                    "change",
+                    updatePriceCalculator
+                );
+
+
+
+                /* =================================================
+                   MODAL IMAGE ZOOM
+                ================================================== */
+
+                modalImageContainer.addEventListener(
+                    "click",
+                    function () {
+
+                        modalImageContainer
+                            .classList
+                            .toggle(
+                                "zoomed"
+                            );
+
+                    }
+                );
+
+
+
+                /* =================================================
+                   CLOSE MODAL
+                ================================================== */
+
+                function closeModal() {
+
+
+                    modal.classList.remove(
+                        "active"
+                    );
+
+
+                    modalImageContainer
+                        .classList
+                        .remove(
+                            "zoomed"
+                        );
+
+
+                    document.body.style.overflow =
+                        "";
+
+
+                    selectedProduct =
+                        null;
+
+
+                    selectedSize =
+                        null;
+
+                }
+
+
+                modalClose.addEventListener(
+                    "click",
+                    closeModal
+                );
+
+
+                modal.addEventListener(
+                    "click",
+                    function (event) {
+
+
+                        if (
+                            event.target === modal
+                        ) {
+
+                            closeModal();
+
+                        }
+
+                    }
+                );
+
+
+                document.addEventListener(
+                    "keydown",
+                    function (event) {
+
+
+                        if (
+                            event.key === "Escape"
+                        ) {
+
+                            closeModal();
+
+                        }
+
+                    }
+                );
+
+
+
+                /* =================================================
+                   WHATSAPP ORDER
+                ================================================== */
+
+                modalOrderButton.addEventListener(
+                    "click",
+                    function () {
+
+
+                        if (
+                            !selectedProduct ||
+                            !selectedSize
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        const productName =
+                            selectedProduct.dataset.name;
+
+
+                        const colour =
+                            selectedProduct.dataset.colour;
+
+
+                        const productPrice =
+                            Number(
+                                selectedProduct.dataset.price
+                            );
+
+
+                        const deliveryPrice =
+                            Number(
+                                deliveryOption.value
+                            );
+
+
+                        const deliveryLabel =
+                            deliveryOption
+                                .selectedOptions[0]
+                                .dataset.label;
+
+
+                        const finalTotal =
+                            productPrice +
+                            deliveryPrice;
+
+
+
+                        const message =
+
+                            "Hello YUGA!%0A%0A" +
+
+                            "I want to order:%0A" +
+
+                            "Product: " +
+                            productName +
+                            "%0A" +
+
+                            "Colour: " +
+                            colour +
+                            "%0A" +
+
+                            "Size: " +
+                            selectedSize +
+                            "%0A" +
+
+                            "Product Price: ₹" +
+                            productPrice +
+                            "%0A" +
+
+                            "Delivery: " +
+                            deliveryLabel +
+                            "%0A" +
+
+                            "Delivery Charge: " +
+
+                            (
+                                deliveryPrice === 0
+                                    ? "FREE"
+                                    : "₹" +
+                                      deliveryPrice
+                            ) +
+
+                            "%0A" +
+
+                            "FINAL TOTAL: ₹" +
+                            finalTotal;
+
+
+
+                        window.open(
+
+                            "https://wa.me/917888759939?text=" +
+                            message,
+
+                            "_blank"
+
+                        );
 
                     }
                 );
