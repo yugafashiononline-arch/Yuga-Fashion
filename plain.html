@@ -54,9 +54,7 @@
         }
 
 
-        /* =========================================================
-           PRODUCT IMAGE ZOOM
-        ========================================================== */
+        /* DESKTOP IMAGE ZOOM */
 
         .product-image-zoom {
             cursor: zoom-in;
@@ -125,9 +123,7 @@
         }
 
 
-        /* =========================================================
-           MODAL IMAGE
-        ========================================================== */
+        /* MODAL IMAGE */
 
         .modal-image {
             display: flex;
@@ -157,10 +153,7 @@
         }
 
 
-
-        /* =========================================================
-           MODAL INFORMATION
-        ========================================================== */
+        /* MODAL INFORMATION */
 
         .modal-info {
             display: flex;
@@ -234,60 +227,11 @@
 
 
         /* =========================================================
-           QUANTITY
-        ========================================================== */
-
-        .quantity-section {
-            margin-top: 20px;
-        }
-
-
-        .quantity-title {
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-
-        .quantity-control {
-            display: flex;
-            align-items: center;
-            width: fit-content;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-
-
-        .quantity-button {
-            width: 42px;
-            height: 42px;
-            border: none;
-            background: #f3f3f3;
-            font-size: 20px;
-            cursor: pointer;
-        }
-
-
-        .quantity-button:hover {
-            background: #e7e7e7;
-        }
-
-
-        .quantity-number {
-            min-width: 45px;
-            text-align: center;
-            font-weight: 700;
-            font-size: 16px;
-        }
-
-
-
-        /* =========================================================
            DELIVERY
         ========================================================== */
 
         .delivery-section {
-            margin-top: 20px;
+            margin-top: 22px;
         }
 
 
@@ -347,10 +291,10 @@
         .modal-order-button {
             width: 100%;
             margin-top: 15px;
-            padding: 14px;
+            padding: 13px;
             border: none;
             border-radius: 5px;
-            background: #25D366;
+            background: #111;
             color: #fff;
             font-size: 15px;
             font-weight: 700;
@@ -359,12 +303,12 @@
 
 
         .modal-order-button:hover {
-            background: #20bd5a;
+            opacity: 0.88;
         }
 
 
         .modal-order-button:disabled {
-            background: #9eddb4;
+            opacity: 0.45;
             cursor: not-allowed;
         }
 
@@ -1024,8 +968,6 @@
                 </p>
 
 
-                <!-- AVAILABLE SIZES -->
-
                 <div class="modal-stock">
 
                     <p class="modal-stock-title">
@@ -1045,52 +987,6 @@
                 <div class="modal-store">
 
                     🏪 Available in Store
-
-                </div>
-
-
-
-                <!-- =================================================
-                     QUANTITY
-                ================================================== -->
-
-                <div class="quantity-section">
-
-                    <p class="quantity-title">
-                        QUANTITY
-                    </p>
-
-
-                    <div class="quantity-control">
-
-
-                        <button
-                            type="button"
-                            class="quantity-button"
-                            id="quantityMinus"
-                        >
-                            −
-                        </button>
-
-
-                        <span
-                            class="quantity-number"
-                            id="quantityNumber"
-                        >
-                            1
-                        </span>
-
-
-                        <button
-                            type="button"
-                            class="quantity-button"
-                            id="quantityPlus"
-                        >
-                            +
-                        </button>
-
-
-                    </div>
 
                 </div>
 
@@ -1156,19 +1052,6 @@
 
                         <span id="calculatorProduct">
                             ₹199
-                        </span>
-
-                    </div>
-
-
-                    <div class="price-row">
-
-                        <span>
-                            Quantity
-                        </span>
-
-                        <span id="calculatorQuantity">
-                            1
                         </span>
 
                     </div>
@@ -1481,24 +1364,12 @@
                 document.getElementById("modalSizes");
 
 
-            const quantityMinus =
-                document.getElementById("quantityMinus");
-
-
-            const quantityPlus =
-                document.getElementById("quantityPlus");
-
-
-            const quantityNumber =
-                document.getElementById("quantityNumber");
+            const deliveryOption =
+                document.getElementById("deliveryOption");
 
 
             const calculatorProduct =
                 document.getElementById("calculatorProduct");
-
-
-            const calculatorQuantity =
-                document.getElementById("calculatorQuantity");
 
 
             const calculatorDelivery =
@@ -1509,10 +1380,6 @@
                 document.getElementById("calculatorTotal");
 
 
-            const deliveryOption =
-                document.getElementById("deliveryOption");
-
-
             const modalOrderButton =
                 document.getElementById("modalOrderButton");
 
@@ -1520,8 +1387,6 @@
             let selectedProduct = null;
 
             let selectedSize = null;
-
-            let quantity = 1;
 
 
 
@@ -1540,9 +1405,7 @@
                     document.createElement("div");
 
 
-                status.classList.add(
-                    "product-status"
-                );
+                status.classList.add("product-status");
 
 
                 if (availableSizes === 0) {
@@ -1552,9 +1415,7 @@
                         "SOLD OUT";
 
 
-                    status.classList.add(
-                        "sold-out"
-                    );
+                    status.classList.add("sold-out");
 
 
                 } else if (availableSizes <= 2) {
@@ -1564,9 +1425,7 @@
                         "HIGH DEMAND";
 
 
-                    status.classList.add(
-                        "high-demand"
-                    );
+                    status.classList.add("high-demand");
 
 
                 } else {
@@ -1595,6 +1454,11 @@
                     function (event) {
 
 
+                        /*
+                         Prevent opening the modal when
+                         clicking directly on stock information.
+                        */
+
                         if (
                             event.target.closest(".stock") ||
                             event.target.closest(".sizes")
@@ -1611,14 +1475,6 @@
 
                         selectedSize =
                             null;
-
-
-                        quantity =
-                            1;
-
-
-                        quantityNumber.textContent =
-                            quantity;
 
 
                         modalImageContainer
@@ -1641,9 +1497,7 @@
 
 
                         const price =
-                            Number(
-                                product.dataset.price
-                            );
+                            Number(product.dataset.price);
 
 
                         modalPrice.textContent =
@@ -1654,10 +1508,12 @@
                             product.dataset.colour;
 
 
+
                         /* RESET DELIVERY */
 
                         deliveryOption.value =
                             "0";
+
 
 
                         /* UPDATE CALCULATOR */
@@ -1665,10 +1521,12 @@
                         updatePriceCalculator();
 
 
-                        /* CLEAR SIZES */
+
+                        /* CLEAR OLD SIZE BUTTONS */
 
                         modalSizes.innerHTML =
                             "";
+
 
 
                         /* BUILD SIZE BUTTONS */
@@ -1713,16 +1571,12 @@
 
                                 if (
                                     sizeElement.classList
-                                    .contains(
-                                        "out-stock"
-                                    )
+                                    .contains("out-stock")
                                 ) {
 
 
                                     button.classList
-                                        .add(
-                                            "disabled"
-                                        );
+                                        .add("disabled");
 
 
                                     button.disabled =
@@ -1748,9 +1602,7 @@
                                                     ".modal-size"
                                                 )
                                                 .forEach(
-                                                    function (
-                                                        btn
-                                                    ) {
+                                                    function (btn) {
 
                                                         btn.classList
                                                             .remove(
@@ -1794,6 +1646,7 @@
                         );
 
 
+
                         modalOrderButton.disabled =
                             true;
 
@@ -1801,6 +1654,9 @@
                         modalOrderButton.textContent =
                             "SELECT A SIZE TO ORDER";
 
+
+
+                        /* SHOW MODAL */
 
                         modal.classList.add(
                             "active"
@@ -1841,21 +1697,8 @@
                     );
 
 
-                const productTotal =
-                    productPrice * quantity;
-
-
-                const finalTotal =
-                    productTotal +
-                    deliveryPrice;
-
-
                 calculatorProduct.textContent =
-                    "₹" + productTotal;
-
-
-                calculatorQuantity.textContent =
-                    quantity;
+                    "₹" + productPrice;
 
 
                 calculatorDelivery.textContent =
@@ -1865,61 +1708,17 @@
 
 
                 calculatorTotal.textContent =
-                    "₹" + finalTotal;
+                    "₹" +
+                    (
+                        productPrice +
+                        deliveryPrice
+                    );
 
             }
 
 
 
-            /* =====================================================
-               QUANTITY MINUS
-            ====================================================== */
-
-            quantityMinus.addEventListener(
-                "click",
-                function () {
-
-
-                    if (quantity > 1) {
-
-                        quantity--;
-
-                        quantityNumber.textContent =
-                            quantity;
-
-                        updatePriceCalculator();
-
-                    }
-
-                }
-            );
-
-
-
-            /* =====================================================
-               QUANTITY PLUS
-            ====================================================== */
-
-            quantityPlus.addEventListener(
-                "click",
-                function () {
-
-
-                    quantity++;
-
-                    quantityNumber.textContent =
-                        quantity;
-
-                    updatePriceCalculator();
-
-                }
-            );
-
-
-
-            /* =====================================================
-               DELIVERY CHANGE
-            ====================================================== */
+            /* DELIVERY CHANGE */
 
             deliveryOption.addEventListener(
                 "change",
@@ -1974,10 +1773,6 @@
                 selectedSize =
                     null;
 
-
-                quantity =
-                    1;
-
             }
 
 
@@ -1989,7 +1784,7 @@
 
 
 
-            /* CLOSE OUTSIDE */
+            /* CLOSE WHEN CLICKING OUTSIDE */
 
             modal.addEventListener(
                 "click",
@@ -2074,12 +1869,8 @@
                             .dataset.label;
 
 
-                    const productTotal =
-                        productPrice * quantity;
-
-
                     const finalTotal =
-                        productTotal +
+                        productPrice +
                         deliveryPrice;
 
 
@@ -2102,12 +1893,8 @@
                         selectedSize +
                         "%0A" +
 
-                        "Quantity: " +
-                        quantity +
-                        "%0A" +
-
-                        "Product Total: ₹" +
-                        productTotal +
+                        "Product Price: ₹" +
+                        productPrice +
                         "%0A" +
 
                         "Delivery: " +
