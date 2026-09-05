@@ -6,12 +6,301 @@
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <!-- YUGA FAVICON -->
+
+    <!-- YUGA FAVICON -->
     <link rel="icon" type="image/png" href="Y Falvion.png">
 
     <title>YUGA | Polo Collection</title>
 
     <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        /* ================================
+           POLO PAGE ENHANCEMENTS
+        ================================= */
+
+        .product {
+            position: relative;
+        }
+
+        /* PRODUCT STATUS BADGE */
+
+        .product-status {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            z-index: 5;
+            padding: 6px 10px;
+            border-radius: 4px;
+            background: #111;
+            color: #fff;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            pointer-events: none;
+        }
+
+        .product-status.sold-out {
+            background: #b00020;
+        }
+
+        .product-status.high-demand {
+            background: #111;
+        }
+
+        /* DESKTOP IMAGE ZOOM */
+
+        .product-image-zoom {
+            cursor: zoom-in;
+            transition: transform 0.35s ease;
+        }
+
+        .product:hover .product-image-zoom {
+            transform: scale(1.06);
+        }
+
+        /* MODAL */
+
+        .product-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(0, 0, 0, 0.72);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .product-modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            position: relative;
+            width: min(900px, 100%);
+            max-height: 92vh;
+            overflow-y: auto;
+            background: #fff;
+            border-radius: 12px;
+            padding: 25px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            box-sizing: border-box;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            border: none;
+            background: transparent;
+            font-size: 32px;
+            line-height: 1;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .modal-image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: zoom-in;
+        }
+
+        .modal-image img {
+            width: 100%;
+            max-height: 600px;
+            object-fit: contain;
+            transition: transform 0.35s ease;
+        }
+
+        .modal-image.zoomed {
+            cursor: zoom-out;
+        }
+
+        .modal-image.zoomed img {
+            transform: scale(1.65);
+        }
+
+        .modal-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .modal-brand {
+            font-size: 13px;
+            letter-spacing: 3px;
+            margin-bottom: 8px;
+        }
+
+        .modal-info h2 {
+            margin: 0 0 10px;
+        }
+
+        .modal-price {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 5px 0 15px;
+        }
+
+        /* MODAL SIZES */
+
+        .modal-sizes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .modal-size {
+            min-width: 48px;
+            padding: 10px 13px;
+            border: 1px solid #111;
+            background: #fff;
+            color: #111;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .modal-size:hover:not(.disabled) {
+            background: #111;
+            color: #fff;
+        }
+
+        .modal-size.selected {
+            background: #111;
+            color: #fff;
+        }
+
+        .modal-size.disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
+            text-decoration: line-through;
+        }
+
+        /* DELIVERY */
+
+        .delivery-section {
+            margin-top: 22px;
+        }
+
+        .delivery-title {
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .delivery-select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background: #fff;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        /* PRICE CALCULATOR */
+
+        .price-calculator {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f6f6f6;
+            border-radius: 7px;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 5px 0;
+            font-size: 14px;
+        }
+
+        .price-row.total-row {
+            margin-top: 8px;
+            padding-top: 12px;
+            border-top: 1px solid #ccc;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        /* ORDER BUTTON */
+
+        .modal-order-button {
+            width: 100%;
+            margin-top: 15px;
+            padding: 13px;
+            border: none;
+            border-radius: 5px;
+            background: #111;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .modal-order-button:hover {
+            opacity: 0.88;
+        }
+
+        .modal-order-button:disabled {
+            opacity: 0.45;
+            cursor: not-allowed;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            .modal-content {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                padding: 18px;
+                max-height: 94vh;
+            }
+
+            .modal-image {
+                max-height: 360px;
+            }
+
+            .modal-image img {
+                max-height: 350px;
+            }
+
+            .modal-image.zoomed img {
+                transform: scale(1.35);
+            }
+
+            .modal-info {
+                justify-content: flex-start;
+            }
+
+            .modal-info h2 {
+                font-size: 22px;
+            }
+
+            .modal-price {
+                font-size: 20px;
+            }
+
+            .product-status {
+                top: 8px;
+                left: 8px;
+                font-size: 9px;
+                padding: 5px 7px;
+            }
+
+        }
+
+    </style>
 
 </head>
 
@@ -55,11 +344,12 @@
 
             <div class="product"
                 data-name="YUGA Classic Polo"
-                data-price="₹299"
+                data-price="299"
                 data-colour="Black"
                 data-image="POLO BL.png">
 
                 <img
+                    class="product-image-zoom"
                     src="POLO BL.png"
                     alt="YUGA Black Polo"
                 >
@@ -99,11 +389,12 @@
 
             <div class="product"
                 data-name="YUGA Classic Polo"
-                data-price="₹299"
+                data-price="299"
                 data-colour="Blue"
                 data-image="POLO BLU.png">
 
                 <img
+                    class="product-image-zoom"
                     src="POLO BLU.png"
                     alt="YUGA Blue Polo"
                 >
@@ -143,11 +434,12 @@
 
             <div class="product"
                 data-name="YUGA Classic Polo"
-                data-price="₹299"
+                data-price="299"
                 data-colour="Navy Blue"
                 data-image="POLO NVBL.png">
 
                 <img
+                    class="product-image-zoom"
                     src="POLO NVBL.png"
                     alt="YUGA Navy Blue Polo"
                 >
@@ -187,11 +479,12 @@
 
             <div class="product"
                 data-name="YUGA Classic Polo"
-                data-price="₹299"
+                data-price="299"
                 data-colour="Green"
                 data-image="POLO GRN.png">
 
                 <img
+                    class="product-image-zoom"
                     src="POLO GRN.png"
                     alt="YUGA Green Polo"
                 >
@@ -231,11 +524,12 @@
 
             <div class="product"
                 data-name="YUGA Classic Polo"
-                data-price="₹299"
+                data-price="299"
                 data-colour="Red"
                 data-image="POLO RED.png">
 
                 <img
+                    class="product-image-zoom"
                     src="POLO RED.png"
                     alt="YUGA Red Polo"
                 >
@@ -275,11 +569,12 @@
 
             <div class="product"
                 data-name="YUGA Classic Polo"
-                data-price="₹299"
+                data-price="299"
                 data-colour="Yellow"
                 data-image="POLO YLL.png">
 
                 <img
+                    class="product-image-zoom"
                     src="POLO YLL.png"
                     alt="YUGA Yellow Polo"
                 >
@@ -331,7 +626,7 @@
             </button>
 
 
-            <div class="modal-image">
+            <div class="modal-image" id="modalImageContainer">
 
                 <img id="modalImage" src="" alt="">
 
@@ -374,6 +669,84 @@
                     🏪 Available in Store
                 </div>
 
+
+                <!-- DELIVERY -->
+
+                <div class="delivery-section">
+
+                    <p class="delivery-title">
+                        DELIVERY OPTION
+                    </p>
+
+                    <select id="deliveryOption" class="delivery-select">
+
+                        <option value="0" data-label="Store Pickup">
+                            🏪 Store Pickup — FREE
+                        </option>
+
+                        <option value="69" data-label="Standard Delivery">
+                            🚚 Standard Delivery — ₹69
+                        </option>
+
+                        <option value="99" data-label="Express Delivery">
+                            ⚡ Express Delivery — ₹99
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- PRICE CALCULATOR -->
+
+                <div class="price-calculator">
+
+                    <div class="price-row">
+
+                        <span>Product</span>
+
+                        <span id="calculatorProduct">
+                            ₹299
+                        </span>
+
+                    </div>
+
+
+                    <div class="price-row">
+
+                        <span>Delivery</span>
+
+                        <span id="calculatorDelivery">
+                            FREE
+                        </span>
+
+                    </div>
+
+
+                    <div class="price-row total-row">
+
+                        <span>FINAL TOTAL</span>
+
+                        <span id="calculatorTotal">
+                            ₹299
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ORDER BUTTON -->
+
+                <button
+                    type="button"
+                    class="modal-order-button"
+                    id="modalOrderButton"
+                    disabled
+                >
+                    SELECT A SIZE TO ORDER
+                </button>
+
             </div>
 
         </div>
@@ -399,6 +772,373 @@
     <!-- JAVASCRIPT -->
 
     <script src="script.js"></script>
+
+
+    <!-- POLO PAGE FEATURES -->
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const products = document.querySelectorAll(".product");
+
+            const modal = document.getElementById("productModal");
+            const modalClose = document.getElementById("modalClose");
+
+            const modalImage = document.getElementById("modalImage");
+            const modalImageContainer =
+                document.getElementById("modalImageContainer");
+
+            const modalName = document.getElementById("modalName");
+            const modalPrice = document.getElementById("modalPrice");
+            const modalColour = document.getElementById("modalColour");
+            const modalSizes = document.getElementById("modalSizes");
+
+            const deliveryOption =
+                document.getElementById("deliveryOption");
+
+            const calculatorProduct =
+                document.getElementById("calculatorProduct");
+
+            const calculatorDelivery =
+                document.getElementById("calculatorDelivery");
+
+            const calculatorTotal =
+                document.getElementById("calculatorTotal");
+
+            const modalOrderButton =
+                document.getElementById("modalOrderButton");
+
+            let selectedProduct = null;
+            let selectedSize = null;
+
+
+            /* ================================
+               PRODUCT STATUS
+            ================================= */
+
+            products.forEach(function (product) {
+
+                const availableSizes =
+                    product.querySelectorAll(".in-stock").length;
+
+                const status = document.createElement("div");
+
+                status.classList.add("product-status");
+
+                if (availableSizes === 0) {
+
+                    status.textContent = "SOLD OUT";
+                    status.classList.add("sold-out");
+
+                } else if (availableSizes <= 2) {
+
+                    status.textContent = "HIGH DEMAND";
+                    status.classList.add("high-demand");
+
+                } else {
+
+                    status.remove();
+
+                    return;
+
+                }
+
+                product.appendChild(status);
+
+            });
+
+
+            /* ================================
+               OPEN MODAL
+            ================================= */
+
+            products.forEach(function (product) {
+
+                product.addEventListener("click", function (event) {
+
+                    if (
+                        event.target.closest(".stock") ||
+                        event.target.closest(".sizes")
+                    ) {
+                        return;
+                    }
+
+                    selectedProduct = product;
+                    selectedSize = null;
+
+                    modalImageContainer.classList.remove("zoomed");
+
+                    modalImage.src =
+                        product.dataset.image;
+
+                    modalImage.alt =
+                        product.dataset.name +
+                        " - " +
+                        product.dataset.colour;
+
+                    modalName.textContent =
+                        product.dataset.name;
+
+                    const price =
+                        Number(product.dataset.price);
+
+                    modalPrice.textContent =
+                        "₹" + price;
+
+                    modalColour.textContent =
+                        product.dataset.colour;
+
+
+                    /* RESET DELIVERY */
+
+                    deliveryOption.value = "0";
+
+
+                    /* PRICE CALCULATOR */
+
+                    updatePriceCalculator();
+
+
+                    /* BUILD SIZE BUTTONS */
+
+                    modalSizes.innerHTML = "";
+
+                    const sizeElements =
+                        product.querySelectorAll(".sizes span");
+
+                    sizeElements.forEach(function (sizeElement) {
+
+                        const sizeText =
+                            sizeElement.textContent
+                            .replace("✓", "")
+                            .replace("✕", "")
+                            .trim();
+
+                        const button =
+                            document.createElement("button");
+
+                        button.type = "button";
+
+                        button.className = "modal-size";
+
+                        button.textContent = sizeText;
+
+
+                        if (
+                            sizeElement.classList.contains("out-stock")
+                        ) {
+
+                            button.classList.add("disabled");
+                            button.disabled = true;
+
+                        } else {
+
+                            button.addEventListener(
+                                "click",
+                                function () {
+
+                                    document
+                                        .querySelectorAll(".modal-size")
+                                        .forEach(function (btn) {
+
+                                            btn.classList.remove("selected");
+
+                                        });
+
+                                    button.classList.add("selected");
+
+                                    selectedSize = sizeText;
+
+                                    modalOrderButton.disabled = false;
+
+                                    modalOrderButton.textContent =
+                                        "ORDER ON WHATSAPP";
+
+                                }
+                            );
+
+                        }
+
+                        modalSizes.appendChild(button);
+
+                    });
+
+
+                    modalOrderButton.disabled = true;
+
+                    modalOrderButton.textContent =
+                        "SELECT A SIZE TO ORDER";
+
+
+                    modal.classList.add("active");
+
+                    document.body.style.overflow = "hidden";
+
+                });
+
+            });
+
+
+            /* ================================
+               PRICE CALCULATOR
+            ================================= */
+
+            function updatePriceCalculator() {
+
+                if (!selectedProduct) {
+                    return;
+                }
+
+                const productPrice =
+                    Number(selectedProduct.dataset.price);
+
+                const deliveryPrice =
+                    Number(deliveryOption.value);
+
+                calculatorProduct.textContent =
+                    "₹" + productPrice;
+
+                calculatorDelivery.textContent =
+                    deliveryPrice === 0
+                        ? "FREE"
+                        : "₹" + deliveryPrice;
+
+                calculatorTotal.textContent =
+                    "₹" + (productPrice + deliveryPrice);
+
+            }
+
+
+            deliveryOption.addEventListener(
+                "change",
+                updatePriceCalculator
+            );
+
+
+            /* ================================
+               IMAGE ZOOM
+            ================================= */
+
+            modalImageContainer.addEventListener(
+                "click",
+                function () {
+
+                    modalImageContainer.classList.toggle("zoomed");
+
+                }
+            );
+
+
+            /* ================================
+               CLOSE MODAL
+            ================================= */
+
+            function closeModal() {
+
+                modal.classList.remove("active");
+
+                modalImageContainer.classList.remove("zoomed");
+
+                document.body.style.overflow = "";
+
+                selectedProduct = null;
+                selectedSize = null;
+
+            }
+
+
+            modalClose.addEventListener(
+                "click",
+                closeModal
+            );
+
+
+            modal.addEventListener(
+                "click",
+                function (event) {
+
+                    if (event.target === modal) {
+                        closeModal();
+                    }
+
+                }
+            );
+
+
+            document.addEventListener(
+                "keydown",
+                function (event) {
+
+                    if (event.key === "Escape") {
+                        closeModal();
+                    }
+
+                }
+            );
+
+
+            /* ================================
+               WHATSAPP ORDER
+            ================================= */
+
+            modalOrderButton.addEventListener(
+                "click",
+                function () {
+
+                    if (!selectedProduct || !selectedSize) {
+                        return;
+                    }
+
+                    const productName =
+                        selectedProduct.dataset.name;
+
+                    const colour =
+                        selectedProduct.dataset.colour;
+
+                    const productPrice =
+                        Number(selectedProduct.dataset.price);
+
+                    const deliveryPrice =
+                        Number(deliveryOption.value);
+
+                    const deliveryLabel =
+                        deliveryOption
+                            .selectedOptions[0]
+                            .dataset.label;
+
+                    const finalTotal =
+                        productPrice + deliveryPrice;
+
+
+                    const message =
+                        "Hello YUGA!%0A%0A" +
+                        "I want to order:%0A" +
+                        "Product: " + productName + "%0A" +
+                        "Colour: " + colour + "%0A" +
+                        "Size: " + selectedSize + "%0A" +
+                        "Product Price: ₹" + productPrice + "%0A" +
+                        "Delivery: " + deliveryLabel + "%0A" +
+                        "Delivery Charge: " +
+                        (deliveryPrice === 0
+                            ? "FREE"
+                            : "₹" + deliveryPrice) +
+                        "%0A" +
+                        "FINAL TOTAL: ₹" + finalTotal;
+
+
+                    window.open(
+                        "https://wa.me/917888759939?text=" +
+                        message,
+                        "_blank"
+                    );
+
+                }
+            );
+
+        });
+
+    </script>
 
 
 </body>
