@@ -848,7 +848,6 @@
         /* =====================================================
            TIGHTER MINDSET / COLLECTION FLOW
         ====================================================== */
-
         .brand-statement {
             min-height: auto !important;
             height: auto !important;
@@ -969,42 +968,26 @@
         }
 
         @media (max-width: 800px) {
-
             .collection-showcase {
-
                 grid-template-columns: 1fr !important;
-
                 gap: 18px !important;
-
             }
 
             .collection-showcase .collection-panel {
-
                 height: 620px !important;
-
                 min-height: 620px !important;
-
             }
 
             .seasonal-panel .collection-overlay h3 {
-
-                font-size:
-                    clamp(40px, 13vw, 64px);
-
+                font-size: clamp(40px, 13vw, 64px);
             }
-
         }
 
         @media (max-width: 450px) {
-
             .collection-showcase .collection-panel {
-
                 height: 560px !important;
-
                 min-height: 560px !important;
-
             }
-
         }
 
 
@@ -1014,436 +997,174 @@
         ====================================================== */
 
         .hero-premium-content {
-
             opacity: 0;
-
-            animation:
-                yugaHeroIn
-                1.2s
-                cubic-bezier(.16,1,.3,1)
-                .12s
-                forwards;
-
+            animation: yugaHeroIn 1.2s cubic-bezier(.16,1,.3,1) .12s forwards;
         }
 
         .hero-premium::before {
-
-            animation:
-                yugaHeroImage
-                12s
-                ease-out
-                both;
-
+            animation: yugaHeroImage 12s ease-out both;
         }
 
         .hero-scroll {
-
-            animation:
-                yugaScrollPulse
-                2.2s
-                ease-in-out
-                1.4s
-                infinite;
-
+            animation: yugaScrollPulse 2.2s ease-in-out 1.4s infinite;
         }
 
         @keyframes yugaHeroIn {
-
-            from {
-
-                opacity: 0;
-
-                transform:
-                    translateY(35px);
-
-                filter:
-                    blur(8px);
-
-            }
-
-            to {
-
-                opacity: 1;
-
-                transform:
-                    translateY(0);
-
-                filter:
-                    blur(0);
-
-            }
-
+            from { opacity: 0; transform: translateY(35px); filter: blur(8px); }
+            to { opacity: 1; transform: translateY(0); filter: blur(0); }
         }
 
         @keyframes yugaHeroImage {
-
-            from {
-
-                transform:
-                    scale(1.08);
-
-            }
-
-            to {
-
-                transform:
-                    scale(1);
-
-            }
-
+            from { transform: scale(1.08); }
+            to { transform: scale(1); }
         }
 
         @keyframes yugaScrollPulse {
-
-            0%, 100% {
-
-                opacity: .45;
-
-                transform:
-                    translateY(0);
-
-            }
-
-            50% {
-
-                opacity: 1;
-
-                transform:
-                    translateY(5px);
-
-            }
-
+            0%, 100% { opacity: .45; transform: translateY(0); }
+            50% { opacity: 1; transform: translateY(5px); }
         }
 
         /* Premium scroll reveals — slightly more cinematic than the base reveal */
-
         .reveal {
-
             transition:
                 opacity .9s ease,
                 transform .9s cubic-bezier(.16,1,.3,1),
                 filter .9s ease;
-
-            transform:
-                translateY(34px);
-
-            filter:
-                blur(4px);
-
+            transform: translateY(34px);
+            filter: blur(4px);
         }
 
         .reveal.visible {
-
-            transform:
-                translateY(0);
-
-            filter:
-                blur(0);
-
+            transform: translateY(0);
+            filter: blur(0);
         }
 
         .collection-showcase .collection-panel {
-
             transition:
                 transform .55s cubic-bezier(.16,1,.3,1),
                 box-shadow .55s ease;
-
         }
 
         .collection-showcase .collection-panel:hover {
-
-            transform:
-                translateY(-6px);
-
-            box-shadow:
-                0 24px 60px rgba(0,0,0,.22);
-
+            transform: translateY(-6px);
+            box-shadow: 0 24px 60px rgba(0,0,0,.22);
         }
 
         .collection-showcase .collection-panel:hover .collection-image {
-
-            transform:
-                scale(1.055);
-
+            transform: scale(1.055);
         }
 
         .seasonal-panel .collection-overlay {
-
-            transition:
-                background .5s ease;
-
+            transition: background .5s ease;
         }
 
         .seasonal-panel .collection-overlay h3,
         .seasonal-panel .collection-overlay p,
         .seasonal-panel .collection-explore {
-
-            transition:
-                transform .55s cubic-bezier(.16,1,.3,1),
-                opacity .45s ease;
-
+            transition: transform .55s cubic-bezier(.16,1,.3,1), opacity .45s ease;
         }
 
-        .seasonal-panel .collection-overlay h3 {
-
-            transform:
-                translateY(12px);
-
-        }
-
-        .seasonal-panel .collection-overlay p {
-
-            transform:
-                translateY(10px);
-
-            opacity: .75;
-
-        }
-
-        .seasonal-panel .collection-explore {
-
-            transform:
-                translateY(14px);
-
-            opacity: 0;
-
-        }
+        .seasonal-panel .collection-overlay h3 { transform: translateY(12px); }
+        .seasonal-panel .collection-overlay p { transform: translateY(10px); opacity: .75; }
+        .seasonal-panel .collection-explore { transform: translateY(14px); opacity: 0; }
 
         .seasonal-panel:hover .collection-overlay h3,
         .seasonal-panel:hover .collection-overlay p,
         .seasonal-panel:hover .collection-explore {
-
-            transform:
-                translateY(0);
-
+            transform: translateY(0);
         }
 
-        .seasonal-panel:hover .collection-explore {
-
-            opacity: 1;
-
-        }
+        .seasonal-panel:hover .collection-explore { opacity: 1; }
 
         /* Moving brand strip */
-
         .yuga-marquee {
-
             overflow: hidden;
-
             width: 100%;
-
-            border-top:
-                1px solid rgba(0,0,0,.12);
-
-            border-bottom:
-                1px solid rgba(0,0,0,.12);
-
-            margin:
-                15px 0 55px;
-
-            padding:
-                16px 0;
-
-            white-space:
-                nowrap;
-
+            border-top: 1px solid rgba(0,0,0,.12);
+            border-bottom: 1px solid rgba(0,0,0,.12);
+            margin: 15px 0 55px;
+            padding: 16px 0;
+            white-space: nowrap;
         }
 
         .yuga-marquee-track {
-
-            display:
-                inline-flex;
-
-            align-items:
-                center;
-
-            width:
-                max-content;
-
-            animation:
-                yugaMarquee
-                22s
-                linear
-                infinite;
-
+            display: inline-flex;
+            align-items: center;
+            width: max-content;
+            animation: yugaMarquee 22s linear infinite;
         }
 
         .yuga-marquee span {
-
-            display:
-                inline-flex;
-
-            align-items:
-                center;
-
-            gap:
-                28px;
-
-            padding-right:
-                28px;
-
-            font-size:
-                10px;
-
-            font-weight:
-                700;
-
-            letter-spacing:
-                4px;
-
-            text-transform:
-                uppercase;
-
+            display: inline-flex;
+            align-items: center;
+            gap: 28px;
+            padding-right: 28px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
         }
 
         .yuga-marquee span::after {
-
-            content:
-                '✦';
-
-            font-size:
-                9px;
-
-            opacity:
-                .55;
-
+            content: '✦';
+            font-size: 9px;
+            opacity: .55;
         }
 
         @keyframes yugaMarquee {
-
-            from {
-
-                transform:
-                    translateX(0);
-
-            }
-
-            to {
-
-                transform:
-                    translateX(-50%);
-
-            }
-
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
         }
 
         /* Smooth internal-page transition */
-
         body.yuga-page-leaving {
-
-            animation:
-                yugaPageOut
-                .42s
-                ease
-                forwards;
-
-            pointer-events:
-                none;
-
+            animation: yugaPageOut .42s ease forwards;
+            pointer-events: none;
         }
 
         @keyframes yugaPageOut {
-
-            from {
-
-                opacity:
-                    1;
-
-                transform:
-                    translateY(0);
-
-            }
-
-            to {
-
-                opacity:
-                    0;
-
-                transform:
-                    translateY(-10px);
-
-            }
-
+            from { opacity: 1; transform: translateY(0); }
+            to { opacity: 0; transform: translateY(-10px); }
         }
 
         @media (max-width: 800px) {
-
             .brand-statement {
-
-                min-height:
-                    auto !important;
-
-                padding-top:
-                    48px !important;
-
-                padding-bottom:
-                    10px !important;
-
+                min-height: auto !important;
+                padding-top: 48px !important;
+                padding-bottom: 10px !important;
             }
-
         }
 
         /* Mobile animation tuning */
-
         @media (max-width: 800px) {
-
             .hero-premium-content {
-
-                animation-duration:
-                    1s;
-
+                animation-duration: 1s;
             }
 
             .yuga-marquee {
-
-                margin:
-                    10px 0 35px;
-
-                padding:
-                    13px 0;
-
+                margin: 10px 0 35px;
+                padding: 13px 0;
             }
 
             .yuga-marquee span {
-
-                font-size:
-                    9px;
-
-                letter-spacing:
-                    3px;
-
-                padding-right:
-                    22px;
-
+                font-size: 9px;
+                letter-spacing: 3px;
+                padding-right: 22px;
             }
 
             /* Replace desktop hover-only movement with tap-friendly feedback. */
-
             .collection-showcase .collection-panel:hover {
-
-                transform:
-                    none;
-
-                box-shadow:
-                    none;
-
+                transform: none;
+                box-shadow: none;
             }
 
             .collection-showcase .collection-panel.touch-active {
-
-                transform:
-                    translateY(-3px);
-
-                box-shadow:
-                    0 18px 40px rgba(0,0,0,.18);
-
+                transform: translateY(-3px);
+                box-shadow: 0 18px 40px rgba(0,0,0,.18);
             }
 
             .collection-showcase .collection-panel.touch-active .collection-image {
-
-                transform:
-                    scale(1.045);
-
+                transform: scale(1.045);
             }
 
             .seasonal-panel:active .collection-overlay h3,
@@ -1452,1027 +1173,179 @@
             .seasonal-panel.touch-active .collection-overlay h3,
             .seasonal-panel.touch-active .collection-overlay p,
             .seasonal-panel.touch-active .collection-explore {
-
-                transform:
-                    translateY(0);
-
+                transform: translateY(0);
             }
 
             .seasonal-panel.touch-active .collection-explore {
-
-                opacity:
-                    1;
-
+                opacity: 1;
             }
-
         }
 
         @media (prefers-reduced-motion: reduce) {
-
             .hero-premium-content,
             .hero-premium::before,
             .hero-scroll,
             .yuga-marquee-track {
-
-                animation:
-                    none !important;
-
+                animation: none !important;
             }
-
-            .hero-premium-content {
-
-                opacity:
-                    1;
-
-            }
-
-            .reveal {
-
-                transition:
-                    none !important;
-
-                transform:
-                    none;
-
-                filter:
-                    none;
-
-            }
-
+            .hero-premium-content { opacity: 1; }
+            .reveal { transition: none !important; transform: none; filter: none; }
             .collection-showcase .collection-panel,
             .collection-showcase .collection-panel:hover,
             .collection-showcase .collection-panel:hover .collection-image {
-
-                transform:
-                    none !important;
-
-                transition:
-                    none !important;
-
+                transform: none !important;
+                transition: none !important;
             }
-
-        }
-
-
-
-        /* =====================================================
-           YUGA OFFER BAR
-        ====================================================== */
-
-        .yuga-offer-bar {
-
-            position:
-                relative;
-
-            z-index:
-                1000;
-
-            width:
-                100%;
-
-            min-height:
-                34px;
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            overflow:
-                hidden;
-
-            background:
-                #fff;
-
-            color:
-                #000;
-
-            border-bottom:
-                1px solid #dedede;
-
-            text-decoration:
-                none;
-
-            cursor:
-                pointer;
-
-        }
-
-
-        .yuga-offer-track {
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            gap:
-                34px;
-
-            width:
-                max-content;
-
-            white-space:
-                nowrap;
-
-            padding:
-                8px 20px;
-
-            font-size:
-                9px;
-
-            font-weight:
-                800;
-
-            letter-spacing:
-                2px;
-
-            text-transform:
-                uppercase;
-
-        }
-
-
-        .yuga-offer-track span {
-
-            display:
-                inline-flex;
-
-            align-items:
-                center;
-
-            gap:
-                8px;
-
-            transition:
-                opacity .25s ease;
-
-        }
-
-
-        .yuga-offer-bar:hover
-        .yuga-offer-track span {
-
-            opacity:
-                .55;
-
-        }
-
-
-        /* =====================================================
-           EXIT INTENT POPUP
-        ====================================================== */
-
-        .yuga-exit-overlay {
-
-            position:
-                fixed;
-
-            inset:
-                0;
-
-            z-index:
-                99990;
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            padding:
-                24px;
-
-            background:
-                rgba(0,0,0,.76);
-
-            backdrop-filter:
-                blur(8px);
-
-            -webkit-backdrop-filter:
-                blur(8px);
-
-            opacity:
-                0;
-
-            visibility:
-                hidden;
-
-            pointer-events:
-                none;
-
-            transition:
-                opacity .35s ease,
-                visibility .35s ease;
-
-        }
-
-
-        .yuga-exit-overlay.active {
-
-            opacity:
-                1;
-
-            visibility:
-                visible;
-
-            pointer-events:
-                auto;
-
-        }
-
-
-        .yuga-exit-card {
-
-            position:
-                relative;
-
-            width:
-                min(560px, 100%);
-
-            padding:
-                54px 48px 44px;
-
-            background:
-                #fff;
-
-            color:
-                #000;
-
-            border:
-                1px solid #d7d7d7;
-
-            box-shadow:
-                0 30px 100px rgba(0,0,0,.38);
-
-            transform:
-                translateY(24px) scale(.97);
-
-            transition:
-                transform .4s cubic-bezier(.2,.8,.2,1);
-
-        }
-
-
-        .yuga-exit-overlay.active
-        .yuga-exit-card {
-
-            transform:
-                translateY(0) scale(1);
-
-        }
-
-
-        .yuga-exit-close {
-
-            position:
-                absolute;
-
-            top:
-                17px;
-
-            right:
-                18px;
-
-            width:
-                38px;
-
-            height:
-                38px;
-
-            border:
-                1px solid #d0d0d0;
-
-            border-radius:
-                50%;
-
-            background:
-                #fff;
-
-            color:
-                #000;
-
-            font-size:
-                23px;
-
-            line-height:
-                1;
-
-            cursor:
-                pointer;
-
-            transition:
-                background .25s ease,
-                color .25s ease,
-                transform .25s ease;
-
-        }
-
-
-        .yuga-exit-close:hover {
-
-            background:
-                #000;
-
-            color:
-                #fff;
-
-            transform:
-                rotate(90deg);
-
-        }
-
-
-        .yuga-exit-eyebrow {
-
-            margin:
-                0 0 16px;
-
-            font-size:
-                9px;
-
-            font-weight:
-                800;
-
-            letter-spacing:
-                3px;
-
-            text-transform:
-                uppercase;
-
-            opacity:
-                .55;
-
-        }
-
-
-        .yuga-exit-title {
-
-            margin:
-                0;
-
-            max-width:
-                470px;
-
-            font-size:
-                clamp(34px, 6vw, 56px);
-
-            line-height:
-                .95;
-
-            letter-spacing:
-                -2px;
-
-            font-weight:
-                900;
-
-        }
-
-
-        .yuga-exit-offer {
-
-            display:
-                inline-flex;
-
-            align-items:
-                center;
-
-            margin:
-                28px 0 18px;
-
-            padding:
-                13px 16px;
-
-            background:
-                #000;
-
-            color:
-                #fff;
-
-            font-size:
-                10px;
-
-            font-weight:
-                800;
-
-            letter-spacing:
-                2px;
-
-            text-transform:
-                uppercase;
-
-        }
-
-
-        .yuga-exit-text {
-
-            margin:
-                0;
-
-            max-width:
-                420px;
-
-            font-size:
-                13px;
-
-            line-height:
-                1.7;
-
-            color:
-                #333;
-
-        }
-
-
-        .yuga-exit-button {
-
-            display:
-                inline-flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            margin-top:
-                28px;
-
-            min-height:
-                48px;
-
-            padding:
-                0 25px;
-
-            background:
-                #000;
-
-            color:
-                #fff;
-
-            text-decoration:
-                none;
-
-            font-size:
-                10px;
-
-            font-weight:
-                800;
-
-            letter-spacing:
-                2px;
-
-            text-transform:
-                uppercase;
-
-            transition:
-                background .25s ease,
-                transform .25s ease;
-
-        }
-
-
-        .yuga-exit-button:hover {
-
-            background:
-                #222;
-
-            transform:
-                translateY(-2px);
-
-        }
-
-
-        .yuga-exit-note {
-
-            margin:
-                18px 0 0;
-
-            font-size:
-                9px;
-
-            line-height:
-                1.5;
-
-            letter-spacing:
-                1px;
-
-            color:
-                #777;
-
-        }
-
-
-        /* =====================================================
-           OFFER BAR + POPUP MOBILE
-        ====================================================== */
-
-        @media (max-width: 800px) {
-
-            .yuga-offer-bar {
-
-                min-height:
-                    31px;
-
-            }
-
-
-            .yuga-offer-track {
-
-                gap:
-                    24px;
-
-                padding:
-                    7px 15px;
-
-                font-size:
-                    8px;
-
-                letter-spacing:
-                    1.5px;
-
-            }
-
-
-            .yuga-exit-overlay {
-
-                padding:
-                    16px;
-
-            }
-
-
-            .yuga-exit-card {
-
-                padding:
-                    48px 25px 30px;
-
-            }
-
-
-            .yuga-exit-title {
-
-                font-size:
-                    38px;
-
-                letter-spacing:
-                    -1.5px;
-
-            }
-
-
-            .yuga-exit-offer {
-
-                margin-top:
-                    24px;
-
-                font-size:
-                    8px;
-
-                letter-spacing:
-                    1.5px;
-
-            }
-
-
-            .yuga-exit-text {
-
-                font-size:
-                    12px;
-
-            }
-
-
-            .yuga-exit-button {
-
-                width:
-                    100%;
-
-            }
-
-        }
-
-
-        @media (max-width: 380px) {
-
-            .yuga-exit-card {
-
-                padding:
-                    45px 20px 27px;
-
-            }
-
-
-            .yuga-exit-title {
-
-                font-size:
-                    34px;
-
-            }
-
-
-            .yuga-exit-offer {
-
-                font-size:
-                    7px;
-
-                padding:
-                    12px 12px;
-
-            }
-
         }
 
     </style>
 
 
-    <style>
+<style>
+    /* =====================================================
+       WINTER '26 — COMING SOON SNOW REVEAL
+    ====================================================== */
+    .winter-trigger {
+        border: 0;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        font: inherit;
+        color: inherit;
+        text-align: inherit;
+        background: transparent;
+        cursor: pointer;
+    }
 
-        /* =====================================================
-           WINTER '26 — COMING SOON SNOW REVEAL
-        ====================================================== */
+    .winter-coming-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(7, 10, 14, 0.94);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity .35s ease, visibility .35s ease;
+        overflow: hidden;
+    }
 
-        .winter-trigger {
+    .winter-coming-overlay.active {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
 
-            border:
-                0;
+    .winter-coming-content {
+        position: relative;
+        z-index: 3;
+        text-align: center;
+        color: #fff;
+        transform: scale(.82);
+        opacity: 0;
+        transition: transform .65s cubic-bezier(.2,.8,.2,1), opacity .45s ease .12s;
+    }
 
-            padding:
-                0;
+    .winter-coming-overlay.active .winter-coming-content {
+        transform: scale(1);
+        opacity: 1;
+    }
 
-            margin:
-                0;
+    .winter-coming-season {
+        margin: 0 0 14px;
+        font-size: clamp(12px, 1.3vw, 17px);
+        letter-spacing: .42em;
+        font-weight: 500;
+    }
 
-            width:
-                100%;
+    .winter-coming-title {
+        margin: 0;
+        font-size: clamp(48px, 9vw, 130px);
+        line-height: .9;
+        letter-spacing: -.045em;
+        font-weight: 800;
+        text-transform: uppercase;
+    }
 
-            font:
-                inherit;
+    .winter-coming-subtitle {
+        margin: 22px 0 0;
+        font-size: clamp(11px, 1.1vw, 15px);
+        letter-spacing: .3em;
+        text-transform: uppercase;
+        opacity: .78;
+    }
 
-            color:
-                inherit;
+    .winter-coming-close {
+        position: absolute;
+        top: 26px;
+        right: 30px;
+        z-index: 5;
+        width: 44px;
+        height: 44px;
+        border: 1px solid rgba(255,255,255,.35);
+        border-radius: 50%;
+        background: rgba(255,255,255,.05);
+        color: #fff;
+        font-size: 25px;
+        line-height: 1;
+        cursor: pointer;
+        transition: background .2s ease, transform .2s ease;
+    }
 
-            text-align:
-                inherit;
+    .winter-coming-close:hover {
+        background: rgba(255,255,255,.14);
+        transform: rotate(90deg);
+    }
 
-            background:
-                transparent;
+    .winter-snow-field {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        pointer-events: none;
+        overflow: hidden;
+    }
 
-            cursor:
-                pointer;
+    .winter-snowflake {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: var(--size);
+        height: var(--size);
+        border-radius: 50%;
+        background: #fff;
+        box-shadow: 0 0 12px rgba(255,255,255,.75);
+        opacity: 0;
+        transform: translate(-50%, -50%);
+        animation: winterSnowBurst var(--duration) cubic-bezier(.15,.75,.25,1) forwards;
+    }
 
+    @keyframes winterSnowBurst {
+        0% {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(.2);
         }
-
-
-        .winter-coming-overlay {
-
-            position:
-                fixed;
-
-            inset:
-                0;
-
-            z-index:
-                99999;
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            background:
-                rgba(7,10,14,0.94);
-
-            opacity:
-                0;
-
-            visibility:
-                hidden;
-
-            pointer-events:
-                none;
-
-            transition:
-                opacity .35s ease,
-                visibility .35s ease;
-
-            overflow:
-                hidden;
-
+        10% {
+            opacity: 1;
         }
-
-
-        .winter-coming-overlay.active {
-
-            opacity:
-                1;
-
-            visibility:
-                visible;
-
-            pointer-events:
-                auto;
-
+        100% {
+            opacity: 0;
+            transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1);
         }
+    }
 
-
-        .winter-coming-content {
-
-            position:
-                relative;
-
-            z-index:
-                3;
-
-            text-align:
-                center;
-
-            color:
-                #fff;
-
-            transform:
-                scale(.82);
-
-            opacity:
-                0;
-
-            transition:
-                transform .65s cubic-bezier(.2,.8,.2,1),
-                opacity .45s ease .12s;
-
-        }
-
-
-        .winter-coming-overlay.active
-        .winter-coming-content {
-
-            transform:
-                scale(1);
-
-            opacity:
-                1;
-
-        }
-
-
-        .winter-coming-season {
-
-            margin:
-                0 0 14px;
-
-            font-size:
-                clamp(12px,1.3vw,17px);
-
-            letter-spacing:
-                .42em;
-
-            font-weight:
-                500;
-
-        }
-
-
-        .winter-coming-title {
-
-            margin:
-                0;
-
-            font-size:
-                clamp(48px,9vw,130px);
-
-            line-height:
-                .9;
-
-            letter-spacing:
-                -.045em;
-
-            font-weight:
-                800;
-
-            text-transform:
-                uppercase;
-
-        }
-
-
-        .winter-coming-subtitle {
-
-            margin:
-                22px 0 0;
-
-            font-size:
-                clamp(11px,1.1vw,15px);
-
-            letter-spacing:
-                .3em;
-
-            text-transform:
-                uppercase;
-
-            opacity:
-                .78;
-
-        }
-
-
+    @media (max-width: 600px) {
         .winter-coming-close {
-
-            position:
-                absolute;
-
-            top:
-                26px;
-
-            right:
-                30px;
-
-            z-index:
-                5;
-
-            width:
-                44px;
-
-            height:
-                44px;
-
-            border:
-                1px solid rgba(255,255,255,.35);
-
-            border-radius:
-                50%;
-
-            background:
-                rgba(255,255,255,.05);
-
-            color:
-                #fff;
-
-            font-size:
-                25px;
-
-            line-height:
-                1;
-
-            cursor:
-                pointer;
-
-            transition:
-                background .2s ease,
-                transform .2s ease;
-
+            top: 18px;
+            right: 18px;
         }
-
-
-        .winter-coming-close:hover {
-
-            background:
-                rgba(255,255,255,.14);
-
-            transform:
-                rotate(90deg);
-
+        .winter-coming-subtitle {
+            letter-spacing: .18em;
+            padding: 0 25px;
         }
-
-
-        .winter-snow-field {
-
-            position:
-                absolute;
-
-            inset:
-                0;
-
-            z-index:
-                2;
-
-            pointer-events:
-                none;
-
-            overflow:
-                hidden;
-
-        }
-
-
-        .winter-snowflake {
-
-            position:
-                absolute;
-
-            left:
-                50%;
-
-            top:
-                50%;
-
-            width:
-                var(--size);
-
-            height:
-                var(--size);
-
-            border-radius:
-                50%;
-
-            background:
-                #fff;
-
-            box-shadow:
-                0 0 12px rgba(255,255,255,.75);
-
-            opacity:
-                0;
-
-            transform:
-                translate(-50%,-50%);
-
-            animation:
-                winterSnowBurst
-                var(--duration)
-                cubic-bezier(.15,.75,.25,1)
-                forwards;
-
-        }
-
-
-        @keyframes winterSnowBurst {
-
-            0% {
-
-                opacity:
-                    0;
-
-                transform:
-                    translate(-50%,-50%)
-                    scale(.2);
-
-            }
-
-            10% {
-
-                opacity:
-                    1;
-
-            }
-
-            100% {
-
-                opacity:
-                    0;
-
-                transform:
-                    translate(
-                        calc(-50% + var(--x)),
-                        calc(-50% + var(--y))
-                    )
-                    scale(1);
-
-            }
-
-        }
-
-
-        @media (max-width:600px) {
-
-            .winter-coming-close {
-
-                top:
-                    18px;
-
-                right:
-                    18px;
-
-            }
-
-
-            .winter-coming-subtitle {
-
-                letter-spacing:
-                    .18em;
-
-                padding:
-                    0 25px;
-
-            }
-
-        }
-
-    </style>
+    }
+</style>
 
 </head>
 
@@ -2494,67 +1367,22 @@
     <div class="yuga-announcement">
 
         <div class="announcement-track">
-
             <span>✦ NEW DROP LIVE</span>
-
             <span>✦ WEAR YOUR ERA</span>
-
             <span>✦ SHOP YUGA</span>
-
             <span>✦ NEW DROP LIVE</span>
-
             <span>✦ WEAR YOUR ERA</span>
-
             <span>✦ SHOP YUGA</span>
-
             <span>✦ NEW DROP LIVE</span>
-
             <span>✦ WEAR YOUR ERA</span>
-
             <span>✦ SHOP YUGA</span>
-
             <span>✦ NEW DROP LIVE</span>
-
             <span>✦ WEAR YOUR ERA</span>
-
             <span>✦ SHOP YUGA</span>
 
         </div>
 
     </div>
-
-
-    <!-- =========================================================
-         NEW YUGA OFFER BAR
-    ========================================================== -->
-
-    <a
-        href="#collections"
-        class="yuga-offer-bar"
-        aria-label="Shop YUGA and get free delivery above 999 rupees"
-    >
-
-        <div class="yuga-offer-track">
-
-            <span>
-                ✦ LIMITED-TIME OFFER
-            </span>
-
-            <span>
-                FREE DELIVERY ABOVE ₹999
-            </span>
-
-            <span>
-                BUILD YOUR ERA
-            </span>
-
-            <span>
-                SHOP YUGA →
-            </span>
-
-        </div>
-
-    </a>
 
 
     <!-- =========================================================
@@ -2585,16 +1413,14 @@
     >
 
         <a href="#collections">
-
             Seasonal Collection.
-
         </a>
 
 
+        <!-- ABOUT US NOW OPENS ABOUT US PAGE -->
+
         <a href="About us.html">
-
             About Us
-
         </a>
 
 
@@ -2604,9 +1430,7 @@
             rel="noopener noreferrer"
             class="nav-order"
         >
-
             Order Now
-
         </a>
 
     </nav>
@@ -2621,31 +1445,23 @@
         <div class="hero-premium-content">
 
             <p class="hero-eyebrow">
-
                 YUGA FASHION
-
             </p>
 
 
             <h1>
-
                 YUGA
-
             </h1>
 
 
             <p class="hero-tagline">
-
                 WEAR YOUR ERA.
-
             </p>
 
 
             <p class="hero-description">
-
                 Modern essentials and expressive pieces
                 made for the generation creating its own style.
-
             </p>
 
 
@@ -2653,18 +1469,14 @@
                 href="#collections"
                 class="hero-shop-button"
             >
-
                 SHOP NOW →
-
             </a>
 
         </div>
 
 
         <div class="hero-scroll">
-
             SCROLL TO EXPLORE
-
         </div>
 
     </section>
@@ -2677,9 +1489,7 @@
     <section class="brand-statement reveal">
 
         <p class="statement-small">
-
             THE YUGA MINDSET
-
         </p>
 
 
@@ -2690,9 +1500,7 @@
             <br>
 
             <span>
-
                 It's the era you represent.
-
             </span>
 
         </h2>
@@ -2712,47 +1520,17 @@
          YUGA MOTION MARQUEE
     ========================================================== -->
 
-    <div
-        class="yuga-marquee"
-        aria-hidden="true"
-    >
-
+    <div class="yuga-marquee" aria-hidden="true">
         <div class="yuga-marquee-track">
-
-            <span>
-                YUGA · WEAR YOUR ERA
-            </span>
-
-            <span>
-                YUGA · WEAR YOUR ERA
-            </span>
-
-            <span>
-                YUGA · WEAR YOUR ERA
-            </span>
-
-            <span>
-                YUGA · WEAR YOUR ERA
-            </span>
-
-            <span>
-                YUGA · WEAR YOUR ERA
-            </span>
-
-            <span>
-                YUGA · WEAR YOUR ERA
-            </span>
-
-            <span>
-                YUGA · WEAR YOUR ERA
-            </span>
-
-            <span>
-                YUGA · WEAR YOUR ERA
-            </span>
-
+            <span>YUGA · WEAR YOUR ERA</span>
+            <span>YUGA · WEAR YOUR ERA</span>
+            <span>YUGA · WEAR YOUR ERA</span>
+            <span>YUGA · WEAR YOUR ERA</span>
+            <span>YUGA · WEAR YOUR ERA</span>
+            <span>YUGA · WEAR YOUR ERA</span>
+            <span>YUGA · WEAR YOUR ERA</span>
+            <span>YUGA · WEAR YOUR ERA</span>
         </div>
-
     </div>
 
 
@@ -2769,23 +1547,17 @@
         <div class="collection-heading reveal">
 
             <p class="eyebrow">
-
                 DISCOVER YUGA
-
             </p>
 
 
             <h2>
-
                 SHOP BY SEASON
-
             </h2>
 
 
             <p>
-
                 Find your season. Wear your era.
-
             </p>
 
         </div>
@@ -2793,114 +1565,72 @@
 
         <div class="collection-showcase">
 
-
-            <!-- =================================================
-                 SUMMER
-            ================================================== -->
-
+            <!-- SUMMER -->
             <a
                 href="summer.html"
                 class="collection-panel reveal seasonal-panel"
             >
-
                 <img
                     src="YUGA H1.png"
                     alt="YUGA Summer Collection"
                     class="collection-image"
                 >
 
-
                 <div class="collection-overlay seasonal-overlay">
-
                     <img
                         src="Logo.png"
                         alt="YUGA"
                         class="logo"
                     >
 
-
-                    <h3>
-
-                        SUMMER '26
-
-                    </h3>
-
+                    <h3>SUMMER '26</h3>
 
                     <p>
-
                         Plain · Polo · Printed
-
                     </p>
 
-
                     <span class="collection-explore">
-
                         Explore Summer →
-
                     </span>
-
                 </div>
-
             </a>
 
-
-            <!-- =================================================
-                 WINTER
-            ================================================== -->
-
+            <!-- WINTER -->
             <button
                 type="button"
                 class="collection-panel reveal seasonal-panel winter-trigger"
                 id="winterCollectionTrigger"
                 aria-label="Open YUGA Winter '26 collection"
             >
-
                 <img
                     src="YUGA H22.png"
                     alt="YUGA Winter Collection"
                     class="collection-image"
                 >
 
-
                 <div class="collection-overlay seasonal-overlay">
-
                     <img
                         src="Logo.png"
                         alt="YUGA"
                         class="logo"
                     >
 
-
-                    <h3>
-
-                        WINTER '26
-
-                    </h3>
-
+                    <h3>WINTER '26</h3>
 
                     <p>
-
                         Winter '26
-
                     </p>
 
-
                     <span class="collection-explore">
-
                         Explore Winter →
-
                     </span>
-
                 </div>
-
             </button>
 
         </div>
 
 
-        <!-- =====================================================
-             SHOP ALL
-        ====================================================== -->
+        <!-- SHOP ALL -->
 
         <div class="shop-all-section reveal">
 
@@ -2908,9 +1638,7 @@
                 href="#collections"
                 class="shop-all-button"
             >
-
                 EXPLORE ALL COLLECTIONS →
-
             </a>
 
         </div>
@@ -2928,23 +1656,17 @@
     >
 
         <h2>
-
             YUGA
-
         </h2>
 
 
         <p>
-
             Fashion for your era.
-
         </p>
 
 
         <p>
-
             Explore our collection and find what fits your style.
-
         </p>
 
     </section>
@@ -2962,23 +1684,17 @@
             <div class="contact-info reveal">
 
                 <p class="contact-label">
-
                     YUGA FASHION
-
                 </p>
 
 
                 <h2>
-
                     VISIT US
-
                 </h2>
 
 
                 <p class="contact-tagline">
-
                     Wear Your Era.
-
                 </p>
 
 
@@ -2990,26 +1706,20 @@
                     <div class="contact-item">
 
                         <span>
-
                             📍
-
                         </span>
 
 
                         <div>
 
                             <strong>
-
                                 STORE LOCATION
-
                             </strong>
 
 
                             <p>
-
                                 Sector 20, Chandigarh,<br>
                                 160020
-
                             </p>
 
                         </div>
@@ -3022,18 +1732,14 @@
                     <div class="contact-item">
 
                         <span>
-
                             📱
-
                         </span>
 
 
                         <div>
 
                             <strong>
-
                                 WHATSAPP
-
                             </strong>
 
 
@@ -3045,9 +1751,7 @@
                                     rel="noopener noreferrer"
                                     class="whatsapp-link"
                                 >
-
                                     CHAT WITH YUGA
-
                                 </a>
 
                             </p>
@@ -3068,9 +1772,7 @@
                     rel="noopener noreferrer"
                     class="map-button"
                 >
-
                     OPEN IN GOOGLE MAPS →
-
                 </a>
 
 
@@ -3082,9 +1784,7 @@
                     rel="noopener noreferrer"
                     class="whatsapp-button"
                 >
-
                     CHAT ON WHATSAPP →
-
                 </a>
 
             </div>
@@ -3115,16 +1815,12 @@
     <footer>
 
         <h2>
-
             YUGA
-
         </h2>
 
 
         <p class="footer-tagline">
-
             Wear Your Era.
-
         </p>
 
 
@@ -3139,9 +1835,7 @@
                 rel="noopener noreferrer"
                 class="footer-link"
             >
-
                 Instagram
-
             </a>
 
 
@@ -3153,9 +1847,7 @@
                 rel="noopener noreferrer"
                 class="footer-link"
             >
-
                 YouTube
-
             </a>
 
 
@@ -3165,9 +1857,7 @@
                 href="mailto:yugafashiononline@gmail.com"
                 class="footer-link"
             >
-
                 Customer Care
-
             </a>
 
 
@@ -3179,9 +1869,7 @@
                 rel="noopener noreferrer"
                 class="footer-link"
             >
-
                 WhatsApp
-
             </a>
 
 
@@ -3191,18 +1879,14 @@
                 href="policies.html"
                 class="footer-link"
             >
-
                 Policies
-
             </a>
 
         </div>
 
 
         <p class="footer-copy">
-
             © 2026 YUGA Fashion
-
         </p>
 
     </footer>
@@ -3299,9 +1983,7 @@
         aria-label="Open YUGA AI"
         title="YUGA AI"
     >
-
         🤖
-
     </button>
 
 
@@ -3315,16 +1997,12 @@
             <div>
 
                 <strong>
-
                     YUGA AI
-
                 </strong>
 
 
                 <span>
-
                     ● Online
-
                 </span>
 
             </div>
@@ -3335,9 +2013,7 @@
                 type="button"
                 aria-label="Close chatbot"
             >
-
                 ×
-
             </button>
 
         </div>
@@ -3361,89 +2037,39 @@
 
 
             <!-- QUICK TOPICS -->
-
             <div class="yuga-quick-buttons">
 
-
-                <button
-                    type="button"
-                    data-question="Tell me about the Summer '26 collection"
-                >
-
+                <button type="button" data-question="Tell me about the Summer '26 collection">
                     ☀️ Summer '26
-
                 </button>
 
-
-                <button
-                    type="button"
-                    data-question="Tell me about the Winter '26 collection"
-                >
-
+                <button type="button" data-question="Tell me about the Winter '26 collection">
                     ❄️ Winter '26
-
                 </button>
 
-
-                <button
-                    type="button"
-                    data-question="What products does YUGA offer?"
-                >
-
+                <button type="button" data-question="What products does YUGA offer?">
                     👕 Products
-
                 </button>
 
-
-                <button
-                    type="button"
-                    data-question="What sizes are available?"
-                >
-
+                <button type="button" data-question="What sizes are available?">
                     📏 Sizes
-
                 </button>
 
-
-                <button
-                    type="button"
-                    data-question="What are your prices?"
-                >
-
+                <button type="button" data-question="What are your prices?">
                     💰 Prices
-
                 </button>
 
-
-                <button
-                    type="button"
-                    data-question="How can I order from YUGA?"
-                >
-
+                <button type="button" data-question="How can I order from YUGA?">
                     🛒 How to Order
-
                 </button>
 
-
-                <button
-                    type="button"
-                    data-question="Do you offer delivery and how long does it take?"
-                >
-
+                <button type="button" data-question="Do you offer delivery and how long does it take?">
                     🚚 Delivery
-
                 </button>
 
-
-                <button
-                    type="button"
-                    data-question="How can I contact YUGA?"
-                >
-
+                <button type="button" data-question="How can I contact YUGA?">
                     💬 Contact YUGA
-
                 </button>
-
 
             </div>
 
@@ -3466,154 +2092,8 @@
                 id="yugaChatSend"
                 type="button"
             >
-
                 ➤
-
             </button>
-
-        </div>
-
-    </div>
-
-
-    <!-- =========================================================
-         NEW EXIT-INTENT OFFER POPUP
-    ========================================================== -->
-
-    <div
-        class="yuga-exit-overlay"
-        id="yugaExitOverlay"
-        aria-hidden="true"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="yugaExitTitle"
-        aria-describedby="yugaExitText"
-    >
-
-        <div class="yuga-exit-card">
-
-
-            <button
-                type="button"
-                class="yuga-exit-close"
-                id="yugaExitClose"
-                aria-label="Close offer"
-            >
-
-                ×
-
-            </button>
-
-
-            <p class="yuga-exit-eyebrow">
-
-                YUGA · LIMITED-TIME OFFER
-
-            </p>
-
-
-            <h2
-                class="yuga-exit-title"
-                id="yugaExitTitle"
-            >
-
-                WAIT — YOUR ERA ISN'T OVER YET.
-
-            </h2>
-
-
-            <div class="yuga-exit-offer">
-
-                FREE DELIVERY ABOVE ₹999
-
-            </div>
-
-
-            <p
-                class="yuga-exit-text"
-                id="yugaExitText"
-            >
-
-                Complete your YUGA look and unlock free delivery
-                on eligible orders above ₹999.
-
-            </p>
-
-
-            <a
-                href="#collections"
-                class="yuga-exit-button"
-                id="yugaExitShop"
-            >
-
-                CONTINUE SHOPPING →
-
-            </a>
-
-
-            <p class="yuga-exit-note">
-
-                Free delivery applies to eligible orders above ₹999.
-
-            </p>
-
-        </div>
-
-    </div>
-
-
-    <!-- =========================================================
-         WINTER '26 — COMING SOON OVERLAY
-    ========================================================== -->
-
-    <div
-        class="winter-coming-overlay"
-        id="winterComingOverlay"
-        aria-hidden="true"
-        role="dialog"
-        aria-modal="true"
-        aria-label="YUGA Winter '26 coming soon"
-    >
-
-        <div
-            class="winter-snow-field"
-            id="winterSnowField"
-        ></div>
-
-
-        <button
-            type="button"
-            class="winter-coming-close"
-            id="winterComingClose"
-            aria-label="Close Winter '26"
-        >
-
-            ×
-
-        </button>
-
-
-        <div class="winter-coming-content">
-
-            <p class="winter-coming-season">
-
-                YUGA · WINTER '26
-
-            </p>
-
-
-            <h2 class="winter-coming-title">
-
-                COMING SOON
-
-            </h2>
-
-
-            <p class="winter-coming-subtitle">
-
-                The coldest era is on its way.
-
-            </p>
 
         </div>
 
@@ -3675,54 +2155,18 @@
         ====================================================== */
 
         document.querySelectorAll('a[href]').forEach(function (link) {
+            const href = link.getAttribute('href');
+            if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:') || link.target === '_blank') return;
 
-            const href =
-                link.getAttribute('href');
-
-
-            if (
-                !href ||
-                href.startsWith('#') ||
-                href.startsWith('http') ||
-                href.startsWith('mailto:') ||
-                href.startsWith('tel:') ||
-                link.target === '_blank'
-            ) {
-
-                return;
-
-            }
-
-
-            link.addEventListener(
-                'click',
-                function (event) {
-
-                    if (event.defaultPrevented) return;
-
-
-                    event.preventDefault();
-
-
-                    const destination =
-                        href;
-
-
-                    document.body.classList.add(
-                        'yuga-page-leaving'
-                    );
-
-
-                    setTimeout(function () {
-
-                        window.location.href =
-                            destination;
-
-                    }, 400);
-
-                }
-            );
-
+            link.addEventListener('click', function (event) {
+                if (event.defaultPrevented) return;
+                event.preventDefault();
+                const destination = href;
+                document.body.classList.add('yuga-page-leaving');
+                setTimeout(function () {
+                    window.location.href = destination;
+                }, 400);
+            });
         });
 
 
@@ -3730,83 +2174,21 @@
            MOUSE PARALLAX ON SEASON IMAGES
         ====================================================== */
 
-        document
-            .querySelectorAll('.seasonal-panel')
-            .forEach(function (panel) {
-
-                panel.addEventListener(
-                    'mousemove',
-                    function (event) {
-
-                        if (
-                            window.matchMedia(
-                                '(prefers-reduced-motion: reduce)'
-                            ).matches
-                        ) {
-
-                            return;
-
-                        }
-
-
-                        const rect =
-                            panel.getBoundingClientRect();
-
-
-                        const x =
-                            (
-                                (event.clientX - rect.left)
-                                / rect.width
-                                - 0.5
-                            ) * 2;
-
-
-                        const y =
-                            (
-                                (event.clientY - rect.top)
-                                / rect.height
-                                - 0.5
-                            ) * 2;
-
-
-                        const image =
-                            panel.querySelector(
-                                '.collection-image'
-                            );
-
-
-                        if (image) {
-
-                            image.style.transform =
-                                `scale(1.055) translate(${x * 7}px, ${y * 5}px)`;
-
-                        }
-
-                    }
-                );
-
-
-                panel.addEventListener(
-                    'mouseleave',
-                    function () {
-
-                        const image =
-                            panel.querySelector(
-                                '.collection-image'
-                            );
-
-
-                        if (image) {
-
-                            image.style.transform =
-                                '';
-
-                        }
-
-                    }
-                );
-
+        document.querySelectorAll('.seasonal-panel').forEach(function (panel) {
+            panel.addEventListener('mousemove', function (event) {
+                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+                const rect = panel.getBoundingClientRect();
+                const x = ((event.clientX - rect.left) / rect.width - 0.5) * 2;
+                const y = ((event.clientY - rect.top) / rect.height - 0.5) * 2;
+                const image = panel.querySelector('.collection-image');
+                if (image) image.style.transform = `scale(1.055) translate(${x * 7}px, ${y * 5}px)`;
             });
+
+            panel.addEventListener('mouseleave', function () {
+                const image = panel.querySelector('.collection-image');
+                if (image) image.style.transform = '';
+            });
+        });
 
 
         /* =====================================================
@@ -3814,15 +2196,12 @@
         ====================================================== */
 
         const collectionPanels =
-            document.querySelectorAll(
-                ".collection-panel"
-            );
+            document.querySelectorAll(".collection-panel");
 
 
         collectionPanels.forEach(function(panel) {
 
             panel.addEventListener(
-
                 "touchstart",
 
                 function() {
@@ -3830,9 +2209,7 @@
                     collectionPanels.forEach(
                         function(otherPanel) {
 
-                            if (
-                                otherPanel !== panel
-                            ) {
+                            if (otherPanel !== panel) {
 
                                 otherPanel.classList.remove(
                                     "touch-active"
@@ -3864,22 +2241,17 @@
         ====================================================== */
 
         const canvas =
-            document.getElementById(
-                "yugaWaveCanvas"
-            );
+            document.getElementById("yugaWaveCanvas");
 
 
         const ctx =
-            canvas
-                ? canvas.getContext("2d")
-                : null;
+            canvas ? canvas.getContext("2d") : null;
 
 
         const mouseSupported =
             window.matchMedia(
                 "(hover: hover) and (pointer: fine)"
             ).matches;
-
 
         const touchSupported =
             window.matchMedia(
@@ -4022,16 +2394,12 @@
                         1.8 + Math.random() * 1.4,
 
                     wobble:
-                        Math.random() *
-                        Math.PI *
-                        2
+                        Math.random() * Math.PI * 2
 
                 });
 
 
-                if (
-                    ripples.length > 18
-                ) {
+                if (ripples.length > 18) {
 
                     ripples.shift();
 
@@ -4045,7 +2413,6 @@
             ================================================== */
 
             document.addEventListener(
-
                 "mousemove",
 
                 function(event) {
@@ -4065,12 +2432,9 @@
                         );
 
 
-                    if (
-                        movement > 5
-                    ) {
+                    if (movement > 5) {
 
-                        mouseMoving =
-                            true;
+                        mouseMoving = true;
 
 
                         createRipple(
@@ -4103,150 +2467,63 @@
 
             /* =================================================
                MOBILE TOUCH DROPLETS / RIPPLE TRAIL
+               Works without blocking page scrolling.
             ================================================== */
 
-            if (
-                touchSupported
-            ) {
-
-                let lastTouchTime =
-                    0;
-
+            if (touchSupported) {
+                let lastTouchTime = 0;
 
                 document.addEventListener(
-
                     "touchstart",
-
                     function(event) {
-
-                        const touch =
-                            event.touches[0];
-
-
+                        const touch = event.touches[0];
                         if (!touch) return;
 
-
-                        targetX =
-                            lastX =
-                                touch.clientX;
-
-
-                        targetY =
-                            lastY =
-                                touch.clientY;
-
-
-                        mouseMoving =
-                            true;
-
-
-                        createRipple(
-                            targetX,
-                            targetY,
-                            1.35
-                        );
-
-
-                        lastTouchTime =
-                            Date.now();
-
+                        targetX = lastX = touch.clientX;
+                        targetY = lastY = touch.clientY;
+                        mouseMoving = true;
+                        createRipple(targetX, targetY, 1.35);
+                        lastTouchTime = Date.now();
                     },
-
-                    {
-                        passive: true
-                    }
-
+                    { passive: true }
                 );
 
-
                 document.addEventListener(
-
                     "touchmove",
-
                     function(event) {
-
-                        const touch =
-                            event.touches[0];
-
-
+                        const touch = event.touches[0];
                         if (!touch) return;
 
+                        targetX = touch.clientX;
+                        targetY = touch.clientY;
 
-                        targetX =
-                            touch.clientX;
+                        const movement = Math.hypot(
+                            targetX - lastX,
+                            targetY - lastY
+                        );
 
-
-                        targetY =
-                            touch.clientY;
-
-
-                        const movement =
-                            Math.hypot(
-                                targetX - lastX,
-                                targetY - lastY
-                            );
-
-
-                        if (
-                            movement > 10 &&
-                            Date.now() -
-                            lastTouchTime >
-                            35
-                        ) {
-
-                            mouseMoving =
-                                true;
-
-
+                        if (movement > 10 && Date.now() - lastTouchTime > 35) {
+                            mouseMoving = true;
                             createRipple(
                                 targetX,
                                 targetY,
-                                Math.min(
-                                    movement / 22,
-                                    1.45
-                                )
+                                Math.min(movement / 22, 1.45)
                             );
-
-
-                            lastX =
-                                targetX;
-
-
-                            lastY =
-                                targetY;
-
-
-                            lastTouchTime =
-                                Date.now();
-
+                            lastX = targetX;
+                            lastY = targetY;
+                            lastTouchTime = Date.now();
                         }
-
                     },
-
-                    {
-                        passive: true
-                    }
-
+                    { passive: true }
                 );
-
 
                 document.addEventListener(
-
                     "touchend",
-
                     function() {
-
-                        mouseMoving =
-                            false;
-
+                        mouseMoving = false;
                     },
-
-                    {
-                        passive: true
-                    }
-
+                    { passive: true }
                 );
-
             }
 
 
@@ -4255,21 +2532,17 @@
             ================================================== */
 
             document.addEventListener(
-
                 "mouseleave",
 
                 function() {
 
-                    mouseMoving =
-                        false;
+                    mouseMoving = false;
 
                 }
-
             );
 
 
             document.addEventListener(
-
                 "mouseenter",
 
                 function(event) {
@@ -4290,7 +2563,6 @@
                         targetY;
 
                 }
-
             );
 
 
@@ -4314,11 +2586,8 @@
                 ) {
 
                     const angle =
-                        (
-                            Math.PI *
-                            2 *
-                            i
-                        ) / points;
+                        (Math.PI * 2 * i) /
+                        points;
 
 
                     const wave =
@@ -4354,9 +2623,7 @@
                         radius;
 
 
-                    if (
-                        i === 0
-                    ) {
+                    if (i === 0) {
 
                         ctx.moveTo(
                             x,
@@ -4413,24 +2680,18 @@
                 /* Smooth mouse movement */
 
                 mouseX +=
-                    (
-                        targetX -
-                        mouseX
-                    ) * 0.12;
+                    (targetX - mouseX) *
+                    0.12;
 
 
                 mouseY +=
-                    (
-                        targetY -
-                        mouseY
-                    ) * 0.12;
+                    (targetY - mouseY) *
+                    0.12;
 
 
                 /* SOFT GREY GLOW */
 
-                if (
-                    mouseMoving
-                ) {
+                if (mouseMoving) {
 
                     const glow =
                         ctx.createRadialGradient(
@@ -4541,590 +2802,106 @@
 
         }
 
-
-        /* =====================================================
-           EXIT-INTENT OFFER POPUP
-        ====================================================== */
-
-        (function () {
-
-
-            const exitOverlay =
-                document.getElementById(
-                    "yugaExitOverlay"
-                );
-
-
-            const exitClose =
-                document.getElementById(
-                    "yugaExitClose"
-                );
-
-
-            const exitShop =
-                document.getElementById(
-                    "yugaExitShop"
-                );
-
-
-            if (
-                !exitOverlay ||
-                !exitClose
-            ) {
-
-                return;
-
-            }
-
-
-            const SESSION_KEY =
-                "yugaExitOfferShown";
-
-
-            let offerShown =
-                false;
-
-
-            try {
-
-                offerShown =
-                    sessionStorage.getItem(
-                        SESSION_KEY
-                    ) === "true";
-
-            } catch (error) {
-
-                offerShown =
-                    false;
-
-            }
-
-
-            let pageReadyTime =
-                Date.now();
-
-
-            setTimeout(
-                function () {
-
-                    pageReadyTime =
-                        Date.now();
-
-                },
-                5000
-            );
-
-
-            function isWinterOpen() {
-
-                const winterOverlay =
-                    document.getElementById(
-                        "winterComingOverlay"
-                    );
-
-
-                return (
-                    winterOverlay &&
-                    winterOverlay.classList.contains(
-                        "active"
-                    )
-                );
-
-            }
-
-
-            function showExitOffer() {
-
-
-                if (
-                    offerShown
-                ) {
-
-                    return;
-
-                }
-
-
-                if (
-                    isWinterOpen()
-                ) {
-
-                    return;
-
-                }
-
-
-                if (
-                    Date.now() -
-                    pageReadyTime <
-                    5000
-                ) {
-
-                    return;
-
-                }
-
-
-                offerShown =
-                    true;
-
-
-                try {
-
-                    sessionStorage.setItem(
-                        SESSION_KEY,
-                        "true"
-                    );
-
-                } catch (error) {
-
-                    /* Ignore storage errors */
-
-                }
-
-
-                exitOverlay.classList.add(
-                    "active"
-                );
-
-
-                exitOverlay.setAttribute(
-                    "aria-hidden",
-                    "false"
-                );
-
-
-                document.body.style.overflow =
-                    "hidden";
-
-            }
-
-
-            function closeExitOffer() {
-
-
-                exitOverlay.classList.remove(
-                    "active"
-                );
-
-
-                exitOverlay.setAttribute(
-                    "aria-hidden",
-                    "true"
-                );
-
-
-                const winterOverlay =
-                    document.getElementById(
-                        "winterComingOverlay"
-                    );
-
-
-                if (
-                    !winterOverlay ||
-                    !winterOverlay.classList.contains(
-                        "active"
-                    )
-                ) {
-
-                    document.body.style.overflow =
-                        "";
-
-                }
-
-            }
-
-
-            /* =================================================
-               DESKTOP EXIT INTENT
-            ================================================== */
-
-            document.addEventListener(
-
-                "mouseleave",
-
-                function (event) {
-
-
-                    const desktop =
-                        window.matchMedia(
-                            "(pointer: fine)"
-                        ).matches;
-
-
-                    if (
-                        !desktop
-                    ) {
-
-                        return;
-
-                    }
-
-
-                    if (
-                        event.clientY <= 8
-                    ) {
-
-                        showExitOffer();
-
-                    }
-
-                }
-
-            );
-
-
-            /* =================================================
-               MOBILE FALLBACK
-            ================================================== */
-
-            const mobileDevice =
-                window.matchMedia(
-                    "(pointer: coarse)"
-                ).matches;
-
-
-            if (
-                mobileDevice
-            ) {
-
-                setTimeout(
-
-                    function () {
-
-                        showExitOffer();
-
-                    },
-
-                    35000
-
-                );
-
-            }
-
-
-            /* =================================================
-               CLOSE BUTTON
-            ================================================== */
-
-            exitClose.addEventListener(
-
-                "click",
-
-                closeExitOffer
-
-            );
-
-
-            /* =================================================
-               CLICK OUTSIDE
-            ================================================== */
-
-            exitOverlay.addEventListener(
-
-                "click",
-
-                function (event) {
-
-                    if (
-                        event.target ===
-                        exitOverlay
-                    ) {
-
-                        closeExitOffer();
-
-                    }
-
-                }
-
-            );
-
-
-            /* =================================================
-               ESCAPE KEY
-            ================================================== */
-
-            document.addEventListener(
-
-                "keydown",
-
-                function (event) {
-
-                    if (
-                        event.key === "Escape" &&
-                        exitOverlay.classList.contains(
-                            "active"
-                        )
-                    ) {
-
-                        closeExitOffer();
-
-                    }
-
-                }
-
-            );
-
-
-            /* =================================================
-               CONTINUE SHOPPING
-            ================================================== */
-
-            if (
-                exitShop
-            ) {
-
-                exitShop.addEventListener(
-
-                    "click",
-
-                    function () {
-
-                        closeExitOffer();
-
-                    }
-
-                );
-
-            }
-
-
-        })();
-
     </script>
+
+
 
 
     <!-- =========================================================
-         WINTER '26 — CLICK + SNOW BURST
+         WINTER '26 — COMING SOON OVERLAY
     ========================================================== -->
-
-    <script>
-
-        (function () {
-
-            const winterTrigger =
-                document.getElementById(
-                    "winterCollectionTrigger"
-                );
-
-
-            const winterOverlay =
-                document.getElementById(
-                    "winterComingOverlay"
-                );
-
-
-            const winterClose =
-                document.getElementById(
-                    "winterComingClose"
-                );
-
-
-            const winterSnowField =
-                document.getElementById(
-                    "winterSnowField"
-                );
-
-
-            if (
-                !winterTrigger ||
-                !winterOverlay ||
-                !winterClose ||
-                !winterSnowField
-            ) {
-
-                return;
-
-            }
-
-
-            function createSnowBurst() {
-
-                winterSnowField.innerHTML =
-                    "";
-
-
-                const count =
-                    window.innerWidth < 600
-                        ? 55
-                        : 90;
-
-
-                for (
-                    let i = 0;
-                    i < count;
-                    i++
-                ) {
-
-                    const flake =
-                        document.createElement(
-                            "span"
-                        );
-
-
-                    flake.className =
-                        "winter-snowflake";
-
-
-                    const angle =
-                        Math.random() *
-                        Math.PI *
-                        2;
-
-
-                    const distance =
-                        180 +
-                        Math.random() *
-                        Math.max(
-                            window.innerWidth,
-                            window.innerHeight
-                        ) *
-                        0.72;
-
-
-                    const x =
-                        Math.cos(angle) *
-                        distance;
-
-
-                    const y =
-                        Math.sin(angle) *
-                        distance;
-
-
-                    flake.style.setProperty(
-                        "--x",
-                        `${x}px`
-                    );
-
-
-                    flake.style.setProperty(
-                        "--y",
-                        `${y}px`
-                    );
-
-
-                    flake.style.setProperty(
-                        "--size",
-                        `${2 + Math.random() * 6}px`
-                    );
-
-
-                    flake.style.setProperty(
-                        "--duration",
-                        `${1.1 + Math.random() * 1.4}s`
-                    );
-
-
-                    flake.style.animationDelay =
-                        `${Math.random() * 0.08}s`;
-
-
-                    winterSnowField.appendChild(
-                        flake
-                    );
-
-                }
-
-            }
-
-
-            function openWinter() {
-
-                createSnowBurst();
-
-
-                winterOverlay.classList.add(
-                    "active"
-                );
-
-
-                winterOverlay.setAttribute(
-                    "aria-hidden",
-                    "false"
-                );
-
-
-                document.body.style.overflow =
-                    "hidden";
-
-            }
-
-
-            function closeWinter() {
-
-                winterOverlay.classList.remove(
-                    "active"
-                );
-
-
-                winterOverlay.setAttribute(
-                    "aria-hidden",
-                    "true"
-                );
-
-
-                document.body.style.overflow =
-                    "";
-
-            }
-
-
-            winterTrigger.addEventListener(
-                "click",
-                openWinter
-            );
-
-
-            winterClose.addEventListener(
-                "click",
-                closeWinter
-            );
-
-
-            winterOverlay.addEventListener(
-                "click",
-                function (event) {
-
-                    if (
-                        event.target ===
-                        winterOverlay
-                    ) {
-
-                        closeWinter();
-
-                    }
-
-                }
-            );
-
-
-            document.addEventListener(
-                "keydown",
-                function (event) {
-
-                    if (
-                        event.key === "Escape" &&
-                        winterOverlay.classList.contains(
-                            "active"
-                        )
-                    ) {
-
-                        closeWinter();
-
-                    }
-
-                }
-            );
-
-        })();
-
-    </script>
-
+    <div
+        class="winter-coming-overlay"
+        id="winterComingOverlay"
+        aria-hidden="true"
+        role="dialog"
+        aria-modal="true"
+        aria-label="YUGA Winter '26 coming soon"
+    >
+        <div class="winter-snow-field" id="winterSnowField"></div>
+
+        <button
+            type="button"
+            class="winter-coming-close"
+            id="winterComingClose"
+            aria-label="Close Winter '26"
+        >×</button>
+
+        <div class="winter-coming-content">
+            <p class="winter-coming-season">YUGA · WINTER '26</p>
+            <h2 class="winter-coming-title">COMING SOON</h2>
+            <p class="winter-coming-subtitle">The coldest era is on its way.</p>
+        </div>
+    </div>
 
     <!-- =========================================================
          LOAD YUGA JAVASCRIPT
     ========================================================== -->
+
+
+    <script>
+        /* =====================================================
+           WINTER '26 — CLICK + SNOW BURST
+        ====================================================== */
+        (function () {
+            const winterTrigger = document.getElementById("winterCollectionTrigger");
+            const winterOverlay = document.getElementById("winterComingOverlay");
+            const winterClose = document.getElementById("winterComingClose");
+            const winterSnowField = document.getElementById("winterSnowField");
+
+            if (!winterTrigger || !winterOverlay || !winterClose || !winterSnowField) return;
+
+            function createSnowBurst() {
+                winterSnowField.innerHTML = "";
+
+                const count = window.innerWidth < 600 ? 55 : 90;
+
+                for (let i = 0; i < count; i++) {
+                    const flake = document.createElement("span");
+                    flake.className = "winter-snowflake";
+
+                    const angle = Math.random() * Math.PI * 2;
+                    const distance = 180 + Math.random() * Math.max(window.innerWidth, window.innerHeight) * 0.72;
+                    const x = Math.cos(angle) * distance;
+                    const y = Math.sin(angle) * distance;
+
+                    flake.style.setProperty("--x", `${x}px`);
+                    flake.style.setProperty("--y", `${y}px`);
+                    flake.style.setProperty("--size", `${2 + Math.random() * 6}px`);
+                    flake.style.setProperty("--duration", `${1.1 + Math.random() * 1.4}s`);
+                    flake.style.animationDelay = `${Math.random() * 0.08}s`;
+
+                    winterSnowField.appendChild(flake);
+                }
+            }
+
+            function openWinter() {
+                createSnowBurst();
+                winterOverlay.classList.add("active");
+                winterOverlay.setAttribute("aria-hidden", "false");
+                document.body.style.overflow = "hidden";
+            }
+
+            function closeWinter() {
+                winterOverlay.classList.remove("active");
+                winterOverlay.setAttribute("aria-hidden", "true");
+                document.body.style.overflow = "";
+            }
+
+            winterTrigger.addEventListener("click", openWinter);
+            winterClose.addEventListener("click", closeWinter);
+
+            winterOverlay.addEventListener("click", function (event) {
+                if (event.target === winterOverlay) closeWinter();
+            });
+
+            document.addEventListener("keydown", function (event) {
+                if (event.key === "Escape" && winterOverlay.classList.contains("active")) {
+                    closeWinter();
+                }
+            });
+        })();
+    </script>
 
     <script src="script.js"></script>
 
