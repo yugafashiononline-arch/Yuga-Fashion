@@ -63,66 +63,13 @@
     }
 
 
-    .product-image-zoom {
-        position: relative;
-    }
-
     .product-image-zoom img {
-        transition: transform 0.35s ease, opacity 0.25s ease;
-        display: block;
-        width: 100%;
+        transition: transform 0.35s ease;
     }
 
-    /* FRONT / BACK IMAGE SWITCH ON COLLECTION CARDS */
-    .winter-product .product-image-zoom {
-        cursor: pointer;
-    }
 
-    .winter-product .product-image-zoom::after {
-        content: "HOVER TO VIEW BACK";
-        position: absolute;
-        left: 50%;
-        bottom: 12px;
-        transform: translateX(-50%);
-        z-index: 3;
-        padding: 6px 10px;
-        border-radius: 4px;
-        background: rgba(17, 17, 17, 0.82);
-        color: #fff;
-        font-size: 9px;
-        font-weight: 700;
-        letter-spacing: 1.2px;
-        pointer-events: none;
-        opacity: 0;
-        transition: opacity 0.25s ease;
-        white-space: nowrap;
-    }
-
-    .winter-product:hover .product-image-zoom::after {
-        opacity: 1;
-    }
-
-    .winter-product .product-image-zoom.is-back::after {
-        content: "BACK VIEW • TAP TO RETURN";
-        opacity: 1;
-    }
-
-    @media (max-width: 700px) {
-        .winter-product .product-image-zoom::after {
-            content: "TAP TO VIEW BACK";
-            opacity: 1;
-            bottom: 10px;
-            font-size: 8px;
-            padding: 5px 8px;
-        }
-
-        .winter-product .product-image-zoom.is-back::after {
-            content: "TAP FOR FRONT";
-        }
-
-        .winter-product:hover .product-image-zoom img {
-            transform: none;
-        }
+    .product:hover .product-image-zoom img {
+        transform: scale(1.06);
     }
 
 
@@ -863,178 +810,28 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        const products = document.querySelectorAll(".winter-product");
-        const modal = document.getElementById("productModal");
-        const close = document.getElementById("modalClose");
-        const image = document.getElementById("modalImage");
-        const imageBox = document.getElementById("modalImageContainer");
-        const name = document.getElementById("modalName");
-        const price = document.getElementById("modalPrice");
-        const colour = document.getElementById("modalColour");
-        const notify = document.getElementById("modalNotifyButton");
-        const frontBtn = document.getElementById("frontViewBtn");
-        const backBtn = document.getElementById("backViewBtn");
-        let selected = null;
+        const products=document.querySelectorAll(".winter-product");
+        const modal=document.getElementById("productModal");
+        const close=document.getElementById("modalClose");
+        const image=document.getElementById("modalImage");
+        const imageBox=document.getElementById("modalImageContainer");
+        const name=document.getElementById("modalName");
+        const price=document.getElementById("modalPrice");
+        const colour=document.getElementById("modalColour");
+        const notify=document.getElementById("modalNotifyButton");
+        const frontBtn=document.getElementById("frontViewBtn");
+        const backBtn=document.getElementById("backViewBtn");
+        let selected=null;
 
-        /*
-         * COLLECTION CARD FRONT / BACK
-         * Desktop: hover over the product image = BACK
-         * Mobile/tablet: tap the product image = FRONT/BACK
-         */
-
-        const touchDevice =
-            window.matchMedia("(hover: none), (pointer: coarse)").matches;
-
-        products.forEach(function (product) {
-            const cardImageBox = product.querySelector(".product-image-zoom");
-            const cardImage = cardImageBox.querySelector("img");
-
-            const frontImage = product.dataset.image;
-            const backImage = product.dataset.backImage;
-
-            // Preload the back image for an instant switch.
-            const preload = new Image();
-            preload.src = backImage;
-
-            function showCardFront() {
-                cardImage.src = frontImage;
-                cardImageBox.classList.remove("is-back");
-            }
-
-            function showCardBack() {
-                cardImage.src = backImage;
-                cardImageBox.classList.add("is-back");
-            }
-
-            // Desktop hover.
-            product.addEventListener("mouseenter", function () {
-                if (!touchDevice) {
-                    showCardBack();
-                }
-            });
-
-            product.addEventListener("mouseleave", function () {
-                if (!touchDevice) {
-                    showCardFront();
-                }
-            });
-
-            // Mobile/tablet tap.
-            cardImageBox.addEventListener("click", function (event) {
-                if (!touchDevice) return;
-
-                event.stopPropagation();
-
-                if (cardImageBox.classList.contains("is-back")) {
-                    showCardFront();
-                } else {
-                    showCardBack();
-                }
-            });
-        });
-
-        /* =====================================================
-           PRODUCT MODAL
-        ====================================================== */
-
-        function showFront() {
-            if (!selected) return;
-
-            image.src = selected.dataset.image;
-            frontBtn.classList.add("active");
-            backBtn.classList.remove("active");
-            imageBox.classList.remove("zoomed");
-        }
-
-        function showBack() {
-            if (!selected) return;
-
-            image.src = selected.dataset.backImage;
-            backBtn.classList.add("active");
-            frontBtn.classList.remove("active");
-            imageBox.classList.remove("zoomed");
-        }
-
-        function openProduct(product) {
-            selected = product;
-
-            name.textContent = product.dataset.name;
-            price.textContent =
-                "₹" + product.dataset.price + " • Delivery Included";
-            colour.textContent = product.dataset.colour;
-
-            showFront();
-
-            modal.classList.add("active");
-            document.body.style.overflow = "hidden";
-        }
-
-        function notifyWhatsApp() {
-            if (!selected) return;
-
-            const msg =
-                "Hello YUGA!%0A%0A" +
-                "I want to be notified when the WINTER '26 sweatshirt launches.%0A%0A" +
-                "Product: YUGA Winter Sweatshirt%0A" +
-                "Colour: " + encodeURIComponent(selected.dataset.colour) + "%0A" +
-                "Price: ₹499%0A" +
-                "Expected Launch: 15 October 2026";
-
-            window.open(
-                "https://wa.me/917888759939?text=" + msg,
-                "_blank"
-            );
-        }
-
-        products.forEach(function (product) {
-            product.addEventListener("click", function (event) {
-                // Image tap is handled separately on touch devices.
-                // Clicking the rest of the card opens the modal.
-                if (
-                    !event.target.closest(".winter-notify") &&
-                    !event.target.closest(".product-image-zoom")
-                ) {
-                    openProduct(product);
-                }
-            });
-
-            product
-                .querySelector(".winter-notify")
-                .addEventListener("click", function (event) {
-                    event.stopPropagation();
-                    openProduct(product);
-                });
-        });
-
-        frontBtn.addEventListener("click", showFront);
-        backBtn.addEventListener("click", showBack);
-        notify.addEventListener("click", notifyWhatsApp);
-
-        // Existing modal image zoom remains unchanged.
-        imageBox.addEventListener("click", function () {
-            imageBox.classList.toggle("zoomed");
-        });
-
-        function closeModal() {
-            modal.classList.remove("active");
-            imageBox.classList.remove("zoomed");
-            document.body.style.overflow = "";
-            selected = null;
-        }
-
-        close.addEventListener("click", closeModal);
-
-        modal.addEventListener("click", function (event) {
-            if (event.target === modal) {
-                closeModal();
-            }
-        });
-
-        document.addEventListener("keydown", function (event) {
-            if (event.key === "Escape") {
-                closeModal();
-            }
-        });
+        function showFront(){ if(!selected)return; image.src=selected.dataset.image; frontBtn.classList.add("active"); backBtn.classList.remove("active"); imageBox.classList.remove("zoomed"); }
+        function showBack(){ if(!selected)return; image.src=selected.dataset.backImage; backBtn.classList.add("active"); frontBtn.classList.remove("active"); imageBox.classList.remove("zoomed"); }
+        function openProduct(product){ selected=product; name.textContent=product.dataset.name; price.textContent="₹"+product.dataset.price+" • Delivery Included"; colour.textContent=product.dataset.colour; showFront(); modal.classList.add("active"); document.body.style.overflow="hidden"; }
+        function notifyWhatsApp(){ if(!selected)return; const msg="Hello YUGA!%0A%0AI want to be notified when the WINTER '26 sweatshirt launches.%0A%0AProduct: YUGA Winter Sweatshirt%0AColour: "+encodeURIComponent(selected.dataset.colour)+"%0APrice: ₹499%0AExpected Launch: 15 October 2026"; window.open("https://wa.me/917888759939?text="+msg,"_blank"); }
+        products.forEach(p=>{ p.addEventListener("click",e=>{if(!e.target.closest(".winter-notify"))openProduct(p);}); p.querySelector(".winter-notify").addEventListener("click",e=>{e.stopPropagation();openProduct(p);}); });
+        frontBtn.addEventListener("click",showFront); backBtn.addEventListener("click",showBack); notify.addEventListener("click",notifyWhatsApp);
+        imageBox.addEventListener("click",()=>imageBox.classList.toggle("zoomed"));
+        function closeModal(){modal.classList.remove("active");imageBox.classList.remove("zoomed");document.body.style.overflow="";selected=null;}
+        close.addEventListener("click",closeModal); modal.addEventListener("click",e=>{if(e.target===modal)closeModal();}); document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal();});
     });
 </script>
 
