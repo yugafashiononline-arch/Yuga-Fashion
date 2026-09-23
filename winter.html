@@ -62,6 +62,92 @@
         overflow: hidden;
     }
 
+    /* WINTER PRODUCT FRONT/BACK GALLERY */
+    .winter-gallery {
+        position: relative;
+        overflow: hidden;
+        touch-action: pan-y;
+        cursor: default;
+    }
+
+    .winter-gallery img {
+        display: block;
+        width: 100%;
+        user-select: none;
+        -webkit-user-drag: none;
+    }
+
+    .winter-gallery-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 3;
+        width: 34px;
+        height: 34px;
+        border: 0;
+        border-radius: 50%;
+        background: rgba(255,255,255,.92);
+        color: #111;
+        font-size: 20px;
+        line-height: 34px;
+        text-align: center;
+        padding: 0;
+        cursor: pointer;
+        opacity: 0;
+        transition: opacity .2s ease, background .2s ease;
+    }
+
+    .winter-gallery:hover .winter-gallery-arrow,
+    .winter-gallery:focus-within .winter-gallery-arrow {
+        opacity: 1;
+    }
+
+    .winter-gallery-arrow:hover {
+        background: #fff;
+    }
+
+    .winter-gallery-arrow.prev { left: 10px; }
+    .winter-gallery-arrow.next { right: 10px; }
+
+    .winter-gallery-dots {
+        position: absolute;
+        left: 50%;
+        bottom: 10px;
+        transform: translateX(-50%);
+        z-index: 3;
+        display: flex;
+        gap: 6px;
+    }
+
+    .winter-gallery-dot {
+        width: 7px;
+        height: 7px;
+        border: 0;
+        border-radius: 50%;
+        padding: 0;
+        background: rgba(17,17,17,.35);
+        cursor: pointer;
+    }
+
+    .winter-gallery-dot.active {
+        background: #111;
+    }
+
+    @media (max-width: 700px) {
+        .winter-gallery-arrow {
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            font-size: 18px;
+            opacity: .85;
+        }
+
+        .winter-gallery-arrow.prev { left: 7px; }
+        .winter-gallery-arrow.next { right: 7px; }
+        .winter-gallery-dots { bottom: 8px; }
+    }
+
+
 
     .product-image-zoom img {
         transition: transform 0.35s ease;
@@ -433,8 +519,16 @@
 
     <div class="product winter-product" data-name="YUGA Winter Sweatshirt" data-price="499" data-colour="Black" data-image="FRBLK.jpeg" data-back-image="BKBLK.jpeg">
 
-        <div class="product-image-zoom">
+        <div class="product-image-zoom winter-gallery"
+             data-front-image="FRBLK.jpeg"
+             aria-label="Product images">
             <img src="FRBLK.jpeg" alt="YUGA Winter '26 Sweatshirt Black">
+            <button type="button" class="winter-gallery-arrow prev" aria-label="Previous image">‹</button>
+            <button type="button" class="winter-gallery-arrow next" aria-label="Next image">›</button>
+            <div class="winter-gallery-dots" aria-hidden="true">
+                <button type="button" class="winter-gallery-dot active" aria-label="Front view"></button>
+                <button type="button" class="winter-gallery-dot" aria-label="Back view"></button>
+            </div>
         </div>
 
         <h3>YUGA Winter Sweatshirt</h3>
@@ -449,8 +543,16 @@
 
     <div class="product winter-product" data-name="YUGA Winter Sweatshirt" data-price="499" data-colour="Blue" data-image="FRBLU.jpeg" data-back-image="BKBLU.jpeg">
 
-        <div class="product-image-zoom">
+        <div class="product-image-zoom winter-gallery"
+             data-front-image="FRBLU.jpeg"
+             aria-label="Product images">
             <img src="FRBLU.jpeg" alt="YUGA Winter '26 Sweatshirt Blue">
+            <button type="button" class="winter-gallery-arrow prev" aria-label="Previous image">‹</button>
+            <button type="button" class="winter-gallery-arrow next" aria-label="Next image">›</button>
+            <div class="winter-gallery-dots" aria-hidden="true">
+                <button type="button" class="winter-gallery-dot active" aria-label="Front view"></button>
+                <button type="button" class="winter-gallery-dot" aria-label="Back view"></button>
+            </div>
         </div>
 
         <h3>YUGA Winter Sweatshirt</h3>
@@ -465,8 +567,16 @@
 
     <div class="product winter-product" data-name="YUGA Winter Sweatshirt" data-price="499" data-colour="Forest Green" data-image="FRGRN.jpeg" data-back-image="BKGRN.jpeg">
 
-        <div class="product-image-zoom">
+        <div class="product-image-zoom winter-gallery"
+             data-front-image="FRGRN.jpeg"
+             aria-label="Product images">
             <img src="FRGRN.jpeg" alt="YUGA Winter '26 Sweatshirt Forest Green">
+            <button type="button" class="winter-gallery-arrow prev" aria-label="Previous image">‹</button>
+            <button type="button" class="winter-gallery-arrow next" aria-label="Next image">›</button>
+            <div class="winter-gallery-dots" aria-hidden="true">
+                <button type="button" class="winter-gallery-dot active" aria-label="Front view"></button>
+                <button type="button" class="winter-gallery-dot" aria-label="Back view"></button>
+            </div>
         </div>
 
         <h3>YUGA Winter Sweatshirt</h3>
@@ -481,8 +591,16 @@
 
     <div class="product winter-product" data-name="YUGA Winter Sweatshirt" data-price="499" data-colour="Red" data-image="FRRD.jpeg" data-back-image="BKRD.jpeg">
 
-        <div class="product-image-zoom">
+        <div class="product-image-zoom winter-gallery"
+             data-front-image="FRRD.jpeg"
+             aria-label="Product images">
             <img src="FRRD.jpeg" alt="YUGA Winter '26 Sweatshirt Red">
+            <button type="button" class="winter-gallery-arrow prev" aria-label="Previous image">‹</button>
+            <button type="button" class="winter-gallery-arrow next" aria-label="Next image">›</button>
+            <div class="winter-gallery-dots" aria-hidden="true">
+                <button type="button" class="winter-gallery-dot active" aria-label="Front view"></button>
+                <button type="button" class="winter-gallery-dot" aria-label="Back view"></button>
+            </div>
         </div>
 
         <h3>YUGA Winter Sweatshirt</h3>
@@ -497,8 +615,16 @@
 
     <div class="product winter-product" data-name="YUGA Winter Sweatshirt" data-price="499" data-colour="Yellow" data-image="FRYLW.jpeg" data-back-image="BKYLW.jpeg">
 
-        <div class="product-image-zoom">
+        <div class="product-image-zoom winter-gallery"
+             data-front-image="FRYLW.jpeg"
+             aria-label="Product images">
             <img src="FRYLW.jpeg" alt="YUGA Winter '26 Sweatshirt Yellow">
+            <button type="button" class="winter-gallery-arrow prev" aria-label="Previous image">‹</button>
+            <button type="button" class="winter-gallery-arrow next" aria-label="Next image">›</button>
+            <div class="winter-gallery-dots" aria-hidden="true">
+                <button type="button" class="winter-gallery-dot active" aria-label="Front view"></button>
+                <button type="button" class="winter-gallery-dot" aria-label="Back view"></button>
+            </div>
         </div>
 
         <h3>YUGA Winter Sweatshirt</h3>
@@ -513,8 +639,16 @@
 
     <div class="product winter-product" data-name="YUGA Winter Sweatshirt" data-price="499" data-colour="Brown" data-image="FRBRN.jpeg" data-back-image="BKBRN.jpeg">
 
-        <div class="product-image-zoom">
+        <div class="product-image-zoom winter-gallery"
+             data-front-image="FRBRN.jpeg"
+             aria-label="Product images">
             <img src="FRBRN.jpeg" alt="YUGA Winter '26 Sweatshirt Brown">
+            <button type="button" class="winter-gallery-arrow prev" aria-label="Previous image">‹</button>
+            <button type="button" class="winter-gallery-arrow next" aria-label="Next image">›</button>
+            <div class="winter-gallery-dots" aria-hidden="true">
+                <button type="button" class="winter-gallery-dot active" aria-label="Front view"></button>
+                <button type="button" class="winter-gallery-dot" aria-label="Back view"></button>
+            </div>
         </div>
 
         <h3>YUGA Winter Sweatshirt</h3>
@@ -810,28 +944,133 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        const products=document.querySelectorAll(".winter-product");
-        const modal=document.getElementById("productModal");
-        const close=document.getElementById("modalClose");
-        const image=document.getElementById("modalImage");
-        const imageBox=document.getElementById("modalImageContainer");
-        const name=document.getElementById("modalName");
-        const price=document.getElementById("modalPrice");
-        const colour=document.getElementById("modalColour");
-        const notify=document.getElementById("modalNotifyButton");
-        const frontBtn=document.getElementById("frontViewBtn");
-        const backBtn=document.getElementById("backViewBtn");
-        let selected=null;
+        const products = document.querySelectorAll(".winter-product");
+        const modal = document.getElementById("productModal");
+        const close = document.getElementById("modalClose");
+        const image = document.getElementById("modalImage");
+        const imageBox = document.getElementById("modalImageContainer");
+        const name = document.getElementById("modalName");
+        const price = document.getElementById("modalPrice");
+        const colour = document.getElementById("modalColour");
+        const notify = document.getElementById("modalNotifyButton");
+        const frontBtn = document.getElementById("frontViewBtn");
+        const backBtn = document.getElementById("backViewBtn");
+        let selected = null;
 
-        function showFront(){ if(!selected)return; image.src=selected.dataset.image; frontBtn.classList.add("active"); backBtn.classList.remove("active"); imageBox.classList.remove("zoomed"); }
-        function showBack(){ if(!selected)return; image.src=selected.dataset.backImage; backBtn.classList.add("active"); frontBtn.classList.remove("active"); imageBox.classList.remove("zoomed"); }
-        function openProduct(product){ selected=product; name.textContent=product.dataset.name; price.textContent="₹"+product.dataset.price+" • Delivery Included"; colour.textContent=product.dataset.colour; showFront(); modal.classList.add("active"); document.body.style.overflow="hidden"; }
-        function notifyWhatsApp(){ if(!selected)return; const msg="Hello YUGA!%0A%0AI want to be notified when the WINTER '26 sweatshirt launches.%0A%0AProduct: YUGA Winter Sweatshirt%0AColour: "+encodeURIComponent(selected.dataset.colour)+"%0APrice: ₹499%0AExpected Launch: 15 October 2026"; window.open("https://wa.me/917888759939?text="+msg,"_blank"); }
-        products.forEach(p=>{ p.addEventListener("click",e=>{if(!e.target.closest(".winter-notify"))openProduct(p);}); p.querySelector(".winter-notify").addEventListener("click",e=>{e.stopPropagation();openProduct(p);}); });
-        frontBtn.addEventListener("click",showFront); backBtn.addEventListener("click",showBack); notify.addEventListener("click",notifyWhatsApp);
-        imageBox.addEventListener("click",()=>imageBox.classList.toggle("zoomed"));
-        function closeModal(){modal.classList.remove("active");imageBox.classList.remove("zoomed");document.body.style.overflow="";selected=null;}
-        close.addEventListener("click",closeModal); modal.addEventListener("click",e=>{if(e.target===modal)closeModal();}); document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal();});
+        function showFront() {
+            if (!selected) return;
+            image.src = selected.dataset.image;
+            frontBtn.classList.add("active");
+            backBtn.classList.remove("active");
+            imageBox.classList.remove("zoomed");
+        }
+
+        function showBack() {
+            if (!selected) return;
+            image.src = selected.dataset.backImage;
+            backBtn.classList.add("active");
+            frontBtn.classList.remove("active");
+            imageBox.classList.remove("zoomed");
+        }
+
+        function openProduct(product) {
+            selected = product;
+            name.textContent = product.dataset.name;
+            price.textContent = "₹" + product.dataset.price + " • Delivery Included";
+            colour.textContent = product.dataset.colour;
+            showFront();
+            modal.classList.add("active");
+            document.body.style.overflow = "hidden";
+        }
+
+        function notifyWhatsApp() {
+            if (!selected) return;
+            const msg = "Hello YUGA!%0A%0AI want to be notified when the WINTER '26 sweatshirt launches.%0A%0AProduct: YUGA Winter Sweatshirt%0AColour: " + encodeURIComponent(selected.dataset.colour) + "%0APrice: ₹499%0AExpected Launch: 15 October 2026";
+            window.open("https://wa.me/917888759939?text=" + msg, "_blank");
+        }
+
+        // Front/back switching on product cards: arrows + swipe.
+        document.querySelectorAll(".winter-gallery").forEach(gallery => {
+            const product = gallery.closest(".winter-product");
+            const img = gallery.querySelector("img");
+            const prev = gallery.querySelector(".winter-gallery-arrow.prev");
+            const next = gallery.querySelector(".winter-gallery-arrow.next");
+            const dots = gallery.querySelectorAll(".winter-gallery-dot");
+            let view = 0;
+            let startX = null;
+
+            function setView(nextView) {
+                view = nextView === 1 ? 1 : 0;
+                img.src = view === 0 ? product.dataset.image : product.dataset.backImage;
+                dots.forEach((dot, i) => dot.classList.toggle("active", i === view));
+            }
+
+            prev.addEventListener("click", e => {
+                e.stopPropagation();
+                setView(view === 0 ? 1 : 0);
+            });
+
+            next.addEventListener("click", e => {
+                e.stopPropagation();
+                setView(view === 0 ? 1 : 0);
+            });
+
+            dots.forEach((dot, i) => {
+                dot.addEventListener("click", e => {
+                    e.stopPropagation();
+                    setView(i);
+                });
+            });
+
+            gallery.addEventListener("touchstart", e => {
+                if (e.touches.length === 1) startX = e.touches[0].clientX;
+            }, { passive: true });
+
+            gallery.addEventListener("touchend", e => {
+                if (startX === null) return;
+                const endX = e.changedTouches[0].clientX;
+                const distance = endX - startX;
+                if (Math.abs(distance) > 45) setView(distance < 0 ? 1 : 0);
+                startX = null;
+            }, { passive: true });
+        });
+
+        products.forEach(p => {
+            p.addEventListener("click", e => {
+                if (!e.target.closest(".winter-notify") &&
+                    !e.target.closest(".winter-gallery-arrow") &&
+                    !e.target.closest(".winter-gallery-dot")) {
+                    openProduct(p);
+                }
+            });
+
+            p.querySelector(".winter-notify").addEventListener("click", e => {
+                e.stopPropagation();
+                openProduct(p);
+            });
+        });
+
+        frontBtn.addEventListener("click", showFront);
+        backBtn.addEventListener("click", showBack);
+        notify.addEventListener("click", notifyWhatsApp);
+
+        imageBox.addEventListener("click", () => imageBox.classList.toggle("zoomed"));
+
+        function closeModal() {
+            modal.classList.remove("active");
+            imageBox.classList.remove("zoomed");
+            document.body.style.overflow = "";
+            selected = null;
+        }
+
+        close.addEventListener("click", closeModal);
+        modal.addEventListener("click", e => {
+            if (e.target === modal) closeModal();
+        });
+
+        document.addEventListener("keydown", e => {
+            if (e.key === "Escape") closeModal();
+        });
     });
 </script>
 
