@@ -1,853 +1,825 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- YUGA FAVICON -->
-    <link rel="icon" type="image/png" href="Y Falvion.png">
+<!-- YUGA FAVICON -->
+<link rel="icon" type="image/png" href="Y Falvion.png">
 
-    <title>YUGA | Winter '26 Collection</title>
+<title>YUGA | Winter '26 Collection</title>
 
-    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
 
 
-    <style>
+<style>
 
-        /* =========================================================
-           PLAIN PAGE ENHANCEMENTS
-        ========================================================== */
+    /* =========================================================
+       PLAIN PAGE ENHANCEMENTS
+    ========================================================== */
 
-        .product {
-            position: relative;
+    .product {
+        position: relative;
+    }
+
+
+    /* PRODUCT STATUS BADGE */
+
+    .product-status {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        z-index: 5;
+        padding: 6px 10px;
+        border-radius: 4px;
+        background: #111;
+        color: #fff;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        pointer-events: none;
+    }
+
+
+    .product-status.sold-out {
+        background: #b00020;
+    }
+
+
+    .product-status.high-demand {
+        background: #111;
+    }
+
+
+    /* DESKTOP IMAGE ZOOM */
+
+    .product-image-zoom {
+        cursor: zoom-in;
+        overflow: hidden;
+    }
+
+
+    .product-image-zoom {
+        position: relative;
+    }
+
+    .product-image-zoom img {
+        transition: transform 0.35s ease, opacity 0.25s ease;
+        display: block;
+        width: 100%;
+    }
+
+    /* FRONT / BACK IMAGE SWITCH ON COLLECTION CARDS */
+    .winter-product .product-image-zoom {
+        cursor: pointer;
+    }
+
+    .winter-product .product-image-zoom::after {
+        content: "HOVER TO VIEW BACK";
+        position: absolute;
+        left: 50%;
+        bottom: 12px;
+        transform: translateX(-50%);
+        z-index: 3;
+        padding: 6px 10px;
+        border-radius: 4px;
+        background: rgba(17, 17, 17, 0.82);
+        color: #fff;
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 1.2px;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.25s ease;
+        white-space: nowrap;
+    }
+
+    .winter-product:hover .product-image-zoom::after {
+        opacity: 1;
+    }
+
+    .winter-product .product-image-zoom.is-back::after {
+        content: "BACK VIEW • TAP TO RETURN";
+        opacity: 1;
+    }
+
+    @media (max-width: 700px) {
+        .winter-product .product-image-zoom::after {
+            content: "TAP TO VIEW BACK";
+            opacity: 1;
+            bottom: 10px;
+            font-size: 8px;
+            padding: 5px 8px;
         }
 
-
-        /* PRODUCT STATUS BADGE */
-
-        .product-status {
-            position: absolute;
-            top: 12px;
-            left: 12px;
-            z-index: 5;
-            padding: 6px 10px;
-            border-radius: 4px;
-            background: #111;
-            color: #fff;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            pointer-events: none;
+        .winter-product .product-image-zoom.is-back::after {
+            content: "TAP FOR FRONT";
         }
 
-
-        .product-status.sold-out {
-            background: #b00020;
+        .winter-product:hover .product-image-zoom img {
+            transform: none;
         }
-
-
-        .product-status.high-demand {
-            background: #111;
-        }
-
-
-        /* DESKTOP IMAGE ZOOM */
-
-        .product-image-zoom {
-            cursor: zoom-in;
-            overflow: hidden;
-        }
-
-
-        .product-image-zoom img {
-            transition: transform 0.35s ease;
-        }
-
-
-        .product:hover .product-image-zoom img {
-            transform: scale(1.06);
-        }
+    }
 
 
 
-        /* =========================================================
-           PRODUCT MODAL
-        ========================================================== */
+    /* =========================================================
+       PRODUCT MODAL
+    ========================================================== */
 
-        .product-modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            z-index: 9999;
-            background: rgba(0, 0, 0, 0.72);
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            overflow-y: auto;
-        }
+    .product-modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        background: rgba(0, 0, 0, 0.72);
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        overflow-y: auto;
+    }
 
 
-        .product-modal.active {
-            display: flex;
-        }
+    .product-modal.active {
+        display: flex;
+    }
 
+
+    .modal-content {
+        position: relative;
+        width: min(900px, 100%);
+        max-height: 92vh;
+        overflow-y: auto;
+        background: #fff;
+        border-radius: 12px;
+        padding: 25px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        box-sizing: border-box;
+    }
+
+
+    .modal-close {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        border: none;
+        background: transparent;
+        font-size: 32px;
+        line-height: 1;
+        cursor: pointer;
+        z-index: 10;
+    }
+
+
+    /* MODAL IMAGE */
+
+    .modal-image {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        border-radius: 8px;
+        cursor: zoom-in;
+    }
+
+
+    .modal-image img {
+        width: 100%;
+        max-height: 600px;
+        object-fit: contain;
+        transition: transform 0.35s ease;
+    }
+
+
+    .modal-image.zoomed {
+        cursor: zoom-out;
+    }
+
+
+    .modal-image.zoomed img {
+        transform: scale(1.65);
+    }
+
+
+    /* MODAL INFORMATION */
+
+    .modal-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+
+    .modal-brand {
+        font-size: 13px;
+        letter-spacing: 3px;
+        margin-bottom: 8px;
+    }
+
+
+    .modal-info h2 {
+        margin: 0 0 10px;
+    }
+
+
+    .modal-price {
+        font-size: 22px;
+        font-weight: 700;
+        margin: 5px 0 15px;
+    }
+
+
+
+    /* =========================================================
+       SIZE SELECTION
+    ========================================================== */
+
+    .modal-sizes {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 10px;
+    }
+
+
+    .modal-size {
+        min-width: 48px;
+        padding: 10px 13px;
+        border: 1px solid #111;
+        background: #fff;
+        color: #111;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: 600;
+    }
+
+
+    .modal-size:hover:not(.disabled) {
+        background: #111;
+        color: #fff;
+    }
+
+
+    .modal-size.selected {
+        background: #111;
+        color: #fff;
+    }
+
+
+    .modal-size.disabled {
+        opacity: 0.35;
+        cursor: not-allowed;
+        text-decoration: line-through;
+    }
+
+
+
+    /* =========================================================
+       DELIVERY
+    ========================================================== */
+
+    .delivery-section {
+        margin-top: 22px;
+    }
+
+
+    .delivery-title {
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+
+    .delivery-select {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background: #fff;
+        font-size: 14px;
+        cursor: pointer;
+    }
+
+
+
+    /* =========================================================
+       PRICE CALCULATOR
+    ========================================================== */
+
+    .price-calculator {
+        margin-top: 20px;
+        padding: 15px;
+        background: #f6f6f6;
+        border-radius: 7px;
+    }
+
+
+    .price-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        padding: 5px 0;
+        font-size: 14px;
+    }
+
+
+    .price-row.total-row {
+        margin-top: 8px;
+        padding-top: 12px;
+        border-top: 1px solid #ccc;
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+
+
+    /* =========================================================
+       WHATSAPP ORDER BUTTON
+    ========================================================== */
+
+    .modal-order-button {
+        width: 100%;
+        margin-top: 15px;
+        padding: 13px;
+        border: none;
+        border-radius: 5px;
+        background: #111;
+        color: #fff;
+        font-size: 15px;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+
+    .modal-order-button:hover {
+        opacity: 0.88;
+    }
+
+
+    .modal-order-button:disabled {
+        opacity: 0.45;
+        cursor: not-allowed;
+    }
+
+
+
+    /* =========================================================
+       MOBILE
+    ========================================================== */
+
+    @media (max-width: 700px) {
 
         .modal-content {
-            position: relative;
-            width: min(900px, 100%);
-            max-height: 92vh;
-            overflow-y: auto;
-            background: #fff;
-            border-radius: 12px;
-            padding: 25px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            box-sizing: border-box;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            padding: 18px;
+            max-height: 94vh;
         }
 
-
-        .modal-close {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            border: none;
-            background: transparent;
-            font-size: 32px;
-            line-height: 1;
-            cursor: pointer;
-            z-index: 10;
-        }
-
-
-        /* MODAL IMAGE */
 
         .modal-image {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            border-radius: 8px;
-            cursor: zoom-in;
+            max-height: 360px;
         }
 
 
         .modal-image img {
-            width: 100%;
-            max-height: 600px;
-            object-fit: contain;
-            transition: transform 0.35s ease;
-        }
-
-
-        .modal-image.zoomed {
-            cursor: zoom-out;
+            max-height: 350px;
         }
 
 
         .modal-image.zoomed img {
-            transform: scale(1.65);
+            transform: scale(1.35);
         }
 
-
-        /* MODAL INFORMATION */
 
         .modal-info {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-
-        .modal-brand {
-            font-size: 13px;
-            letter-spacing: 3px;
-            margin-bottom: 8px;
+            justify-content: flex-start;
         }
 
 
         .modal-info h2 {
-            margin: 0 0 10px;
+            font-size: 22px;
         }
 
 
         .modal-price {
-            font-size: 22px;
-            font-weight: 700;
-            margin: 5px 0 15px;
+            font-size: 20px;
         }
 
 
-
-        /* =========================================================
-           SIZE SELECTION
-        ========================================================== */
-
-        .modal-sizes {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 10px;
+        .product-status {
+            top: 8px;
+            left: 8px;
+            font-size: 9px;
+            padding: 5px 7px;
         }
 
-
-        .modal-size {
-            min-width: 48px;
-            padding: 10px 13px;
-            border: 1px solid #111;
-            background: #fff;
-            color: #111;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 600;
-        }
-
-
-        .modal-size:hover:not(.disabled) {
-            background: #111;
-            color: #fff;
-        }
-
-
-        .modal-size.selected {
-            background: #111;
-            color: #fff;
-        }
-
-
-        .modal-size.disabled {
-            opacity: 0.35;
-            cursor: not-allowed;
-            text-decoration: line-through;
-        }
-
-
-
-        /* =========================================================
-           DELIVERY
-        ========================================================== */
-
-        .delivery-section {
-            margin-top: 22px;
-        }
-
-
-        .delivery-title {
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-
-        .delivery-select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background: #fff;
-            font-size: 14px;
-            cursor: pointer;
-        }
-
-
-
-        /* =========================================================
-           PRICE CALCULATOR
-        ========================================================== */
-
-        .price-calculator {
-            margin-top: 20px;
-            padding: 15px;
-            background: #f6f6f6;
-            border-radius: 7px;
-        }
-
-
-        .price-row {
-            display: flex;
-            justify-content: space-between;
-            gap: 15px;
-            padding: 5px 0;
-            font-size: 14px;
-        }
-
-
-        .price-row.total-row {
-            margin-top: 8px;
-            padding-top: 12px;
-            border-top: 1px solid #ccc;
-            font-size: 18px;
-            font-weight: 700;
-        }
-
-
-
-        /* =========================================================
-           WHATSAPP ORDER BUTTON
-        ========================================================== */
-
-        .modal-order-button {
-            width: 100%;
-            margin-top: 15px;
-            padding: 13px;
-            border: none;
-            border-radius: 5px;
-            background: #111;
-            color: #fff;
-            font-size: 15px;
-            font-weight: 700;
-            cursor: pointer;
-        }
-
-
-        .modal-order-button:hover {
-            opacity: 0.88;
-        }
-
-
-        .modal-order-button:disabled {
-            opacity: 0.45;
-            cursor: not-allowed;
-        }
-
-
-
-        /* =========================================================
-           MOBILE
-        ========================================================== */
-
-        @media (max-width: 700px) {
-
-            .modal-content {
-                grid-template-columns: 1fr;
-                gap: 15px;
-                padding: 18px;
-                max-height: 94vh;
-            }
-
-
-            .modal-image {
-                max-height: 360px;
-            }
-
-
-            .modal-image img {
-                max-height: 350px;
-            }
-
-
-            .modal-image.zoomed img {
-                transform: scale(1.35);
-            }
-
-
-            .modal-info {
-                justify-content: flex-start;
-            }
-
-
-            .modal-info h2 {
-                font-size: 22px;
-            }
-
-
-            .modal-price {
-                font-size: 20px;
-            }
-
-
-            .product-status {
-                top: 8px;
-                left: 8px;
-                font-size: 9px;
-                padding: 5px 7px;
-            }
-
-        }
-
-
-        /* WINTER '26 */
-        .winter-product { position: relative; }
-        .winter-status { display:inline-block; margin-top:8px; padding:6px 9px; border:1px solid #111; border-radius:4px; font-size:10px; font-weight:800; letter-spacing:1.4px; }
-        .winter-specs { font-size:12px; opacity:.7; margin-top:5px; }
-        .winter-notify { width:100%; margin-top:10px; padding:12px; border:0; border-radius:5px; background:#111; color:#fff; font-size:13px; font-weight:700; cursor:pointer; }
-        .winter-notify:hover { opacity:.86; }
-        .winter-launch-box { margin-top:20px; padding:16px; background:#f6f6f6; border-radius:7px; }
-        .winter-launch-box p { margin:5px 0; font-size:13px; }
-        .winter-image-switch { display:flex; gap:8px; margin-top:12px; }
-        .winter-view-btn { flex:1; padding:9px; border:1px solid #111; background:#fff; color:#111; border-radius:4px; cursor:pointer; font-size:12px; font-weight:700; }
-        .winter-view-btn.active { background:#111; color:#fff; }
-        @media (max-width:700px){ .winter-specs{font-size:11px;} }
-
-
-        /* =========================================================
-           WINTER '26 INTERACTIVE CATALOGUE
-        ========================================================== */
-
-        .winter-catalogue {
-            position: relative;
-            overflow: hidden;
-            isolation: isolate;
-        }
-
-        .winter-catalogue .products {
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Six-product Winter catalogue grid */
-        .winter-catalogue .products {
-            position: relative;
-            z-index: 2;
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 24px;
-        }
-
-        .winter-catalogue .winter-product {
-            width: auto;
-            display: block;
-            animation: none;
-        }
-
-        /* Show front + back clearly inside every product card */
-        .winter-product .winter-image-pair {
-            position: relative;
-            display: flex;
-            gap: 0;
-            margin-bottom: 12px;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            scrollbar-width: none;
-            border-radius: 7px;
-            -webkit-overflow-scrolling: touch;
-            touch-action: pan-x;
-        }
-
-        .winter-product .winter-image-pair::-webkit-scrollbar {
-            display: none;
-        }
-
-        .winter-product .winter-image-side {
-            position: relative;
-            flex: 0 0 100%;
-            overflow: hidden;
-            background: #f7f7f7;
-            border-radius: 7px;
-            aspect-ratio: 4 / 5;
-            scroll-snap-align: start;
-        }
-
-        .winter-product .winter-image-side img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            display: block;
-            transition: transform .35s ease;
-        }
-
-        .winter-product:hover .winter-image-side img {
-            transform: scale(1.035);
-        }
-
-        .winter-image-label {
-            position: absolute;
-            left: 7px;
-            bottom: 7px;
-            z-index: 2;
-            padding: 4px 7px;
-            border-radius: 3px;
-            background: rgba(17,17,17,.82);
-            color: #fff;
-            font-size: 8px;
-            font-weight: 800;
-            letter-spacing: 1px;
-        }
-
-        .winter-catalogue-nav {
-            position: relative;
-            z-index: 20;
-            display: none;
-        }
-
-
-        .winter-swipe-hint {
-            position: absolute;
-            right: 8px;
-            bottom: 8px;
-            z-index: 4;
-            padding: 4px 7px;
-            border-radius: 10px;
-            background: rgba(255,255,255,.88);
-            color: #111;
-            font-size: 8px;
-            font-weight: 800;
-            letter-spacing: .7px;
-            pointer-events: none;
-        }
-
-        .winter-image-dots {
-            display: flex;
-            justify-content: center;
-            gap: 5px;
-            margin-top: -5px;
-            margin-bottom: 9px;
-        }
-
-        .winter-image-dot {
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            background: #c7c7c7;
-            transition: transform .2s ease, background .2s ease;
-        }
-
-        .winter-image-dot.active {
-            background: #111;
-            transform: scale(1.25);
-        }
-
-        /* Burst sits over the grid, then fades away */
-        .winter-catalogue.reveal-ready .products {
-            animation: winterReveal 1.25s ease .25s both;
-        }
-
-        @keyframes winterReveal {
-            from {
-                opacity: 0;
-                transform: translateY(18px) scale(.985);
-                filter: blur(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-                filter: blur(0);
-            }
-        }
-
-        @media (max-width: 700px) {
-            .winter-catalogue .products {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                gap: 14px;
-                touch-action: auto;
-            }
-
-            .winter-catalogue .winter-product {
-                width: auto;
-            }
-
-            .winter-product .winter-image-pair {
-                gap: 0;
-            }
-
-            .winter-image-label {
-                left: 5px;
-                bottom: 5px;
-                padding: 3px 5px;
-                font-size: 7px;
-            }
-
-            .winter-catalogue-nav {
-                display: none;
-            }
-
-            .winter-slide-count {
-                font-size: 10px;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .winter-snowflake,
-            .winter-catalogue.reveal-ready .winter-burst,
-            .winter-catalogue.reveal-ready .products,
-            .winter-catalogue .winter-product.catalogue-active {
-                animation: none !important;
-            }
-        }
-
-    </style>
+    }
+
+
+    /* WINTER '26 */
+    .winter-product { position: relative; }
+    .winter-status { display:inline-block; margin-top:8px; padding:6px 9px; border:1px solid #111; border-radius:4px; font-size:10px; font-weight:800; letter-spacing:1.4px; }
+    .winter-specs { font-size:12px; opacity:.7; margin-top:5px; }
+    .winter-notify { width:100%; margin-top:10px; padding:12px; border:0; border-radius:5px; background:#111; color:#fff; font-size:13px; font-weight:700; cursor:pointer; }
+    .winter-notify:hover { opacity:.86; }
+    .winter-launch-box { margin-top:20px; padding:16px; background:#f6f6f6; border-radius:7px; }
+    .winter-launch-box p { margin:5px 0; font-size:13px; }
+    .winter-image-switch { display:flex; gap:8px; margin-top:12px; }
+    .winter-view-btn { flex:1; padding:9px; border:1px solid #111; background:#fff; color:#111; border-radius:4px; cursor:pointer; font-size:12px; font-weight:700; }
+    .winter-view-btn.active { background:#111; color:#fff; }
+    @media (max-width:700px){ .winter-specs{font-size:11px;} }
+
+</style>
 
 </head>
 
-
 <body>
 
+<!-- =========================================================
+     HEADER
+========================================================== -->
 
-    <!-- =========================================================
-         HEADER
-    ========================================================== -->
+<header>
 
-    <header>
+    <a href="index.html">
 
-        <a href="index.html">
+        <img
+            src="Logo.png"
+            alt="YUGA Fashion"
+        >
 
-            <img
-                src="Logo.png"
-                alt="YUGA Fashion"
-            >
-
-        </a>
-
-    </header>
-
-
-
-    <!-- =========================================================
-         BACK BUTTON
-    ========================================================== -->
-
-    <a
-        href="index.html"
-        class="back-button"
-    >
-        ← Back to Collections
     </a>
 
+</header>
 
 
-    <!-- =========================================================
-         WINTER '26 COLLECTION
-    ========================================================== -->
 
-    <section class="collection winter-catalogue" id="winterCatalogue">
-        <div class="winter-snowfall" id="winterSnowfall" aria-hidden="true"></div>
-        <div class="winter-reveal-layer" aria-hidden="true"><div class="winter-burst"></div></div>
+<!-- =========================================================
+     BACK BUTTON
+========================================================== -->
 
-        <h2>WINTER '26 COLLECTION</h2>
+<a
+    href="index.html"
+    class="back-button"
+>
+    ← Back to Collections
+</a>
 
-        <div class="products">
 
-        <div class="product winter-product catalogue-active" data-name="YUGA Winter Sweatshirt" data-price="499" data-colour="Black" data-image="FRBLK.jpeg" data-back-image="BKBLK.jpeg">
 
-            <div class="winter-image-pair" aria-label="Black sweatshirt front and back">
-                <div class="winter-image-side">
-                    <img src="FRBLK.jpeg" alt="YUGA Winter '26 Sweatshirt Black front">
-                    <span class="winter-image-label">FRONT</span>
-                </div>
-                <div class="winter-image-side">
-                    <img src="BKBLK.jpeg" alt="YUGA Winter '26 Sweatshirt Black back">
-                    <span class="winter-image-label">BACK</span>
-                </div>
-            </div>
-            <div class="winter-image-dots" aria-hidden="true">
-                <span class="winter-image-dot active"></span>
-                <span class="winter-image-dot"></span>
-            </div>
+<!-- =========================================================
+     WINTER '26 COLLECTION
+========================================================== -->
 
-            <h3>YUGA Winter Sweatshirt</h3>
-            <p class="price">₹499 <span style="font-size:11px;font-weight:500;">• Delivery Included</span></p>
-            <p>Colour: Black</p>
-            <p>Sizes: S • M • L • XL • XXL</p>
-            <p class="winter-specs">Cotton Fleece • 320 GSM • Regular Fit • No Print</p>
-            <div class="winter-status">COMING SOON</div>
-            <button type="button" class="winter-notify" data-colour="Black">NOTIFY ME</button>
+<section class="collection">
 
+    <h2>WINTER '26 COLLECTION</h2>
+
+
+    <div class="products">
+
+    <div class="product winter-product" data-name="YUGA Winter Sweatshirt" data-price="499" data-colour="Black" data-image="FRBLK.jpeg" data-back-image="BKBLK.jpeg">
+
+        <div class="product-image-zoom">
+            <img src="FRBLK.jpeg" alt="YUGA Winter '26 Sweatshirt Black">
         </div>
 
-        <div class="product winter-product" data-name="YUGA Winter Sweatshirt" data-price="499" data-colour="Blue" data-image="FRBLU.jpeg" data-back-image="BKBLU.jpeg">
+        <h3>YUGA Winter Sweatshirt</h3>
+        <p class="price">₹499 <span style="font-size:11px;font-weight:500;">• Delivery Included</span></p>
+        <p>Colour: Black</p>
+        <p>Sizes: S • M • L • XL • XXL</p>
+        <p class="winter-specs">Cotton Fleece • 320 GSM • Regular Fit • No Print</p>
+        <div class="winter-status">COMING SOON</div>
+        <button type="button" class="winter-notify" data-colour="Black">NOTIFY ME</button>
 
-            <div class="winter-image-pair" aria-label="Blue sweatshirt front and back">
-                <div class="winter-image-side">
-                    <img src="FRBLU.jpeg" alt="YUGA Winter '26 Sweatshirt Blue front">
-                    <span class="winter-image-label">FRONT</span>
-                </div>
-                <div class="winter-image-side">
-                    <img src="BKBLU.jpeg" alt="YUGA Winter '26 Sweatshirt Blue back">
-                    <span class="winter-image-label">BACK</span>
-                </div>
-            </div>
-            <div class="winter-image-dots" aria-hidden="true">
-                <span class="winter-image-dot active"></span>
-                <span class="winter-image-dot"></span>
-            </div>
+    </div>
 
-            <h3>YUGA Winter Sweatshirt</h3>
-            <p class="price">₹499 <span style="font-size:11px;font-weight:500;">• Delivery Included</span></p>
-            <p>Colour: Blue</p>
-            <p>Sizes: S • M • L • XL • XXL</p>
-            <p class="winter-specs">Cotton Fleece • 320 GSM • Regular Fit • No Print</p>
-            <div class="winter-status">COMING SOON</div>
-            <button type="button" class="winter-notify" data-colour="Blue">NOTIFY ME</button>
+    <div class="product winter-product" data-name="YUGA Winter Sweatshirt" data-price="499" data-colour="Blue" data-image="FRBLU.jpeg" data-back-image="BKBLU.jpeg">
 
+        <div class="product-image-zoom">
+            <img src="FRBLU.jpeg" alt="YUGA Winter '26 Sweatshirt Blue">
         </div>
 
-        <div class="product winter-product" data-name="YUGA Winter Sweatshirt" data-price="499" data-colour="Forest Green" data-image="FRGRN.jpeg" data-back-image="BKGRN.jpeg">
+        <h3>YUGA Winter Sweatshirt</h3>
+        <p class="price">₹499 <span style="font-size:11px;font-weight:500;">• Delivery Included</span></p>
+        <p>Colour: Blue</p>
+        <p>Sizes: S • M • L • XL • XXL</p>
+        <p class="winter-specs">Cotton Fleece • 320 GSM • Regular Fit • No Print</p>
+        <div class="winter-status">COMING SOON</div>
+        <button type="button" class="winter-notify" data-colour="Blue">NOTIFY ME</button>
 
-            <div class="winter-image-pair" aria-label="Forest Green sweatshirt front and back">
-                <div class="winter-image-side">
-                    <img src="FRGRN.jpeg" alt="YUGA Winter '26 Sweatshirt Forest Green front">
-                    <span class="winter-image-label">FRONT</span>
-                </div>
-                <div class="winter-image-side">
-                    <img src="BKGRN.jpeg" alt="YUGA Winter '26 Sweatshirt Forest Green back">
-                    <span class="winter-image-label">BACK</span>
-                </div>
-            </div>
-            <div class="winter-image-dots" aria-hidden="true">
-                <span class="winter-image-dot active"></span>
-                <span class="winter-image-dot"></span>
-            </div>
+    </div>
 
-            <h3>YUGA Winter Sweatshirt</h3>
-            <p class="price">₹499 <span style="font-size:11px;font-weight:500;">• Delivery Included</span></p>
-            <p>Colour: Forest Green</p>
-            <p>Sizes: S • M • L • XL • XXL</p>
-            <p class="winter-specs">Cotton Fleece • 320 GSM • Regular Fit • No Print</p>
-            <div class="winter-status">COMING SOON</div>
-            <button type="button" class="winter-notify" data-colour="Forest Green">NOTIFY ME</button>
+    <div class="product winter-product" data-name="YUGA Winter Sweatshirt" data-price="499" data-colour="Forest Green" data-image="FRGRN.jpeg" data-back-image="BKGRN.jpeg">
 
+        <div class="product-image-zoom">
+            <img src="FRGRN.jpeg" alt="YUGA Winter '26 Sweatshirt Forest Green">
         </div>
 
-        <div class="product winter-product" data-name="YUGA Winter Sweatshirt" data-price="499" data-colour="Red" data-image="FRRD.jpeg" data-back-image="BKRD.jpeg">
+        <h3>YUGA Winter Sweatshirt</h3>
+        <p class="price">₹499 <span style="font-size:11px;font-weight:500;">• Delivery Included</span></p>
+        <p>Colour: Forest Green</p>
+        <p>Sizes: S • M • L • XL • XXL</p>
+        <p class="winter-specs">Cotton Fleece • 320 GSM • Regular Fit • No Print</p>
+        <div class="winter-status">COMING SOON</div>
+        <button type="button" class="winter-notify" data-colour="Forest Green">NOTIFY ME</button>
 
-            <div class="winter-image-pair" aria-label="Red sweatshirt front and back">
-                <div class="winter-image-side">
-                    <img src="FRRD.jpeg" alt="YUGA Winter '26 Sweatshirt Red front">
-                    <span class="winter-image-label">FRONT</span>
-                </div>
-                <div class="winter-image-side">
-                    <img src="BKRD.jpeg" alt="YUGA Winter '26 Sweatshirt Red back">
-                    <span class="winter-image-label">BACK</span>
-                </div>
-            </div>
-            <div class="winter-image-dots" aria-hidden="true">
-                <span class="winter-image-dot active"></span>
-                <span class="winter-image-dot"></span>
-            </div>
+    </div>
 
-            <h3>YUGA Winter Sweatshirt</h3>
-            <p class="price">₹499 <span style="font-size:11px;font-weight:500;">• Delivery Included</span></p>
-            <p>Colour: Red</p>
-            <p>Sizes: S • M • L • XL • XXL</p>
-            <p class="winter-specs">Cotton Fleece • 320 GSM • Regular Fit • No Print</p>
-            <div class="winter-status">COMING SOON</div>
-            <button type="button" class="winter-notify" data-colour="Red">NOTIFY ME</button>
+    <div class="product winter-product" data-name="YUGA Winter Sweatshirt" data-price="499" data-colour="Red" data-image="FRRD.jpeg" data-back-image="BKRD.jpeg">
 
+        <div class="product-image-zoom">
+            <img src="FRRD.jpeg" alt="YUGA Winter '26 Sweatshirt Red">
         </div>
 
-        <div class="product winter-product" data-name="YUGA Winter Sweatshirt" data-price="499" data-colour="Yellow" data-image="FRYLW.jpeg" data-back-image="BKYLW.jpeg">
+        <h3>YUGA Winter Sweatshirt</h3>
+        <p class="price">₹499 <span style="font-size:11px;font-weight:500;">• Delivery Included</span></p>
+        <p>Colour: Red</p>
+        <p>Sizes: S • M • L • XL • XXL</p>
+        <p class="winter-specs">Cotton Fleece • 320 GSM • Regular Fit • No Print</p>
+        <div class="winter-status">COMING SOON</div>
+        <button type="button" class="winter-notify" data-colour="Red">NOTIFY ME</button>
 
-            <div class="winter-image-pair" aria-label="Yellow sweatshirt front and back">
-                <div class="winter-image-side">
-                    <img src="FRYLW.jpeg" alt="YUGA Winter '26 Sweatshirt Yellow front">
-                    <span class="winter-image-label">FRONT</span>
-                </div>
-                <div class="winter-image-side">
-                    <img src="BKYLW.jpeg" alt="YUGA Winter '26 Sweatshirt Yellow back">
-                    <span class="winter-image-label">BACK</span>
-                </div>
-            </div>
-            <div class="winter-image-dots" aria-hidden="true">
-                <span class="winter-image-dot active"></span>
-                <span class="winter-image-dot"></span>
-            </div>
+    </div>
 
-            <h3>YUGA Winter Sweatshirt</h3>
-            <p class="price">₹499 <span style="font-size:11px;font-weight:500;">• Delivery Included</span></p>
-            <p>Colour: Yellow</p>
-            <p>Sizes: S • M • L • XL • XXL</p>
-            <p class="winter-specs">Cotton Fleece • 320 GSM • Regular Fit • No Print</p>
-            <div class="winter-status">COMING SOON</div>
-            <button type="button" class="winter-notify" data-colour="Yellow">NOTIFY ME</button>
+    <div class="product winter-product" data-name="YUGA Winter Sweatshirt" data-price="499" data-colour="Yellow" data-image="FRYLW.jpeg" data-back-image="BKYLW.jpeg">
 
+        <div class="product-image-zoom">
+            <img src="FRYLW.jpeg" alt="YUGA Winter '26 Sweatshirt Yellow">
         </div>
 
-        <div class="product winter-product" data-name="YUGA Winter Sweatshirt" data-price="499" data-colour="Brown" data-image="FRBRN.jpeg" data-back-image="BKBRN.jpeg">
+        <h3>YUGA Winter Sweatshirt</h3>
+        <p class="price">₹499 <span style="font-size:11px;font-weight:500;">• Delivery Included</span></p>
+        <p>Colour: Yellow</p>
+        <p>Sizes: S • M • L • XL • XXL</p>
+        <p class="winter-specs">Cotton Fleece • 320 GSM • Regular Fit • No Print</p>
+        <div class="winter-status">COMING SOON</div>
+        <button type="button" class="winter-notify" data-colour="Yellow">NOTIFY ME</button>
 
-            <div class="winter-image-pair" aria-label="Brown sweatshirt front and back">
-                <div class="winter-image-side">
-                    <img src="FRBRN.jpeg" alt="YUGA Winter '26 Sweatshirt Brown front">
-                    <span class="winter-image-label">FRONT</span>
-                </div>
-                <div class="winter-image-side">
-                    <img src="BKBRN.jpeg" alt="YUGA Winter '26 Sweatshirt Brown back">
-                    <span class="winter-image-label">BACK</span>
-                </div>
-            </div>
-            <div class="winter-image-dots" aria-hidden="true">
-                <span class="winter-image-dot active"></span>
-                <span class="winter-image-dot"></span>
-            </div>
+    </div>
 
-            <h3>YUGA Winter Sweatshirt</h3>
-            <p class="price">₹499 <span style="font-size:11px;font-weight:500;">• Delivery Included</span></p>
-            <p>Colour: Brown</p>
-            <p>Sizes: S • M • L • XL • XXL</p>
-            <p class="winter-specs">Cotton Fleece • 320 GSM • Regular Fit • No Print</p>
-            <div class="winter-status">COMING SOON</div>
-            <button type="button" class="winter-notify" data-colour="Brown">NOTIFY ME</button>
+    <div class="product winter-product" data-name="YUGA Winter Sweatshirt" data-price="499" data-colour="Brown" data-image="FRBRN.jpeg" data-back-image="BKBRN.jpeg">
 
+        <div class="product-image-zoom">
+            <img src="FRBRN.jpeg" alt="YUGA Winter '26 Sweatshirt Brown">
         </div>
+
+        <h3>YUGA Winter Sweatshirt</h3>
+        <p class="price">₹499 <span style="font-size:11px;font-weight:500;">• Delivery Included</span></p>
+        <p>Colour: Brown</p>
+        <p>Sizes: S • M • L • XL • XXL</p>
+        <p class="winter-specs">Cotton Fleece • 320 GSM • Regular Fit • No Print</p>
+        <div class="winter-status">COMING SOON</div>
+        <button type="button" class="winter-notify" data-colour="Brown">NOTIFY ME</button>
+
+    </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     PRODUCT POPUP / MODAL
+========================================================== -->
+
+<div
+    class="product-modal"
+    id="productModal"
+>
+
+    <div class="modal-content">
+
+
+        <button
+            class="modal-close"
+            id="modalClose"
+            type="button"
+        >
+            ×
+        </button>
+
+
+        <div
+            class="modal-image"
+            id="modalImageContainer"
+        >
+
+            <img
+                id="modalImage"
+                src=""
+                alt=""
+            >
 
         </div>
 
 
-    </section>
+        <div class="modal-info">
+
+            <p class="modal-brand">YUGA</p>
+            <h2 id="modalName">YUGA Winter Sweatshirt</h2>
+            <p class="modal-price" id="modalPrice">₹499</p>
+            <p class="modal-colour">Colour: <span id="modalColour"></span></p>
+
+            <div class="winter-image-switch">
+                <button type="button" class="winter-view-btn active" id="frontViewBtn">FRONT</button>
+                <button type="button" class="winter-view-btn" id="backViewBtn">BACK</button>
+            </div>
+
+            <div class="winter-launch-box">
+                <p><strong>Fabric:</strong> Cotton Fleece</p>
+                <p><strong>GSM:</strong> 320 GSM</p>
+                <p><strong>Fit:</strong> Regular</p>
+                <p><strong>Print:</strong> No Print</p>
+                <p><strong>Sizes:</strong> S • M • L • XL • XXL</p>
+                <p><strong>Price:</strong> ₹499 — Delivery Included</p>
+                <p><strong>Expected Launch:</strong> 15 October 2026</p>
+            </div>
+
+            <button type="button" class="modal-order-button" id="modalNotifyButton">NOTIFY ME</button>
+
+        </div>
+
+    </div>
+
+</div>
 
 
 
-    <!-- =========================================================
-         PRODUCT POPUP / MODAL
-    ========================================================== -->
+<!-- =========================================================
+     FOOTER
+========================================================== -->
 
-    <div
-        class="product-modal"
-        id="productModal"
-    >
+<footer>
 
-        <div class="modal-content">
+    <h2>
+        YUGA
+    </h2>
+
+    <p>
+        Wear Your Era.
+    </p>
+
+
+    <div class="footer-social">
+
+
+        <a
+            href="https://www.instagram.com/yugafashionindia/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="footer-link"
+        >
+            Instagram
+        </a>
+
+
+        <a
+            href="mailto:yugafashiononline@gmail.com"
+            class="footer-link"
+        >
+            Customer Care
+        </a>
+
+
+        <a
+            href="https://wa.me/917888759939"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="footer-link"
+        >
+            WhatsApp
+        </a>
+
+
+    </div>
+
+
+    <p>
+        © 2026 YUGA Fashion
+    </p>
+
+</footer>
+
+
+
+<!-- =========================================================
+     YUGA AI CHATBOT
+========================================================== -->
+
+<button
+    id="yugaChatButton"
+    aria-label="Open YUGA AI"
+    title="YUGA AI"
+    type="button"
+>
+    🤖
+</button>
+
+
+<div id="yugaChatbot">
+
+
+    <!-- CHAT HEADER -->
+
+    <div class="yuga-chat-header">
+
+        <div>
+
+            <strong>
+                YUGA AI
+            </strong>
+
+            <span>
+                ● Online
+            </span>
+
+        </div>
+
+
+        <button
+            id="yugaChatClose"
+            aria-label="Close chatbot"
+            type="button"
+        >
+            ×
+        </button>
+
+    </div>
+
+
+
+    <!-- CHAT MESSAGES -->
+
+    <div id="yugaChatMessages">
+
+
+        <!-- WELCOME MESSAGE -->
+
+        <div class="yuga-message bot">
+
+            Hey! 👋 Welcome to
+            <strong>YUGA Fashion</strong>.
+
+            <br><br>
+
+            I'm YUGA AI. How can I help you today?
+
+        </div>
+
+
+
+        <!-- QUICK BUTTONS -->
+
+        <div class="yuga-quick-buttons">
 
 
             <button
-                class="modal-close"
-                id="modalClose"
                 type="button"
+                data-question="Tell me about the Plain collection"
             >
-                ×
+                👕 Plain Collection
             </button>
 
 
-            <div
-                class="modal-image"
-                id="modalImageContainer"
+            <button
+                type="button"
+                data-question="Tell me about the Printed collection"
             >
-
-                <img
-                    id="modalImage"
-                    src=""
-                    alt=""
-                >
-
-            </div>
+                🎨 Printed Collection
+            </button>
 
 
-            <div class="modal-info">
+            <button
+                type="button"
+                data-question="Tell me about the Polo collection"
+            >
+                👔 Polo Collection
+            </button>
 
-                <p class="modal-brand">YUGA</p>
-                <h2 id="modalName">YUGA Winter Sweatshirt</h2>
-                <p class="modal-price" id="modalPrice">₹499</p>
-                <p class="modal-colour">Colour: <span id="modalColour"></span></p>
 
-                <div class="winter-image-switch">
-                    <button type="button" class="winter-view-btn active" id="frontViewBtn">FRONT</button>
-                    <button type="button" class="winter-view-btn" id="backViewBtn">BACK</button>
-                </div>
+            <button
+                type="button"
+                data-question="What are your prices?"
+            >
+                💰
+            </button>
 
-                <div class="winter-launch-box">
-                    <p><strong>Fabric:</strong> Cotton Fleece</p>
-                    <p><strong>GSM:</strong> 320 GSM</p>
-                    <p><strong>Fit:</strong> Regular</p>
-                    <p><strong>Print:</strong> No Print</p>
-                    <p><strong>Sizes:</strong> S • M • L • XL • XXL</p>
-                    <p><strong>Price:</strong> ₹499 — Delivery Included</p>
-                    <p><strong>Expected Launch:</strong> 15 October 2026</p>
-                </div>
 
-                <button type="button" class="modal-order-button" id="modalNotifyButton">NOTIFY ME</button>
+            <button
+                type="button"
+                data-question="How can I order?"
+            >
+                🛒 How to Order
+            </button>
 
-            </div>
 
         </div>
 
@@ -855,377 +827,216 @@
 
 
 
-    <!-- =========================================================
-         FOOTER
-    ========================================================== -->
-
-    <footer>
-
-        <h2>
-            YUGA
-        </h2>
-
-        <p>
-            Wear Your Era.
-        </p>
-
-
-        <div class="footer-social">
-
-
-            <a
-                href="https://www.instagram.com/yugafashionindia/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="footer-link"
-            >
-                Instagram
-            </a>
-
-
-            <a
-                href="mailto:yugafashiononline@gmail.com"
-                class="footer-link"
-            >
-                Customer Care
-            </a>
-
-
-            <a
-                href="https://wa.me/917888759939"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="footer-link"
-            >
-                WhatsApp
-            </a>
-
-
-        </div>
-
-
-        <p>
-            © 2026 YUGA Fashion
-        </p>
-
-    </footer>
-
-
-
-    <!-- =========================================================
-         YUGA AI CHATBOT
-    ========================================================== -->
-
-    <button
-        id="yugaChatButton"
-        aria-label="Open YUGA AI"
-        title="YUGA AI"
-        type="button"
-    >
-        🤖
-    </button>
-
-
-    <div id="yugaChatbot">
-
-
-        <!-- CHAT HEADER -->
-
-        <div class="yuga-chat-header">
-
-            <div>
-
-                <strong>
-                    YUGA AI
-                </strong>
-
-                <span>
-                    ● Online
-                </span>
-
-            </div>
-
-
-            <button
-                id="yugaChatClose"
-                aria-label="Close chatbot"
-                type="button"
-            >
-                ×
-            </button>
-
-        </div>
-
-
-
-        <!-- CHAT MESSAGES -->
-
-        <div id="yugaChatMessages">
-
-
-            <!-- WELCOME MESSAGE -->
-
-            <div class="yuga-message bot">
-
-                Hey! 👋 Welcome to
-                <strong>YUGA Fashion</strong>.
-
-                <br><br>
-
-                I'm YUGA AI. How can I help you today?
-
-            </div>
-
-
-
-            <!-- QUICK BUTTONS -->
-
-            <div class="yuga-quick-buttons">
-
-
-                <button
-                    type="button"
-                    data-question="Tell me about the Plain collection"
-                >
-                    👕 Plain Collection
-                </button>
-
-
-                <button
-                    type="button"
-                    data-question="Tell me about the Printed collection"
-                >
-                    🎨 Printed Collection
-                </button>
-
-
-                <button
-                    type="button"
-                    data-question="Tell me about the Polo collection"
-                >
-                    👔 Polo Collection
-                </button>
-
-
-                <button
-                    type="button"
-                    data-question="What are your prices?"
-                >
-                    💰
-                </button>
-
-
-                <button
-                    type="button"
-                    data-question="How can I order?"
-                >
-                    🛒 How to Order
-                </button>
-
-
-            </div>
-
-        </div>
-
-
-
-        <!-- CHAT INPUT -->
-
-        <div class="yuga-chat-input">
-
-            <input
-                type="text"
-                id="yugaChatInput"
-                placeholder="Ask YUGA AI..."
-                autocomplete="off"
-            >
-
-
-            <button
-                id="yugaChatSend"
-                type="button"
-            >
-                ➤
-            </button>
-
-        </div>
+    <!-- CHAT INPUT -->
+
+    <div class="yuga-chat-input">
+
+        <input
+            type="text"
+            id="yugaChatInput"
+            placeholder="Ask YUGA AI..."
+            autocomplete="off"
+        >
+
+
+        <button
+            id="yugaChatSend"
+            type="button"
+        >
+            ➤
+        </button>
 
     </div>
 
+</div>
 
 
-    <!-- =========================================================
-         JAVASCRIPT
-    ========================================================== -->
 
-    <script src="script.js"></script>
+<!-- =========================================================
+     JAVASCRIPT
+========================================================== -->
+
+<script src="script.js"></script>
 
 
-    <!-- WINTER '26 PAGE FEATURES -->
+<!-- WINTER '26 PAGE FEATURES -->
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const catalogue = document.getElementById("winterCatalogue");
-            const products = Array.from(document.querySelectorAll(".winter-product"));
-            const snowfall = document.getElementById("winterSnowfall");
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const products = document.querySelectorAll(".winter-product");
+        const modal = document.getElementById("productModal");
+        const close = document.getElementById("modalClose");
+        const image = document.getElementById("modalImage");
+        const imageBox = document.getElementById("modalImageContainer");
+        const name = document.getElementById("modalName");
+        const price = document.getElementById("modalPrice");
+        const colour = document.getElementById("modalColour");
+        const notify = document.getElementById("modalNotifyButton");
+        const frontBtn = document.getElementById("frontViewBtn");
+        const backBtn = document.getElementById("backViewBtn");
+        let selected = null;
 
-            const modal = document.getElementById("productModal");
-            const close = document.getElementById("modalClose");
-            const image = document.getElementById("modalImage");
-            const imageBox = document.getElementById("modalImageContainer");
-            const name = document.getElementById("modalName");
-            const price = document.getElementById("modalPrice");
-            const colour = document.getElementById("modalColour");
-            const notify = document.getElementById("modalNotifyButton");
-            const frontBtn = document.getElementById("frontViewBtn");
-            const backBtn = document.getElementById("backViewBtn");
+        /*
+         * COLLECTION CARD FRONT / BACK
+         * Desktop: hover over the product image = BACK
+         * Mobile/tablet: tap the product image = FRONT/BACK
+         */
 
-            let selected = null;
-            let touchStartX = 0;
-            let touchStartY = 0;
+        const touchDevice =
+            window.matchMedia("(hover: none), (pointer: coarse)").matches;
 
-            /* Continuous snowfall */
-            const snowSymbols = ["❄", "❅", "❆", "•"];
-            for (let i = 0; i < 34; i++) {
-                const flake = document.createElement("span");
-                flake.className = "winter-snowflake";
-                flake.textContent = snowSymbols[i % snowSymbols.length];
-                flake.style.left = (Math.random() * 100) + "%";
-                flake.style.fontSize = (8 + Math.random() * 13) + "px";
-                flake.style.opacity = (0.35 + Math.random() * 0.55).toFixed(2);
-                flake.style.animationDuration = (7 + Math.random() * 10) + "s";
-                flake.style.animationDelay = (-Math.random() * 15) + "s";
-                snowfall.appendChild(flake);
+        products.forEach(function (product) {
+            const cardImageBox = product.querySelector(".product-image-zoom");
+            const cardImage = cardImageBox.querySelector("img");
+
+            const frontImage = product.dataset.image;
+            const backImage = product.dataset.backImage;
+
+            // Preload the back image for an instant switch.
+            const preload = new Image();
+            preload.src = backImage;
+
+            function showCardFront() {
+                cardImage.src = frontImage;
+                cardImageBox.classList.remove("is-back");
             }
 
-            /* Reveal burst once on initial catalogue load */
-            requestAnimationFrame(() => {
-                catalogue.classList.add("reveal-ready");
-            });
+            function showCardBack() {
+                cardImage.src = backImage;
+                cardImageBox.classList.add("is-back");
+            }
 
-            /* Each product remains in the six-card grid.
-               Swipe horizontally INSIDE a product image to switch FRONT ↔ BACK. */
-            document.querySelectorAll(".winter-image-pair").forEach(pair => {
-                const dots = pair.parentElement.querySelectorAll(".winter-image-dot");
-
-                function updateDots() {
-                    const index = Math.round(pair.scrollLeft / pair.clientWidth);
-                    dots.forEach((dot, i) => dot.classList.toggle("active", i === index));
+            // Desktop hover.
+            product.addEventListener("mouseenter", function () {
+                if (!touchDevice) {
+                    showCardBack();
                 }
-
-                pair.addEventListener("scroll", updateDots, { passive: true });
-
-                let startX = 0;
-                let startY = 0;
-
-                pair.addEventListener("touchstart", e => {
-                    if (!e.touches.length) return;
-                    startX = e.touches[0].clientX;
-                    startY = e.touches[0].clientY;
-                }, { passive: true });
-
-                pair.addEventListener("touchend", e => {
-                    if (!e.changedTouches.length) return;
-
-                    const dx = e.changedTouches[0].clientX - startX;
-                    const dy = e.changedTouches[0].clientY - startY;
-
-                    if (Math.abs(dx) < 35 || Math.abs(dx) < Math.abs(dy)) return;
-
-                    pair.scrollTo({
-                        left: dx < 0 ? pair.clientWidth : 0,
-                        behavior: "smooth"
-                    });
-                }, { passive: true });
             });
 
-            function showFront() {
-                if (!selected) return;
-                image.src = selected.dataset.image;
-                image.alt = selected.dataset.colour + " YUGA Winter '26 sweatshirt front";
-                frontBtn.classList.add("active");
-                backBtn.classList.remove("active");
-                imageBox.classList.remove("zoomed");
-            }
+            product.addEventListener("mouseleave", function () {
+                if (!touchDevice) {
+                    showCardFront();
+                }
+            });
 
-            function showBack() {
-                if (!selected) return;
-                image.src = selected.dataset.backImage;
-                image.alt = selected.dataset.colour + " YUGA Winter '26 sweatshirt back";
-                backBtn.classList.add("active");
-                frontBtn.classList.remove("active");
-                imageBox.classList.remove("zoomed");
-            }
+            // Mobile/tablet tap.
+            cardImageBox.addEventListener("click", function (event) {
+                if (!touchDevice) return;
 
-            function openProduct(product) {
-                selected = product;
-                name.textContent = product.dataset.name;
-                price.textContent = "₹" + product.dataset.price + " • Delivery Included";
-                colour.textContent = product.dataset.colour;
-                showFront();
-                modal.classList.add("active");
-                document.body.style.overflow = "hidden";
-            }
+                event.stopPropagation();
 
-            function notifyWhatsApp() {
-                if (!selected) return;
+                if (cardImageBox.classList.contains("is-back")) {
+                    showCardFront();
+                } else {
+                    showCardBack();
+                }
+            });
+        });
 
-                const msg =
-                    "Hello YUGA!%0A%0A" +
-                    "I want to be notified when the WINTER '26 sweatshirt launches.%0A%0A" +
-                    "Product: YUGA Winter Sweatshirt%0A" +
-                    "Colour: " + encodeURIComponent(selected.dataset.colour) + "%0A" +
-                    "Price: ₹499%0A" +
-                    "Expected Launch: 15 October 2026";
+        /* =====================================================
+           PRODUCT MODAL
+        ====================================================== */
 
-                window.open(
-                    "https://wa.me/917888759939?text=" + msg,
-                    "_blank",
-                    "noopener,noreferrer"
-                );
-            }
+        function showFront() {
+            if (!selected) return;
 
-            products.forEach(product => {
-                product.addEventListener("click", e => {
-                    if (!e.target.closest(".winter-notify")) {
-                        openProduct(product);
-                    }
-                });
+            image.src = selected.dataset.image;
+            frontBtn.classList.add("active");
+            backBtn.classList.remove("active");
+            imageBox.classList.remove("zoomed");
+        }
 
-                product.querySelector(".winter-notify").addEventListener("click", e => {
-                    e.stopPropagation();
+        function showBack() {
+            if (!selected) return;
+
+            image.src = selected.dataset.backImage;
+            backBtn.classList.add("active");
+            frontBtn.classList.remove("active");
+            imageBox.classList.remove("zoomed");
+        }
+
+        function openProduct(product) {
+            selected = product;
+
+            name.textContent = product.dataset.name;
+            price.textContent =
+                "₹" + product.dataset.price + " • Delivery Included";
+            colour.textContent = product.dataset.colour;
+
+            showFront();
+
+            modal.classList.add("active");
+            document.body.style.overflow = "hidden";
+        }
+
+        function notifyWhatsApp() {
+            if (!selected) return;
+
+            const msg =
+                "Hello YUGA!%0A%0A" +
+                "I want to be notified when the WINTER '26 sweatshirt launches.%0A%0A" +
+                "Product: YUGA Winter Sweatshirt%0A" +
+                "Colour: " + encodeURIComponent(selected.dataset.colour) + "%0A" +
+                "Price: ₹499%0A" +
+                "Expected Launch: 15 October 2026";
+
+            window.open(
+                "https://wa.me/917888759939?text=" + msg,
+                "_blank"
+            );
+        }
+
+        products.forEach(function (product) {
+            product.addEventListener("click", function (event) {
+                // Image tap is handled separately on touch devices.
+                // Clicking the rest of the card opens the modal.
+                if (
+                    !event.target.closest(".winter-notify") &&
+                    !event.target.closest(".product-image-zoom")
+                ) {
+                    openProduct(product);
+                }
+            });
+
+            product
+                .querySelector(".winter-notify")
+                .addEventListener("click", function (event) {
+                    event.stopPropagation();
                     openProduct(product);
                 });
-            });
-
-            frontBtn.addEventListener("click", showFront);
-            backBtn.addEventListener("click", showBack);
-            notify.addEventListener("click", notifyWhatsApp);
-
-            imageBox.addEventListener("click", () => {
-                imageBox.classList.toggle("zoomed");
-            });
-
-            function closeModal() {
-                modal.classList.remove("active");
-                imageBox.classList.remove("zoomed");
-                document.body.style.overflow = "";
-                selected = null;
-            }
-
-            close.addEventListener("click", closeModal);
-
-            modal.addEventListener("click", e => {
-                if (e.target === modal) closeModal();
-            });
-
-            document.addEventListener("keydown", e => {
-                if (e.key === "Escape") closeModal();
-            });
-
         });
-    </script>
 
+        frontBtn.addEventListener("click", showFront);
+        backBtn.addEventListener("click", showBack);
+        notify.addEventListener("click", notifyWhatsApp);
+
+        // Existing modal image zoom remains unchanged.
+        imageBox.addEventListener("click", function () {
+            imageBox.classList.toggle("zoomed");
+        });
+
+        function closeModal() {
+            modal.classList.remove("active");
+            imageBox.classList.remove("zoomed");
+            document.body.style.overflow = "";
+            selected = null;
+        }
+
+        close.addEventListener("click", closeModal);
+
+        modal.addEventListener("click", function (event) {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "Escape") {
+                closeModal();
+            }
+        });
+    });
+</script>
 
 </body>
 
