@@ -397,139 +397,121 @@
             z-index: 2;
         }
 
-        /* Desktop: one-card-at-a-time catalogue */
+        /* Six-product Winter catalogue grid */
         .winter-catalogue .products {
-            display: flex;
-            align-items: stretch;
-            justify-content: center;
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
         }
 
         .winter-catalogue .winter-product {
-            width: min(520px, 100%);
+            width: auto;
+            display: block;
+            animation: none;
+        }
+
+        /* Show front + back clearly inside every product card */
+        .winter-product .winter-image-pair {
+            position: relative;
+            display: flex;
+            gap: 0;
+            margin-bottom: 12px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            border-radius: 7px;
+            -webkit-overflow-scrolling: touch;
+            touch-action: pan-x;
+        }
+
+        .winter-product .winter-image-pair::-webkit-scrollbar {
             display: none;
         }
 
-        .winter-catalogue .winter-product.catalogue-active {
-            display: block;
-            animation: winterCardIn .55s ease both;
+        .winter-product .winter-image-side {
+            position: relative;
+            flex: 0 0 100%;
+            overflow: hidden;
+            background: #f7f7f7;
+            border-radius: 7px;
+            aspect-ratio: 4 / 5;
+            scroll-snap-align: start;
         }
 
-        @keyframes winterCardIn {
-            from { opacity: 0; transform: translateX(28px) scale(.985); }
-            to { opacity: 1; transform: translateX(0) scale(1); }
+        .winter-product .winter-image-side img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            transition: transform .35s ease;
+        }
+
+        .winter-product:hover .winter-image-side img {
+            transform: scale(1.035);
+        }
+
+        .winter-image-label {
+            position: absolute;
+            left: 7px;
+            bottom: 7px;
+            z-index: 2;
+            padding: 4px 7px;
+            border-radius: 3px;
+            background: rgba(17,17,17,.82);
+            color: #fff;
+            font-size: 8px;
+            font-weight: 800;
+            letter-spacing: 1px;
         }
 
         .winter-catalogue-nav {
             position: relative;
             z-index: 20;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 18px;
-            margin: 18px auto 0;
+            display: none;
         }
 
-        .winter-nav-btn {
-            width: 46px;
-            height: 46px;
-            border: 1px solid #111;
-            border-radius: 50%;
-            background: rgba(255,255,255,.94);
+
+        .winter-swipe-hint {
+            position: absolute;
+            right: 8px;
+            bottom: 8px;
+            z-index: 4;
+            padding: 4px 7px;
+            border-radius: 10px;
+            background: rgba(255,255,255,.88);
             color: #111;
-            font-size: 22px;
-            line-height: 1;
-            cursor: pointer;
-            box-shadow: 0 5px 18px rgba(0,0,0,.12);
+            font-size: 8px;
+            font-weight: 800;
+            letter-spacing: .7px;
+            pointer-events: none;
+        }
+
+        .winter-image-dots {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin-top: -5px;
+            margin-bottom: 9px;
+        }
+
+        .winter-image-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: #c7c7c7;
             transition: transform .2s ease, background .2s ease;
         }
 
-        .winter-nav-btn:hover {
-            transform: scale(1.06);
+        .winter-image-dot.active {
             background: #111;
-            color: #fff;
+            transform: scale(1.25);
         }
 
-        .winter-slide-count {
-            min-width: 58px;
-            text-align: center;
-            font-size: 11px;
-            font-weight: 800;
-            letter-spacing: 1.5px;
-        }
-
-        /* Continuous snowfall */
-        .winter-snowfall {
-            position: absolute;
-            inset: 0;
-            z-index: 5;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
-        .winter-snowflake {
-            position: absolute;
-            top: -12vh;
-            color: rgba(255,255,255,.9);
-            text-shadow: 0 1px 8px rgba(0,0,0,.18);
-            user-select: none;
-            animation-name: winterSnowFall;
-            animation-timing-function: linear;
-            animation-iteration-count: infinite;
-        }
-
-        @keyframes winterSnowFall {
-            0% { transform: translate3d(0,-12vh,0) rotate(0deg); }
-            50% { transform: translate3d(28px,50vh,0) rotate(180deg); }
-            100% { transform: translate3d(-24px,115vh,0) rotate(360deg); }
-        }
-
-        /* Burst + catalogue/model reveal */
-        .winter-reveal-layer {
-            position: absolute;
-            inset: 0;
-            z-index: 8;
-            pointer-events: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .winter-burst {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: #fff;
-            box-shadow:
-                0 0 0 0 rgba(255,255,255,.95),
-                0 0 35px 10px rgba(255,255,255,.85);
-            opacity: 0;
-        }
-
-        .winter-catalogue.reveal-ready .winter-burst {
-            animation: winterBurst 1.15s ease-out forwards;
-        }
-
-        @keyframes winterBurst {
-            0% {
-                opacity: 1;
-                transform: scale(.1);
-            }
-            35% {
-                opacity: 1;
-                transform: scale(10);
-            }
-            70% {
-                opacity: .85;
-                transform: scale(35);
-            }
-            100% {
-                opacity: 0;
-                transform: scale(70);
-            }
-        }
-
+        /* Burst sits over the grid, then fades away */
         .winter-catalogue.reveal-ready .products {
-            animation: winterReveal 1.25s ease 0.25s both;
+            animation: winterReveal 1.25s ease .25s both;
         }
 
         @keyframes winterReveal {
@@ -547,27 +529,28 @@
 
         @media (max-width: 700px) {
             .winter-catalogue .products {
-                display: block;
-                overflow: hidden;
-                touch-action: pan-y;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 14px;
+                touch-action: auto;
             }
 
             .winter-catalogue .winter-product {
-                width: 100%;
+                width: auto;
             }
 
-            .winter-catalogue .winter-product.catalogue-active {
-                display: block;
+            .winter-product .winter-image-pair {
+                gap: 0;
+            }
+
+            .winter-image-label {
+                left: 5px;
+                bottom: 5px;
+                padding: 3px 5px;
+                font-size: 7px;
             }
 
             .winter-catalogue-nav {
-                margin-top: 14px;
-            }
-
-            .winter-nav-btn {
-                width: 42px;
-                height: 42px;
-                font-size: 20px;
+                display: none;
             }
 
             .winter-slide-count {
@@ -638,8 +621,19 @@
 
         <div class="product winter-product catalogue-active" data-name="YUGA Winter Sweatshirt" data-price="499" data-colour="Black" data-image="FRBLK.jpeg" data-back-image="BKBLK.jpeg">
 
-            <div class="product-image-zoom">
-                <img src="FRBLK.jpeg" alt="YUGA Winter '26 Sweatshirt Black">
+            <div class="winter-image-pair" aria-label="Black sweatshirt front and back">
+                <div class="winter-image-side">
+                    <img src="FRBLK.jpeg" alt="YUGA Winter '26 Sweatshirt Black front">
+                    <span class="winter-image-label">FRONT</span>
+                </div>
+                <div class="winter-image-side">
+                    <img src="BKBLK.jpeg" alt="YUGA Winter '26 Sweatshirt Black back">
+                    <span class="winter-image-label">BACK</span>
+                </div>
+            </div>
+            <div class="winter-image-dots" aria-hidden="true">
+                <span class="winter-image-dot active"></span>
+                <span class="winter-image-dot"></span>
             </div>
 
             <h3>YUGA Winter Sweatshirt</h3>
@@ -654,8 +648,19 @@
 
         <div class="product winter-product" data-name="YUGA Winter Sweatshirt" data-price="499" data-colour="Blue" data-image="FRBLU.jpeg" data-back-image="BKBLU.jpeg">
 
-            <div class="product-image-zoom">
-                <img src="FRBLU.jpeg" alt="YUGA Winter '26 Sweatshirt Blue">
+            <div class="winter-image-pair" aria-label="Blue sweatshirt front and back">
+                <div class="winter-image-side">
+                    <img src="FRBLU.jpeg" alt="YUGA Winter '26 Sweatshirt Blue front">
+                    <span class="winter-image-label">FRONT</span>
+                </div>
+                <div class="winter-image-side">
+                    <img src="BKBLU.jpeg" alt="YUGA Winter '26 Sweatshirt Blue back">
+                    <span class="winter-image-label">BACK</span>
+                </div>
+            </div>
+            <div class="winter-image-dots" aria-hidden="true">
+                <span class="winter-image-dot active"></span>
+                <span class="winter-image-dot"></span>
             </div>
 
             <h3>YUGA Winter Sweatshirt</h3>
@@ -670,8 +675,19 @@
 
         <div class="product winter-product" data-name="YUGA Winter Sweatshirt" data-price="499" data-colour="Forest Green" data-image="FRGRN.jpeg" data-back-image="BKGRN.jpeg">
 
-            <div class="product-image-zoom">
-                <img src="FRGRN.jpeg" alt="YUGA Winter '26 Sweatshirt Forest Green">
+            <div class="winter-image-pair" aria-label="Forest Green sweatshirt front and back">
+                <div class="winter-image-side">
+                    <img src="FRGRN.jpeg" alt="YUGA Winter '26 Sweatshirt Forest Green front">
+                    <span class="winter-image-label">FRONT</span>
+                </div>
+                <div class="winter-image-side">
+                    <img src="BKGRN.jpeg" alt="YUGA Winter '26 Sweatshirt Forest Green back">
+                    <span class="winter-image-label">BACK</span>
+                </div>
+            </div>
+            <div class="winter-image-dots" aria-hidden="true">
+                <span class="winter-image-dot active"></span>
+                <span class="winter-image-dot"></span>
             </div>
 
             <h3>YUGA Winter Sweatshirt</h3>
@@ -686,8 +702,19 @@
 
         <div class="product winter-product" data-name="YUGA Winter Sweatshirt" data-price="499" data-colour="Red" data-image="FRRD.jpeg" data-back-image="BKRD.jpeg">
 
-            <div class="product-image-zoom">
-                <img src="FRRD.jpeg" alt="YUGA Winter '26 Sweatshirt Red">
+            <div class="winter-image-pair" aria-label="Red sweatshirt front and back">
+                <div class="winter-image-side">
+                    <img src="FRRD.jpeg" alt="YUGA Winter '26 Sweatshirt Red front">
+                    <span class="winter-image-label">FRONT</span>
+                </div>
+                <div class="winter-image-side">
+                    <img src="BKRD.jpeg" alt="YUGA Winter '26 Sweatshirt Red back">
+                    <span class="winter-image-label">BACK</span>
+                </div>
+            </div>
+            <div class="winter-image-dots" aria-hidden="true">
+                <span class="winter-image-dot active"></span>
+                <span class="winter-image-dot"></span>
             </div>
 
             <h3>YUGA Winter Sweatshirt</h3>
@@ -702,8 +729,19 @@
 
         <div class="product winter-product" data-name="YUGA Winter Sweatshirt" data-price="499" data-colour="Yellow" data-image="FRYLW.jpeg" data-back-image="BKYLW.jpeg">
 
-            <div class="product-image-zoom">
-                <img src="FRYLW.jpeg" alt="YUGA Winter '26 Sweatshirt Yellow">
+            <div class="winter-image-pair" aria-label="Yellow sweatshirt front and back">
+                <div class="winter-image-side">
+                    <img src="FRYLW.jpeg" alt="YUGA Winter '26 Sweatshirt Yellow front">
+                    <span class="winter-image-label">FRONT</span>
+                </div>
+                <div class="winter-image-side">
+                    <img src="BKYLW.jpeg" alt="YUGA Winter '26 Sweatshirt Yellow back">
+                    <span class="winter-image-label">BACK</span>
+                </div>
+            </div>
+            <div class="winter-image-dots" aria-hidden="true">
+                <span class="winter-image-dot active"></span>
+                <span class="winter-image-dot"></span>
             </div>
 
             <h3>YUGA Winter Sweatshirt</h3>
@@ -718,8 +756,19 @@
 
         <div class="product winter-product" data-name="YUGA Winter Sweatshirt" data-price="499" data-colour="Brown" data-image="FRBRN.jpeg" data-back-image="BKBRN.jpeg">
 
-            <div class="product-image-zoom">
-                <img src="FRBRN.jpeg" alt="YUGA Winter '26 Sweatshirt Brown">
+            <div class="winter-image-pair" aria-label="Brown sweatshirt front and back">
+                <div class="winter-image-side">
+                    <img src="FRBRN.jpeg" alt="YUGA Winter '26 Sweatshirt Brown front">
+                    <span class="winter-image-label">FRONT</span>
+                </div>
+                <div class="winter-image-side">
+                    <img src="BKBRN.jpeg" alt="YUGA Winter '26 Sweatshirt Brown back">
+                    <span class="winter-image-label">BACK</span>
+                </div>
+            </div>
+            <div class="winter-image-dots" aria-hidden="true">
+                <span class="winter-image-dot active"></span>
+                <span class="winter-image-dot"></span>
             </div>
 
             <h3>YUGA Winter Sweatshirt</h3>
@@ -734,11 +783,6 @@
 
         </div>
 
-        <div class="winter-catalogue-nav" aria-label="Winter catalogue navigation">
-            <button type="button" class="winter-nav-btn" id="winterPrev" aria-label="Previous sweatshirt">←</button>
-            <span class="winter-slide-count" id="winterSlideCount">1 / 6</span>
-            <button type="button" class="winter-nav-btn" id="winterNext" aria-label="Next sweatshirt">→</button>
-        </div>
 
     </section>
 
@@ -1023,9 +1067,6 @@
         document.addEventListener("DOMContentLoaded", function () {
             const catalogue = document.getElementById("winterCatalogue");
             const products = Array.from(document.querySelectorAll(".winter-product"));
-            const prevBtn = document.getElementById("winterPrev");
-            const nextBtn = document.getElementById("winterNext");
-            const slideCount = document.getElementById("winterSlideCount");
             const snowfall = document.getElementById("winterSnowfall");
 
             const modal = document.getElementById("productModal");
@@ -1039,7 +1080,6 @@
             const frontBtn = document.getElementById("frontViewBtn");
             const backBtn = document.getElementById("backViewBtn");
 
-            let currentIndex = 0;
             let selected = null;
             let touchStartX = 0;
             let touchStartY = 0;
@@ -1063,63 +1103,40 @@
                 catalogue.classList.add("reveal-ready");
             });
 
-            function updateCatalogue(direction = 1) {
-                products.forEach((product, index) => {
-                    product.classList.toggle("catalogue-active", index === currentIndex);
-                });
+            /* Each product remains in the six-card grid.
+               Swipe horizontally INSIDE a product image to switch FRONT ↔ BACK. */
+            document.querySelectorAll(".winter-image-pair").forEach(pair => {
+                const dots = pair.parentElement.querySelectorAll(".winter-image-dot");
 
-                slideCount.textContent = `${currentIndex + 1} / ${products.length}`;
+                function updateDots() {
+                    const index = Math.round(pair.scrollLeft / pair.clientWidth);
+                    dots.forEach((dot, i) => dot.classList.toggle("active", i === index));
+                }
 
-                /* Restart the slide animation */
-                const active = products[currentIndex];
-                active.style.animation = "none";
-                void active.offsetWidth;
-                active.style.animation = "";
+                pair.addEventListener("scroll", updateDots, { passive: true });
 
-                /* Keep navigation available as a continuous loop */
-                prevBtn.disabled = false;
-                nextBtn.disabled = false;
-            }
+                let startX = 0;
+                let startY = 0;
 
-            function showNext() {
-                currentIndex = (currentIndex + 1) % products.length;
-                updateCatalogue(1);
-            }
+                pair.addEventListener("touchstart", e => {
+                    if (!e.touches.length) return;
+                    startX = e.touches[0].clientX;
+                    startY = e.touches[0].clientY;
+                }, { passive: true });
 
-            function showPrevious() {
-                currentIndex = (currentIndex - 1 + products.length) % products.length;
-                updateCatalogue(-1);
-            }
+                pair.addEventListener("touchend", e => {
+                    if (!e.changedTouches.length) return;
 
-            prevBtn.addEventListener("click", showPrevious);
-            nextBtn.addEventListener("click", showNext);
+                    const dx = e.changedTouches[0].clientX - startX;
+                    const dy = e.changedTouches[0].clientY - startY;
 
-            /* Mobile swipe left/right */
-            const productsArea = catalogue.querySelector(".products");
+                    if (Math.abs(dx) < 35 || Math.abs(dx) < Math.abs(dy)) return;
 
-            productsArea.addEventListener("touchstart", (e) => {
-                if (!e.touches.length) return;
-                touchStartX = e.touches[0].clientX;
-                touchStartY = e.touches[0].clientY;
-            }, { passive: true });
-
-            productsArea.addEventListener("touchend", (e) => {
-                if (!e.changedTouches.length) return;
-
-                const dx = e.changedTouches[0].clientX - touchStartX;
-                const dy = e.changedTouches[0].clientY - touchStartY;
-
-                if (Math.abs(dx) < 45 || Math.abs(dx) < Math.abs(dy)) return;
-
-                if (dx < 0) showNext();
-                else showPrevious();
-            }, { passive: true });
-
-            /* Keyboard navigation on desktop */
-            document.addEventListener("keydown", (e) => {
-                if (modal.classList.contains("active")) return;
-                if (e.key === "ArrowRight") showNext();
-                if (e.key === "ArrowLeft") showPrevious();
+                    pair.scrollTo({
+                        left: dx < 0 ? pair.clientWidth : 0,
+                        behavior: "smooth"
+                    });
+                }, { passive: true });
             });
 
             function showFront() {
@@ -1206,7 +1223,6 @@
                 if (e.key === "Escape") closeModal();
             });
 
-            updateCatalogue();
         });
     </script>
 
