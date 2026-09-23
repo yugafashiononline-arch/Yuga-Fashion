@@ -381,6 +381,209 @@
         .winter-view-btn.active { background:#111; color:#fff; }
         @media (max-width:700px){ .winter-specs{font-size:11px;} }
 
+
+        /* =========================================================
+           WINTER '26 INTERACTIVE CATALOGUE
+        ========================================================== */
+
+        .winter-catalogue {
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+        }
+
+        .winter-catalogue .products {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Desktop: one-card-at-a-time catalogue */
+        .winter-catalogue .products {
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+        }
+
+        .winter-catalogue .winter-product {
+            width: min(520px, 100%);
+            display: none;
+        }
+
+        .winter-catalogue .winter-product.catalogue-active {
+            display: block;
+            animation: winterCardIn .55s ease both;
+        }
+
+        @keyframes winterCardIn {
+            from { opacity: 0; transform: translateX(28px) scale(.985); }
+            to { opacity: 1; transform: translateX(0) scale(1); }
+        }
+
+        .winter-catalogue-nav {
+            position: relative;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+            margin: 18px auto 0;
+        }
+
+        .winter-nav-btn {
+            width: 46px;
+            height: 46px;
+            border: 1px solid #111;
+            border-radius: 50%;
+            background: rgba(255,255,255,.94);
+            color: #111;
+            font-size: 22px;
+            line-height: 1;
+            cursor: pointer;
+            box-shadow: 0 5px 18px rgba(0,0,0,.12);
+            transition: transform .2s ease, background .2s ease;
+        }
+
+        .winter-nav-btn:hover {
+            transform: scale(1.06);
+            background: #111;
+            color: #fff;
+        }
+
+        .winter-slide-count {
+            min-width: 58px;
+            text-align: center;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+        }
+
+        /* Continuous snowfall */
+        .winter-snowfall {
+            position: absolute;
+            inset: 0;
+            z-index: 5;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .winter-snowflake {
+            position: absolute;
+            top: -12vh;
+            color: rgba(255,255,255,.9);
+            text-shadow: 0 1px 8px rgba(0,0,0,.18);
+            user-select: none;
+            animation-name: winterSnowFall;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes winterSnowFall {
+            0% { transform: translate3d(0,-12vh,0) rotate(0deg); }
+            50% { transform: translate3d(28px,50vh,0) rotate(180deg); }
+            100% { transform: translate3d(-24px,115vh,0) rotate(360deg); }
+        }
+
+        /* Burst + catalogue/model reveal */
+        .winter-reveal-layer {
+            position: absolute;
+            inset: 0;
+            z-index: 8;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .winter-burst {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #fff;
+            box-shadow:
+                0 0 0 0 rgba(255,255,255,.95),
+                0 0 35px 10px rgba(255,255,255,.85);
+            opacity: 0;
+        }
+
+        .winter-catalogue.reveal-ready .winter-burst {
+            animation: winterBurst 1.15s ease-out forwards;
+        }
+
+        @keyframes winterBurst {
+            0% {
+                opacity: 1;
+                transform: scale(.1);
+            }
+            35% {
+                opacity: 1;
+                transform: scale(10);
+            }
+            70% {
+                opacity: .85;
+                transform: scale(35);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(70);
+            }
+        }
+
+        .winter-catalogue.reveal-ready .products {
+            animation: winterReveal 1.25s ease 0.25s both;
+        }
+
+        @keyframes winterReveal {
+            from {
+                opacity: 0;
+                transform: translateY(18px) scale(.985);
+                filter: blur(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                filter: blur(0);
+            }
+        }
+
+        @media (max-width: 700px) {
+            .winter-catalogue .products {
+                display: block;
+                overflow: hidden;
+                touch-action: pan-y;
+            }
+
+            .winter-catalogue .winter-product {
+                width: 100%;
+            }
+
+            .winter-catalogue .winter-product.catalogue-active {
+                display: block;
+            }
+
+            .winter-catalogue-nav {
+                margin-top: 14px;
+            }
+
+            .winter-nav-btn {
+                width: 42px;
+                height: 42px;
+                font-size: 20px;
+            }
+
+            .winter-slide-count {
+                font-size: 10px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .winter-snowflake,
+            .winter-catalogue.reveal-ready .winter-burst,
+            .winter-catalogue.reveal-ready .products,
+            .winter-catalogue .winter-product.catalogue-active {
+                animation: none !important;
+            }
+        }
+
     </style>
 
 </head>
@@ -425,14 +628,15 @@
          WINTER '26 COLLECTION
     ========================================================== -->
 
-    <section class="collection">
+    <section class="collection winter-catalogue" id="winterCatalogue">
+        <div class="winter-snowfall" id="winterSnowfall" aria-hidden="true"></div>
+        <div class="winter-reveal-layer" aria-hidden="true"><div class="winter-burst"></div></div>
 
         <h2>WINTER '26 COLLECTION</h2>
 
-
         <div class="products">
 
-        <div class="product winter-product" data-name="YUGA Winter Sweatshirt" data-price="499" data-colour="Black" data-image="FRBLK.jpeg" data-back-image="BKBLK.jpeg">
+        <div class="product winter-product catalogue-active" data-name="YUGA Winter Sweatshirt" data-price="499" data-colour="Black" data-image="FRBLK.jpeg" data-back-image="BKBLK.jpeg">
 
             <div class="product-image-zoom">
                 <img src="FRBLK.jpeg" alt="YUGA Winter '26 Sweatshirt Black">
@@ -528,6 +732,12 @@
 
         </div>
 
+        </div>
+
+        <div class="winter-catalogue-nav" aria-label="Winter catalogue navigation">
+            <button type="button" class="winter-nav-btn" id="winterPrev" aria-label="Previous sweatshirt">←</button>
+            <span class="winter-slide-count" id="winterSlideCount">1 / 6</span>
+            <button type="button" class="winter-nav-btn" id="winterNext" aria-label="Next sweatshirt">→</button>
         </div>
 
     </section>
@@ -811,28 +1021,192 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            const products=document.querySelectorAll(".winter-product");
-            const modal=document.getElementById("productModal");
-            const close=document.getElementById("modalClose");
-            const image=document.getElementById("modalImage");
-            const imageBox=document.getElementById("modalImageContainer");
-            const name=document.getElementById("modalName");
-            const price=document.getElementById("modalPrice");
-            const colour=document.getElementById("modalColour");
-            const notify=document.getElementById("modalNotifyButton");
-            const frontBtn=document.getElementById("frontViewBtn");
-            const backBtn=document.getElementById("backViewBtn");
-            let selected=null;
+            const catalogue = document.getElementById("winterCatalogue");
+            const products = Array.from(document.querySelectorAll(".winter-product"));
+            const prevBtn = document.getElementById("winterPrev");
+            const nextBtn = document.getElementById("winterNext");
+            const slideCount = document.getElementById("winterSlideCount");
+            const snowfall = document.getElementById("winterSnowfall");
 
-            function showFront(){ if(!selected)return; image.src=selected.dataset.image; frontBtn.classList.add("active"); backBtn.classList.remove("active"); imageBox.classList.remove("zoomed"); }
-            function showBack(){ if(!selected)return; image.src=selected.dataset.backImage; backBtn.classList.add("active"); frontBtn.classList.remove("active"); imageBox.classList.remove("zoomed"); }
-            function openProduct(product){ selected=product; name.textContent=product.dataset.name; price.textContent="₹"+product.dataset.price+" • Delivery Included"; colour.textContent=product.dataset.colour; showFront(); modal.classList.add("active"); document.body.style.overflow="hidden"; }
-            function notifyWhatsApp(){ if(!selected)return; const msg="Hello YUGA!%0A%0AI want to be notified when the WINTER '26 sweatshirt launches.%0A%0AProduct: YUGA Winter Sweatshirt%0AColour: "+encodeURIComponent(selected.dataset.colour)+"%0APrice: ₹499%0AExpected Launch: 15 October 2026"; window.open("https://wa.me/917888759939?text="+msg,"_blank"); }
-            products.forEach(p=>{ p.addEventListener("click",e=>{if(!e.target.closest(".winter-notify"))openProduct(p);}); p.querySelector(".winter-notify").addEventListener("click",e=>{e.stopPropagation();openProduct(p);}); });
-            frontBtn.addEventListener("click",showFront); backBtn.addEventListener("click",showBack); notify.addEventListener("click",notifyWhatsApp);
-            imageBox.addEventListener("click",()=>imageBox.classList.toggle("zoomed"));
-            function closeModal(){modal.classList.remove("active");imageBox.classList.remove("zoomed");document.body.style.overflow="";selected=null;}
-            close.addEventListener("click",closeModal); modal.addEventListener("click",e=>{if(e.target===modal)closeModal();}); document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal();});
+            const modal = document.getElementById("productModal");
+            const close = document.getElementById("modalClose");
+            const image = document.getElementById("modalImage");
+            const imageBox = document.getElementById("modalImageContainer");
+            const name = document.getElementById("modalName");
+            const price = document.getElementById("modalPrice");
+            const colour = document.getElementById("modalColour");
+            const notify = document.getElementById("modalNotifyButton");
+            const frontBtn = document.getElementById("frontViewBtn");
+            const backBtn = document.getElementById("backViewBtn");
+
+            let currentIndex = 0;
+            let selected = null;
+            let touchStartX = 0;
+            let touchStartY = 0;
+
+            /* Continuous snowfall */
+            const snowSymbols = ["❄", "❅", "❆", "•"];
+            for (let i = 0; i < 34; i++) {
+                const flake = document.createElement("span");
+                flake.className = "winter-snowflake";
+                flake.textContent = snowSymbols[i % snowSymbols.length];
+                flake.style.left = (Math.random() * 100) + "%";
+                flake.style.fontSize = (8 + Math.random() * 13) + "px";
+                flake.style.opacity = (0.35 + Math.random() * 0.55).toFixed(2);
+                flake.style.animationDuration = (7 + Math.random() * 10) + "s";
+                flake.style.animationDelay = (-Math.random() * 15) + "s";
+                snowfall.appendChild(flake);
+            }
+
+            /* Reveal burst once on initial catalogue load */
+            requestAnimationFrame(() => {
+                catalogue.classList.add("reveal-ready");
+            });
+
+            function updateCatalogue(direction = 1) {
+                products.forEach((product, index) => {
+                    product.classList.toggle("catalogue-active", index === currentIndex);
+                });
+
+                slideCount.textContent = `${currentIndex + 1} / ${products.length}`;
+
+                /* Restart the slide animation */
+                const active = products[currentIndex];
+                active.style.animation = "none";
+                void active.offsetWidth;
+                active.style.animation = "";
+
+                /* Keep navigation available as a continuous loop */
+                prevBtn.disabled = false;
+                nextBtn.disabled = false;
+            }
+
+            function showNext() {
+                currentIndex = (currentIndex + 1) % products.length;
+                updateCatalogue(1);
+            }
+
+            function showPrevious() {
+                currentIndex = (currentIndex - 1 + products.length) % products.length;
+                updateCatalogue(-1);
+            }
+
+            prevBtn.addEventListener("click", showPrevious);
+            nextBtn.addEventListener("click", showNext);
+
+            /* Mobile swipe left/right */
+            const productsArea = catalogue.querySelector(".products");
+
+            productsArea.addEventListener("touchstart", (e) => {
+                if (!e.touches.length) return;
+                touchStartX = e.touches[0].clientX;
+                touchStartY = e.touches[0].clientY;
+            }, { passive: true });
+
+            productsArea.addEventListener("touchend", (e) => {
+                if (!e.changedTouches.length) return;
+
+                const dx = e.changedTouches[0].clientX - touchStartX;
+                const dy = e.changedTouches[0].clientY - touchStartY;
+
+                if (Math.abs(dx) < 45 || Math.abs(dx) < Math.abs(dy)) return;
+
+                if (dx < 0) showNext();
+                else showPrevious();
+            }, { passive: true });
+
+            /* Keyboard navigation on desktop */
+            document.addEventListener("keydown", (e) => {
+                if (modal.classList.contains("active")) return;
+                if (e.key === "ArrowRight") showNext();
+                if (e.key === "ArrowLeft") showPrevious();
+            });
+
+            function showFront() {
+                if (!selected) return;
+                image.src = selected.dataset.image;
+                image.alt = selected.dataset.colour + " YUGA Winter '26 sweatshirt front";
+                frontBtn.classList.add("active");
+                backBtn.classList.remove("active");
+                imageBox.classList.remove("zoomed");
+            }
+
+            function showBack() {
+                if (!selected) return;
+                image.src = selected.dataset.backImage;
+                image.alt = selected.dataset.colour + " YUGA Winter '26 sweatshirt back";
+                backBtn.classList.add("active");
+                frontBtn.classList.remove("active");
+                imageBox.classList.remove("zoomed");
+            }
+
+            function openProduct(product) {
+                selected = product;
+                name.textContent = product.dataset.name;
+                price.textContent = "₹" + product.dataset.price + " • Delivery Included";
+                colour.textContent = product.dataset.colour;
+                showFront();
+                modal.classList.add("active");
+                document.body.style.overflow = "hidden";
+            }
+
+            function notifyWhatsApp() {
+                if (!selected) return;
+
+                const msg =
+                    "Hello YUGA!%0A%0A" +
+                    "I want to be notified when the WINTER '26 sweatshirt launches.%0A%0A" +
+                    "Product: YUGA Winter Sweatshirt%0A" +
+                    "Colour: " + encodeURIComponent(selected.dataset.colour) + "%0A" +
+                    "Price: ₹499%0A" +
+                    "Expected Launch: 15 October 2026";
+
+                window.open(
+                    "https://wa.me/917888759939?text=" + msg,
+                    "_blank",
+                    "noopener,noreferrer"
+                );
+            }
+
+            products.forEach(product => {
+                product.addEventListener("click", e => {
+                    if (!e.target.closest(".winter-notify")) {
+                        openProduct(product);
+                    }
+                });
+
+                product.querySelector(".winter-notify").addEventListener("click", e => {
+                    e.stopPropagation();
+                    openProduct(product);
+                });
+            });
+
+            frontBtn.addEventListener("click", showFront);
+            backBtn.addEventListener("click", showBack);
+            notify.addEventListener("click", notifyWhatsApp);
+
+            imageBox.addEventListener("click", () => {
+                imageBox.classList.toggle("zoomed");
+            });
+
+            function closeModal() {
+                modal.classList.remove("active");
+                imageBox.classList.remove("zoomed");
+                document.body.style.overflow = "";
+                selected = null;
+            }
+
+            close.addEventListener("click", closeModal);
+
+            modal.addEventListener("click", e => {
+                if (e.target === modal) closeModal();
+            });
+
+            document.addEventListener("keydown", e => {
+                if (e.key === "Escape") closeModal();
+            });
+
+            updateCatalogue();
         });
     </script>
 
