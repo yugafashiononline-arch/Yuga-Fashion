@@ -134,16 +134,11 @@
     }
 
     @media (max-width: 700px) {
+        /* MOBILE: front/back is controlled by swipe — no arrows */
         .winter-gallery-arrow {
-            width: 30px;
-            height: 30px;
-            line-height: 30px;
-            font-size: 18px;
-            opacity: .85;
+            display: none !important;
         }
 
-        .winter-gallery-arrow.prev { left: 7px; }
-        .winter-gallery-arrow.next { right: 7px; }
         .winter-gallery-dots { bottom: 8px; }
     }
 
